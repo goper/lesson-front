@@ -1,0 +1,3 @@
+# Заглушка lesson.gpt-chat.by до запуска сайта уроков. Любой адрес — главная страница.
+DirectoryIndex index.html
+ErrorDocument 404 /index.html
