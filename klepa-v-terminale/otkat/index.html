@@ -1,6 +1,6 @@
 <!DOCTYPE html><html  lang="ru"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Урок 5. Откат правок — курс «Клёпа в терминале»</title>
+<title>Как откатить правки ИИ-агента: команды &#x2F;undo, &#x2F;redo и &#x2F;diff в Klepa CLI — урок 5 курса «Клёпа в терминале»</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <script>(function(){try{var k=localStorage.getItem('ui_theme');var d=k==='dark'||(!k&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches);if(d){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}})();</script>
@@ -523,20 +523,21 @@
       color: rgb(var(--v-theme-on-footer-bg)) !important;
     }
 </style>
-<link rel="stylesheet" href="/_nuxt/entry.BkopOppp.css" crossorigin>
-<link rel="stylesheet" href="/_nuxt/default.DZQab3WB.css" crossorigin>
-<link rel="stylesheet" href="/_nuxt/_lesson_.D9NmeDpX.css" crossorigin>
+<link rel="stylesheet" href="/_nuxt/entry.CqC-a2_X.css" crossorigin>
+<link rel="stylesheet" href="/_nuxt/default.CeMmjT2y.css" crossorigin>
+<link rel="stylesheet" href="/_nuxt/_lesson_.DqHDhYm4.css" crossorigin>
 <link rel="stylesheet" href="/_nuxt/progress.B7jlQphO.css" crossorigin>
-<link rel="preload" as="fetch" crossorigin="anonymous" href="/klepa-v-terminale/otkat/_payload.json?ee5dfba1-3284-4c9b-b3b1-3d7a8bbf98b4">
-<link rel="modulepreload" as="script" crossorigin href="/_nuxt/SMg7YmCW.js">
-<link rel="modulepreload" as="script" crossorigin href="/_nuxt/BnByqJ3Q.js">
-<link rel="modulepreload" as="script" crossorigin href="/_nuxt/woKpswWu.js">
-<link rel="modulepreload" as="script" crossorigin href="/_nuxt/CsoZ1iek.js">
-<link rel="modulepreload" as="script" crossorigin href="/_nuxt/Drm7g3KL.js">
-<link rel="modulepreload" as="script" crossorigin href="/_nuxt/CEUUAdEY.js">
-<link rel="modulepreload" as="script" crossorigin href="/_nuxt/CD0I9TZl.js">
-<link rel="preload" as="fetch" fetchpriority="low" crossorigin="anonymous" href="/_nuxt/builds/meta/ee5dfba1-3284-4c9b-b3b1-3d7a8bbf98b4.json">
-<script type="module" src="/_nuxt/SMg7YmCW.js" crossorigin></script>
+<link rel="preload" as="fetch" crossorigin="anonymous" href="/klepa-v-terminale/otkat/_payload.json?7646227d-0bf1-4784-8afd-12410cf89782">
+<link rel="modulepreload" as="script" crossorigin href="/_nuxt/DDNhQF91.js">
+<link rel="modulepreload" as="script" crossorigin href="/_nuxt/Bq2Rrf6x.js">
+<link rel="modulepreload" as="script" crossorigin href="/_nuxt/NA-6WRK8.js">
+<link rel="modulepreload" as="script" crossorigin href="/_nuxt/DjK9zxBU.js">
+<link rel="modulepreload" as="script" crossorigin href="/_nuxt/TeWLt6pA.js">
+<link rel="modulepreload" as="script" crossorigin href="/_nuxt/BrqekU1N.js">
+<link rel="modulepreload" as="script" crossorigin href="/_nuxt/LyTQuwlE.js">
+<link rel="modulepreload" as="script" crossorigin href="/_nuxt/DnaLCGfk.js">
+<link rel="preload" as="fetch" fetchpriority="low" crossorigin="anonymous" href="/_nuxt/builds/meta/7646227d-0bf1-4784-8afd-12410cf89782.json">
+<script type="module" src="/_nuxt/DDNhQF91.js" crossorigin></script>
 <link rel="prefetch" as="script" crossorigin href="/_nuxt/DSW_zuzx.js">
 <link rel="prefetch" as="script" crossorigin href="/_nuxt/DT9HhtpA.js">
 <link rel="prefetch" as="script" crossorigin href="/_nuxt/DsIVt1uA.js">
@@ -597,11 +598,11 @@
 <link rel="prefetch" as="script" crossorigin href="/_nuxt/ByyKMgJd.js">
 <link rel="prefetch" as="script" crossorigin href="/_nuxt/DNQPp8pS.js">
 <link rel="prefetch" as="script" crossorigin href="/_nuxt/D_NlkyYQ.js">
-<link rel="prefetch" as="script" crossorigin href="/_nuxt/CfBr0PNd.js">
-<link rel="prefetch" as="script" crossorigin href="/_nuxt/CPVmq1lq.js">
-<link rel="prefetch" as="script" crossorigin href="/_nuxt/DsAZRp5z.js">
-<link rel="prefetch" as="script" crossorigin href="/_nuxt/BYJVIvQY.js">
-<link rel="prefetch" as="script" crossorigin href="/_nuxt/C-tRB5eH.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/BQJIoDbM.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/KHl9t6Gn.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/DDQ9r7GM.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/Cvs3DDxt.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/CyACzfBv.js">
 <link rel="prefetch" as="script" crossorigin href="/_nuxt/CP579MFK.js">
 <meta name="theme-color" content="#3451d1">
 <meta name="format-detection" content="telephone=no">
@@ -610,14 +611,343 @@
 <meta name="description" content="Клёпа поправила не то. Смотрим изменения и возвращаем файлы назад одной командой — и узнаём, чего откат не вернёт. Бесплатный урок курса «Клёпа в терминале» с практикой в браузере и ответами преподавателя-нейросети.">
 <meta name="keywords" content="курс klepa cli, как пользоваться klepa cli, ии агент в терминале курс, нейросеть в терминале, AGENTS.md, klepa run">
 <meta name="robots" content="index, follow">
-<meta property="og:title" content="Урок 5. Откат правок — курс «Клёпа в терминале»">
+<meta property="og:title" content="Как откатить правки ИИ-агента: команды /undo, /redo и /diff в Klepa CLI — урок 5 курса «Клёпа в терминале»">
 <meta property="og:description" content="Клёпа поправила не то. Смотрим изменения и возвращаем файлы назад одной командой — и узнаём, чего откат не вернёт. Бесплатный урок курса «Клёпа в терминале» с практикой в браузере и ответами преподавателя-нейросети.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ru_RU">
 <meta property="og:site_name" content="Обучение работе с ИИ — gpt-chat.by">
 <meta property="og:url" content="https://lesson.gpt-chat.by/klepa-v-terminale/otkat/">
-<meta name="twitter:card" content="summary">
+<meta property="og:image" content="https://lesson.gpt-chat.by/og/lesson-og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://lesson.gpt-chat.by/og/lesson-og.png">
 <link rel="canonical" href="https://lesson.gpt-chat.by/klepa-v-terminale/otkat/">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"LearningResource","name":"Урок 5. Откат правок","description":"команды /undo, /redo и /diff","url":"https://lesson.gpt-chat.by/klepa-v-terminale/otkat/","inLanguage":"ru","timeRequired":"PT12M","isAccessibleForFree":true,"dateModified":"2026-11-25","isPartOf":{"@type":"Course","name":"Клёпа в терминале","url":"https://lesson.gpt-chat.by/klepa-v-terminale/"},"provider":{"@type":"Organization","name":"gpt-chat.by","url":"https://gpt-chat.by/"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Курсы","item":"https://lesson.gpt-chat.by/"},{"@type":"ListItem","position":2,"name":"Клёпа в терминале","item":"https://lesson.gpt-chat.by/klepa-v-terminale/"},{"@type":"ListItem","position":3,"name":"Урок 5","item":"https://lesson.gpt-chat.by/klepa-v-terminale/otkat/"}]}</script></head><body><div id="__nuxt"><div class="v-application v-theme--lessonTheme v-layout v-layout--full-height v-locale--is-ltr" style=""><div class="v-application__wrap"><!--[--><!--[--><header class="v-toolbar v-toolbar--collapse-start v-toolbar--flat v-toolbar--density-default bg-surface v-theme--lessonTheme v-locale--is-ltr v-app-bar site-header" style="top:0;z-index:1004;transform:translateY(0%);position:fixed;transition:none !important;" data-v-489c6778><!----><!--[--><div class="v-toolbar__content" style="height:64px;"><!----><!----><!--[--><div class="d-flex align-center w-100 px-3 px-md-6 ga-2 page-wrap" data-v-489c6778><a href="/" class="d-flex align-center ga-2 text-decoration-none" aria-label="Обучение — к списку курсов" data-v-489c6778><span class="brand-mark" aria-hidden="true" data-v-489c6778><i class="v-icon notranslate v-theme--lessonTheme" style="font-size:22px;height:22px;width:22px;" aria-hidden="true" data-v-489c6778><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M12 3L1 9L5 11.18V17.18L12 21L19 17.18V11.18L21 10.09V17H23V9L12 3M18.82 9L12 12.72L5.18 9L12 5.28L18.82 9M17 16L12 18.72L7 16V12.27L12 15L17 12.27V16Z"></path></svg></i></span><span class="d-flex flex-column" style="line-height:1.05;" data-v-489c6778><span class="font-display font-weight-bold text-ink" style="font-size:1.1rem;" data-v-489c6778>Обучение</span><span class="text-caption text-medium-emphasis" data-v-489c6778>от gpt-chat.by</span></span></a><nav class="d-none d-md-flex align-center ga-1 ms-6" aria-label="Курсы" data-v-489c6778><a href="/" class="v-btn v-theme--lessonTheme v-btn--density-default rounded-lg v-btn--size-default v-btn--variant-text nav-link" style="" data-v-489c6778><!--[--><span class="v-btn__overlay"></span><span class="v-btn__underlay"></span><!--]--><!----><span class="v-btn__content" data-no-activator><!--[--><!--[--> Все курсы <!--]--><!--]--></span><!----><!----></a><!--[--><!--[--><!--[--><button type="button" class="v-btn v-theme--lessonTheme v-btn--density-default rounded-lg v-btn--size-default v-btn--variant-text nav-link" style="" aria-haspopup="menu" aria-expanded="false" aria-controls="v-menu-v-0-2" aria-owns="v-menu-v-0-2" data-v-489c6778><!--[--><span class="v-btn__overlay"></span><span class="v-btn__underlay"></span><!--]--><!----><span class="v-btn__content" data-no-activator><!--[--><!--[-->Для программистов<!--]--><!--]--></span><span class="v-btn__append"><i class="v-icon notranslate v-theme--lessonTheme v-icon--size-default" style="" aria-hidden="true"><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"></path></svg></i></span><!----></button><!--]--><!----><!--]--><!--[--><!--[--><button type="button" class="v-btn v-theme--lessonTheme v-btn--density-default rounded-lg v-btn--size-default v-btn--variant-text nav-link" style="" aria-haspopup="menu" aria-expanded="false" aria-controls="v-menu-v-0-4" aria-owns="v-menu-v-0-4" data-v-489c6778><!--[--><span class="v-btn__overlay"></span><span class="v-btn__underlay"></span><!--]--><!----><span class="v-btn__content" data-no-activator><!--[--><!--[-->Автоматизация<!--]--><!--]--></span><span class="v-btn__append"><i class="v-icon notranslate v-theme--lessonTheme v-icon--size-default" style="" aria-hidden="true"><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"></path></svg></i></span><!----></button><!--]--><!----><!--]--><!--[--><!--[--><button type="button" class="v-btn v-theme--lessonTheme v-btn--density-default rounded-lg v-btn--size-default v-btn--variant-text nav-link" style="" aria-haspopup="menu" aria-expanded="false" aria-controls="v-menu-v-0-6" aria-owns="v-menu-v-0-6" data-v-489c6778><!--[--><span class="v-btn__overlay"></span><span class="v-btn__underlay"></span><!--]--><!----><span class="v-btn__content" data-no-activator><!--[--><!--[-->LLM-приложения<!--]--><!--]--></span><span class="v-btn__append"><i class="v-icon notranslate v-theme--lessonTheme v-icon--size-default" style="" aria-hidden="true"><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"></path></svg></i></span><!----></button><!--]--><!----><!--]--><!--]--></nav><div class="v-spacer" style="" data-v-489c6778></div><button type="button" class="v-btn v-btn--icon v-theme--lessonTheme v-btn--density-default rounded-lg v-btn--size-small v-btn--variant-text" style="" title="Тёмная тема" aria-label="Включить тёмную тему" data-v-489c6778><!--[--><span class="v-btn__overlay"></span><span class="v-btn__underlay"></span><!--]--><!----><span class="v-btn__content" data-no-activator><i class="v-icon notranslate v-theme--lessonTheme v-icon--size-default" style="" aria-hidden="true"><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M17.75,4.09L15.22,6.03L16.13,9.09L13.5,7.28L10.87,9.09L11.78,6.03L9.25,4.09L12.44,4L13.5,1L14.56,4L17.75,4.09M21.25,11L19.61,12.25L20.2,14.23L18.5,13.06L16.8,14.23L17.39,12.25L15.75,11L17.81,10.95L18.5,9L19.19,10.95L21.25,11M18.97,15.95C19.8,15.87 20.69,17.05 20.16,17.8C19.84,18.25 19.5,18.67 19.08,19.07C15.17,23 8.84,23 4.94,19.07C1.03,15.17 1.03,8.83 4.94,4.93C5.34,4.53 5.76,4.17 6.21,3.85C6.96,3.32 8.14,4.21 8.06,5.04C7.79,7.9 8.75,10.87 10.95,13.06C13.14,15.26 16.1,16.22 18.97,15.95M17.33,17.97C14.5,17.81 11.7,16.64 9.53,14.5C7.36,12.31 6.2,9.5 6.04,6.68C3.23,9.82 3.34,14.64 6.35,17.66C9.37,20.67 14.19,20.78 17.33,17.97Z"></path></svg></i></span><!----><!----></button><button type="button" class="v-btn v-theme--lessonTheme bg-primary v-btn--density-default rounded-lg v-btn--size-default v-btn--variant-flat" style="" data-v-489c6778><!--[--><span class="v-btn__overlay"></span><span class="v-btn__underlay"></span><!--]--><span class="v-btn__prepend"><i class="v-icon notranslate v-theme--lessonTheme v-icon--size-default" style="" aria-hidden="true"><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M11 7L9.6 8.4L12.2 11H2V13H12.2L9.6 15.6L11 17L16 12L11 7M20 19H12V21H20C21.1 21 22 20.1 22 19V5C22 3.9 21.1 3 20 3H12V5H20V19Z"></path></svg></i></span><span class="v-btn__content" data-no-activator><!--[--><!--[--> Войти <!--]--><!--]--></span><!----><!----></button><button type="button" class="v-btn v-btn--icon v-theme--lessonTheme v-btn--density-default rounded-lg v-btn--size-default v-btn--variant-text d-md-none v-app-bar-nav-icon" style="" aria-label="Меню" data-v-489c6778><!--[--><span class="v-btn__overlay"></span><span class="v-btn__underlay"></span><!--]--><!----><span class="v-btn__content" data-no-activator><i class="v-icon notranslate v-theme--lessonTheme v-icon--size-default" style="" aria-hidden="true"><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z"></path></svg></i></span><!----><!----></button></div><!--]--><!----></div><!--]--><!--[--><!----><!--]--></header><!--[--><nav class="v-navigation-drawer v-navigation-drawer--right v-navigation-drawer--temporary v-theme--lessonTheme v-navigation-drawer--mobile" style="right:0;z-index:1004;transform:translateX(300px);position:fixed;transition:none !important;" inert data-v-489c6778><!----><!----><div class="v-navigation-drawer__content"><!--[--><div class="v-list v-list--nav v-theme--lessonTheme bg-transparent v-list--density-comfortable v-list--one-line" style="" tabindex="0" role="list" data-v-489c6778><!--[--><a href="/" tabindex="-2" class="v-list-item v-list-item--link v-list-item--nav v-theme--lessonTheme v-list-item--density-comfortable v-list-item--one-line v-list-item--rounded v-list-item--variant-text" style="" role="link" data-v-489c6778><!--[--><span class="v-list-item__overlay"></span><span class="v-list-item__underlay"></span><!--]--><div class="v-list-item__prepend"><!--[--><!----><i class="v-icon notranslate v-theme--lessonTheme v-icon--size-default" style="" aria-hidden="true" density="comfortable"><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M3 11H11V3H3M5 5H9V9H5M13 21H21V13H13M15 15H19V19H15M3 21H11V13H3M5 15H9V19H5M13 3V11H21V3M19 9H15V5H19Z"></path></svg></i><!--]--><div class="v-list-item__spacer"></div></div><div class="v-list-item__content" data-no-activator><div class="v-list-item-title" style="">Все курсы</div><!----><!----></div><!----></a><!--[--><!--[--><div class="v-list-subheader" style="" data-v-489c6778><div class="v-list-subheader__text"><!--[-->ИИ-агент для программиста<!--]--></div></div><!--[--><a href="/klepa-v-terminale/" tabindex="-2" class="v-list-item v-list-item--link v-list-item--nav v-theme--lessonTheme v-list-item--density-comfortable v-list-item--one-line v-list-item--rounded v-list-item--variant-text" style="" role="link" data-v-489c6778><!--[--><span class="v-list-item__overlay"></span><span class="v-list-item__underlay"></span><!--]--><!----><div class="v-list-item__content" data-no-activator><div class="v-list-item-title" style="">Клёпа в терминале</div><!----><!----></div><!----></a><a href="/agent-pod-kontrolem/" tabindex="-2" class="v-list-item v-list-item--link v-list-item--nav v-theme--lessonTheme v-list-item--density-comfortable v-list-item--one-line v-list-item--rounded v-list-item--variant-text" style="" role="link" data-v-489c6778><!--[--><span class="v-list-item__overlay"></span><span class="v-list-item__underlay"></span><!--]--><!----><div class="v-list-item__content" data-no-activator><div class="v-list-item-title" style="">Агент под контролем</div><!----><!----></div><!----></a><!--]--><!--]--><!--[--><div class="v-list-subheader" style="" data-v-489c6778><div class="v-list-subheader__text"><!--[-->Автоматизация и личные помощники<!--]--></div></div><!--[--><a href="/n8n/" tabindex="-2" class="v-list-item v-list-item--link v-list-item--nav v-theme--lessonTheme v-list-item--density-comfortable v-list-item--one-line v-list-item--rounded v-list-item--variant-text" style="" role="link" data-v-489c6778><!--[--><span class="v-list-item__overlay"></span><span class="v-list-item__underlay"></span><!--]--><!----><div class="v-list-item__content" data-no-activator><div class="v-list-item-title" style="">n8n для новичков</div><!----><!----></div><!----></a><a href="/hermes-agent/" tabindex="-2" class="v-list-item v-list-item--link v-list-item--nav v-theme--lessonTheme v-list-item--density-comfortable v-list-item--one-line v-list-item--rounded v-list-item--variant-text" style="" role="link" data-v-489c6778><!--[--><span class="v-list-item__overlay"></span><span class="v-list-item__underlay"></span><!--]--><!----><div class="v-list-item__content" data-no-activator><div class="v-list-item-title" style="">Hermes Agent для новичков</div><!----><!----></div><!----></a><!--]--><!--]--><!--[--><div class="v-list-subheader" style="" data-v-489c6778><div class="v-list-subheader__text"><!--[-->Своё приложение с нейросетью<!--]--></div></div><!--[--><a href="/llm-workflow/" tabindex="-2" class="v-list-item v-list-item--link v-list-item--nav v-theme--lessonTheme v-list-item--density-comfortable v-list-item--one-line v-list-item--rounded v-list-item--variant-text" style="" role="link" data-v-489c6778><!--[--><span class="v-list-item__overlay"></span><span class="v-list-item__underlay"></span><!--]--><!----><div class="v-list-item__content" data-no-activator><div class="v-list-item-title" style="">Workflow для LLM-приложений</div><!----><!----></div><!----></a><!--]--><!--]--><!--]--><!--]--></div><!--]--></div><!----></nav><!----><!--]--><!--]--><main class="v-main" style="--v-layout-left:0px;--v-layout-right:0px;--v-layout-top:0px;--v-layout-bottom:0px;transition:none !important;"><!--[--><!--[--><div class="page-wrap px-4 px-md-6 py-6 py-md-8" data-v-841e5709><nav aria-label="Хлебные крошки" class="text-body-2" data-v-841e5709 data-v-f6406341><ol class="crumbs" data-v-f6406341><!--[--><li data-v-f6406341><a href="/" class="text-primary text-decoration-none" data-v-f6406341>Курсы</a></li><li data-v-f6406341><a href="/klepa-v-terminale/" class="text-primary text-decoration-none" data-v-f6406341>Клёпа в терминале</a></li><li data-v-f6406341><span class="text-medium-emphasis" aria-current="page" data-v-f6406341>Урок 5</span></li><!--]--></ol></nav><div class="lesson-layout" data-v-841e5709><!----><div class="min-w-0" data-v-841e5709><header class="mb-6" data-v-841e5709><div class="text-overline text-medium-emphasis d-flex flex-wrap ga-2 align-center" style="line-height:1.6;" data-v-841e5709><span data-v-841e5709>Урок 5 из 9</span><span aria-hidden="true" data-v-841e5709>·</span><span data-v-841e5709>~12 мин</span><span class="v-chip v-theme--lessonTheme v-chip--density-default rounded-lg v-chip--size-x-small v-chip--variant-tonal" style="" draggable="false" data-v-841e5709><!--[--><!----><span class="v-chip__underlay"></span><!--]--><!----><div class="v-chip__prepend"><!--[--><i class="v-icon notranslate v-theme--lessonTheme v-icon--size-default v-icon--start" style="" aria-hidden="true"><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M12,17C10.89,17 10,16.1 10,15C10,13.89 10.89,13 12,13A2,2 0 0,1 14,15A2,2 0 0,1 12,17M18,20V10H6V20H18M18,8A2,2 0 0,1 20,10V20A2,2 0 0,1 18,22H6C4.89,22 4,21.1 4,20V10C4,8.89 4.89,8 6,8H7V6A5,5 0 0,1 12,1A5,5 0 0,1 17,6V8H18M12,3A3,3 0 0,0 9,6V8H15V6A3,3 0 0,0 12,3Z"></path></svg></i><!----><!--]--></div><div class="v-chip__content" data-no-activator><!--[-->после входа<!--]--></div><!----><!----></span></div><h1 class="page-title mt-1" data-v-841e5709>Откат правок</h1><p class="lead mt-2 mb-0" data-v-841e5709>Команды /undo, /redo и /diff. Клёпа поправила не то. Смотрим изменения и возвращаем файлы назад одной командой — и узнаём, чего откат не вернёт.</p></header><div class="v-expansion-panels v-theme--lessonTheme v-expansion-panels--variant-accordion mb-6" style="" data-v-841e5709><!--[--><div class="v-expansion-panel" style="" data-v-841e5709><div class="v-expansion-panel__shadow"></div><!--[--><!----><!----><!--[--><button class="v-expansion-panel-title" style="" type="button" aria-expanded="false" data-v-841e5709><span class="v-expansion-panel-title__overlay"></span><!--[-->Все уроки курса «Клёпа в терминале»<!--]--><!--[--><span class="v-expansion-panel-title__icon"><i class="v-icon notranslate v-theme--lessonTheme v-icon--size-default" style="" aria-hidden="true"><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"></path></svg></i></span><!--]--></button><div class="v-expansion-panel-text" style="display:none;" data-v-841e5709><!----></div><!--]--><!--]--></div><!--]--></div><div class="lesson-locked" data-v-841e5709 data-v-e55bb477><div class="v-card v-theme--lessonTheme v-card--density-default rounded-xl v-card--variant-flat gate-card pa-5 pa-md-8" style="" data-v-e55bb477><!----><div class="v-card__loader"><div class="v-progress-linear v-theme--lessonTheme v-locale--is-ltr" style="top:0;height:0;--v-progress-linear-height:2px;" role="progressbar" aria-hidden="true" aria-valuemin="0" aria-valuemax="100"><!----><div class="v-progress-linear__background" style="opacity:NaN;"></div><div class="v-progress-linear__buffer" style="opacity:NaN;width:0%;"></div><div class="v-progress-linear__indeterminate"><!--[--><div class="v-progress-linear__indeterminate long" style=""></div><div class="v-progress-linear__indeterminate short" style=""></div><!--]--></div><!----></div></div><!----><!----><!--[--><div class="d-flex align-center ga-3 mb-3" data-v-e55bb477><div class="v-avatar v-theme--lessonTheme text-primary v-avatar--density-default v-avatar--variant-tonal" style="width:44px;height:44px;" data-v-e55bb477><!--[--><!--[--><i class="v-icon notranslate v-theme--lessonTheme v-icon--size-default" style="" aria-hidden="true" data-v-e55bb477><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M12,17C10.89,17 10,16.1 10,15C10,13.89 10.89,13 12,13A2,2 0 0,1 14,15A2,2 0 0,1 12,17M18,20V10H6V20H18M18,8A2,2 0 0,1 20,10V20A2,2 0 0,1 18,22H6C4.89,22 4,21.1 4,20V10C4,8.89 4.89,8 6,8H7V6A5,5 0 0,1 12,1A5,5 0 0,1 17,6V8H18M12,3A3,3 0 0,0 9,6V8H15V6A3,3 0 0,0 12,3Z"></path></svg></i><!--]--><!--]--><!--[--><!----><span class="v-avatar__underlay"></span><!--]--></div><h2 class="text-h6 font-display font-weight-bold mb-0" data-v-e55bb477> Урок откроется после входа </h2></div><p class="mb-4" data-v-e55bb477> Первые 3 урока курса открыты всем. Чтобы читать дальше, войдите через Google или Telegram — это бесплатно, прогресс и вопросы преподавателю останутся за вами. Аккаунт общий с gpt-chat.by. </p><div class="d-flex flex-wrap ga-3" data-v-e55bb477><button type="button" class="v-btn v-theme--lessonTheme bg-primary v-btn--density-default rounded-lg v-btn--size-large v-btn--variant-flat" style="" data-v-e55bb477><!--[--><span class="v-btn__overlay"></span><span class="v-btn__underlay"></span><!--]--><span class="v-btn__prepend"><i class="v-icon notranslate v-theme--lessonTheme v-icon--size-default" style="" aria-hidden="true"><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M11 7L9.6 8.4L12.2 11H2V13H12.2L9.6 15.6L11 17L16 12L11 7M20 19H12V21H20C21.1 21 22 20.1 22 19V5C22 3.9 21.1 3 20 3H12V5H20V19Z"></path></svg></i></span><span class="v-btn__content" data-no-activator><!--[--><!--[--> Войти и открыть урок <!--]--><!--]--></span><!----><!----></button><a href="/klepa-v-terminale/zapusk/" class="v-btn v-theme--lessonTheme v-btn--density-default rounded-lg v-btn--size-large v-btn--variant-text" style="" data-v-e55bb477><!--[--><span class="v-btn__overlay"></span><span class="v-btn__underlay"></span><!--]--><!----><span class="v-btn__content" data-no-activator><!--[--><!--[--> Начать с урока 1 <!--]--><!--]--></span><!----><!----></a></div><!--]--><!----><!--[--><!----><span class="v-card__underlay"></span><!--]--></div><section class="mt-8" aria-labelledby="outline-title" data-v-e55bb477><h2 id="outline-title" class="section-title mb-4" data-v-e55bb477> Что в уроке </h2><div class="v-row" style="" data-v-e55bb477><div class="v-col-md-6 v-col-12" style="" data-v-e55bb477><div class="text-subtitle-1 font-weight-bold mb-2" data-v-e55bb477> Разделы </div><ol class="outline-list" data-v-e55bb477><!--[--><li data-v-e55bb477>После урока вы сможете</li><li data-v-e55bb477>«Упрости функцию» — и изменено четыре файла</li><li data-v-e55bb477>/undo отменяет ваше последнее сообщение и всё, что было после</li><li data-v-e55bb477>Что возвращается, а что нет</li><li data-v-e55bb477>Вопрос по сценарию и два на повторение</li><li data-v-e55bb477>Изменить, посмотреть, вернуть</li><li data-v-e55bb477>Что вы теперь умеете</li><!--]--></ol></div><!----></div></section></div><!----></div></div><span data-v-841e5709 data-v-49a0e9ac></span></div><!--]--><!--]--></main><footer class="v-footer v-theme--lessonTheme bg-footer-bg d-block pt-10 pb-8" style="height:auto;" data-v-2893ecfe><div class="px-4 px-md-6 page-wrap" data-v-2893ecfe><div class="v-row" style="" data-v-2893ecfe><div class="v-col-md-4 v-col-12" style="" data-v-2893ecfe><div class="font-display font-weight-bold text-white mb-3" style="font-size:1.1rem;" data-v-2893ecfe> Обучение работе с ИИ </div><p class="text-body-2 mb-0" style="color:rgba(255, 255, 255, 0.72);" data-v-2893ecfe> Бесплатные курсы по нейросетям и ИИ-агентам с тренажёрами прямо в браузере. Первые уроки — без входа, остальные — после бесплатного входа через Google или Telegram. Аккаунт и баланс общие с gpt-chat.by. </p></div><div class="v-col-sm-6 v-col-md-3 v-col-12" style="" data-v-2893ecfe><div class="footer-heading" data-v-2893ecfe> Курсы </div><!--[--><a href="/klepa-v-terminale/" class="footer-link d-block" data-v-2893ecfe>Клёпа в терминале</a><a href="/agent-pod-kontrolem/" class="footer-link d-block" data-v-2893ecfe>Агент под контролем</a><a href="/n8n/" class="footer-link d-block" data-v-2893ecfe>n8n для новичков</a><a href="/hermes-agent/" class="footer-link d-block" data-v-2893ecfe>Hermes Agent для новичков</a><a href="/llm-workflow/" class="footer-link d-block" data-v-2893ecfe>Workflow для LLM-приложений</a><!--]--></div><div class="v-col-md-3 v-col-6" style="" data-v-2893ecfe><div class="footer-heading" data-v-2893ecfe> Наши продукты </div><!--[--><a href="https://gpt-chat.by/" class="footer-link d-block" data-v-2893ecfe>Чат gpt-chat.by <span class="footer-hint" data-v-2893ecfe>— Все нейросети в одном чате</span></a><a href="https://klepa.gpt-chat.by/" class="footer-link d-block" data-v-2893ecfe>Клёпа <span class="footer-hint" data-v-2893ecfe>— ИИ-агент для кода</span></a><a href="https://video-studio.gpt-chat.by/" class="footer-link d-block" data-v-2893ecfe>Видеостудия <span class="footer-hint" data-v-2893ecfe>— Видео нейросетью</span></a><a href="https://music.gpt-chat.by/" class="footer-link d-block" data-v-2893ecfe>Музыка <span class="footer-hint" data-v-2893ecfe>— Песни нейросетью</span></a><a href="https://logo.gpt-chat.by/" class="footer-link d-block" data-v-2893ecfe>Логотипы <span class="footer-hint" data-v-2893ecfe>— Логотип с ИИ</span></a><!--]--></div><div class="v-col-md-2 v-col-6" style="" data-v-2893ecfe><div class="footer-heading" data-v-2893ecfe> Помощь </div><!--[--><a href="https://gpt-chat.by/pricing/" class="footer-link d-block" data-v-2893ecfe>Тарифы и цены</a><a href="https://gpt-chat.by/doc-api/" class="footer-link d-block" data-v-2893ecfe>API для разработчиков</a><a href="https://gpt-chat.by/offer/" class="footer-link d-block" data-v-2893ecfe>Публичная оферта</a><a href="https://gpt-chat.by/privacy-policy/" class="footer-link d-block" data-v-2893ecfe>Политика конфиденциальности</a><!--]--></div></div><hr class="v-divider v-theme--lessonTheme text-white my-6" style="border-style:solid;" aria-orientation="horizontal" role="separator" data-v-2893ecfe><p class="text-body-2 mb-0" style="color:rgba(255, 255, 255, 0.6);" data-v-2893ecfe> © 2026 gpt-chat.by · Вопросы преподавателю-нейросети оплачиваются с баланса в BYN, курсы бесплатные. </p></div></footer><!--[--><!----><!----><!--]--><!--]--></div></div></div><div id="teleports"></div><script>window.__NUXT__={};window.__NUXT__.config={public:{siteUrl:"https://lesson.gpt-chat.by",apiBase:"https://api.gpt-chat.by/api"},app:{baseURL:"/",buildId:"ee5dfba1-3284-4c9b-b3b1-3d7a8bbf98b4",buildAssetsDir:"/_nuxt/",cdnURL:""}}</script>
-<script type="application/json" data-nuxt-data="nuxt-app" data-ssr="true" id="__NUXT_DATA__" data-src="/klepa-v-terminale/otkat/_payload.json?ee5dfba1-3284-4c9b-b3b1-3d7a8bbf98b4">[{"state":1,"once":6,"_errors":7,"serverRendered":9,"path":10,"prerenderedAt":11},["Reactive",2],{"$slesson-token":3,"$slesson-refresh":3,"$slesson-balance":4,"$slesson-top-up-open":5,"$slesson-top-up-shortfall":4,"$shydrated":5},"",null,false,["Set"],["ShallowReactive",8],{"lesson-outline-klepa-v-terminale-otkat":4},true,"/klepa-v-terminale/otkat/",1795606986047]</script></body></html>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Курсы","item":"https://lesson.gpt-chat.by/"},{"@type":"ListItem","position":2,"name":"Клёпа в терминале","item":"https://lesson.gpt-chat.by/klepa-v-terminale/"},{"@type":"ListItem","position":3,"name":"Урок 5","item":"https://lesson.gpt-chat.by/klepa-v-terminale/otkat/"}]}</script></head><body><div id="__nuxt"><div class="v-application v-theme--lessonTheme v-layout v-layout--full-height v-locale--is-ltr" style=""><div class="v-application__wrap"><!--[--><!--[--><header class="v-toolbar v-toolbar--collapse-start v-toolbar--flat v-toolbar--density-default bg-surface v-theme--lessonTheme v-locale--is-ltr v-app-bar site-header" style="top:0;z-index:1004;transform:translateY(0%);position:fixed;transition:none !important;" data-v-489c6778><!----><!--[--><div class="v-toolbar__content" style="height:64px;"><!----><!----><!--[--><div class="d-flex align-center w-100 px-3 px-md-6 ga-2 page-wrap" data-v-489c6778><a href="/" class="d-flex align-center ga-2 text-decoration-none" aria-label="Обучение — к списку курсов" data-v-489c6778><span class="brand-mark" aria-hidden="true" data-v-489c6778><i class="v-icon notranslate v-theme--lessonTheme" style="font-size:22px;height:22px;width:22px;" aria-hidden="true" data-v-489c6778><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M12 3L1 9L5 11.18V17.18L12 21L19 17.18V11.18L21 10.09V17H23V9L12 3M18.82 9L12 12.72L5.18 9L12 5.28L18.82 9M17 16L12 18.72L7 16V12.27L12 15L17 12.27V16Z"></path></svg></i></span><span class="d-flex flex-column" style="line-height:1.05;" data-v-489c6778><span class="font-display font-weight-bold text-ink" style="font-size:1.1rem;" data-v-489c6778>Обучение</span><span class="text-caption text-medium-emphasis" data-v-489c6778>от gpt-chat.by</span></span></a><nav class="d-none d-md-flex align-center ga-1 ms-6" aria-label="Курсы" data-v-489c6778><a href="/" class="v-btn v-theme--lessonTheme v-btn--density-default rounded-lg v-btn--size-default v-btn--variant-text nav-link" style="" data-v-489c6778><!--[--><span class="v-btn__overlay"></span><span class="v-btn__underlay"></span><!--]--><!----><span class="v-btn__content" data-no-activator><!--[--><!--[--> Все курсы <!--]--><!--]--></span><!----><!----></a><!--[--><!--[--><!--[--><button type="button" class="v-btn v-theme--lessonTheme v-btn--density-default rounded-lg v-btn--size-default v-btn--variant-text nav-link" style="" aria-haspopup="menu" aria-expanded="false" aria-controls="v-menu-v-0-2" aria-owns="v-menu-v-0-2" data-v-489c6778><!--[--><span class="v-btn__overlay"></span><span class="v-btn__underlay"></span><!--]--><!----><span class="v-btn__content" data-no-activator><!--[--><!--[-->Для программистов<!--]--><!--]--></span><span class="v-btn__append"><i class="v-icon notranslate v-theme--lessonTheme v-icon--size-default" style="" aria-hidden="true"><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"></path></svg></i></span><!----></button><!--]--><!----><!--]--><!--[--><!--[--><button type="button" class="v-btn v-theme--lessonTheme v-btn--density-default rounded-lg v-btn--size-default v-btn--variant-text nav-link" style="" aria-haspopup="menu" aria-expanded="false" aria-controls="v-menu-v-0-4" aria-owns="v-menu-v-0-4" data-v-489c6778><!--[--><span class="v-btn__overlay"></span><span class="v-btn__underlay"></span><!--]--><!----><span class="v-btn__content" data-no-activator><!--[--><!--[-->Автоматизация<!--]--><!--]--></span><span class="v-btn__append"><i class="v-icon notranslate v-theme--lessonTheme v-icon--size-default" style="" aria-hidden="true"><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"></path></svg></i></span><!----></button><!--]--><!----><!--]--><!--[--><!--[--><button type="button" class="v-btn v-theme--lessonTheme v-btn--density-default rounded-lg v-btn--size-default v-btn--variant-text nav-link" style="" aria-haspopup="menu" aria-expanded="false" aria-controls="v-menu-v-0-6" aria-owns="v-menu-v-0-6" data-v-489c6778><!--[--><span class="v-btn__overlay"></span><span class="v-btn__underlay"></span><!--]--><!----><span class="v-btn__content" data-no-activator><!--[--><!--[-->LLM-приложения<!--]--><!--]--></span><span class="v-btn__append"><i class="v-icon notranslate v-theme--lessonTheme v-icon--size-default" style="" aria-hidden="true"><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"></path></svg></i></span><!----></button><!--]--><!----><!--]--><!--]--></nav><div class="v-spacer" style="" data-v-489c6778></div><button type="button" class="v-btn v-btn--icon v-theme--lessonTheme v-btn--density-default rounded-lg v-btn--size-small v-btn--variant-text" style="" title="Тёмная тема" aria-label="Включить тёмную тему" data-v-489c6778><!--[--><span class="v-btn__overlay"></span><span class="v-btn__underlay"></span><!--]--><!----><span class="v-btn__content" data-no-activator><i class="v-icon notranslate v-theme--lessonTheme v-icon--size-default" style="" aria-hidden="true"><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M17.75,4.09L15.22,6.03L16.13,9.09L13.5,7.28L10.87,9.09L11.78,6.03L9.25,4.09L12.44,4L13.5,1L14.56,4L17.75,4.09M21.25,11L19.61,12.25L20.2,14.23L18.5,13.06L16.8,14.23L17.39,12.25L15.75,11L17.81,10.95L18.5,9L19.19,10.95L21.25,11M18.97,15.95C19.8,15.87 20.69,17.05 20.16,17.8C19.84,18.25 19.5,18.67 19.08,19.07C15.17,23 8.84,23 4.94,19.07C1.03,15.17 1.03,8.83 4.94,4.93C5.34,4.53 5.76,4.17 6.21,3.85C6.96,3.32 8.14,4.21 8.06,5.04C7.79,7.9 8.75,10.87 10.95,13.06C13.14,15.26 16.1,16.22 18.97,15.95M17.33,17.97C14.5,17.81 11.7,16.64 9.53,14.5C7.36,12.31 6.2,9.5 6.04,6.68C3.23,9.82 3.34,14.64 6.35,17.66C9.37,20.67 14.19,20.78 17.33,17.97Z"></path></svg></i></span><!----><!----></button><button type="button" class="v-btn v-theme--lessonTheme bg-primary v-btn--density-default rounded-lg v-btn--size-default v-btn--variant-flat" style="" data-v-489c6778><!--[--><span class="v-btn__overlay"></span><span class="v-btn__underlay"></span><!--]--><span class="v-btn__prepend"><i class="v-icon notranslate v-theme--lessonTheme v-icon--size-default" style="" aria-hidden="true"><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M11 7L9.6 8.4L12.2 11H2V13H12.2L9.6 15.6L11 17L16 12L11 7M20 19H12V21H20C21.1 21 22 20.1 22 19V5C22 3.9 21.1 3 20 3H12V5H20V19Z"></path></svg></i></span><span class="v-btn__content" data-no-activator><!--[--><!--[--> Войти <!--]--><!--]--></span><!----><!----></button><button type="button" class="v-btn v-btn--icon v-theme--lessonTheme v-btn--density-default rounded-lg v-btn--size-default v-btn--variant-text d-md-none v-app-bar-nav-icon" style="" aria-label="Меню" data-v-489c6778><!--[--><span class="v-btn__overlay"></span><span class="v-btn__underlay"></span><!--]--><!----><span class="v-btn__content" data-no-activator><i class="v-icon notranslate v-theme--lessonTheme v-icon--size-default" style="" aria-hidden="true"><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z"></path></svg></i></span><!----><!----></button></div><!--]--><!----></div><!--]--><!--[--><!----><!--]--></header><!--[--><nav class="v-navigation-drawer v-navigation-drawer--right v-navigation-drawer--temporary v-theme--lessonTheme v-navigation-drawer--mobile" style="right:0;z-index:1004;transform:translateX(300px);position:fixed;transition:none !important;" inert data-v-489c6778><!----><!----><div class="v-navigation-drawer__content"><!--[--><div class="v-list v-list--nav v-theme--lessonTheme bg-transparent v-list--density-comfortable v-list--one-line" style="" tabindex="0" role="list" data-v-489c6778><!--[--><a href="/" tabindex="-2" class="v-list-item v-list-item--link v-list-item--nav v-theme--lessonTheme v-list-item--density-comfortable v-list-item--one-line v-list-item--rounded v-list-item--variant-text" style="" role="link" data-v-489c6778><!--[--><span class="v-list-item__overlay"></span><span class="v-list-item__underlay"></span><!--]--><div class="v-list-item__prepend"><!--[--><!----><i class="v-icon notranslate v-theme--lessonTheme v-icon--size-default" style="" aria-hidden="true" density="comfortable"><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M3 11H11V3H3M5 5H9V9H5M13 21H21V13H13M15 15H19V19H15M3 21H11V13H3M5 15H9V19H5M13 3V11H21V3M19 9H15V5H19Z"></path></svg></i><!--]--><div class="v-list-item__spacer"></div></div><div class="v-list-item__content" data-no-activator><div class="v-list-item-title" style="">Все курсы</div><!----><!----></div><!----></a><!--[--><!--[--><div class="v-list-subheader" style="" data-v-489c6778><div class="v-list-subheader__text"><!--[-->ИИ-агент для программиста<!--]--></div></div><!--[--><a href="/klepa-v-terminale/" tabindex="-2" class="v-list-item v-list-item--link v-list-item--nav v-theme--lessonTheme v-list-item--density-comfortable v-list-item--one-line v-list-item--rounded v-list-item--variant-text" style="" role="link" data-v-489c6778><!--[--><span class="v-list-item__overlay"></span><span class="v-list-item__underlay"></span><!--]--><!----><div class="v-list-item__content" data-no-activator><div class="v-list-item-title" style="">Клёпа в терминале</div><!----><!----></div><!----></a><a href="/agent-pod-kontrolem/" tabindex="-2" class="v-list-item v-list-item--link v-list-item--nav v-theme--lessonTheme v-list-item--density-comfortable v-list-item--one-line v-list-item--rounded v-list-item--variant-text" style="" role="link" data-v-489c6778><!--[--><span class="v-list-item__overlay"></span><span class="v-list-item__underlay"></span><!--]--><!----><div class="v-list-item__content" data-no-activator><div class="v-list-item-title" style="">Агент под контролем</div><!----><!----></div><!----></a><!--]--><!--]--><!--[--><div class="v-list-subheader" style="" data-v-489c6778><div class="v-list-subheader__text"><!--[-->Автоматизация и личные помощники<!--]--></div></div><!--[--><a href="/n8n/" tabindex="-2" class="v-list-item v-list-item--link v-list-item--nav v-theme--lessonTheme v-list-item--density-comfortable v-list-item--one-line v-list-item--rounded v-list-item--variant-text" style="" role="link" data-v-489c6778><!--[--><span class="v-list-item__overlay"></span><span class="v-list-item__underlay"></span><!--]--><!----><div class="v-list-item__content" data-no-activator><div class="v-list-item-title" style="">n8n для новичков</div><!----><!----></div><!----></a><a href="/hermes-agent/" tabindex="-2" class="v-list-item v-list-item--link v-list-item--nav v-theme--lessonTheme v-list-item--density-comfortable v-list-item--one-line v-list-item--rounded v-list-item--variant-text" style="" role="link" data-v-489c6778><!--[--><span class="v-list-item__overlay"></span><span class="v-list-item__underlay"></span><!--]--><!----><div class="v-list-item__content" data-no-activator><div class="v-list-item-title" style="">Hermes Agent для новичков</div><!----><!----></div><!----></a><!--]--><!--]--><!--[--><div class="v-list-subheader" style="" data-v-489c6778><div class="v-list-subheader__text"><!--[-->Своё приложение с нейросетью<!--]--></div></div><!--[--><a href="/llm-workflow/" tabindex="-2" class="v-list-item v-list-item--link v-list-item--nav v-theme--lessonTheme v-list-item--density-comfortable v-list-item--one-line v-list-item--rounded v-list-item--variant-text" style="" role="link" data-v-489c6778><!--[--><span class="v-list-item__overlay"></span><span class="v-list-item__underlay"></span><!--]--><!----><div class="v-list-item__content" data-no-activator><div class="v-list-item-title" style="">Workflow для LLM-приложений</div><!----><!----></div><!----></a><!--]--><!--]--><!--]--><!--]--></div><!--]--></div><!----></nav><!----><!--]--><!--]--><main class="v-main" style="--v-layout-left:0px;--v-layout-right:0px;--v-layout-top:0px;--v-layout-bottom:0px;transition:none !important;"><!--[--><!--[--><div class="page-wrap px-4 px-md-6 py-6 py-md-8" data-v-dc6e551c><nav aria-label="Хлебные крошки" class="text-body-2" data-v-dc6e551c data-v-f6406341><ol class="crumbs" data-v-f6406341><!--[--><li data-v-f6406341><a href="/" class="text-primary text-decoration-none" data-v-f6406341>Курсы</a></li><li data-v-f6406341><a href="/klepa-v-terminale/" class="text-primary text-decoration-none" data-v-f6406341>Клёпа в терминале</a></li><li data-v-f6406341><span class="text-medium-emphasis" aria-current="page" data-v-f6406341>Урок 5</span></li><!--]--></ol></nav><div class="lesson-layout" data-v-dc6e551c><!----><div class="min-w-0" data-v-dc6e551c><!----><div class="v-expansion-panels v-theme--lessonTheme v-expansion-panels--variant-accordion mb-6" style="" data-v-dc6e551c><!--[--><div class="v-expansion-panel" style="" data-v-dc6e551c><div class="v-expansion-panel__shadow"></div><!--[--><!----><!----><!--[--><button class="v-expansion-panel-title" style="" type="button" aria-expanded="false" data-v-dc6e551c><span class="v-expansion-panel-title__overlay"></span><!--[-->Все уроки курса «Клёпа в терминале»<!--]--><!--[--><span class="v-expansion-panel-title__icon"><i class="v-icon notranslate v-theme--lessonTheme v-icon--size-default" style="" aria-hidden="true"><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"></path></svg></i></span><!--]--></button><div class="v-expansion-panel-text" style="display:none;" data-v-dc6e551c><!----></div><!--]--><!--]--></div><!--]--></div><div class="hc kurs-card cli-kurs" data-v-dc6e551c><div class="hc-lesson"><div class="hc-page">
+  <nav class="rail" aria-label="Шаги урока">
+    <ol>
+      <li><a href="#hook">Проблема</a></li>
+      <li><a href="#what">Что это</a></li>
+      <li><a href="#how">Как работает</a></li>
+      <li><a href="#check">Проверка</a></li>
+      <li><a href="#practice">Практика</a></li>
+      <li><a href="#summary">Итог</a></li>
+    </ol>
+    <div class="rail-progress"><span data-meter-label>Пройдено: 0%</span><div class="meter"><i data-meter></i></div></div>
+  </nav>
+
+  <div class="content">
+    <header class="lesson-hero">
+      <span class="eyebrow">Часть 2 · Контроль · Урок 5</span>
+      <h1>Откат правок: команды /undo, /redo и /diff</h1>
+      <p class="lead">Клёпа поправила не то. Смотрим изменения командой <code>/diff</code> и возвращаем файлы назад командой <code>/undo</code>. И разбираем, чего откат не вернёт.</p>
+      <div class="facts">
+        <span class="fact">~12 минут</span>
+        <span class="fact">1 прогноз</span>
+        <span class="fact">3 вопроса с разбором</span>
+        <span class="fact">Практика в своём терминале</span>
+      </div>
+      <div class="outcomes">
+        <h2>После урока вы сможете</h2>
+        <ul>
+          <li>посмотреть, что именно Клёпа изменила, не выходя из окна;</li>
+          <li>отменить её последнюю работу и переформулировать задачу;</li>
+          <li>заранее подготовить проект так, чтобы откат сработал.</li>
+        </ul>
+      </div>
+    </header>
+
+    <!-- ============ 1. ПРОБЛЕМА ============ -->
+    <section class="step" id="hook">
+      <div class="step-head">
+        <span class="step-tag"><b>1</b> Проблема</span>
+        <h2>«Упрости функцию» — и изменено четыре файла</h2>
+      </div>
+      <p>Вы попросили: «упрости функцию расчёта скидки». Клёпа упростила. Заодно переименовала <code>priceAfterDiscount</code> в <code>finalPrice</code>, поправила тест под новое имя, добавила округление и создала файл с константами. Четыре файла вместо одного, и округление вы не просили.</p>
+      <p>Разбирать руками, что оставить, а что вернуть, — дольше, чем сделать задачу заново. Объяснять Клёпе «верни вот это, а вот это оставь» — ещё один круг с новыми сюрпризами.</p>
+      <p>Нужна простая вещь: вернуть всё как было до сообщения и написать задачу точнее.</p>
+    </section>
+
+    <!-- ============ 2. ЧТО ЭТО ============ -->
+    <section class="step" id="what">
+      <div class="step-head">
+        <span class="step-tag"><b>2</b> Что это</span>
+        <h2>/undo отменяет ваше последнее сообщение и всё, что было после</h2>
+      </div>
+      <p><b>Что делает.</b> Команда <code>/undo</code> убирает из диалога ваше последнее сообщение и ответ Клёпы, а файлы проекта возвращает к состоянию до этого сообщения. Текст сообщения возвращается в поле ввода: его можно поправить и отправить снова.</p>
+      <p><b>Чего не делает.</b> <code>/undo</code> не возвращает файлы, если папка проекта не под git. И не отменяет то, что ушло за пределы проекта: отправку на сервер, удалённую таблицу, письмо.</p>
+      <div class="analogy">
+        <span class="label">Представьте</span>
+        <p>Перед каждым вашим поручением мастер фотографирует комнату. Не понравился результат — он расставляет всё по последнему фото. Но фотоаппарат у него один: это git. Нет git — нет фото. И то, что уже вынесли из комнаты и увезли, по фото не вернуть.</p>
+      </div>
+      <div class="map-pairs" aria-label="Соответствия образа">
+        <div><b>Фото комнаты</b><span>= снимок файлов перед сообщением</span></div>
+        <div><b>Расставить по фото</b><span>= <code>/undo</code></span></div>
+        <div><b>Фотоаппарат</b><span>= git в папке проекта</span></div>
+        <div><b>Вынесли и увезли</b><span>= <code>git push</code>, запрос к чужому серверу</span></div>
+      </div>
+
+      <h3>Три частые задачи</h3>
+      <div class="table-wrap">
+        <table data-block="tasks">
+          <thead><tr><th>Задача</th><th>Пример</th><th>Что сделать</th></tr></thead>
+          <tbody>
+            <tr><td>Посмотреть, что изменилось</td><td>После «упрости функцию» изменено четыре файла</td><td><code>/diff</code></td></tr>
+            <tr><td>Вернуть как было и уточнить задачу</td><td>Округление и переименование не просили</td><td><code>/undo</code>, дописать в поле «ничего не переименовывай», <kbd>Enter</kbd></td></tr>
+            <tr><td>Передумали отменять</td><td>Отменили, а правка была хорошей</td><td><code>/redo</code> — до нового сообщения и до команды через <code>!</code></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Что внутри</h3>
+      <ul data-block="inside">
+        <li><b><code>/diff</code></b> — «Открыть просмотр изменений»: какие файлы и строки изменены. <em>В курсе: да.</em></li>
+        <li><b><code>/undo</code></b> — «Отменить последнее сообщение». Если Клёпа ещё работает, сначала останавливает её. Клавиши: <kbd>Ctrl+X</kbd>, затем <kbd>U</kbd>. <em>В курсе: да.</em></li>
+        <li><b><code>/redo</code></b> — «Повторить»: вернуть отменённое. Появляется в списке только после отмены. Клавиши: <kbd>Ctrl+X</kbd>, затем <kbd>R</kbd>. <em>В курсе: да.</em></li>
+        <li><b>Строка под диалогом</b> — после отмены пишет, сколько сообщений отменено, и напоминает про <code>/redo</code>. <em>В курсе: смотрим.</em></li>
+        <li><b>Несколько <code>/undo</code> подряд</b> — каждый шаг отменяет ещё одно ваше сообщение, от последнего к первому. <em>В курсе: да.</em></li>
+        <li><b><code>/timeline</code></b> — «Перейти к сообщению»: выбрать точку возврата из списка. <em>Для первых шагов не нужно.</em></li>
+        <li><b><code>/fork</code></b> — «Создать копию диалога», чтобы попробовать другой путь, не теряя этот. <em>Для первых шагов не нужно.</em></li>
+      </ul>
+      <p>Условие одно: папка проекта — git-репозиторий. Достаточно один раз выполнить <code>git init</code>. Свои снимки Клёпа хранит отдельно, в ваши коммиты и историю они не попадают.</p>
+    </section>
+
+    <!-- ============ 3. КАК РАБОТАЕТ ============ -->
+    <section class="step" id="how">
+      <div class="step-head">
+        <span class="step-tag"><b>3</b> Как работает</span>
+        <h2>Что возвращается, а что нет</h2>
+      </div>
+
+      <div class="q predict" data-q="cli5-predict">
+        <span class="q-label">Сначала прогноз</span>
+        <p>Папка с корзиной — обычная папка, <code>git init</code> в ней не делали. Клёпа изменила <code>cart.mjs</code>, результат вам не понравился, и вы набрали <code>/undo</code>. Что будет?</p>
+        <div class="options">
+          <button>Вернётся всё: и диалог, и файл cart.mjs</button>
+          <button data-right>Диалог откатится, файл останется изменённым</button>
+          <button>Появится ошибка: без git эта команда недоступна</button>
+        </div>
+        <div class="why">
+          <p>Без git снимков файлов нет. Команда сработает наполовину: сообщение и ответ исчезнут из диалога, а <code>cart.mjs</code> на диске останется таким, каким его сделала Клёпа.</p>
+          <ul>
+            <li><b>«Вернётся всё».</b> Так думают почти все: в любом редакторе «отменить» возвращает текст. Но мастер без фотоаппарата не помнит, где что стояло. Хуже того: диалог выглядит откатившимся, и легко поверить, что файлы тоже.</li>
+            <li><b>«Появится ошибка».</b> Было бы честнее, но ошибки нет. Команда молча делает то, что может, — откатывает разговор.</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3>Было → стало</h3>
+      <p>Задача: «переименуй priceAfterDiscount в finalPrice». Первая строка файла <code>cart.mjs</code> в каждый момент.</p>
+      <div class="table-wrap">
+        <table data-block="was-became">
+          <thead><tr><th>Момент</th><th>Первая строка cart.mjs</th><th>Диалог</th></tr></thead>
+          <tbody>
+            <tr><td>До сообщения</td><td><pre class="no-copy">export function priceAfterDiscount(price, percent) {</pre></td><td>Пусто</td></tr>
+            <tr><td>После ответа Клёпы</td><td><pre class="no-copy">export function finalPrice(price, percent) {</pre></td><td>Ваше сообщение и её отчёт</td></tr>
+            <tr><td>После <code>/undo</code>, проект под git</td><td><pre class="no-copy">export function priceAfterDiscount(price, percent) {</pre></td><td>Пусто, текст сообщения снова в поле ввода</td></tr>
+            <tr><td>После <code>/undo</code>, проект без git</td><td><pre class="no-copy">export function finalPrice(price, percent) {</pre></td><td>Пусто, текст в поле ввода — а файл не вернулся</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="warn" data-block="trap"><b>Ловушка: откат видит только то, что видит git в папке проекта</b>На «фото» попадают файлы проекта, за которыми следит git. Всё остальное <code>/undo</code> не вернёт: файлы из <code>.gitignore</code> (например, удалённую папку <code>node_modules</code> или изменённый <code>.env</code>), файлы вне папки проекта и любые действия наружу — <code>git push</code>, запрос к серверу, запись в базу данных. Что вынесли из комнаты, по фото не восстановить.</div>
+
+      <h3>Четыре способа вернуть назад</h3>
+      <div class="table-wrap">
+        <table data-block="variants">
+          <thead><tr><th>Вариант</th><th>Что это</th><th>Пример</th><th>Как выглядит в результате</th></tr></thead>
+          <tbody>
+            <tr><td><code>/undo</code></td><td>Отмена последнего сообщения и правок после него</td><td>Правка не та, хочу переформулировать</td><td>Файлы как до сообщения, текст в поле ввода</td></tr>
+            <tr><td><code>/redo</code></td><td>Возврат отменённого</td><td>Отменил зря</td><td>Сообщение, ответ и правки снова на месте</td></tr>
+            <tr><td><code>!git restore файл</code></td><td>Возврат одного файла к последнему коммиту</td><td>Три файла хороши, четвёртый испорчен</td><td>Один файл как в коммите, остальные не тронуты</td></tr>
+            <tr><td><code>!git commit</code></td><td>Своя точка возврата</td><td>Этап готов, дальше рискованная правка</td><td>Точка, к которой можно вернуться в любой день</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="tip"><b>Типичная ошибка</b>Отменить командой <code>/undo</code>, тут же отправить новое сообщение — и через минуту понять, что старый вариант был лучше. Поздно: новое сообщение стирает отменённую ветку разговора насовсем, <code>/redo</code> больше не предлагается. Так же действует команда через <code>!</code>: выполнили после отмены <code>!git status</code> — и возвращать уже нечего. Правило: сомневаетесь — посмотрите <code>/diff</code> до отмены и решите, отменять ли вообще. А хороший промежуточный результат сохраняйте коммитом.</div>
+
+      <p data-block="bridge">Откат работает внутри одного диалога: он знает только свои сообщения. Что такое диалог, когда начинать новый и как вернуться к старому — следующий урок.</p>
+    </section>
+
+    <!-- ============ 4. ПРОВЕРКА ============ -->
+    <section class="step" id="check">
+      <div class="step-head">
+        <span class="step-tag"><b>4</b> Проверка</span>
+        <h2>Вопрос по сценарию и два на повторение</h2>
+      </div>
+      <div class="quiz">
+        <h3>Проверьте себя</h3>
+        <div class="q" data-q="cli5-steps">
+          <p>Проект под git. Катя написала: «переименуй priceAfterDiscount в finalPrice» — Клёпа изменила <code>cart.mjs</code> и <code>cart.test.mjs</code>. Потом Катя написала: «добавь комментарий к функции» — Клёпа изменила <code>cart.mjs</code>. Катя один раз набрала <code>/undo</code>. Что в файлах?</p>
+          <div class="options">
+            <button>Исчезли обе правки: и имя, и комментарий</button>
+            <button data-right>Новое имя осталось, комментарий исчез</button>
+            <button>Комментарий остался, вернулось старое имя</button>
+            <button>Файлы не изменились, откатился только текст</button>
+          </div>
+          <div class="why">
+            <p>Один <code>/undo</code> отменяет одно ваше сообщение — последнее. Это «добавь комментарий». Переименование сделано раньше, оно на месте. Чтобы убрать и его, нужен второй <code>/undo</code>.</p>
+            <ul>
+              <li><b>«Исчезли обе правки».</b> Кажется, что откат возвращает к началу работы. Нет: мастер делает фото перед каждым поручением и возвращает к последнему.</li>
+              <li><b>«Комментарий остался, имя вернулось».</b> Порядок наоборот: отменяется всегда последнее, а не первое.</li>
+              <li><b>«Откатился только текст».</b> Так было бы в папке без git. Здесь проект под git — файлы возвращаются.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="q" data-q="cli5-rep-bang">
+          <p>Повторение. Клёпа закончила правку. Вы хотите увидеть изменения привычной командой <code>git diff</code>, не выходя из окна, и чтобы вывод остался в диалоге. Что набрать?</p>
+          <div class="options">
+            <button><code>@git diff</code> — знак @ покажет изменения</button>
+            <button><code>/git diff</code> — команды идут через черту</button>
+            <button data-right><code>!git diff</code> — в начале пустой строки</button>
+            <button>«выполни git diff» — обычным сообщением</button>
+          </div>
+          <div class="why">
+            <p>Знак <code>!</code> выполняет вашу команду и оставляет вывод в диалоге — это урок 4. Вывод увидите и вы, и Клёпа в следующем сообщении.</p>
+            <ul>
+              <li><b><code>@git diff</code>.</b> Знак <code>@</code> ищет файлы и папки. Файла с именем «git diff» нет.</li>
+              <li><b><code>/git diff</code>.</b> Через черту идут команды самой Клёпы: <code>/diff</code>, <code>/undo</code>. Спутать легко: своя команда <code>/diff</code> у неё и правда есть.</li>
+              <li><b>«выполни git diff».</b> Сработает, но дороже и дольше: это запрос к модели и окно разрешения. Через <code>!</code> — мгновенно и бесплатно.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="q" data-q="cli5-rep-push">
+          <p>Повторение. Клёпа после правки выполнила <code>git push</code> без вопроса: когда-то вы ответили на него «Разрешать всегда». Вы набрали <code>/undo</code>. Что с кодом на сервере?</p>
+          <div class="options">
+            <button>Вернётся назад вместе с файлами в проекте</button>
+            <button>Вернётся, если ответить «Разрешить» в окне</button>
+            <button>Вернётся после второго /undo подряд</button>
+            <button data-right>Останется: откат действует только в папке</button>
+          </div>
+          <div class="why">
+            <p>Откат возвращает файлы проекта. Отправленное на сервер уже «вынесли из комнаты». А правило <code>git push *</code> из урока 3 стоит убрать из файла настроек, иначе история повторится.</p>
+            <ul>
+              <li><b>«Вернётся вместе с файлами».</b> Хочется, чтобы «отмена» отменяла всё. Но Клёпа отвечает только за свою папку.</li>
+              <li><b>«Если ответить „Разрешить“».</b> Окна не будет: <code>/undo</code> не выполняет команд на сервере, спрашивать не о чем.</li>
+              <li><b>«После второго /undo».</b> Второй шаг отменит предыдущее сообщение в диалоге. К серверу он тоже не дотянется.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 5. ПРАКТИКА ============ -->
+    <section class="step" id="practice">
+      <div class="step-head">
+        <span class="step-tag"><b>5</b> Практика</span>
+        <h2>Изменить, посмотреть, вернуть</h2>
+      </div>
+      <p>Работаем в папке <code>cart</code>: она под git с урока 1. Приведите её в исходное состояние: <code>git restore .</code></p>
+
+      <div class="rung" data-rung="1">
+        <span class="rung-tag">Ступень 1 · Всё готово, повторите</span>
+        <ol>
+          <li>Откройте Клёпу в режиме «Код» и отправьте:
+            <pre data-lang="text">Переименуй функцию priceAfterDiscount в finalPrice во всех файлах. Тесты не запускай.</pre>
+          </li>
+          <li>Посмотрите изменения:
+            <pre data-lang="text">/diff</pre>
+          </li>
+          <li>Закройте просмотр и отмените:
+            <pre data-lang="text">/undo</pre>
+          </li>
+          <li>Сотрите текст, вернувшийся в поле ввода, и проверьте файлы своей командой:
+            <pre data-lang="text">!git status</pre>
+          </li>
+        </ol>
+        <details class="more">
+          <summary>Что должно получиться <span class="hint">— сверьтесь</span></summary>
+          <div class="more-body">
+            <p>В <code>/diff</code> два файла: <code>cart.mjs</code> и <code>cart.test.mjs</code>, в каждом заменено имя функции. После <code>/undo</code> диалог пуст, под ним строка об отменённом сообщении, а <code>git status</code> сообщает, что изменений нет.</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="rung" data-rung="2">
+        <span class="rung-tag">Ступень 2 · Половина готова, доделайте</span>
+        <ol>
+          <li>Отправьте ту же задачу про переименование ещё раз и дождитесь ответа.</li>
+          <li>Отмените её. Под диалогом появится строка об отменённом сообщении. Ничего не отправляйте и команд через <code>!</code> не выполняйте.</li>
+          <li>Верните отменённое одной командой — какой, вспомните сами. После этого проверьте: <code>!git status</code>.</li>
+        </ol>
+        <details class="more">
+          <summary>Подсказка <span class="hint">— если застряли</span></summary>
+          <div class="more-body">
+            <p>Нужна команда <code>/redo</code>. Она есть в списке, только пока вы не отправили новое сообщение и не выполнили команду через <code>!</code>. После неё <code>git status</code> снова показывает два изменённых файла, а в диалоге — ваше сообщение и ответ. В конце верните исходное состояние: ещё один <code>/undo</code>.</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="rung" data-rung="3">
+        <span class="rung-tag">Ступень 3 · Сами, в своём проекте</span>
+        <p>В своём проекте сделайте коммит, попросите Клёпу о небольшой правке и примите решение по её результату: оставить или вернуть. Решение должно опираться на просмотр изменений, а не на отчёт Клёпы.</p>
+        <p class="task">Готово, когда <code>git status</code> соответствует решению: либо правка на месте и вы готовы её закоммитить, либо изменений нет.</p>
+      </div>
+
+      <div class="rung break" data-rung="break">
+        <span class="rung-tag">Сломайте · Откат без git</span>
+        <ol>
+          <li>Скопируйте пример в папку без git и откройте Клёпу там:
+            <pre data-lang="sh">mkdir ~/no-git
+cp cart.mjs cart.test.mjs ~/no-git
+cd ~/no-git
+klepa</pre>
+          </li>
+          <li>Отправьте: «Переименуй функцию priceAfterDiscount в finalPrice во всех файлах».</li>
+          <li>Наберите <code>/undo</code>, сотрите вернувшийся текст и посмотрите на файл:
+            <pre data-lang="text">!head -1 cart.mjs</pre>
+          </li>
+        </ol>
+        <p class="task">Диалог пуст, а в файле по-прежнему <code>finalPrice</code>. Запомните эту картину: «разговор откатился» не значит «файлы вернулись». После опыта удалите папку: <code>rm -r ~/no-git</code>.</p>
+      </div>
+
+      <details class="more">
+        <summary>Необязательное: вернуться на несколько шагов <span class="hint">— команда /timeline</span></summary>
+        <div class="more-body">
+          <p>Если нужно отменить не одно сообщение, а пять, удобнее выбрать точку из списка:</p>
+          <pre data-lang="text">/timeline</pre>
+          <p>На что смотреть: в списке все ваши сообщения этого диалога. Выбираете то, к которому хотите вернуться, — это то же самое, что несколько <code>/undo</code> подряд.</p>
+        </div>
+      </details>
+    </section>
+
+    <!-- ============ 6. ИТОГ ============ -->
+    <section class="step" id="summary">
+      <div class="step-head">
+        <span class="step-tag"><b>6</b> Итог</span>
+        <h2>Что вы теперь умеете</h2>
+      </div>
+      <div class="can">
+        <ul>
+          <li><b>Смотреть</b> изменения командой <code>/diff</code> до решения.</li>
+          <li><b>Откатывать</b> последнее сообщение через <code>/undo</code> и возвращать через <code>/redo</code>.</li>
+          <li><b>Готовить</b> проект к откату: git и коммит перед задачей.</li>
+        </ul>
+      </div>
+
+      <div class="own">
+        <h3>Примерьте к своей задаче</h3>
+        <p class="own-task">Ваша задача из урока 1: <span data-note-show="task" data-empty="вы её ещё не записали — вернитесь к итогу урока 1"></span></p>
+        <label for="own-l5">Что в этой задаче откат вернёт, а что нет? Где вы поставите свои точки возврата?</label>
+        <textarea id="own-l5" data-note="l5" placeholder="Например: код вернёт, а миграцию в базе — нет, её запущу сам после проверки; коммит перед началом и после рабочих тестов"></textarea>
+        <p class="task">Проверки нет: это заметка для вас. Ответ появится в вашей схеме на карте курса.</p>
+      </div>
+
+      <div class="rule"><b>Главное правило урока</b>Перед задачей — коммит. <code>/undo</code> вернёт файлы только в git-проекте и только внутри его папки.</div>
+
+      <h3>Отметьте, что усвоили</h3>
+      <ul class="checklist" data-id="main">
+        <li>Смотрю изменения командой <code>/diff</code>, прежде чем принять или отменить.</li>
+        <li>Отменяю последнее сообщение командой <code>/undo</code> и знаю, что текст вернётся в поле ввода.</li>
+        <li>Знаю, что <code>/redo</code> работает только до нового сообщения и до команды через <code>!</code>.</li>
+        <li>Знаю, что без git файлы не откатываются, хотя диалог откатывается.</li>
+        <li>Помню, что отправленное наружу и файлы из <code>.gitignore</code> откат не вернёт.</li>
+      </ul>
+    </section>
+  </div>
+</div>
+</div></div><section class="lesson-after mt-8" data-v-dc6e551c><div class="ask-invite" data-v-dc6e551c><i class="v-icon notranslate v-theme--lessonTheme text-primary" style="font-size:28px;height:28px;width:28px;" aria-hidden="true" data-v-dc6e551c><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M20 2H4C2.9 2 2 2.9 2 4V22L6 18H20C21.1 18 22 17.1 22 16V4C22 2.9 21.1 2 20 2M20 16H5.2L4 17.2V4H20V16M12.2 5.5C11.3 5.5 10.6 5.7 10.1 6C9.5 6.4 9.2 7 9.3 7.7H11.3C11.3 7.4 11.4 7.2 11.6 7.1C11.8 7 12 6.9 12.3 6.9C12.6 6.9 12.9 7 13.1 7.2C13.3 7.4 13.4 7.6 13.4 7.9C13.4 8.2 13.3 8.4 13.2 8.6C13 8.8 12.8 9 12.6 9.1C12.1 9.4 11.7 9.7 11.5 9.9C11.1 10.2 11 10.5 11 11H13C13 10.7 13.1 10.5 13.1 10.3C13.2 10.1 13.4 10 13.6 9.8C14.1 9.6 14.4 9.3 14.7 8.9C15 8.5 15.1 8.1 15.1 7.7C15.1 7 14.8 6.4 14.3 6C13.9 5.7 13.1 5.5 12.2 5.5M11 12V14H13V12H11Z"></path></svg></i><div class="min-w-0 flex-grow-1" data-v-dc6e551c><div class="font-weight-bold" data-v-dc6e551c> Что-то осталось непонятным? </div><div class="text-body-2 text-medium-emphasis" data-v-dc6e551c> Спросите преподавателя-нейросеть: он читает этот урок и отвечает по нему простыми словами. </div></div><button type="button" class="v-btn v-theme--lessonTheme bg-primary v-btn--density-default rounded-lg v-btn--size-default v-btn--variant-flat" style="" data-v-dc6e551c><!--[--><span class="v-btn__overlay"></span><span class="v-btn__underlay"></span><!--]--><!----><span class="v-btn__content" data-no-activator><!--[--><!--[--> Задать вопрос <!--]--><!--]--></span><!----><!----></button></div><nav class="pager" aria-label="Переход между уроками" data-v-dc6e551c><a href="/klepa-v-terminale/kontekst/" class="v-btn v-theme--lessonTheme v-btn--density-default rounded-lg v-btn--size-large v-btn--variant-outlined btn-wrap pager-btn" style="" data-v-dc6e551c><!--[--><span class="v-btn__overlay"></span><span class="v-btn__underlay"></span><!--]--><span class="v-btn__prepend"><i class="v-icon notranslate v-theme--lessonTheme v-icon--size-default" style="" aria-hidden="true"><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z"></path></svg></i></span><span class="v-btn__content" data-no-activator><!--[--><!--[--><span class="d-flex flex-column align-start text-left" data-v-dc6e551c><small class="text-medium-emphasis" data-v-dc6e551c>Назад</small>Урок 4. Файл и команда в сообщении</span><!--]--><!--]--></span><!----><!----></a><a href="/klepa-v-terminale/dialogi/" class="v-btn v-theme--lessonTheme bg-primary v-btn--density-default rounded-lg v-btn--size-large v-btn--variant-flat btn-wrap pager-btn" style="" data-v-dc6e551c><!--[--><span class="v-btn__overlay"></span><span class="v-btn__underlay"></span><!--]--><!----><span class="v-btn__content" data-no-activator><!--[--><!--[--><span class="d-flex flex-column align-start text-left" data-v-dc6e551c><small style="opacity:0.8;" data-v-dc6e551c>Дальше</small>Урок 6. Диалоги</span><!--]--><!--]--></span><span class="v-btn__append"><i class="v-icon notranslate v-theme--lessonTheme v-icon--size-default" style="" aria-hidden="true"><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z"></path></svg></i></span><!----></a></nav><aside class="lesson-promo" aria-label="Где применить урок" data-v-dc6e551c data-v-6c78fbe1><div class="min-w-0" data-v-6c78fbe1><div class="text-overline text-medium-emphasis" style="line-height:1.4;" data-v-6c78fbe1> Где применить </div><div class="font-display font-weight-bold mb-1" data-v-6c78fbe1>Практикуйтесь в своём терминале</div><p class="text-body-2 mb-0 text-medium-emphasis" data-v-6c78fbe1>Klepa CLI ставится одной командой на Linux, macOS и Windows, права администратора не нужны. Есть бесплатная модель с дневным лимитом.</p></div><div class="d-flex flex-wrap ga-2 promo-actions" data-v-6c78fbe1><!--[--><a href="https://klepa.gpt-chat.by/klepa-cli/#ustanovka" class="v-btn v-theme--lessonTheme text-primary v-btn--density-default rounded-lg v-btn--size-small v-btn--variant-tonal" style="" data-v-6c78fbe1><!--[--><span class="v-btn__overlay"></span><span class="v-btn__underlay"></span><!--]--><!----><span class="v-btn__content" data-no-activator><!--[--><!--[-->Установить Klepa CLI<!--]--><!--]--></span><span class="v-btn__append"><i class="v-icon notranslate v-theme--lessonTheme v-icon--size-default" style="" aria-hidden="true"><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M5,17.59L15.59,7H9V5H19V15H17V8.41L6.41,19L5,17.59Z"></path></svg></i></span><!----></a><a href="https://klepa.gpt-chat.by/klepa-cli/#kak-polzovatsya" class="v-btn v-theme--lessonTheme v-btn--density-default rounded-lg v-btn--size-small v-btn--variant-text" style="" data-v-6c78fbe1><!--[--><span class="v-btn__overlay"></span><span class="v-btn__underlay"></span><!--]--><!----><span class="v-btn__content" data-no-activator><!--[--><!--[-->Шпаргалка по командам<!--]--><!--]--></span><span class="v-btn__append"><i class="v-icon notranslate v-theme--lessonTheme v-icon--size-default" style="" aria-hidden="true"><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M5,17.59L15.59,7H9V5H19V15H17V8.41L6.41,19L5,17.59Z"></path></svg></i></span><!----></a><!--]--></div></aside></section></div></div><span data-v-dc6e551c data-v-6feb0a69></span></div><!--]--><!--]--></main><footer class="v-footer v-theme--lessonTheme bg-footer-bg d-block pt-10 pb-8" style="height:auto;" data-v-3e70ffd9><div class="px-4 px-md-6 page-wrap" data-v-3e70ffd9><div class="v-row" style="" data-v-3e70ffd9><div class="v-col-md-4 v-col-12" style="" data-v-3e70ffd9><div class="font-display font-weight-bold text-white mb-3" style="font-size:1.1rem;" data-v-3e70ffd9> Обучение работе с ИИ </div><p class="text-body-2 mb-0" style="color:rgba(255, 255, 255, 0.72);" data-v-3e70ffd9> Бесплатные курсы по нейросетям и ИИ-агентам с тренажёрами прямо в браузере. Первые уроки — без входа, остальные — после бесплатного входа через Google или Telegram. Аккаунт и баланс общие с gpt-chat.by. </p></div><div class="v-col-sm-6 v-col-md-3 v-col-12" style="" data-v-3e70ffd9><div class="footer-heading" data-v-3e70ffd9> Курсы </div><!--[--><a href="/klepa-v-terminale/" class="footer-link d-block" data-v-3e70ffd9>Клёпа в терминале</a><a href="/agent-pod-kontrolem/" class="footer-link d-block" data-v-3e70ffd9>Агент под контролем</a><a href="/n8n/" class="footer-link d-block" data-v-3e70ffd9>n8n для новичков</a><a href="/hermes-agent/" class="footer-link d-block" data-v-3e70ffd9>Hermes Agent для новичков</a><a href="/llm-workflow/" class="footer-link d-block" data-v-3e70ffd9>Workflow для LLM-приложений</a><!--]--></div><div class="v-col-md-3 v-col-6" style="" data-v-3e70ffd9><div class="footer-heading" data-v-3e70ffd9> Наши продукты </div><!--[--><a href="https://gpt-chat.by/" class="footer-link d-block" data-v-3e70ffd9>Чат gpt-chat.by <span class="footer-hint" data-v-3e70ffd9>— Все нейросети в одном чате</span></a><a href="https://klepa.gpt-chat.by/" class="footer-link d-block" data-v-3e70ffd9>Клёпа <span class="footer-hint" data-v-3e70ffd9>— ИИ-агент для кода</span></a><a href="https://video-studio.gpt-chat.by/" class="footer-link d-block" data-v-3e70ffd9>Видеостудия <span class="footer-hint" data-v-3e70ffd9>— Видео нейросетью</span></a><a href="https://music.gpt-chat.by/" class="footer-link d-block" data-v-3e70ffd9>Музыка <span class="footer-hint" data-v-3e70ffd9>— Песни нейросетью</span></a><a href="https://logo.gpt-chat.by/" class="footer-link d-block" data-v-3e70ffd9>Логотипы <span class="footer-hint" data-v-3e70ffd9>— Логотип с ИИ</span></a><!--]--></div><div class="v-col-md-2 v-col-6" style="" data-v-3e70ffd9><div class="footer-heading" data-v-3e70ffd9> Помощь </div><!--[--><a href="https://gpt-chat.by/pricing/" class="footer-link d-block" data-v-3e70ffd9>Тарифы и цены</a><a href="https://gpt-chat.by/doc-api/" class="footer-link d-block" data-v-3e70ffd9>API для разработчиков</a><a href="https://gpt-chat.by/offer/" class="footer-link d-block" data-v-3e70ffd9>Публичная оферта</a><a href="https://gpt-chat.by/privacy-policy/" class="footer-link d-block" data-v-3e70ffd9>Политика конфиденциальности</a><!--]--><span data-v-3e70ffd9></span></div></div><hr class="v-divider v-theme--lessonTheme text-white my-6" style="border-style:solid;" aria-orientation="horizontal" role="separator" data-v-3e70ffd9><p class="text-body-2 mb-0" style="color:rgba(255, 255, 255, 0.6);" data-v-3e70ffd9> © 2026 gpt-chat.by · Вопросы преподавателю-нейросети оплачиваются с баланса в BYN, курсы бесплатные. </p></div></footer><!--[--><!----><!----><!--]--><span></span><!--]--></div></div></div><div id="teleports"></div><script>window.__NUXT__={};window.__NUXT__.config={public:{siteUrl:"https://lesson.gpt-chat.by",apiBase:"https://api.gpt-chat.by/api",metrikaId:"114675734"},app:{baseURL:"/",buildId:"7646227d-0bf1-4784-8afd-12410cf89782",buildAssetsDir:"/_nuxt/",cdnURL:""}}</script>
+<script type="application/json" data-nuxt-data="nuxt-app" data-ssr="true" id="__NUXT_DATA__" data-src="/klepa-v-terminale/otkat/_payload.json?7646227d-0bf1-4784-8afd-12410cf89782">[{"state":1,"once":6,"_errors":7,"serverRendered":9,"path":10,"prerenderedAt":11},["Reactive",2],{"$slesson-token":3,"$slesson-refresh":3,"$slesson-balance":4,"$slesson-top-up-open":5,"$slesson-top-up-shortfall":4,"$shydrated":5,"$slesson-cookie-consent":4,"$slesson-cookie-restored":5,"$slesson-cookie-reopened":5,"$slesson-metrika-active":5},"",null,false,["Set"],["ShallowReactive",8],{"lesson-body-klepa-v-terminale-otkat":4},true,"/klepa-v-terminale/otkat/",1795609322791]</script></body></html>

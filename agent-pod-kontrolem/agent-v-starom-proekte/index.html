@@ -1,6 +1,6 @@
 <!DOCTYPE html><html  lang="ru"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Урок 9. Агент в старом проекте — курс «Агент под контролем»</title>
+<title>ИИ-агент в старом проекте: как подготовить legacy и внедрять постепенно — урок 9 курса «Агент под контролем»</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <script>(function(){try{var k=localStorage.getItem('ui_theme');var d=k==='dark'||(!k&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches);if(d){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}})();</script>
@@ -523,20 +523,21 @@
       color: rgb(var(--v-theme-on-footer-bg)) !important;
     }
 </style>
-<link rel="stylesheet" href="/_nuxt/entry.BkopOppp.css" crossorigin>
-<link rel="stylesheet" href="/_nuxt/default.DZQab3WB.css" crossorigin>
-<link rel="stylesheet" href="/_nuxt/_lesson_.D9NmeDpX.css" crossorigin>
+<link rel="stylesheet" href="/_nuxt/entry.CqC-a2_X.css" crossorigin>
+<link rel="stylesheet" href="/_nuxt/default.CeMmjT2y.css" crossorigin>
+<link rel="stylesheet" href="/_nuxt/_lesson_.DqHDhYm4.css" crossorigin>
 <link rel="stylesheet" href="/_nuxt/progress.B7jlQphO.css" crossorigin>
-<link rel="preload" as="fetch" crossorigin="anonymous" href="/agent-pod-kontrolem/agent-v-starom-proekte/_payload.json?ee5dfba1-3284-4c9b-b3b1-3d7a8bbf98b4">
-<link rel="modulepreload" as="script" crossorigin href="/_nuxt/SMg7YmCW.js">
-<link rel="modulepreload" as="script" crossorigin href="/_nuxt/BnByqJ3Q.js">
-<link rel="modulepreload" as="script" crossorigin href="/_nuxt/woKpswWu.js">
-<link rel="modulepreload" as="script" crossorigin href="/_nuxt/CsoZ1iek.js">
-<link rel="modulepreload" as="script" crossorigin href="/_nuxt/Drm7g3KL.js">
-<link rel="modulepreload" as="script" crossorigin href="/_nuxt/CEUUAdEY.js">
-<link rel="modulepreload" as="script" crossorigin href="/_nuxt/CD0I9TZl.js">
-<link rel="preload" as="fetch" fetchpriority="low" crossorigin="anonymous" href="/_nuxt/builds/meta/ee5dfba1-3284-4c9b-b3b1-3d7a8bbf98b4.json">
-<script type="module" src="/_nuxt/SMg7YmCW.js" crossorigin></script>
+<link rel="preload" as="fetch" crossorigin="anonymous" href="/agent-pod-kontrolem/agent-v-starom-proekte/_payload.json?7646227d-0bf1-4784-8afd-12410cf89782">
+<link rel="modulepreload" as="script" crossorigin href="/_nuxt/DDNhQF91.js">
+<link rel="modulepreload" as="script" crossorigin href="/_nuxt/Bq2Rrf6x.js">
+<link rel="modulepreload" as="script" crossorigin href="/_nuxt/NA-6WRK8.js">
+<link rel="modulepreload" as="script" crossorigin href="/_nuxt/DjK9zxBU.js">
+<link rel="modulepreload" as="script" crossorigin href="/_nuxt/TeWLt6pA.js">
+<link rel="modulepreload" as="script" crossorigin href="/_nuxt/BrqekU1N.js">
+<link rel="modulepreload" as="script" crossorigin href="/_nuxt/LyTQuwlE.js">
+<link rel="modulepreload" as="script" crossorigin href="/_nuxt/DnaLCGfk.js">
+<link rel="preload" as="fetch" fetchpriority="low" crossorigin="anonymous" href="/_nuxt/builds/meta/7646227d-0bf1-4784-8afd-12410cf89782.json">
+<script type="module" src="/_nuxt/DDNhQF91.js" crossorigin></script>
 <link rel="prefetch" as="script" crossorigin href="/_nuxt/DSW_zuzx.js">
 <link rel="prefetch" as="script" crossorigin href="/_nuxt/DT9HhtpA.js">
 <link rel="prefetch" as="script" crossorigin href="/_nuxt/DsIVt1uA.js">
@@ -597,11 +598,11 @@
 <link rel="prefetch" as="script" crossorigin href="/_nuxt/ByyKMgJd.js">
 <link rel="prefetch" as="script" crossorigin href="/_nuxt/DNQPp8pS.js">
 <link rel="prefetch" as="script" crossorigin href="/_nuxt/D_NlkyYQ.js">
-<link rel="prefetch" as="script" crossorigin href="/_nuxt/CfBr0PNd.js">
-<link rel="prefetch" as="script" crossorigin href="/_nuxt/CPVmq1lq.js">
-<link rel="prefetch" as="script" crossorigin href="/_nuxt/DsAZRp5z.js">
-<link rel="prefetch" as="script" crossorigin href="/_nuxt/BYJVIvQY.js">
-<link rel="prefetch" as="script" crossorigin href="/_nuxt/C-tRB5eH.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/BQJIoDbM.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/KHl9t6Gn.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/DDQ9r7GM.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/Cvs3DDxt.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/CyACzfBv.js">
 <link rel="prefetch" as="script" crossorigin href="/_nuxt/CP579MFK.js">
 <meta name="theme-color" content="#3451d1">
 <meta name="format-detection" content="telephone=no">
@@ -610,14 +611,531 @@
 <meta name="description" content="Как подготовить старый код к агенту и внедрять его постепенно, без большого взрыва. Бесплатный урок курса «Агент под контролем» с практикой в браузере и ответами преподавателя-нейросети.">
 <meta name="keywords" content="курс ИИ-агенты, курс нейросети для программистов, как работать с ИИ-агентом, MCP, хуки Claude Code, CLAUDE.md, AGENTS.md, spec-driven development, evals">
 <meta name="robots" content="index, follow">
-<meta property="og:title" content="Урок 9. Агент в старом проекте — курс «Агент под контролем»">
+<meta property="og:title" content="ИИ-агент в старом проекте: как подготовить legacy и внедрять постепенно — урок 9 курса «Агент под контролем»">
 <meta property="og:description" content="Как подготовить старый код к агенту и внедрять его постепенно, без большого взрыва. Бесплатный урок курса «Агент под контролем» с практикой в браузере и ответами преподавателя-нейросети.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ru_RU">
 <meta property="og:site_name" content="Обучение работе с ИИ — gpt-chat.by">
 <meta property="og:url" content="https://lesson.gpt-chat.by/agent-pod-kontrolem/agent-v-starom-proekte/">
-<meta name="twitter:card" content="summary">
+<meta property="og:image" content="https://lesson.gpt-chat.by/og/lesson-og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://lesson.gpt-chat.by/og/lesson-og.png">
 <link rel="canonical" href="https://lesson.gpt-chat.by/agent-pod-kontrolem/agent-v-starom-proekte/">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"LearningResource","name":"Урок 9. Агент в старом проекте","description":"как подготовить legacy и внедрять постепенно","url":"https://lesson.gpt-chat.by/agent-pod-kontrolem/agent-v-starom-proekte/","inLanguage":"ru","timeRequired":"PT45M","isAccessibleForFree":true,"dateModified":"2026-11-25","isPartOf":{"@type":"Course","name":"Агент под контролем","url":"https://lesson.gpt-chat.by/agent-pod-kontrolem/"},"provider":{"@type":"Organization","name":"gpt-chat.by","url":"https://gpt-chat.by/"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Курсы","item":"https://lesson.gpt-chat.by/"},{"@type":"ListItem","position":2,"name":"Агент под контролем","item":"https://lesson.gpt-chat.by/agent-pod-kontrolem/"},{"@type":"ListItem","position":3,"name":"Урок 9","item":"https://lesson.gpt-chat.by/agent-pod-kontrolem/agent-v-starom-proekte/"}]}</script></head><body><div id="__nuxt"><div class="v-application v-theme--lessonTheme v-layout v-layout--full-height v-locale--is-ltr" style=""><div class="v-application__wrap"><!--[--><!--[--><header class="v-toolbar v-toolbar--collapse-start v-toolbar--flat v-toolbar--density-default bg-surface v-theme--lessonTheme v-locale--is-ltr v-app-bar site-header" style="top:0;z-index:1004;transform:translateY(0%);position:fixed;transition:none !important;" data-v-489c6778><!----><!--[--><div class="v-toolbar__content" style="height:64px;"><!----><!----><!--[--><div class="d-flex align-center w-100 px-3 px-md-6 ga-2 page-wrap" data-v-489c6778><a href="/" class="d-flex align-center ga-2 text-decoration-none" aria-label="Обучение — к списку курсов" data-v-489c6778><span class="brand-mark" aria-hidden="true" data-v-489c6778><i class="v-icon notranslate v-theme--lessonTheme" style="font-size:22px;height:22px;width:22px;" aria-hidden="true" data-v-489c6778><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M12 3L1 9L5 11.18V17.18L12 21L19 17.18V11.18L21 10.09V17H23V9L12 3M18.82 9L12 12.72L5.18 9L12 5.28L18.82 9M17 16L12 18.72L7 16V12.27L12 15L17 12.27V16Z"></path></svg></i></span><span class="d-flex flex-column" style="line-height:1.05;" data-v-489c6778><span class="font-display font-weight-bold text-ink" style="font-size:1.1rem;" data-v-489c6778>Обучение</span><span class="text-caption text-medium-emphasis" data-v-489c6778>от gpt-chat.by</span></span></a><nav class="d-none d-md-flex align-center ga-1 ms-6" aria-label="Курсы" data-v-489c6778><a href="/" class="v-btn v-theme--lessonTheme v-btn--density-default rounded-lg v-btn--size-default v-btn--variant-text nav-link" style="" data-v-489c6778><!--[--><span class="v-btn__overlay"></span><span class="v-btn__underlay"></span><!--]--><!----><span class="v-btn__content" data-no-activator><!--[--><!--[--> Все курсы <!--]--><!--]--></span><!----><!----></a><!--[--><!--[--><!--[--><button type="button" class="v-btn v-theme--lessonTheme v-btn--density-default rounded-lg v-btn--size-default v-btn--variant-text nav-link" style="" aria-haspopup="menu" aria-expanded="false" aria-controls="v-menu-v-0-2" aria-owns="v-menu-v-0-2" data-v-489c6778><!--[--><span class="v-btn__overlay"></span><span class="v-btn__underlay"></span><!--]--><!----><span class="v-btn__content" data-no-activator><!--[--><!--[-->Для программистов<!--]--><!--]--></span><span class="v-btn__append"><i class="v-icon notranslate v-theme--lessonTheme v-icon--size-default" style="" aria-hidden="true"><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"></path></svg></i></span><!----></button><!--]--><!----><!--]--><!--[--><!--[--><button type="button" class="v-btn v-theme--lessonTheme v-btn--density-default rounded-lg v-btn--size-default v-btn--variant-text nav-link" style="" aria-haspopup="menu" aria-expanded="false" aria-controls="v-menu-v-0-4" aria-owns="v-menu-v-0-4" data-v-489c6778><!--[--><span class="v-btn__overlay"></span><span class="v-btn__underlay"></span><!--]--><!----><span class="v-btn__content" data-no-activator><!--[--><!--[-->Автоматизация<!--]--><!--]--></span><span class="v-btn__append"><i class="v-icon notranslate v-theme--lessonTheme v-icon--size-default" style="" aria-hidden="true"><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"></path></svg></i></span><!----></button><!--]--><!----><!--]--><!--[--><!--[--><button type="button" class="v-btn v-theme--lessonTheme v-btn--density-default rounded-lg v-btn--size-default v-btn--variant-text nav-link" style="" aria-haspopup="menu" aria-expanded="false" aria-controls="v-menu-v-0-6" aria-owns="v-menu-v-0-6" data-v-489c6778><!--[--><span class="v-btn__overlay"></span><span class="v-btn__underlay"></span><!--]--><!----><span class="v-btn__content" data-no-activator><!--[--><!--[-->LLM-приложения<!--]--><!--]--></span><span class="v-btn__append"><i class="v-icon notranslate v-theme--lessonTheme v-icon--size-default" style="" aria-hidden="true"><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"></path></svg></i></span><!----></button><!--]--><!----><!--]--><!--]--></nav><div class="v-spacer" style="" data-v-489c6778></div><button type="button" class="v-btn v-btn--icon v-theme--lessonTheme v-btn--density-default rounded-lg v-btn--size-small v-btn--variant-text" style="" title="Тёмная тема" aria-label="Включить тёмную тему" data-v-489c6778><!--[--><span class="v-btn__overlay"></span><span class="v-btn__underlay"></span><!--]--><!----><span class="v-btn__content" data-no-activator><i class="v-icon notranslate v-theme--lessonTheme v-icon--size-default" style="" aria-hidden="true"><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M17.75,4.09L15.22,6.03L16.13,9.09L13.5,7.28L10.87,9.09L11.78,6.03L9.25,4.09L12.44,4L13.5,1L14.56,4L17.75,4.09M21.25,11L19.61,12.25L20.2,14.23L18.5,13.06L16.8,14.23L17.39,12.25L15.75,11L17.81,10.95L18.5,9L19.19,10.95L21.25,11M18.97,15.95C19.8,15.87 20.69,17.05 20.16,17.8C19.84,18.25 19.5,18.67 19.08,19.07C15.17,23 8.84,23 4.94,19.07C1.03,15.17 1.03,8.83 4.94,4.93C5.34,4.53 5.76,4.17 6.21,3.85C6.96,3.32 8.14,4.21 8.06,5.04C7.79,7.9 8.75,10.87 10.95,13.06C13.14,15.26 16.1,16.22 18.97,15.95M17.33,17.97C14.5,17.81 11.7,16.64 9.53,14.5C7.36,12.31 6.2,9.5 6.04,6.68C3.23,9.82 3.34,14.64 6.35,17.66C9.37,20.67 14.19,20.78 17.33,17.97Z"></path></svg></i></span><!----><!----></button><button type="button" class="v-btn v-theme--lessonTheme bg-primary v-btn--density-default rounded-lg v-btn--size-default v-btn--variant-flat" style="" data-v-489c6778><!--[--><span class="v-btn__overlay"></span><span class="v-btn__underlay"></span><!--]--><span class="v-btn__prepend"><i class="v-icon notranslate v-theme--lessonTheme v-icon--size-default" style="" aria-hidden="true"><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M11 7L9.6 8.4L12.2 11H2V13H12.2L9.6 15.6L11 17L16 12L11 7M20 19H12V21H20C21.1 21 22 20.1 22 19V5C22 3.9 21.1 3 20 3H12V5H20V19Z"></path></svg></i></span><span class="v-btn__content" data-no-activator><!--[--><!--[--> Войти <!--]--><!--]--></span><!----><!----></button><button type="button" class="v-btn v-btn--icon v-theme--lessonTheme v-btn--density-default rounded-lg v-btn--size-default v-btn--variant-text d-md-none v-app-bar-nav-icon" style="" aria-label="Меню" data-v-489c6778><!--[--><span class="v-btn__overlay"></span><span class="v-btn__underlay"></span><!--]--><!----><span class="v-btn__content" data-no-activator><i class="v-icon notranslate v-theme--lessonTheme v-icon--size-default" style="" aria-hidden="true"><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z"></path></svg></i></span><!----><!----></button></div><!--]--><!----></div><!--]--><!--[--><!----><!--]--></header><!--[--><nav class="v-navigation-drawer v-navigation-drawer--right v-navigation-drawer--temporary v-theme--lessonTheme v-navigation-drawer--mobile" style="right:0;z-index:1004;transform:translateX(300px);position:fixed;transition:none !important;" inert data-v-489c6778><!----><!----><div class="v-navigation-drawer__content"><!--[--><div class="v-list v-list--nav v-theme--lessonTheme bg-transparent v-list--density-comfortable v-list--one-line" style="" tabindex="0" role="list" data-v-489c6778><!--[--><a href="/" tabindex="-2" class="v-list-item v-list-item--link v-list-item--nav v-theme--lessonTheme v-list-item--density-comfortable v-list-item--one-line v-list-item--rounded v-list-item--variant-text" style="" role="link" data-v-489c6778><!--[--><span class="v-list-item__overlay"></span><span class="v-list-item__underlay"></span><!--]--><div class="v-list-item__prepend"><!--[--><!----><i class="v-icon notranslate v-theme--lessonTheme v-icon--size-default" style="" aria-hidden="true" density="comfortable"><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M3 11H11V3H3M5 5H9V9H5M13 21H21V13H13M15 15H19V19H15M3 21H11V13H3M5 15H9V19H5M13 3V11H21V3M19 9H15V5H19Z"></path></svg></i><!--]--><div class="v-list-item__spacer"></div></div><div class="v-list-item__content" data-no-activator><div class="v-list-item-title" style="">Все курсы</div><!----><!----></div><!----></a><!--[--><!--[--><div class="v-list-subheader" style="" data-v-489c6778><div class="v-list-subheader__text"><!--[-->ИИ-агент для программиста<!--]--></div></div><!--[--><a href="/klepa-v-terminale/" tabindex="-2" class="v-list-item v-list-item--link v-list-item--nav v-theme--lessonTheme v-list-item--density-comfortable v-list-item--one-line v-list-item--rounded v-list-item--variant-text" style="" role="link" data-v-489c6778><!--[--><span class="v-list-item__overlay"></span><span class="v-list-item__underlay"></span><!--]--><!----><div class="v-list-item__content" data-no-activator><div class="v-list-item-title" style="">Клёпа в терминале</div><!----><!----></div><!----></a><a href="/agent-pod-kontrolem/" tabindex="-2" class="v-list-item v-list-item--link v-list-item--nav v-theme--lessonTheme v-list-item--density-comfortable v-list-item--one-line v-list-item--rounded v-list-item--variant-text" style="" role="link" data-v-489c6778><!--[--><span class="v-list-item__overlay"></span><span class="v-list-item__underlay"></span><!--]--><!----><div class="v-list-item__content" data-no-activator><div class="v-list-item-title" style="">Агент под контролем</div><!----><!----></div><!----></a><!--]--><!--]--><!--[--><div class="v-list-subheader" style="" data-v-489c6778><div class="v-list-subheader__text"><!--[-->Автоматизация и личные помощники<!--]--></div></div><!--[--><a href="/n8n/" tabindex="-2" class="v-list-item v-list-item--link v-list-item--nav v-theme--lessonTheme v-list-item--density-comfortable v-list-item--one-line v-list-item--rounded v-list-item--variant-text" style="" role="link" data-v-489c6778><!--[--><span class="v-list-item__overlay"></span><span class="v-list-item__underlay"></span><!--]--><!----><div class="v-list-item__content" data-no-activator><div class="v-list-item-title" style="">n8n для новичков</div><!----><!----></div><!----></a><a href="/hermes-agent/" tabindex="-2" class="v-list-item v-list-item--link v-list-item--nav v-theme--lessonTheme v-list-item--density-comfortable v-list-item--one-line v-list-item--rounded v-list-item--variant-text" style="" role="link" data-v-489c6778><!--[--><span class="v-list-item__overlay"></span><span class="v-list-item__underlay"></span><!--]--><!----><div class="v-list-item__content" data-no-activator><div class="v-list-item-title" style="">Hermes Agent для новичков</div><!----><!----></div><!----></a><!--]--><!--]--><!--[--><div class="v-list-subheader" style="" data-v-489c6778><div class="v-list-subheader__text"><!--[-->Своё приложение с нейросетью<!--]--></div></div><!--[--><a href="/llm-workflow/" tabindex="-2" class="v-list-item v-list-item--link v-list-item--nav v-theme--lessonTheme v-list-item--density-comfortable v-list-item--one-line v-list-item--rounded v-list-item--variant-text" style="" role="link" data-v-489c6778><!--[--><span class="v-list-item__overlay"></span><span class="v-list-item__underlay"></span><!--]--><!----><div class="v-list-item__content" data-no-activator><div class="v-list-item-title" style="">Workflow для LLM-приложений</div><!----><!----></div><!----></a><!--]--><!--]--><!--]--><!--]--></div><!--]--></div><!----></nav><!----><!--]--><!--]--><main class="v-main" style="--v-layout-left:0px;--v-layout-right:0px;--v-layout-top:0px;--v-layout-bottom:0px;transition:none !important;"><!--[--><!--[--><div class="page-wrap px-4 px-md-6 py-6 py-md-8" data-v-841e5709><nav aria-label="Хлебные крошки" class="text-body-2" data-v-841e5709 data-v-f6406341><ol class="crumbs" data-v-f6406341><!--[--><li data-v-f6406341><a href="/" class="text-primary text-decoration-none" data-v-f6406341>Курсы</a></li><li data-v-f6406341><a href="/agent-pod-kontrolem/" class="text-primary text-decoration-none" data-v-f6406341>Агент под контролем</a></li><li data-v-f6406341><span class="text-medium-emphasis" aria-current="page" data-v-f6406341>Урок 9</span></li><!--]--></ol></nav><div class="lesson-layout" data-v-841e5709><!----><div class="min-w-0" data-v-841e5709><header class="mb-6" data-v-841e5709><div class="text-overline text-medium-emphasis d-flex flex-wrap ga-2 align-center" style="line-height:1.6;" data-v-841e5709><span data-v-841e5709>Урок 9 из 10</span><span aria-hidden="true" data-v-841e5709>·</span><span data-v-841e5709>~45 мин</span><span class="v-chip v-theme--lessonTheme v-chip--density-default rounded-lg v-chip--size-x-small v-chip--variant-tonal" style="" draggable="false" data-v-841e5709><!--[--><!----><span class="v-chip__underlay"></span><!--]--><!----><div class="v-chip__prepend"><!--[--><i class="v-icon notranslate v-theme--lessonTheme v-icon--size-default v-icon--start" style="" aria-hidden="true"><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M12,17C10.89,17 10,16.1 10,15C10,13.89 10.89,13 12,13A2,2 0 0,1 14,15A2,2 0 0,1 12,17M18,20V10H6V20H18M18,8A2,2 0 0,1 20,10V20A2,2 0 0,1 18,22H6C4.89,22 4,21.1 4,20V10C4,8.89 4.89,8 6,8H7V6A5,5 0 0,1 12,1A5,5 0 0,1 17,6V8H18M12,3A3,3 0 0,0 9,6V8H15V6A3,3 0 0,0 12,3Z"></path></svg></i><!----><!--]--></div><div class="v-chip__content" data-no-activator><!--[-->после входа<!--]--></div><!----><!----></span></div><h1 class="page-title mt-1" data-v-841e5709>Агент в старом проекте</h1><p class="lead mt-2 mb-0" data-v-841e5709>Как подготовить legacy и внедрять постепенно. Как подготовить старый код к агенту и внедрять его постепенно, без большого взрыва.</p></header><div class="v-expansion-panels v-theme--lessonTheme v-expansion-panels--variant-accordion mb-6" style="" data-v-841e5709><!--[--><div class="v-expansion-panel" style="" data-v-841e5709><div class="v-expansion-panel__shadow"></div><!--[--><!----><!----><!--[--><button class="v-expansion-panel-title" style="" type="button" aria-expanded="false" data-v-841e5709><span class="v-expansion-panel-title__overlay"></span><!--[-->Все уроки курса «Агент под контролем»<!--]--><!--[--><span class="v-expansion-panel-title__icon"><i class="v-icon notranslate v-theme--lessonTheme v-icon--size-default" style="" aria-hidden="true"><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"></path></svg></i></span><!--]--></button><div class="v-expansion-panel-text" style="display:none;" data-v-841e5709><!----></div><!--]--><!--]--></div><!--]--></div><div class="lesson-locked" data-v-841e5709 data-v-e55bb477><div class="v-card v-theme--lessonTheme v-card--density-default rounded-xl v-card--variant-flat gate-card pa-5 pa-md-8" style="" data-v-e55bb477><!----><div class="v-card__loader"><div class="v-progress-linear v-theme--lessonTheme v-locale--is-ltr" style="top:0;height:0;--v-progress-linear-height:2px;" role="progressbar" aria-hidden="true" aria-valuemin="0" aria-valuemax="100"><!----><div class="v-progress-linear__background" style="opacity:NaN;"></div><div class="v-progress-linear__buffer" style="opacity:NaN;width:0%;"></div><div class="v-progress-linear__indeterminate"><!--[--><div class="v-progress-linear__indeterminate long" style=""></div><div class="v-progress-linear__indeterminate short" style=""></div><!--]--></div><!----></div></div><!----><!----><!--[--><div class="d-flex align-center ga-3 mb-3" data-v-e55bb477><div class="v-avatar v-theme--lessonTheme text-primary v-avatar--density-default v-avatar--variant-tonal" style="width:44px;height:44px;" data-v-e55bb477><!--[--><!--[--><i class="v-icon notranslate v-theme--lessonTheme v-icon--size-default" style="" aria-hidden="true" data-v-e55bb477><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M12,17C10.89,17 10,16.1 10,15C10,13.89 10.89,13 12,13A2,2 0 0,1 14,15A2,2 0 0,1 12,17M18,20V10H6V20H18M18,8A2,2 0 0,1 20,10V20A2,2 0 0,1 18,22H6C4.89,22 4,21.1 4,20V10C4,8.89 4.89,8 6,8H7V6A5,5 0 0,1 12,1A5,5 0 0,1 17,6V8H18M12,3A3,3 0 0,0 9,6V8H15V6A3,3 0 0,0 12,3Z"></path></svg></i><!--]--><!--]--><!--[--><!----><span class="v-avatar__underlay"></span><!--]--></div><h2 class="text-h6 font-display font-weight-bold mb-0" data-v-e55bb477> Урок откроется после входа </h2></div><p class="mb-4" data-v-e55bb477> Первые 4 урока курса открыты всем. Чтобы читать дальше, войдите через Google или Telegram — это бесплатно, прогресс и вопросы преподавателю останутся за вами. Аккаунт общий с gpt-chat.by. </p><div class="d-flex flex-wrap ga-3" data-v-e55bb477><button type="button" class="v-btn v-theme--lessonTheme bg-primary v-btn--density-default rounded-lg v-btn--size-large v-btn--variant-flat" style="" data-v-e55bb477><!--[--><span class="v-btn__overlay"></span><span class="v-btn__underlay"></span><!--]--><span class="v-btn__prepend"><i class="v-icon notranslate v-theme--lessonTheme v-icon--size-default" style="" aria-hidden="true"><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M11 7L9.6 8.4L12.2 11H2V13H12.2L9.6 15.6L11 17L16 12L11 7M20 19H12V21H20C21.1 21 22 20.1 22 19V5C22 3.9 21.1 3 20 3H12V5H20V19Z"></path></svg></i></span><span class="v-btn__content" data-no-activator><!--[--><!--[--> Войти и открыть урок <!--]--><!--]--></span><!----><!----></button><a href="/agent-pod-kontrolem/kak-model-pishet-kod/" class="v-btn v-theme--lessonTheme v-btn--density-default rounded-lg v-btn--size-large v-btn--variant-text" style="" data-v-e55bb477><!--[--><span class="v-btn__overlay"></span><span class="v-btn__underlay"></span><!--]--><!----><span class="v-btn__content" data-no-activator><!--[--><!--[--> Начать с урока 1 <!--]--><!--]--></span><!----><!----></a></div><!--]--><!----><!--[--><!----><span class="v-card__underlay"></span><!--]--></div><section class="mt-8" aria-labelledby="outline-title" data-v-e55bb477><h2 id="outline-title" class="section-title mb-4" data-v-e55bb477> Что в уроке </h2><div class="v-row" style="" data-v-e55bb477><div class="v-col-md-6 v-col-12" style="" data-v-e55bb477><div class="text-subtitle-1 font-weight-bold mb-2" data-v-e55bb477> Разделы </div><ol class="outline-list" data-v-e55bb477><!--[--><li data-v-e55bb477>После урока вы сможете</li><li data-v-e55bb477>Склад переходит на роботов</li><li data-v-e55bb477>От простого к сложному</li><li data-v-e55bb477>Оцените свой проект и спланируйте внедрение</li><li data-v-e55bb477>Проверьте себя</li><li data-v-e55bb477>Отметьте, что усвоили</li><li data-v-e55bb477>Что почитать и где попробовать</li><!--]--></ol></div><!----></div></section></div><!----></div></div><span data-v-841e5709 data-v-49a0e9ac></span></div><!--]--><!--]--></main><footer class="v-footer v-theme--lessonTheme bg-footer-bg d-block pt-10 pb-8" style="height:auto;" data-v-2893ecfe><div class="px-4 px-md-6 page-wrap" data-v-2893ecfe><div class="v-row" style="" data-v-2893ecfe><div class="v-col-md-4 v-col-12" style="" data-v-2893ecfe><div class="font-display font-weight-bold text-white mb-3" style="font-size:1.1rem;" data-v-2893ecfe> Обучение работе с ИИ </div><p class="text-body-2 mb-0" style="color:rgba(255, 255, 255, 0.72);" data-v-2893ecfe> Бесплатные курсы по нейросетям и ИИ-агентам с тренажёрами прямо в браузере. Первые уроки — без входа, остальные — после бесплатного входа через Google или Telegram. Аккаунт и баланс общие с gpt-chat.by. </p></div><div class="v-col-sm-6 v-col-md-3 v-col-12" style="" data-v-2893ecfe><div class="footer-heading" data-v-2893ecfe> Курсы </div><!--[--><a href="/klepa-v-terminale/" class="footer-link d-block" data-v-2893ecfe>Клёпа в терминале</a><a href="/agent-pod-kontrolem/" class="footer-link d-block" data-v-2893ecfe>Агент под контролем</a><a href="/n8n/" class="footer-link d-block" data-v-2893ecfe>n8n для новичков</a><a href="/hermes-agent/" class="footer-link d-block" data-v-2893ecfe>Hermes Agent для новичков</a><a href="/llm-workflow/" class="footer-link d-block" data-v-2893ecfe>Workflow для LLM-приложений</a><!--]--></div><div class="v-col-md-3 v-col-6" style="" data-v-2893ecfe><div class="footer-heading" data-v-2893ecfe> Наши продукты </div><!--[--><a href="https://gpt-chat.by/" class="footer-link d-block" data-v-2893ecfe>Чат gpt-chat.by <span class="footer-hint" data-v-2893ecfe>— Все нейросети в одном чате</span></a><a href="https://klepa.gpt-chat.by/" class="footer-link d-block" data-v-2893ecfe>Клёпа <span class="footer-hint" data-v-2893ecfe>— ИИ-агент для кода</span></a><a href="https://video-studio.gpt-chat.by/" class="footer-link d-block" data-v-2893ecfe>Видеостудия <span class="footer-hint" data-v-2893ecfe>— Видео нейросетью</span></a><a href="https://music.gpt-chat.by/" class="footer-link d-block" data-v-2893ecfe>Музыка <span class="footer-hint" data-v-2893ecfe>— Песни нейросетью</span></a><a href="https://logo.gpt-chat.by/" class="footer-link d-block" data-v-2893ecfe>Логотипы <span class="footer-hint" data-v-2893ecfe>— Логотип с ИИ</span></a><!--]--></div><div class="v-col-md-2 v-col-6" style="" data-v-2893ecfe><div class="footer-heading" data-v-2893ecfe> Помощь </div><!--[--><a href="https://gpt-chat.by/pricing/" class="footer-link d-block" data-v-2893ecfe>Тарифы и цены</a><a href="https://gpt-chat.by/doc-api/" class="footer-link d-block" data-v-2893ecfe>API для разработчиков</a><a href="https://gpt-chat.by/offer/" class="footer-link d-block" data-v-2893ecfe>Публичная оферта</a><a href="https://gpt-chat.by/privacy-policy/" class="footer-link d-block" data-v-2893ecfe>Политика конфиденциальности</a><!--]--></div></div><hr class="v-divider v-theme--lessonTheme text-white my-6" style="border-style:solid;" aria-orientation="horizontal" role="separator" data-v-2893ecfe><p class="text-body-2 mb-0" style="color:rgba(255, 255, 255, 0.6);" data-v-2893ecfe> © 2026 gpt-chat.by · Вопросы преподавателю-нейросети оплачиваются с баланса в BYN, курсы бесплатные. </p></div></footer><!--[--><!----><!----><!--]--><!--]--></div></div></div><div id="teleports"></div><script>window.__NUXT__={};window.__NUXT__.config={public:{siteUrl:"https://lesson.gpt-chat.by",apiBase:"https://api.gpt-chat.by/api"},app:{baseURL:"/",buildId:"ee5dfba1-3284-4c9b-b3b1-3d7a8bbf98b4",buildAssetsDir:"/_nuxt/",cdnURL:""}}</script>
-<script type="application/json" data-nuxt-data="nuxt-app" data-ssr="true" id="__NUXT_DATA__" data-src="/agent-pod-kontrolem/agent-v-starom-proekte/_payload.json?ee5dfba1-3284-4c9b-b3b1-3d7a8bbf98b4">[{"state":1,"once":6,"_errors":7,"serverRendered":9,"path":10,"prerenderedAt":11},["Reactive",2],{"$slesson-token":3,"$slesson-refresh":3,"$slesson-balance":4,"$slesson-top-up-open":5,"$slesson-top-up-shortfall":4,"$shydrated":5},"",null,false,["Set"],["ShallowReactive",8],{"lesson-outline-agent-pod-kontrolem-agent-v-starom-proekte":4},true,"/agent-pod-kontrolem/agent-v-starom-proekte/",1795606986047]</script></body></html>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Курсы","item":"https://lesson.gpt-chat.by/"},{"@type":"ListItem","position":2,"name":"Агент под контролем","item":"https://lesson.gpt-chat.by/agent-pod-kontrolem/"},{"@type":"ListItem","position":3,"name":"Урок 9","item":"https://lesson.gpt-chat.by/agent-pod-kontrolem/agent-v-starom-proekte/"}]}</script></head><body><div id="__nuxt"><div class="v-application v-theme--lessonTheme v-layout v-layout--full-height v-locale--is-ltr" style=""><div class="v-application__wrap"><!--[--><!--[--><header class="v-toolbar v-toolbar--collapse-start v-toolbar--flat v-toolbar--density-default bg-surface v-theme--lessonTheme v-locale--is-ltr v-app-bar site-header" style="top:0;z-index:1004;transform:translateY(0%);position:fixed;transition:none !important;" data-v-489c6778><!----><!--[--><div class="v-toolbar__content" style="height:64px;"><!----><!----><!--[--><div class="d-flex align-center w-100 px-3 px-md-6 ga-2 page-wrap" data-v-489c6778><a href="/" class="d-flex align-center ga-2 text-decoration-none" aria-label="Обучение — к списку курсов" data-v-489c6778><span class="brand-mark" aria-hidden="true" data-v-489c6778><i class="v-icon notranslate v-theme--lessonTheme" style="font-size:22px;height:22px;width:22px;" aria-hidden="true" data-v-489c6778><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M12 3L1 9L5 11.18V17.18L12 21L19 17.18V11.18L21 10.09V17H23V9L12 3M18.82 9L12 12.72L5.18 9L12 5.28L18.82 9M17 16L12 18.72L7 16V12.27L12 15L17 12.27V16Z"></path></svg></i></span><span class="d-flex flex-column" style="line-height:1.05;" data-v-489c6778><span class="font-display font-weight-bold text-ink" style="font-size:1.1rem;" data-v-489c6778>Обучение</span><span class="text-caption text-medium-emphasis" data-v-489c6778>от gpt-chat.by</span></span></a><nav class="d-none d-md-flex align-center ga-1 ms-6" aria-label="Курсы" data-v-489c6778><a href="/" class="v-btn v-theme--lessonTheme v-btn--density-default rounded-lg v-btn--size-default v-btn--variant-text nav-link" style="" data-v-489c6778><!--[--><span class="v-btn__overlay"></span><span class="v-btn__underlay"></span><!--]--><!----><span class="v-btn__content" data-no-activator><!--[--><!--[--> Все курсы <!--]--><!--]--></span><!----><!----></a><!--[--><!--[--><!--[--><button type="button" class="v-btn v-theme--lessonTheme v-btn--density-default rounded-lg v-btn--size-default v-btn--variant-text nav-link" style="" aria-haspopup="menu" aria-expanded="false" aria-controls="v-menu-v-0-2" aria-owns="v-menu-v-0-2" data-v-489c6778><!--[--><span class="v-btn__overlay"></span><span class="v-btn__underlay"></span><!--]--><!----><span class="v-btn__content" data-no-activator><!--[--><!--[-->Для программистов<!--]--><!--]--></span><span class="v-btn__append"><i class="v-icon notranslate v-theme--lessonTheme v-icon--size-default" style="" aria-hidden="true"><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"></path></svg></i></span><!----></button><!--]--><!----><!--]--><!--[--><!--[--><button type="button" class="v-btn v-theme--lessonTheme v-btn--density-default rounded-lg v-btn--size-default v-btn--variant-text nav-link" style="" aria-haspopup="menu" aria-expanded="false" aria-controls="v-menu-v-0-4" aria-owns="v-menu-v-0-4" data-v-489c6778><!--[--><span class="v-btn__overlay"></span><span class="v-btn__underlay"></span><!--]--><!----><span class="v-btn__content" data-no-activator><!--[--><!--[-->Автоматизация<!--]--><!--]--></span><span class="v-btn__append"><i class="v-icon notranslate v-theme--lessonTheme v-icon--size-default" style="" aria-hidden="true"><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"></path></svg></i></span><!----></button><!--]--><!----><!--]--><!--[--><!--[--><button type="button" class="v-btn v-theme--lessonTheme v-btn--density-default rounded-lg v-btn--size-default v-btn--variant-text nav-link" style="" aria-haspopup="menu" aria-expanded="false" aria-controls="v-menu-v-0-6" aria-owns="v-menu-v-0-6" data-v-489c6778><!--[--><span class="v-btn__overlay"></span><span class="v-btn__underlay"></span><!--]--><!----><span class="v-btn__content" data-no-activator><!--[--><!--[-->LLM-приложения<!--]--><!--]--></span><span class="v-btn__append"><i class="v-icon notranslate v-theme--lessonTheme v-icon--size-default" style="" aria-hidden="true"><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"></path></svg></i></span><!----></button><!--]--><!----><!--]--><!--]--></nav><div class="v-spacer" style="" data-v-489c6778></div><button type="button" class="v-btn v-btn--icon v-theme--lessonTheme v-btn--density-default rounded-lg v-btn--size-small v-btn--variant-text" style="" title="Тёмная тема" aria-label="Включить тёмную тему" data-v-489c6778><!--[--><span class="v-btn__overlay"></span><span class="v-btn__underlay"></span><!--]--><!----><span class="v-btn__content" data-no-activator><i class="v-icon notranslate v-theme--lessonTheme v-icon--size-default" style="" aria-hidden="true"><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M17.75,4.09L15.22,6.03L16.13,9.09L13.5,7.28L10.87,9.09L11.78,6.03L9.25,4.09L12.44,4L13.5,1L14.56,4L17.75,4.09M21.25,11L19.61,12.25L20.2,14.23L18.5,13.06L16.8,14.23L17.39,12.25L15.75,11L17.81,10.95L18.5,9L19.19,10.95L21.25,11M18.97,15.95C19.8,15.87 20.69,17.05 20.16,17.8C19.84,18.25 19.5,18.67 19.08,19.07C15.17,23 8.84,23 4.94,19.07C1.03,15.17 1.03,8.83 4.94,4.93C5.34,4.53 5.76,4.17 6.21,3.85C6.96,3.32 8.14,4.21 8.06,5.04C7.79,7.9 8.75,10.87 10.95,13.06C13.14,15.26 16.1,16.22 18.97,15.95M17.33,17.97C14.5,17.81 11.7,16.64 9.53,14.5C7.36,12.31 6.2,9.5 6.04,6.68C3.23,9.82 3.34,14.64 6.35,17.66C9.37,20.67 14.19,20.78 17.33,17.97Z"></path></svg></i></span><!----><!----></button><button type="button" class="v-btn v-theme--lessonTheme bg-primary v-btn--density-default rounded-lg v-btn--size-default v-btn--variant-flat" style="" data-v-489c6778><!--[--><span class="v-btn__overlay"></span><span class="v-btn__underlay"></span><!--]--><span class="v-btn__prepend"><i class="v-icon notranslate v-theme--lessonTheme v-icon--size-default" style="" aria-hidden="true"><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M11 7L9.6 8.4L12.2 11H2V13H12.2L9.6 15.6L11 17L16 12L11 7M20 19H12V21H20C21.1 21 22 20.1 22 19V5C22 3.9 21.1 3 20 3H12V5H20V19Z"></path></svg></i></span><span class="v-btn__content" data-no-activator><!--[--><!--[--> Войти <!--]--><!--]--></span><!----><!----></button><button type="button" class="v-btn v-btn--icon v-theme--lessonTheme v-btn--density-default rounded-lg v-btn--size-default v-btn--variant-text d-md-none v-app-bar-nav-icon" style="" aria-label="Меню" data-v-489c6778><!--[--><span class="v-btn__overlay"></span><span class="v-btn__underlay"></span><!--]--><!----><span class="v-btn__content" data-no-activator><i class="v-icon notranslate v-theme--lessonTheme v-icon--size-default" style="" aria-hidden="true"><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z"></path></svg></i></span><!----><!----></button></div><!--]--><!----></div><!--]--><!--[--><!----><!--]--></header><!--[--><nav class="v-navigation-drawer v-navigation-drawer--right v-navigation-drawer--temporary v-theme--lessonTheme v-navigation-drawer--mobile" style="right:0;z-index:1004;transform:translateX(300px);position:fixed;transition:none !important;" inert data-v-489c6778><!----><!----><div class="v-navigation-drawer__content"><!--[--><div class="v-list v-list--nav v-theme--lessonTheme bg-transparent v-list--density-comfortable v-list--one-line" style="" tabindex="0" role="list" data-v-489c6778><!--[--><a href="/" tabindex="-2" class="v-list-item v-list-item--link v-list-item--nav v-theme--lessonTheme v-list-item--density-comfortable v-list-item--one-line v-list-item--rounded v-list-item--variant-text" style="" role="link" data-v-489c6778><!--[--><span class="v-list-item__overlay"></span><span class="v-list-item__underlay"></span><!--]--><div class="v-list-item__prepend"><!--[--><!----><i class="v-icon notranslate v-theme--lessonTheme v-icon--size-default" style="" aria-hidden="true" density="comfortable"><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M3 11H11V3H3M5 5H9V9H5M13 21H21V13H13M15 15H19V19H15M3 21H11V13H3M5 15H9V19H5M13 3V11H21V3M19 9H15V5H19Z"></path></svg></i><!--]--><div class="v-list-item__spacer"></div></div><div class="v-list-item__content" data-no-activator><div class="v-list-item-title" style="">Все курсы</div><!----><!----></div><!----></a><!--[--><!--[--><div class="v-list-subheader" style="" data-v-489c6778><div class="v-list-subheader__text"><!--[-->ИИ-агент для программиста<!--]--></div></div><!--[--><a href="/klepa-v-terminale/" tabindex="-2" class="v-list-item v-list-item--link v-list-item--nav v-theme--lessonTheme v-list-item--density-comfortable v-list-item--one-line v-list-item--rounded v-list-item--variant-text" style="" role="link" data-v-489c6778><!--[--><span class="v-list-item__overlay"></span><span class="v-list-item__underlay"></span><!--]--><!----><div class="v-list-item__content" data-no-activator><div class="v-list-item-title" style="">Клёпа в терминале</div><!----><!----></div><!----></a><a href="/agent-pod-kontrolem/" tabindex="-2" class="v-list-item v-list-item--link v-list-item--nav v-theme--lessonTheme v-list-item--density-comfortable v-list-item--one-line v-list-item--rounded v-list-item--variant-text" style="" role="link" data-v-489c6778><!--[--><span class="v-list-item__overlay"></span><span class="v-list-item__underlay"></span><!--]--><!----><div class="v-list-item__content" data-no-activator><div class="v-list-item-title" style="">Агент под контролем</div><!----><!----></div><!----></a><!--]--><!--]--><!--[--><div class="v-list-subheader" style="" data-v-489c6778><div class="v-list-subheader__text"><!--[-->Автоматизация и личные помощники<!--]--></div></div><!--[--><a href="/n8n/" tabindex="-2" class="v-list-item v-list-item--link v-list-item--nav v-theme--lessonTheme v-list-item--density-comfortable v-list-item--one-line v-list-item--rounded v-list-item--variant-text" style="" role="link" data-v-489c6778><!--[--><span class="v-list-item__overlay"></span><span class="v-list-item__underlay"></span><!--]--><!----><div class="v-list-item__content" data-no-activator><div class="v-list-item-title" style="">n8n для новичков</div><!----><!----></div><!----></a><a href="/hermes-agent/" tabindex="-2" class="v-list-item v-list-item--link v-list-item--nav v-theme--lessonTheme v-list-item--density-comfortable v-list-item--one-line v-list-item--rounded v-list-item--variant-text" style="" role="link" data-v-489c6778><!--[--><span class="v-list-item__overlay"></span><span class="v-list-item__underlay"></span><!--]--><!----><div class="v-list-item__content" data-no-activator><div class="v-list-item-title" style="">Hermes Agent для новичков</div><!----><!----></div><!----></a><!--]--><!--]--><!--[--><div class="v-list-subheader" style="" data-v-489c6778><div class="v-list-subheader__text"><!--[-->Своё приложение с нейросетью<!--]--></div></div><!--[--><a href="/llm-workflow/" tabindex="-2" class="v-list-item v-list-item--link v-list-item--nav v-theme--lessonTheme v-list-item--density-comfortable v-list-item--one-line v-list-item--rounded v-list-item--variant-text" style="" role="link" data-v-489c6778><!--[--><span class="v-list-item__overlay"></span><span class="v-list-item__underlay"></span><!--]--><!----><div class="v-list-item__content" data-no-activator><div class="v-list-item-title" style="">Workflow для LLM-приложений</div><!----><!----></div><!----></a><!--]--><!--]--><!--]--><!--]--></div><!--]--></div><!----></nav><!----><!--]--><!--]--><main class="v-main" style="--v-layout-left:0px;--v-layout-right:0px;--v-layout-top:0px;--v-layout-bottom:0px;transition:none !important;"><!--[--><!--[--><div class="page-wrap px-4 px-md-6 py-6 py-md-8" data-v-dc6e551c><nav aria-label="Хлебные крошки" class="text-body-2" data-v-dc6e551c data-v-f6406341><ol class="crumbs" data-v-f6406341><!--[--><li data-v-f6406341><a href="/" class="text-primary text-decoration-none" data-v-f6406341>Курсы</a></li><li data-v-f6406341><a href="/agent-pod-kontrolem/" class="text-primary text-decoration-none" data-v-f6406341>Агент под контролем</a></li><li data-v-f6406341><span class="text-medium-emphasis" aria-current="page" data-v-f6406341>Урок 9</span></li><!--]--></ol></nav><div class="lesson-layout" data-v-dc6e551c><!----><div class="min-w-0" data-v-dc6e551c><!----><div class="v-expansion-panels v-theme--lessonTheme v-expansion-panels--variant-accordion mb-6" style="" data-v-dc6e551c><!--[--><div class="v-expansion-panel" style="" data-v-dc6e551c><div class="v-expansion-panel__shadow"></div><!--[--><!----><!----><!--[--><button class="v-expansion-panel-title" style="" type="button" aria-expanded="false" data-v-dc6e551c><span class="v-expansion-panel-title__overlay"></span><!--[-->Все уроки курса «Агент под контролем»<!--]--><!--[--><span class="v-expansion-panel-title__icon"><i class="v-icon notranslate v-theme--lessonTheme v-icon--size-default" style="" aria-hidden="true"><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"></path></svg></i></span><!--]--></button><div class="v-expansion-panel-text" style="display:none;" data-v-dc6e551c><!----></div><!--]--><!--]--></div><!--]--></div><div class="hc kurs-card" data-v-dc6e551c><div class="hc-lesson"><div class="hc-page">
+  <nav class="rail" aria-label="Шаги урока">
+    <ol>
+      <li><a href="#analogy">Аналогия</a></li>
+      <li><a href="#explain">Объяснение</a></li>
+      <li><a href="#interactive">Интерактив</a></li>
+      <li><a href="#practice">Тесты</a></li>
+      <li><a href="#checklist">Чек-лист</a></li>
+      <li><a href="#links">Ссылки</a></li>
+    </ol>
+    <div class="rail-progress"><span data-meter-label>Пройдено: 0%</span><div class="meter"><i data-meter></i></div></div>
+  </nav>
+
+  <div class="content">
+    <header class="lesson-hero">
+      <span class="eyebrow">Часть 5 · Большие проекты · Урок 9</span>
+      <h1>Агент в старом проекте: как подготовить legacy и внедрять постепенно</h1>
+      <p class="lead">AI-First — это не «подключить чат к IDE». Это сделать проект понятным и проверяемым, чтобы агент мог в нём работать. Разберём паттерны для старых проектов и порядок внедрения.</p>
+      <div class="facts">
+        <span class="fact">~50 минут</span>
+        <span class="fact">4 интерактива</span>
+        <span class="fact">3D-фильм и 11 вопросов</span>
+        <span class="fact">Примеры: JS · PHP · Python · Markdown</span>
+      </div>
+      <div class="outcomes">
+        <h2>После урока вы сможете</h2>
+        <ul>
+          <li>оценить, насколько ваш проект готов к работе с агентами;</li>
+          <li>назвать семь паттернов, которые делают legacy понятным для агента;</li>
+          <li>составить план внедрения: какие задачи давать агенту первыми, а какие позже;</li>
+          <li>заменить старый модуль по частям, не останавливая систему.</li>
+        </ul>
+      </div>
+    </header>
+
+    <!-- ============ 1. АНАЛОГИЯ ============ -->
+    <section class="step" id="analogy">
+      <div class="step-head">
+        <span class="step-tag"><b>1</b> Аналогия</span>
+        <h2>Склад переходит на роботов</h2>
+      </div>
+      <div class="analogy">
+        <span class="label">Представьте</span>
+        <p>Старый склад: коробки где попало, схема только в голове кладовщика. Если запустить туда робота, он будет ездить кругами и ронять полки. Сначала размечают полки, потом ставят датчики, потом пускают робота на простой участок.</p>
+      </div>
+      <div class="stand" id="wh">
+        <div class="wh" id="wh-steps">
+          <div id="wh-0"><b>Разметка полок</b><small>карта проекта, правила</small></div>
+          <div id="wh-1"><b>Датчики</b><small>тесты, линтер, CI</small></div>
+          <div id="wh-2"><b>Робот на простом участке</b><small>безопасные задачи</small></div>
+          <div id="wh-3"><b>Расширение</b><small>больше задач и агентов</small></div>
+        </div>
+        <div class="row"><button class="btn small" type="button" id="wh-play">▶ Показать порядок</button><span class="task" id="wh-text" aria-live="polite">Порядок важен: каждый шаг опирается на предыдущий.</span></div>
+      </div>
+      <div class="map-pairs" aria-label="Соответствия аналогии">
+        <div><b>Разметка и схема склада</b><span>= AGENTS.md, README модулей, карта сервисов</span></div>
+        <div><b>Датчики на полках</b><span>= тесты, типы, линтер — агент видит, что сломал</span></div>
+        <div><b>Простой участок</b><span>= тесты, документация, мелкие баги</span></div>
+        <div><b>Хаотичный склад</b><span>= legacy без тестов, где всё связано со всем</span></div>
+      </div>
+      <p>Агент работает так же хорошо, как хорошо устроена среда вокруг него. В понятном проекте с быстрыми проверками он полезен. В хаосе — опасен.</p>
+    </section>
+
+    <!-- ============ 2. ОБЪЯСНЕНИЕ ============ -->
+    <section class="step" id="explain">
+      <div class="step-head">
+        <span class="step-tag"><b>2</b> Объяснение</span>
+        <h2>От простого к сложному</h2>
+      </div>
+
+      <p>Сначала короткий фильм — 43 секунды: старый проект как город, где здания — файлы. Остановите в любой момент, перемотайте, поверните город мышью и кликните по зданиям.</p>
+      <figure class="stage3d" data-stage="gorod-koda">
+        <div class="stage3d-view"></div>
+        <figcaption class="stage3d-alt">3D-фильм «Город кода». Старый проект — серый город, где все файлы связаны со всеми, а агент без карты кружит над крышами. Карта проекта — AGENTS.md и README — делит город на кварталы-модули: заказы, отчёты, доставка, биллинг. Тесты красят здания: зелёные покрыты, жёлтые частично, красные без тестов — опасная зона. Агент идёт по лестнице задач: объяснить код, написать тесты, починить мелкий баг с тестом, сделать фичу по спеке, а красные кварталы огорожены до поры. Характеризационный тест накрывает старый расчёт доставки стеклом и фиксирует его поведение. Старый биллинг заменяют по частям: перед ним ставят фасад, новый модуль растёт по одной функции, трафик переходит, и старое здание пустеет.</figcaption>
+      </figure>
+
+      <div class="level" data-level="1">
+        <span class="level-tag">Уровень 1 · Суть</span>
+        <h3>Агенту нужны карта и обратная связь</h3>
+        <p>Новый разработчик в команде первые недели спрашивает: где что лежит, как запустить, как проверить. У агента та же проблема, только спросить ему некого, а памяти между сессиями нет. Поэтому ответы должны лежать в проекте.</p>
+        <p>Две вещи решают почти всё:</p>
+        <ul>
+          <li><strong>Карта.</strong> Где модули, какие правила, что нельзя трогать. Это файл правил для агента и короткие README.</li>
+          <li><strong>Обратная связь.</strong> Одна команда, которая за минуты говорит: «всё хорошо» или «сломано вот тут». Тесты, линтер, проверка типов.</li>
+        </ul>
+        <div class="tip"><b>Пример</b>Задача: «почини расчёт скидки». В проекте без тестов агент поправит формулу и скажет «готово». Проверить нечем. В проекте с тестами он запустит их, увидит красный тест про скидку для оптовиков и исправит до того, как вы откроете PR.</div>
+      </div>
+
+      <div class="level" data-level="2">
+        <span class="level-tag">Уровень 2 · Детали</span>
+        <h3>Семь паттернов AI-First</h3>
+        <ol>
+          <li><strong>Карта проекта и правила.</strong> <code>AGENTS.md</code> (или <code>CLAUDE.md</code>) в корне: как запустить, как проверить, правила кода, запреты. Короткие README в ключевых модулях.</li>
+          <li><strong>Быстрая обратная связь.</strong> Одна команда <code>make check</code> или <code>composer check</code>: тесты, линтер, статический анализ. Чем быстрее, тем чаще агент её запускает.</li>
+          <li><strong>Характеризационные тесты.</strong> Перед правкой старого кода фиксируем, как он работает сейчас, даже если странно. Агент правит — тест показывает, что поведение не уехало.</li>
+          <li><strong>Границы модулей и контракты.</strong> Чем меньше модуль связан с остальными, тем меньше контекста нужно агенту и тем меньше он сломает.</li>
+          <li><strong>Генераторы для шаблонного.</strong> CRUD, DTO, клиенты API делает генератор, а не агент (урок 6). Быстрее, дешевле, одинаково.</li>
+          <li><strong>Спецификации для изменений.</strong> Новая функциональность начинается со спеки, а не с «сделай фичу» (урок 5).</li>
+          <li><strong>Постепенное внедрение.</strong> Сначала безопасные задачи, потом средние, потом сложные. На каждом шаге — метрики.</li>
+        </ol>
+        <details class="more">
+          <summary>Пример AGENTS.md для legacy-проекта <span class="hint">— шаблон</span></summary>
+          <div class="more-body">
+            <p>Коротко и по делу. Агент читает этот файл в начале каждой сессии, поэтому каждая строка стоит токенов.</p>
+<pre data-lang="md"># Магазин — правила для агента
+
+## Запуск и проверка
+- Поднять: `docker compose up -d`
+- Проверить всё: `make check` (тесты + PHPStan + php-cs-fixer, ~3 мин)
+- Один тест: `vendor/bin/phpunit --filter ИмяТеста`
+
+## Карта
+- `src/Order/` — заказы и расчёт цены. Владелец: команда Checkout.
+- `src/Billing/` — платежи. Любая правка — только с тестом.
+- `legacy/` — старый код. Не рефакторить без характеризационных тестов.
+
+## Правила
+- Деньги — только в копейках (int), никаких float.
+- Миграции БД не писать без отдельной задачи.
+- Не трогать `config/secrets/` и `.env`.
+
+## Готово, если
+- `make check` зелёный;
+- на новое поведение есть тест;
+- в описании PR — что и зачем изменено.</pre>
+          </div>
+        </details>
+        <details class="more">
+          <summary>Одна команда «проверь всё» <span class="hint">— PHP, JS, Python</span></summary>
+          <div class="more-body">
+            <div class="code-tabs">
+<pre data-lang="json" data-label="PHP · composer.json">{
+  "scripts": {
+    "test": "phpunit",
+    "stan": "phpstan analyse --no-progress",
+    "cs": "php-cs-fixer fix --dry-run --diff",
+    "check": ["@cs", "@stan", "@test"]
+  }
+}</pre>
+<pre data-lang="json" data-label="JS · package.json">{
+  "scripts": {
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "check": "npm run lint && npm run typecheck && npm test"
+  }
+}</pre>
+<pre data-lang="sh" data-label="Python · Makefile">.PHONY: check
+check:
+	ruff check .
+	mypy src
+	pytest -q</pre>
+            </div>
+            <p>Сделайте вывод коротким: агенту нужны имена упавших тестов и строки ошибок, а не тысяча строк лога.</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="level" data-level="3">
+        <span class="level-tag">Уровень 3 · Усложнение</span>
+        <h3>Как внедрять, не ломая систему и команду</h3>
+        <p><strong>Лестница задач.</strong> Сначала агент только читает и объясняет код. Потом пишет тесты и документацию. Потом чинит мелкие баги, где есть тест. Потом делает средние фичи по спеке. Сложные изменения с деньгами и миграциями — последними и с человеком на ключевых шагах.</p>
+        <p><strong>Удушающее дерево</strong> (<span class="term" data-tip="Strangler fig — паттерн, при котором новый код постепенно «обрастает» вокруг старого и забирает его функции по одной, пока старый не станет не нужен.">strangler fig</span>). Старый модуль не переписывают целиком. Ставят перед ним фасад и по одной функции переносят в новый код. Новый код агент пишет по спеке и с тестами, старый тем временем продолжает работать.</p>
+        <p><strong>Метрики внедрения.</strong> Сколько задач решено с агентом, время от задачи до PR, доля откатов и регрессий, стоимость на задачу. Если откатов стало больше — притормозите и усильте проверки.</p>
+        <p><strong>Люди и процесс.</strong> За код агента отвечает человек, который открыл PR. Ревью остаётся. Команде нужно обучение: как ставить задачи, как читать сессию агента, когда остановить его.</p>
+        <div class="warn"><b>Анти-паттерны</b>Агенту дали доступ к проду. «Большой взрыв»: переписать всё за месяц агентами. Внедрение без тестов: агент быстро производит код, который никто не может проверить.</div>
+        <details class="more">
+          <summary>Характеризационный тест <span class="hint">— PHP, Python, JS</span></summary>
+          <div class="more-body">
+            <p>Мы не знаем, правильно ли старый код считает доставку. Но знаем, что сейчас клиенты платят именно так. Фиксируем текущие ответы на реальных входах. Потом агент рефакторит — тест следит, чтобы ничего не уехало.</p>
+            <div class="code-tabs">
+<pre data-lang="php">&lt;?php
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
+
+final class LegacyShippingCharacterizationTest extends TestCase
+{
+    // Значения сняты с текущего прода. Странное (бесплатно при 0 кг) — тоже фиксируем.
+    public static function cases(): iterable
+    {
+        yield 'лёгкая посылка' => [0.5, 'MINSK', 350];
+        yield 'тяжёлая посылка' => [12.0, 'MINSK', 1890];
+        yield 'регион' => [2.0, 'BREST', 790];
+        yield 'вес 0 — так сейчас' => [0.0, 'MINSK', 0];
+    }
+
+    #[DataProvider('cases')]
+    public function testKeepsCurrentBehaviour(float $kg, string $city, int $expectedKopecks): void
+    {
+        self::assertSame($expectedKopecks, legacy_calc_shipping($kg, $city));
+    }
+}</pre>
+<pre data-lang="py">import pytest
+from legacy.shipping import calc_shipping
+
+# Значения сняты с текущего поведения. Не «как должно быть», а «как есть».
+@pytest.mark.parametrize("kg, city, expected", [
+    (0.5, "MINSK", 350),
+    (12.0, "MINSK", 1890),
+    (2.0, "BREST", 790),
+    (0.0, "MINSK", 0),   # странно, но так сейчас работает прод
+])
+def test_keeps_current_behaviour(kg, city, expected):
+    assert calc_shipping(kg, city) == expected</pre>
+<pre data-lang="js">import { test } from "node:test";
+import assert from "node:assert/strict";
+import { calcShipping } from "../legacy/shipping.js";
+
+const cases = [
+  [0.5, "MINSK", 350],
+  [12.0, "MINSK", 1890],
+  [2.0, "BREST", 790],
+  [0.0, "MINSK", 0], // фиксируем как есть
+];
+
+for (const [kg, city, expected] of cases) {
+  test(`доставка ${kg} кг в ${city}`, () => {
+    assert.equal(calcShipping(kg, city), expected);
+  });
+}</pre>
+            </div>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- ============ 3. ИНТЕРАКТИВ ============ -->
+    <section class="step" id="interactive">
+      <div class="step-head">
+        <span class="step-tag"><b>3</b> Интерактив</span>
+        <h2>Оцените свой проект и спланируйте внедрение</h2>
+      </div>
+
+      <!-- 3.1 Самооценка -->
+      <div class="stand" id="rd">
+        <div class="stand-head"><h3>Насколько проект готов к агентам</h3><span class="badge">интерактив 1 из 4</span></div>
+        <p class="task">Ответы заполнены примером «типичный legacy-проект». Поменяйте их под свой проект и нажмите «Оценить».</p>
+        <div class="rd-grid" id="rd-form"></div>
+        <div class="row"><button class="btn" type="button" id="rd-go">Оценить</button><button class="btn quiet" type="button" id="rd-example">Вернуть пример</button><span class="result-line" id="rd-total" aria-live="polite"></span></div>
+        <div class="grid-2">
+          <div class="bars" id="rd-bars" aria-label="Оценка по областям"></div>
+          <div class="roadmap" id="rd-plan" aria-live="polite"></div>
+        </div>
+      </div>
+
+      <!-- 3.2 Лестница -->
+      <div class="stand" id="ld">
+        <div class="stand-head"><h3>Лестница внедрения: какие задачи и когда</h3><span class="badge">интерактив 2 из 4</span></div>
+        <div class="flow">
+          <div class="node" id="ld-n0"><b>1. Чтение</b><small>объяснить, найти</small></div><span class="arrow">→</span>
+          <div class="node" id="ld-n1"><b>2. Безопасные правки</b><small>тесты, доки, мелкие баги</small></div><span class="arrow">→</span>
+          <div class="node" id="ld-n2"><b>3. Фичи по спеке</b><small>средние задачи</small></div><span class="arrow">→</span>
+          <div class="node" id="ld-n3"><b>4. Сложное</b><small>деньги, миграции</small></div>
+        </div>
+        <div class="ladder-info" id="ld-info" aria-live="polite">Нажмите «Дальше», чтобы подняться на ступень.</div>
+        <div class="row">
+          <button class="btn quiet" type="button" id="ld-prev">← Назад</button>
+          <button class="btn" type="button" id="ld-next">Дальше →</button>
+          <button class="btn secondary" type="button" id="ld-play">▶ Авто</button>
+          <button class="btn quiet" type="button" id="ld-reset">Сначала</button>
+          <span class="task" id="ld-label"></span>
+        </div>
+      </div>
+
+      <!-- 3.3 Симулятор legacy -->
+      <div class="stand" id="lg">
+        <div class="stand-head"><h3>Что дают вложения в проект</h3><span class="badge">интерактив 3 из 4</span></div>
+        <p class="task">Двигайте ползунки и давайте агенту 50 задач. Модель — иллюстрация: коэффициенты подобраны, чтобы показать направление, а не точные цифры.</p>
+        <div class="grid-3">
+          <div class="field"><label for="lg-cov">Покрытие тестами: <span class="mono" id="lg-cov-val">10%</span></label><input type="range" id="lg-cov" min="0" max="90" step="5" value="10"></div>
+          <div class="field"><label for="lg-doc">Документация для агента: <span class="mono" id="lg-doc-val">0%</span></label><input type="range" id="lg-doc" min="0" max="100" step="10" value="0"></div>
+          <div class="field"><label for="lg-cpl">Связность кода: <span class="mono" id="lg-cpl-val">80%</span> <small>всё связано со всем = 100%</small></label><input type="range" id="lg-cpl" min="0" max="100" step="10" value="80"></div>
+        </div>
+        <div class="row"><button class="btn" type="button" id="lg-run">▶ Дать агенту 50 задач</button></div>
+        <div class="dots" id="lg-dots" aria-hidden="true"></div>
+        <div class="legend"><span style="--c: var(--hc-ok)">решено</span><span style="--c: var(--hc-warn)">не решено, видно сразу</span><span style="--c: var(--hc-bad)">«решено», но сломано незаметно</span></div>
+        <div class="stats">
+          <div><b id="lg-ok">—</b>решено</div>
+          <div><b id="lg-fail">—</b>не решено</div>
+          <div><b id="lg-esc">—</b>скрытых регрессий</div>
+        </div>
+        <p class="task" id="lg-text" aria-live="polite"></p>
+      </div>
+
+      <!-- 3.4 Strangler fig -->
+      <div class="stand" id="sf">
+        <div class="stand-head"><h3>Strangler fig: заменяем модуль скидок по частям</h3><span class="badge">интерактив 4 из 4</span></div>
+        <div class="sf">
+          <div class="sf-facade" id="sf-facade">Фасад (роутер)</div>
+          <div class="sf-boxes">
+            <div class="old" id="sf-old"><b>Старый монолит</b><br><small>скидки внутри OrderService, 2 000 строк</small></div>
+            <div class="new" id="sf-new"><b>Новый модуль скидок</b><br><small>по спеке, с тестами</small></div>
+          </div>
+          <div class="sf-traffic" aria-label="Распределение трафика"><div class="t-old" id="sf-t-old">старый 100%</div><div class="t-new" id="sf-t-new"></div></div>
+          <div class="ladder-info" id="sf-info" aria-live="polite">Нажмите «Дальше».</div>
+        </div>
+        <div class="row">
+          <button class="btn quiet" type="button" id="sf-prev">← Назад</button>
+          <button class="btn" type="button" id="sf-next">Дальше →</button>
+          <button class="btn secondary" type="button" id="sf-play">▶ Авто</button>
+          <button class="btn quiet" type="button" id="sf-reset">Сначала</button>
+          <span class="task" id="sf-label"></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 4. ПРАКТИКА ============ -->
+    <section class="step" id="practice">
+      <div class="step-head">
+        <span class="step-tag"><b>4</b> Тесты</span>
+        <h2>Проверьте себя</h2>
+        <p>Код писать не нужно. Где верный ответ один, он засчитывается по клику. Где написано «Отметьте все верные ответы», выберите все подходящие и нажмите «Проверить»: зачёт только при точном совпадении. Ответы сохраняются в браузере.</p>
+      </div>
+
+      <div class="quiz">
+        <h3>Вопросы по уроку</h3>
+        <div class="q" data-q="l9-first">
+          <p>Команда решила внедрять агентов в старый проект. С чего начать?</p>
+          <div class="options">
+            <button>Дать агенту большую фичу, чтобы сразу увидеть пользу</button>
+            <button data-right>Описать проект для агента и сделать одну быструю команду проверки</button>
+            <button>Купить всем подписку и подождать</button>
+          </div>
+          <p class="why">Без карты агент блуждает, без проверок — ломает незаметно. Это фундамент, на котором работают все следующие шаги.</p>
+        </div>
+        <div class="q" data-q="l9-char">
+          <p>Что такое характеризационный тест?</p>
+          <div class="options">
+            <button>Тест, который проверяет, что код соответствует ТЗ</button>
+            <button data-right>Тест, который фиксирует текущее поведение старого кода, даже странное, перед правками</button>
+            <button>Тест производительности под нагрузкой</button>
+          </div>
+          <p class="why">Мы не всегда знаем, как «правильно». Но знаем, как работает сейчас. Тест не даст агенту случайно это поменять.</p>
+        </div>
+        <div class="q" data-q="l9-strangler">
+          <p>Как работает паттерн strangler fig?</p>
+          <div class="options">
+            <button>Старый модуль удаляют и пишут новый с нуля за один релиз</button>
+            <button data-right>Перед старым кодом ставят фасад и переносят функции в новый код по одной, переключая трафик частями</button>
+            <button>Старый и новый код всегда работают параллельно</button>
+          </div>
+          <p class="why">Замена идёт маленькими шагами. Каждый шаг можно проверить и откатить. Когда старый код больше не получает трафик, его удаляют.</p>
+        </div>
+        <div class="q" data-q="l9-metric">
+          <p>Какая метрика первой покажет, что внедрение агентов вредит?</p>
+          <div class="options">
+            <button>Число строк кода, которые написал агент</button>
+            <button>Число сессий агента в день</button>
+            <button data-right>Рост доли откатов и регрессий после релизов</button>
+          </div>
+          <p class="why">Объём кода и активность ничего не говорят о качестве. Откаты и регрессии — прямой сигнал, что проверки слабее, чем скорость.</p>
+        </div>
+        <div class="q" data-q="l9-map-feedback" data-multi>
+          <p>Что агенту нужно в старом проекте в первую очередь?</p>
+          <div class="options">
+            <button data-right>Карта: <code>AGENTS.md</code> и короткие README в ключевых модулях</button>
+            <button data-right>Одна быстрая команда проверки: тесты, линтер, типы</button>
+            <button>Доступ к боевой базе, чтобы видеть настоящие данные</button>
+            <button>Модель с огромным окном, чтобы загрузить весь репозиторий разом</button>
+          </div>
+          <p class="why">Карта говорит, где что лежит и что трогать нельзя. Быстрая проверка показывает, что сломано. Доступ к проду — анти-паттерн. Огромное окно не заменяет карту: агент утонет в коде и всё равно не сможет проверить правку.</p>
+        </div>
+        <div class="q" data-q="l9-first-wave" data-multi>
+          <p>Какие задачи дать агенту в первой волне внедрения?</p>
+          <div class="options">
+            <button data-right>Объяснить, как работает модуль</button>
+            <button data-right>Написать тесты и документацию</button>
+            <button>Миграция таблицы с платежами</button>
+            <button data-right>Мелкий баг, на который уже есть тест</button>
+          </div>
+          <p class="why">Первая волна — задачи с низким риском: ошибку легко заметить и откатить. Миграция платежей трогает деньги и базу — это последняя волна, со спекой и человеком на ключевых шагах.</p>
+        </div>
+        <div class="q" data-q="l9-risk" data-multi>
+          <p>Что повышает риск задачи для агента?</p>
+          <div class="options">
+            <button data-right>Задача трогает деньги</button>
+            <button data-right>Нужна миграция базы данных</button>
+            <button data-right>На этот код нет тестов</button>
+            <button>Задача маленькая и описана в спеке</button>
+          </div>
+          <p class="why">Деньги и миграции дорого ошибаются и плохо откатываются, а без тестов ошибку никто не заметит. Маленький размер и спека риск, наоборот, снижают: правку легко проверить.</p>
+        </div>
+        <div class="q" data-q="l9-check-output">
+          <p>Команда <code>make check</code> упала. Что лучше показать агенту?</p>
+          <div class="options">
+            <button>Полный лог на тысячу строк, чтобы ничего не упустить</button>
+            <button data-right>Имена упавших тестов и строки с ошибками</button>
+            <button>Только код выхода 1</button>
+          </div>
+          <p class="why">Каждая строка лога занимает окно и стоит токенов. Агенту нужно ровно то, что поможет починить: какой тест упал и где. Один код выхода говорит «сломано», но не говорит что.</p>
+        </div>
+        <div class="q" data-q="l9-antipatterns" data-multi>
+          <p>Какие подходы урок называет анти-паттернами?</p>
+          <div class="options">
+            <button data-right>Дать агенту доступ к продакшену</button>
+            <button data-right>«Большой взрыв»: переписать всё агентами за месяц</button>
+            <button>Начать с одной задачи из безопасной волны</button>
+            <button data-right>Внедрять агентов в код без тестов</button>
+          </div>
+          <p class="why">Доступ к проду превращает ошибку агента в аварию. Большой взрыв нельзя проверить по частям. Без тестов агент быстро производит код, который никто не может проверить. Одна безопасная задача — как раз правильный старт.</p>
+        </div>
+        <div class="q" data-q="l9-readiness" data-multi>
+          <p>Самооценка показала: тестов мало, файла правил нет. Какие шаги поднимут готовность проекта?</p>
+          <div class="options">
+            <button data-right>Завести <code>AGENTS.md</code>: как запустить, как проверить, что нельзя трогать</button>
+            <button data-right>Собрать проверки в одну команду <code>check</code></button>
+            <button>Перейти на самую дорогую модель</button>
+            <button data-right>Написать характеризационные тесты на ключевые расчёты</button>
+          </div>
+          <p class="why">Готовность — это среда вокруг агента: карта, быстрая обратная связь и тесты, которые держат старое поведение. Дорогая модель в хаосе ошибается так же, только дороже.</p>
+        </div>
+        <div class="q" data-q="l9-owner">
+          <p>Код написал агент, PR прошёл ревью, после релиза нашли баг. Кто за него отвечает?</p>
+          <div class="options">
+            <button>Агент — он написал код</button>
+            <button>Провайдер модели</button>
+            <button data-right>Человек, который открыл PR</button>
+          </div>
+          <p class="why">Агент — инструмент. За его код отвечает тот, кто открыл PR, поэтому ревью остаётся. Команде нужно уметь читать сессию агента и вовремя его остановить.</p>
+        </div>
+      </div>
+
+      <details class="more">
+        <summary>Задание на своём проекте <span class="hint">— 1 час</span></summary>
+        <div class="more-body">
+          <ol>
+            <li>Пройдите самооценку выше честно. Запишите три самые слабые области.</li>
+            <li>Напишите первую версию <code>AGENTS.md</code> по шаблону из урока. Не больше 40 строк.</li>
+            <li>Сделайте команду <code>check</code>. Засеките, сколько она идёт.</li>
+            <li>Возьмите 10 задач из бэклога и разложите на волны по риску: деньги, миграции, размер, есть ли тесты. Первую задачу из волны 1 отдайте агенту.</li>
+          </ol>
+        </div>
+      </details>
+    </section>
+
+    <!-- ============ 5. ЧЕК-ЛИСТ ============ -->
+    <section class="step" id="checklist">
+      <div class="step-head">
+        <span class="step-tag"><b>5</b> Чек-лист</span>
+        <h2>Отметьте, что усвоили</h2>
+      </div>
+      <ul class="checklist" data-id="main">
+        <li>Понимаю: AI-First — это понятный и проверяемый проект, а не чат в IDE.</li>
+        <li>Знаю, что писать в AGENTS.md и почему он должен быть коротким.</li>
+        <li>У меня есть или я знаю, как сделать одну команду «проверь всё».</li>
+        <li>Могу объяснить, зачем характеризационные тесты перед правкой legacy.</li>
+        <li>Знаю порядок внедрения: чтение, безопасные правки, фичи по спеке, сложное.</li>
+        <li>Могу объяснить strangler fig на примере.</li>
+        <li>Знаю анти-паттерны: прод-доступ агенту, «большой взрыв», внедрение без тестов.</li>
+      </ul>
+      <div class="tip done-banner"><b>Урок пройден</b>Проект готов к агентам. Остался последний шаг — много агентов и много репозиториев сразу.</div>
+    </section>
+
+    <!-- ============ 6. ССЫЛКИ ============ -->
+    <section class="step" id="links">
+      <div class="step-head">
+        <span class="step-tag"><b>6</b> Ссылки</span>
+        <h2>Что почитать и где попробовать</h2>
+      </div>
+      <p class="task">Материалы на русском отмечены зелёной меткой. Все ссылки проверены 18 октября 2026 года.</p>
+      <div class="links">
+        <div><h3>Почитать</h3><ul><li><a href="https://habr.com/ru/companies/oleg-bunin/articles/546316/" target="_blank" rel="noopener">Ты приходишь в проект, а там легаси…</a><span>пошагово: smoke-тесты как страховка, удаление мёртвого кода, статический анализ. <span class="pill ok">рус.</span></span></li><li><a href="https://habr.com/ru/articles/562498/" target="_blank" rel="noopener">Чему можно научиться у фикуса-душителя? Паттерн Strangler</a><span>strangler fig на примере сервиса доставки, смена хранения в три этапа. <span class="pill ok">рус.</span></span></li><li><a href="https://habr.com/ru/companies/otus/articles/943266/" target="_blank" rel="noopener">Как ИИ помогает разгрести легаси и ускорить модернизацию</a><span>ИИ как инструмент понять старую систему, а не только писать код. <span class="pill ok">рус.</span></span></li><li><a href="https://code.claude.com/docs/ru/best-practices" target="_blank" rel="noopener">Лучшие практики для Claude Code</a><span>официально: как дать агенту способ проверить себя и как вести его по большому проекту. <span class="pill ok">рус., офиц.</span></span></li><li><a href="https://agents.md/" target="_blank" rel="noopener">AGENTS.md</a><span>открытый формат «README для агентов»: что положить в репозиторий, чтобы агент понимал проект. <span class="pill">англ.</span></span></li></ul></div>
+        <div><h3>Песочницы по теме</h3><ul><li><a href="https://getrector.com/demo" target="_blank" rel="noopener">Rector Demo</a><span>автоматический детерминированный рефакторинг старого PHP-кода: вставить код и посмотреть дифф.</span></li><li><a href="https://phpstan.org/try" target="_blank" rel="noopener">PHPStan Playground</a><span>поднимать уровень строгости шаг за шагом, как при постепенном внедрении на легаси.</span></li><li><a href="https://3v4l.org/" target="_blank" rel="noopener">3v4l.org</a><span>прогнать один фрагмент на разных версиях PHP и зафиксировать текущее поведение перед правкой.</span></li></ul></div>
+        <div><h3>Запустить код из урока</h3><ul><li><a href="https://www.typescriptlang.org/play" target="_blank" rel="noopener">TypeScript Playground</a><span>JS и TS из примеров урока: вставить и запустить кнопкой Run.</span></li><li><a href="https://3v4l.org/" target="_blank" rel="noopener">3v4l.org</a><span>PHP-примеры урока на любой версии PHP.</span></li><li><a href="https://jupyter.org/try-jupyter/lab/" target="_blank" rel="noopener">JupyterLite</a><span>Python-примеры урока прямо в браузере, без установки.</span></li></ul></div>
+      </div>
+    </section>
+  </div>
+</div>
+<style>
+.hc .wh { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.4rem; }
+.hc .wh > div { background: var(--hc-surface); border: 1.5px solid var(--hc-line); border-radius: var(--hc-r-sm); padding: 0.55rem 0.65rem; font-size: var(--hc-fs-sm); display: grid; gap: 0.2rem; transition: border-color 0.3s, background 0.3s; }
+.hc .wh > div small { color: var(--hc-muted); }
+.hc .wh > div.on { border-color: var(--hc-warm); background: var(--hc-warm-soft); }
+@media (max-width: 640px) {
+.hc .wh { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+.hc .rd-area { display: grid; gap: 0.45rem; padding: 0.75rem 0.85rem; border: 1px solid var(--hc-line); border-radius: var(--hc-r-sm); background: var(--hc-bg); }
+.hc .rd-area h4 { font-size: var(--hc-fs-sm); }
+.hc .rd-q { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 0.6rem; align-items: center; font-size: var(--hc-fs-sm); }
+.hc .rd-q label { font-weight: 400; }
+.hc .rd-q select { width: auto; }
+.hc .rd-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(18rem, 100%), 1fr)); gap: 0.6rem; }
+.hc .bars { display: grid; gap: 0.4rem; }
+.hc .bars .b { display: grid; grid-template-columns: 8.5rem minmax(0, 1fr) 3rem; gap: 0.6rem; align-items: center; font-size: var(--hc-fs-sm); }
+.hc .bars .track { height: 0.8rem; background: var(--hc-surface-2); border-radius: 4px; overflow: hidden; }
+.hc .bars .track i { display: block; height: 100%; transition: width 0.4s; }
+.hc .bars .v { font: 600 var(--hc-fs-xs) var(--hc-f-mono); text-align: right; font-variant-numeric: tabular-nums; }
+.hc .roadmap { display: grid; gap: 0.5rem; }
+.hc .roadmap > div { background: var(--hc-bg); border-radius: var(--hc-r-sm); padding: 0.6rem 0.8rem; font-size: var(--hc-fs-sm); display: grid; gap: 0.25rem; }
+.hc .roadmap b { font-size: var(--hc-fs-xs); text-transform: uppercase; letter-spacing: 0.05em; color: var(--hc-accent); }
+.hc .ladder-info { background: var(--hc-bg); border-radius: var(--hc-r-sm); padding: 0.75rem 0.9rem; font-size: var(--hc-fs-sm); display: grid; gap: 0.35rem; min-height: 6rem; }
+.hc .dots { display: flex; flex-wrap: wrap; gap: 4px; }
+.hc .dots i { width: 12px; height: 12px; border-radius: 3px; background: var(--hc-surface-2); }
+.hc .dots i.y { background: var(--hc-ok); animation: hc-pop 0.2s ease-out; }
+.hc .dots i.w { background: var(--hc-warn); animation: hc-pop 0.2s ease-out; }
+.hc .dots i.n { background: var(--hc-bad); animation: hc-pop 0.2s ease-out; }
+.hc .legend { display: flex; flex-wrap: wrap; gap: 0.9rem; font-size: var(--hc-fs-xs); color: var(--hc-muted); }
+.hc .legend span::before { content: ""; display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 0.35rem; vertical-align: -1px; background: var(--c); }
+.hc .stats { display: flex; flex-wrap: wrap; gap: 1.2rem; font-size: var(--hc-fs-sm); }
+.hc .stats b { font: 600 var(--hc-fs-lg) var(--hc-f-mono); display: block; font-variant-numeric: tabular-nums; }
+.hc .sf { display: grid; gap: 0.6rem; }
+.hc .sf-boxes { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 0.6rem; }
+.hc .sf-boxes > div { border: 1.5px solid var(--hc-line); border-radius: var(--hc-r-sm); padding: 0.6rem 0.75rem; font-size: var(--hc-fs-sm); transition: opacity 0.4s, border-color 0.3s; }
+.hc .sf-boxes .old { background: var(--hc-surface-2); }
+.hc .sf-boxes .new { background: var(--hc-ok-soft); }
+.hc .sf-boxes .dim { opacity: 0.35; }
+.hc .sf-boxes .gone { opacity: 0.25; text-decoration: line-through; }
+.hc .sf-facade { text-align: center; font: 600 var(--hc-fs-xs) var(--hc-f-mono); border: 1.5px dashed var(--hc-accent); border-radius: var(--hc-r-sm); padding: 0.35rem; color: var(--hc-accent); transition: opacity 0.3s; }
+.hc .sf-traffic { display: flex; height: 1.6rem; border-radius: var(--hc-r-sm); overflow: hidden; border: 1px solid var(--hc-line); font: 600 0.7rem var(--hc-f-mono); }
+.hc .sf-traffic div { display: grid; place-items: center; transition: flex-basis 0.5s; overflow: hidden; white-space: nowrap; }
+.hc .sf-traffic .t-old { background: color-mix(in srgb, var(--hc-ink) 16%, transparent); }
+.hc .sf-traffic .t-new { background: color-mix(in srgb, var(--hc-ok) 40%, transparent); }
+</style>
+</div></div><section class="lesson-after mt-8" data-v-dc6e551c><div class="ask-invite" data-v-dc6e551c><i class="v-icon notranslate v-theme--lessonTheme text-primary" style="font-size:28px;height:28px;width:28px;" aria-hidden="true" data-v-dc6e551c><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M20 2H4C2.9 2 2 2.9 2 4V22L6 18H20C21.1 18 22 17.1 22 16V4C22 2.9 21.1 2 20 2M20 16H5.2L4 17.2V4H20V16M12.2 5.5C11.3 5.5 10.6 5.7 10.1 6C9.5 6.4 9.2 7 9.3 7.7H11.3C11.3 7.4 11.4 7.2 11.6 7.1C11.8 7 12 6.9 12.3 6.9C12.6 6.9 12.9 7 13.1 7.2C13.3 7.4 13.4 7.6 13.4 7.9C13.4 8.2 13.3 8.4 13.2 8.6C13 8.8 12.8 9 12.6 9.1C12.1 9.4 11.7 9.7 11.5 9.9C11.1 10.2 11 10.5 11 11H13C13 10.7 13.1 10.5 13.1 10.3C13.2 10.1 13.4 10 13.6 9.8C14.1 9.6 14.4 9.3 14.7 8.9C15 8.5 15.1 8.1 15.1 7.7C15.1 7 14.8 6.4 14.3 6C13.9 5.7 13.1 5.5 12.2 5.5M11 12V14H13V12H11Z"></path></svg></i><div class="min-w-0 flex-grow-1" data-v-dc6e551c><div class="font-weight-bold" data-v-dc6e551c> Что-то осталось непонятным? </div><div class="text-body-2 text-medium-emphasis" data-v-dc6e551c> Спросите преподавателя-нейросеть: он читает этот урок и отвечает по нему простыми словами. </div></div><button type="button" class="v-btn v-theme--lessonTheme bg-primary v-btn--density-default rounded-lg v-btn--size-default v-btn--variant-flat" style="" data-v-dc6e551c><!--[--><span class="v-btn__overlay"></span><span class="v-btn__underlay"></span><!--]--><!----><span class="v-btn__content" data-no-activator><!--[--><!--[--> Задать вопрос <!--]--><!--]--></span><!----><!----></button></div><nav class="pager" aria-label="Переход между уроками" data-v-dc6e551c><a href="/agent-pod-kontrolem/izmeryaem-kachestvo/" class="v-btn v-theme--lessonTheme v-btn--density-default rounded-lg v-btn--size-large v-btn--variant-outlined btn-wrap pager-btn" style="" data-v-dc6e551c><!--[--><span class="v-btn__overlay"></span><span class="v-btn__underlay"></span><!--]--><span class="v-btn__prepend"><i class="v-icon notranslate v-theme--lessonTheme v-icon--size-default" style="" aria-hidden="true"><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z"></path></svg></i></span><span class="v-btn__content" data-no-activator><!--[--><!--[--><span class="d-flex flex-column align-start text-left" data-v-dc6e551c><small class="text-medium-emphasis" data-v-dc6e551c>Назад</small>Урок 8. Измеряем качество</span><!--]--><!--]--></span><!----><!----></a><a href="/agent-pod-kontrolem/mnogo-servisov/" class="v-btn v-theme--lessonTheme bg-primary v-btn--density-default rounded-lg v-btn--size-large v-btn--variant-flat btn-wrap pager-btn" style="" data-v-dc6e551c><!--[--><span class="v-btn__overlay"></span><span class="v-btn__underlay"></span><!--]--><!----><span class="v-btn__content" data-no-activator><!--[--><!--[--><span class="d-flex flex-column align-start text-left" data-v-dc6e551c><small style="opacity:0.8;" data-v-dc6e551c>Дальше</small>Урок 10. Много сервисов, один конвейер</span><!--]--><!--]--></span><span class="v-btn__append"><i class="v-icon notranslate v-theme--lessonTheme v-icon--size-default" style="" aria-hidden="true"><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z"></path></svg></i></span><!----></a></nav><aside class="lesson-promo" aria-label="Где применить урок" data-v-dc6e551c data-v-6c78fbe1><div class="min-w-0" data-v-6c78fbe1><div class="text-overline text-medium-emphasis" style="line-height:1.4;" data-v-6c78fbe1> Где применить </div><div class="font-display font-weight-bold mb-1" data-v-6c78fbe1>Попробуйте на своём проекте</div><p class="text-body-2 mb-0 text-medium-emphasis" data-v-6c78fbe1>Задания урока удобно делать в Klepa AI: агент работает прямо в VS Code, без VPN, оплата в BYN, есть бесплатные модели.</p></div><div class="d-flex flex-wrap ga-2 promo-actions" data-v-6c78fbe1><!--[--><a href="https://marketplace.visualstudio.com/items?itemName=copy-code.copy-coder" class="v-btn v-theme--lessonTheme text-primary v-btn--density-default rounded-lg v-btn--size-small v-btn--variant-tonal" style="" data-v-6c78fbe1><!--[--><span class="v-btn__overlay"></span><span class="v-btn__underlay"></span><!--]--><!----><span class="v-btn__content" data-no-activator><!--[--><!--[-->Установить Klepa<!--]--><!--]--></span><span class="v-btn__append"><i class="v-icon notranslate v-theme--lessonTheme v-icon--size-default" style="" aria-hidden="true"><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M5,17.59L15.59,7H9V5H19V15H17V8.41L6.41,19L5,17.59Z"></path></svg></i></span><!----></a><a href="https://klepa.gpt-chat.by/quickstart/" class="v-btn v-theme--lessonTheme v-btn--density-default rounded-lg v-btn--size-small v-btn--variant-text" style="" data-v-6c78fbe1><!--[--><span class="v-btn__overlay"></span><span class="v-btn__underlay"></span><!--]--><!----><span class="v-btn__content" data-no-activator><!--[--><!--[-->Быстрый старт<!--]--><!--]--></span><span class="v-btn__append"><i class="v-icon notranslate v-theme--lessonTheme v-icon--size-default" style="" aria-hidden="true"><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M5,17.59L15.59,7H9V5H19V15H17V8.41L6.41,19L5,17.59Z"></path></svg></i></span><!----></a><!--]--></div></aside></section></div></div><span data-v-dc6e551c data-v-6feb0a69></span></div><!--]--><!--]--></main><footer class="v-footer v-theme--lessonTheme bg-footer-bg d-block pt-10 pb-8" style="height:auto;" data-v-3e70ffd9><div class="px-4 px-md-6 page-wrap" data-v-3e70ffd9><div class="v-row" style="" data-v-3e70ffd9><div class="v-col-md-4 v-col-12" style="" data-v-3e70ffd9><div class="font-display font-weight-bold text-white mb-3" style="font-size:1.1rem;" data-v-3e70ffd9> Обучение работе с ИИ </div><p class="text-body-2 mb-0" style="color:rgba(255, 255, 255, 0.72);" data-v-3e70ffd9> Бесплатные курсы по нейросетям и ИИ-агентам с тренажёрами прямо в браузере. Первые уроки — без входа, остальные — после бесплатного входа через Google или Telegram. Аккаунт и баланс общие с gpt-chat.by. </p></div><div class="v-col-sm-6 v-col-md-3 v-col-12" style="" data-v-3e70ffd9><div class="footer-heading" data-v-3e70ffd9> Курсы </div><!--[--><a href="/klepa-v-terminale/" class="footer-link d-block" data-v-3e70ffd9>Клёпа в терминале</a><a href="/agent-pod-kontrolem/" class="footer-link d-block" data-v-3e70ffd9>Агент под контролем</a><a href="/n8n/" class="footer-link d-block" data-v-3e70ffd9>n8n для новичков</a><a href="/hermes-agent/" class="footer-link d-block" data-v-3e70ffd9>Hermes Agent для новичков</a><a href="/llm-workflow/" class="footer-link d-block" data-v-3e70ffd9>Workflow для LLM-приложений</a><!--]--></div><div class="v-col-md-3 v-col-6" style="" data-v-3e70ffd9><div class="footer-heading" data-v-3e70ffd9> Наши продукты </div><!--[--><a href="https://gpt-chat.by/" class="footer-link d-block" data-v-3e70ffd9>Чат gpt-chat.by <span class="footer-hint" data-v-3e70ffd9>— Все нейросети в одном чате</span></a><a href="https://klepa.gpt-chat.by/" class="footer-link d-block" data-v-3e70ffd9>Клёпа <span class="footer-hint" data-v-3e70ffd9>— ИИ-агент для кода</span></a><a href="https://video-studio.gpt-chat.by/" class="footer-link d-block" data-v-3e70ffd9>Видеостудия <span class="footer-hint" data-v-3e70ffd9>— Видео нейросетью</span></a><a href="https://music.gpt-chat.by/" class="footer-link d-block" data-v-3e70ffd9>Музыка <span class="footer-hint" data-v-3e70ffd9>— Песни нейросетью</span></a><a href="https://logo.gpt-chat.by/" class="footer-link d-block" data-v-3e70ffd9>Логотипы <span class="footer-hint" data-v-3e70ffd9>— Логотип с ИИ</span></a><!--]--></div><div class="v-col-md-2 v-col-6" style="" data-v-3e70ffd9><div class="footer-heading" data-v-3e70ffd9> Помощь </div><!--[--><a href="https://gpt-chat.by/pricing/" class="footer-link d-block" data-v-3e70ffd9>Тарифы и цены</a><a href="https://gpt-chat.by/doc-api/" class="footer-link d-block" data-v-3e70ffd9>API для разработчиков</a><a href="https://gpt-chat.by/offer/" class="footer-link d-block" data-v-3e70ffd9>Публичная оферта</a><a href="https://gpt-chat.by/privacy-policy/" class="footer-link d-block" data-v-3e70ffd9>Политика конфиденциальности</a><!--]--><span data-v-3e70ffd9></span></div></div><hr class="v-divider v-theme--lessonTheme text-white my-6" style="border-style:solid;" aria-orientation="horizontal" role="separator" data-v-3e70ffd9><p class="text-body-2 mb-0" style="color:rgba(255, 255, 255, 0.6);" data-v-3e70ffd9> © 2026 gpt-chat.by · Вопросы преподавателю-нейросети оплачиваются с баланса в BYN, курсы бесплатные. </p></div></footer><!--[--><!----><!----><!--]--><span></span><!--]--></div></div></div><div id="teleports"></div><script>window.__NUXT__={};window.__NUXT__.config={public:{siteUrl:"https://lesson.gpt-chat.by",apiBase:"https://api.gpt-chat.by/api",metrikaId:"114675734"},app:{baseURL:"/",buildId:"7646227d-0bf1-4784-8afd-12410cf89782",buildAssetsDir:"/_nuxt/",cdnURL:""}}</script>
+<script type="application/json" data-nuxt-data="nuxt-app" data-ssr="true" id="__NUXT_DATA__" data-src="/agent-pod-kontrolem/agent-v-starom-proekte/_payload.json?7646227d-0bf1-4784-8afd-12410cf89782">[{"state":1,"once":6,"_errors":7,"serverRendered":9,"path":10,"prerenderedAt":11},["Reactive",2],{"$slesson-token":3,"$slesson-refresh":3,"$slesson-balance":4,"$slesson-top-up-open":5,"$slesson-top-up-shortfall":4,"$shydrated":5,"$slesson-cookie-consent":4,"$slesson-cookie-restored":5,"$slesson-cookie-reopened":5,"$slesson-metrika-active":5},"",null,false,["Set"],["ShallowReactive",8],{"lesson-body-agent-pod-kontrolem-agent-v-starom-proekte":4},true,"/agent-pod-kontrolem/agent-v-starom-proekte/",1795609322792]</script></body></html>

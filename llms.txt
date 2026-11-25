@@ -1,0 +1,76 @@
+# Обучение работе с ИИ — gpt-chat.by
+
+> Бесплатные курсы по работе с ИИ на русском: ИИ-агенты для программистов, автоматизация в n8n, личный агент Hermes, LLM-приложения. Все уроки открыты, тренажёры в браузере, преподаватель-нейросеть. Работает в Беларуси без VPN.
+
+- Все уроки бесплатные и открыты без входа. Тренажёры (терминал, редактор n8n, схемы, тесты) работают прямо в браузере.
+- В каждом уроке есть преподаватель-нейросеть: отвечает на вопросы по тексту урока. Для вопросов нужен бесплатный вход через Google или Telegram, ответы оплачиваются с баланса gpt-chat.by в BYN по факту.
+- Работает из Беларуси без VPN, баланс пополняется картами Белкарт, Мир, Visa и Mastercard через WebPay.
+- Сервис gpt-chat.by (GPT Chat Беларусь), аккаунт и баланс общие с https://gpt-chat.by/.
+
+- [Каталог курсов](https://lesson.gpt-chat.by/)
+
+## Клёпа в терминале
+
+- [Клёпа в терминале — бесплатный курс по Klepa CLI: ИИ-агент для кода в терминале](https://lesson.gpt-chat.by/klepa-v-terminale/): Бесплатный курс по Klepa CLI — ИИ-агенту для кода в терминале. Девять коротких уроков: запуск, режимы, разрешения, откат правок, диалоги, AGENTS.md, выбор модели и klepa run.
+- [Как запустить Klepa CLI в папке проекта: первый запуск ИИ-агента в терминале — урок 1 курса «Клёпа в терминале»](https://lesson.gpt-chat.by/klepa-v-terminale/zapusk/)
+- [Режимы Klepa CLI: Код, План, Вопросы и Отладка — когда какой включать — урок 2 курса «Клёпа в терминале»](https://lesson.gpt-chat.by/klepa-v-terminale/rezhimy/)
+- [Разрешения ИИ-агента в Klepa CLI: что он делает сам, а о чём спрашивает — урок 3 курса «Клёпа в терминале»](https://lesson.gpt-chat.by/klepa-v-terminale/razresheniya/)
+- [Как передать ИИ-агенту файл и вывод команды: знаки @ и ! в Klepa CLI — урок 4 курса «Клёпа в терминале»](https://lesson.gpt-chat.by/klepa-v-terminale/kontekst/)
+- [Как откатить правки ИИ-агента: команды /undo, /redo и /diff в Klepa CLI — урок 5 курса «Клёпа в терминале»](https://lesson.gpt-chat.by/klepa-v-terminale/otkat/)
+- [Диалоги в Klepa CLI: /new, /sessions, /compact и продолжение через klepa -c — урок 6 курса «Клёпа в терминале»](https://lesson.gpt-chat.by/klepa-v-terminale/dialogi/)
+- [AGENTS.md и команда /init: правила проекта для ИИ-агента — урок 7 курса «Клёпа в терминале»](https://lesson.gpt-chat.by/klepa-v-terminale/pravila-proekta/)
+- [Как выбрать модель и следить за расходом в Klepa CLI — урок 8 курса «Клёпа в терминале»](https://lesson.gpt-chat.by/klepa-v-terminale/modeli-i-rashod/)
+- [klepa run: как запускать ИИ-агента в скриптах без окна — урок 9 курса «Клёпа в терминале»](https://lesson.gpt-chat.by/klepa-v-terminale/klepa-run/)
+
+## Агент под контролем
+
+- [Агент под контролем — бесплатный курс по работе с ИИ-агентом для программистов](https://lesson.gpt-chat.by/agent-pod-kontrolem/): Бесплатный курс для бэкенд-разработчиков: как устроены LLM, как настроить ИИ-агента в проекте, MCP, хуки, спецификации, проверки и eval. Интерактивы, тесты и 3D-сцены прямо в браузере.
+- [Как нейросеть пишет код: токены, окно контекста и галлюцинации — урок 1 курса «Агент под контролем»](https://lesson.gpt-chat.by/agent-pod-kontrolem/kak-model-pishet-kod/)
+- [Как устроен ИИ-агент для кода: цикл, инструменты, скилы и субагенты — урок 2 курса «Агент под контролем»](https://lesson.gpt-chat.by/agent-pod-kontrolem/agent-eto-cikl/)
+- [Память проекта для ИИ-агента: что писать в CLAUDE.md и AGENTS.md — урок 3 курса «Агент под контролем»](https://lesson.gpt-chat.by/agent-pod-kontrolem/pamyat-proekta/)
+- [MCP и хуки: как подключить свои системы к ИИ-агенту — урок 4 курса «Агент под контролем»](https://lesson.gpt-chat.by/agent-pod-kontrolem/mcp-i-huki/)
+- [Сначала спецификация, потом код: spec-driven разработка с ИИ-агентом — урок 5 курса «Агент под контролем»](https://lesson.gpt-chat.by/agent-pod-kontrolem/snachala-specifikaciya/)
+- [Генератор кода или ИИ-агент: что выгоднее и когда — урок 6 курса «Агент под контролем»](https://lesson.gpt-chat.by/agent-pod-kontrolem/generator-ili-agent/)
+- [Как ловить ошибки ИИ-агента автоматически: проверки, бюджеты и петли — урок 7 курса «Агент под контролем»](https://lesson.gpt-chat.by/agent-pod-kontrolem/oshibki-agenta/)
+- [Eval для ИИ-агента: как измерить качество и поймать регрессии — урок 8 курса «Агент под контролем»](https://lesson.gpt-chat.by/agent-pod-kontrolem/izmeryaem-kachestvo/)
+- [ИИ-агент в старом проекте: как подготовить legacy и внедрять постепенно — урок 9 курса «Агент под контролем»](https://lesson.gpt-chat.by/agent-pod-kontrolem/agent-v-starom-proekte/)
+- [ИИ-агенты в нескольких сервисах: контракты и общий конвейер — урок 10 курса «Агент под контролем»](https://lesson.gpt-chat.by/agent-pod-kontrolem/mnogo-servisov/)
+
+## n8n для новичков
+
+- [n8n для новичков — бесплатный курс по автоматизации без программирования](https://lesson.gpt-chat.by/n8n/): Бесплатный курс по n8n с нуля: workflow, ноды и триггеры, данные и JSON, выражения, ветвление If, HTTP Request, вебхуки, расписание и отладка. Тренажёры редактора прямо в браузере.
+- [Что такое n8n и зачем он нужен: простое объяснение для новичка — урок 1 курса «n8n для новичков»](https://lesson.gpt-chat.by/n8n/chto-takoe-n8n/)
+- [Интерфейс n8n для новичка: холст, ноды и окно настроек — урок 2 курса «n8n для новичков»](https://lesson.gpt-chat.by/n8n/interfejs-redaktora/)
+- [Первый workflow в n8n: триггер и шаги по порядку — урок 3 курса «n8n для новичков»](https://lesson.gpt-chat.by/n8n/pervyj-workflow/)
+- [Данные в n8n: элементы и JSON простыми словами — урок 4 курса «n8n для новичков»](https://lesson.gpt-chat.by/n8n/dannye-i-json/)
+- [Выражения в n8n: как взять данные из предыдущей ноды через $json — урок 5 курса «n8n для новичков»](https://lesson.gpt-chat.by/n8n/vyrazheniya/)
+- [Нода If в n8n: как разделить данные на две ветки — урок 6 курса «n8n для новичков»](https://lesson.gpt-chat.by/n8n/vetvlenie-if/)
+- [HTTP Request и credentials в n8n: как подключить внешний сервис — урок 7 курса «n8n для новичков»](https://lesson.gpt-chat.by/n8n/http-request-i-credentials/)
+- [Автозапуск в n8n: расписание, вебхук и активация workflow — урок 8 курса «n8n для новичков»](https://lesson.gpt-chat.by/n8n/avtozapusk/)
+- [Ошибки в n8n: где искать причину и как отладить workflow — урок 9 курса «n8n для новичков»](https://lesson.gpt-chat.by/n8n/oshibki-i-otladka/)
+- [Заявки с сайта в Telegram и таблицу через n8n: проект по шагам — урок 10 курса «n8n для новичков»](https://lesson.gpt-chat.by/n8n/itogovyj-proekt/)
+
+## Hermes Agent для новичков
+
+- [Hermes Agent для новичков — бесплатный курс: установка, память, навыки, Telegram](https://lesson.gpt-chat.by/hermes-agent/): Бесплатный курс по Hermes Agent с нуля: установка и первый запуск, команды терминала, инструменты и безопасность, настройки, память, навыки, Telegram и задачи по расписанию.
+- [Что такое Hermes Agent и чем ИИ-агент отличается от чат-бота — урок 1 курса «Hermes Agent для новичков»](https://lesson.gpt-chat.by/hermes-agent/chto-takoe-hermes-agent/)
+- [Как установить Hermes Agent: четыре шага до первого ответа — урок 2 курса «Hermes Agent для новичков»](https://lesson.gpt-chat.by/hermes-agent/ustanovka/)
+- [Hermes Agent в терминале: первый разговор и команды на каждый день — урок 3 курса «Hermes Agent для новичков»](https://lesson.gpt-chat.by/hermes-agent/pervyj-razgovor/)
+- [Инструменты Hermes Agent и безопасность: что разрешить агенту — урок 4 курса «Hermes Agent для новичков»](https://lesson.gpt-chat.by/hermes-agent/instrumenty-i-bezopasnost/)
+- [Настройки Hermes Agent: папка ~/.hermes и конфиг без поломок — урок 5 курса «Hermes Agent для новичков»](https://lesson.gpt-chat.by/hermes-agent/nastrojki-i-fajly/)
+- [Память и характер Hermes Agent: как агент запоминает вас — урок 6 курса «Hermes Agent для новичков»](https://lesson.gpt-chat.by/hermes-agent/pamyat-i-harakter/)
+- [Навыки (skills) в Hermes Agent: научить агента порядку работы один раз — урок 7 курса «Hermes Agent для новичков»](https://lesson.gpt-chat.by/hermes-agent/navyki/)
+- [Как подключить Hermes Agent к Telegram и закрыть от чужих — урок 8 курса «Hermes Agent для новичков»](https://lesson.gpt-chat.by/hermes-agent/hermes-v-telegram/)
+- [Задачи по расписанию в Hermes Agent: агент работает сам каждый день — урок 9 курса «Hermes Agent для новичков»](https://lesson.gpt-chat.by/hermes-agent/zadachi-po-raspisaniyu/)
+
+## Workflow для LLM-приложений
+
+- [Workflow для LLM-приложений — бесплатный курс: цепочки вокруг языковой модели](https://lesson.gpt-chat.by/llm-workflow/): Бесплатный курс для разработчиков: как собрать LLM-приложение из шагов, выбрать триггер, пережить сбои модели, найти ошибку по логам и проверить качество оценочным набором. Примеры на PHP, JavaScript и Python.
+- [Зачем LLM-приложению цепочка шагов, а не один большой промпт — урок 1 курса «Workflow для LLM-приложений»](https://lesson.gpt-chat.by/llm-workflow/zachem-cepochki/)
+- [Шаги LLM-приложения: где работает код, а где языковая модель — урок 2 курса «Workflow для LLM-приложений»](https://lesson.gpt-chat.by/llm-workflow/struktura-shagov/)
+- [Как запускать LLM-цепочку: push, pull, расписание и ожидание ответа — урок 3 курса «Workflow для LLM-приложений»](https://lesson.gpt-chat.by/llm-workflow/triggery-i-zapusk/)
+- [Надёжность LLM-приложения: повторы, запасной путь и остановка — урок 4 курса «Workflow для LLM-приложений»](https://lesson.gpt-chat.by/llm-workflow/nadezhnost/)
+- [Логи LLM-приложения: как найти шаг, где всё сломалось — урок 5 курса «Workflow для LLM-приложений»](https://lesson.gpt-chat.by/llm-workflow/logi-i-otladka/)
+- [Оценочный набор (eval) для LLM: как проверять шаг с моделью — урок 6 курса «Workflow для LLM-приложений»](https://lesson.gpt-chat.by/llm-workflow/ocenochnyj-nabor/)
+- [Workflow для LLM-приложений: конспект и 24 вопроса для самопроверки — урок 7 курса «Workflow для LLM-приложений»](https://lesson.gpt-chat.by/llm-workflow/konspekt/)
+- [Практика в Yandex AI Studio: цепочка с моделью в Yandex Workflows — урок 8 курса «Workflow для LLM-приложений»](https://lesson.gpt-chat.by/llm-workflow/praktika-yandex-ai-studio/)
