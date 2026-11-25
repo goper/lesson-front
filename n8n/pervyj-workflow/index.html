@@ -1,0 +1,559 @@
+<!DOCTYPE html><html  lang="ru"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Урок 3. Первый workflow: триггер и шаги — курс «n8n для новичков»</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&family=Inter:wght@400;500;600&display=swap">
+<style id="vuetify-theme-stylesheet">:root {
+      --v-theme-background: 245,247,251;
+      --v-theme-background-overlay-multiplier: 1;
+      --v-theme-surface: 255,255,255;
+      --v-theme-surface-overlay-multiplier: 1;
+      --v-theme-surface-bright: 255,255,255;
+      --v-theme-surface-bright-overlay-multiplier: 1;
+      --v-theme-surface-light: 238,241,248;
+      --v-theme-surface-light-overlay-multiplier: 1;
+      --v-theme-surface-variant: 66,66,66;
+      --v-theme-surface-variant-overlay-multiplier: 2;
+      --v-theme-on-surface-variant: 238,238,238;
+      --v-theme-primary: 52,81,209;
+      --v-theme-primary-overlay-multiplier: 2;
+      --v-theme-primary-darken-1: 42,66,176;
+      --v-theme-primary-darken-1-overlay-multiplier: 2;
+      --v-theme-secondary: 15,163,163;
+      --v-theme-secondary-overlay-multiplier: 1;
+      --v-theme-secondary-darken-1: 1,135,134;
+      --v-theme-secondary-darken-1-overlay-multiplier: 1;
+      --v-theme-error: 208,54,79;
+      --v-theme-error-overlay-multiplier: 2;
+      --v-theme-info: 37,99,235;
+      --v-theme-info-overlay-multiplier: 2;
+      --v-theme-success: 22,163,74;
+      --v-theme-success-overlay-multiplier: 1;
+      --v-theme-warning: 217,119,6;
+      --v-theme-warning-overlay-multiplier: 1;
+      --v-theme-ink: 23,32,58;
+      --v-theme-ink-overlay-multiplier: 2;
+      --v-theme-footer-bg: 18,26,51;
+      --v-theme-footer-bg-overlay-multiplier: 2;
+      --v-theme-on-background: 0,0,0;
+      --v-theme-on-surface: 0,0,0;
+      --v-theme-on-surface-bright: 0,0,0;
+      --v-theme-on-surface-light: 0,0,0;
+      --v-theme-on-primary: 255,255,255;
+      --v-theme-on-primary-darken-1: 255,255,255;
+      --v-theme-on-secondary: 255,255,255;
+      --v-theme-on-secondary-darken-1: 255,255,255;
+      --v-theme-on-error: 255,255,255;
+      --v-theme-on-info: 255,255,255;
+      --v-theme-on-success: 255,255,255;
+      --v-theme-on-warning: 255,255,255;
+      --v-theme-on-ink: 255,255,255;
+      --v-theme-on-footer-bg: 255,255,255;
+      --v-border-color: 0, 0, 0;
+      --v-border-opacity: 0.12;
+      --v-high-emphasis-opacity: 0.87;
+      --v-medium-emphasis-opacity: 0.6;
+      --v-disabled-opacity: 0.38;
+      --v-idle-opacity: 0.04;
+      --v-hover-opacity: 0.04;
+      --v-focus-opacity: 0.12;
+      --v-selected-opacity: 0.08;
+      --v-activated-opacity: 0.12;
+      --v-pressed-opacity: 0.12;
+      --v-dragged-opacity: 0.08;
+      --v-theme-kbd: 238, 238, 238;
+      --v-theme-on-kbd: 0, 0, 0;
+      --v-theme-code: 245, 245, 245;
+      --v-theme-on-code: 0, 0, 0;
+    }
+    .v-theme--light {
+      color-scheme: normal;
+      --v-theme-background: 255,255,255;
+      --v-theme-background-overlay-multiplier: 1;
+      --v-theme-surface: 255,255,255;
+      --v-theme-surface-overlay-multiplier: 1;
+      --v-theme-surface-bright: 255,255,255;
+      --v-theme-surface-bright-overlay-multiplier: 1;
+      --v-theme-surface-light: 238,238,238;
+      --v-theme-surface-light-overlay-multiplier: 1;
+      --v-theme-surface-variant: 66,66,66;
+      --v-theme-surface-variant-overlay-multiplier: 2;
+      --v-theme-on-surface-variant: 238,238,238;
+      --v-theme-primary: 24,103,192;
+      --v-theme-primary-overlay-multiplier: 2;
+      --v-theme-primary-darken-1: 31,85,146;
+      --v-theme-primary-darken-1-overlay-multiplier: 2;
+      --v-theme-secondary: 72,169,166;
+      --v-theme-secondary-overlay-multiplier: 1;
+      --v-theme-secondary-darken-1: 1,135,134;
+      --v-theme-secondary-darken-1-overlay-multiplier: 1;
+      --v-theme-error: 176,0,32;
+      --v-theme-error-overlay-multiplier: 2;
+      --v-theme-info: 33,150,243;
+      --v-theme-info-overlay-multiplier: 1;
+      --v-theme-success: 76,175,80;
+      --v-theme-success-overlay-multiplier: 1;
+      --v-theme-warning: 251,140,0;
+      --v-theme-warning-overlay-multiplier: 1;
+      --v-theme-on-background: 0,0,0;
+      --v-theme-on-surface: 0,0,0;
+      --v-theme-on-surface-bright: 0,0,0;
+      --v-theme-on-surface-light: 0,0,0;
+      --v-theme-on-primary: 255,255,255;
+      --v-theme-on-primary-darken-1: 255,255,255;
+      --v-theme-on-secondary: 255,255,255;
+      --v-theme-on-secondary-darken-1: 255,255,255;
+      --v-theme-on-error: 255,255,255;
+      --v-theme-on-info: 255,255,255;
+      --v-theme-on-success: 255,255,255;
+      --v-theme-on-warning: 255,255,255;
+      --v-border-color: 0, 0, 0;
+      --v-border-opacity: 0.12;
+      --v-high-emphasis-opacity: 0.87;
+      --v-medium-emphasis-opacity: 0.6;
+      --v-disabled-opacity: 0.38;
+      --v-idle-opacity: 0.04;
+      --v-hover-opacity: 0.04;
+      --v-focus-opacity: 0.12;
+      --v-selected-opacity: 0.08;
+      --v-activated-opacity: 0.12;
+      --v-pressed-opacity: 0.12;
+      --v-dragged-opacity: 0.08;
+      --v-theme-kbd: 238, 238, 238;
+      --v-theme-on-kbd: 0, 0, 0;
+      --v-theme-code: 245, 245, 245;
+      --v-theme-on-code: 0, 0, 0;
+    }
+    .v-theme--dark {
+      color-scheme: dark;
+      --v-theme-background: 18,18,18;
+      --v-theme-background-overlay-multiplier: 1;
+      --v-theme-surface: 33,33,33;
+      --v-theme-surface-overlay-multiplier: 1;
+      --v-theme-surface-bright: 204,191,214;
+      --v-theme-surface-bright-overlay-multiplier: 2;
+      --v-theme-surface-light: 66,66,66;
+      --v-theme-surface-light-overlay-multiplier: 1;
+      --v-theme-surface-variant: 200,200,200;
+      --v-theme-surface-variant-overlay-multiplier: 2;
+      --v-theme-on-surface-variant: 0,0,0;
+      --v-theme-primary: 33,150,243;
+      --v-theme-primary-overlay-multiplier: 2;
+      --v-theme-primary-darken-1: 39,124,193;
+      --v-theme-primary-darken-1-overlay-multiplier: 2;
+      --v-theme-secondary: 84,182,178;
+      --v-theme-secondary-overlay-multiplier: 2;
+      --v-theme-secondary-darken-1: 72,169,166;
+      --v-theme-secondary-darken-1-overlay-multiplier: 2;
+      --v-theme-error: 207,102,121;
+      --v-theme-error-overlay-multiplier: 2;
+      --v-theme-info: 33,150,243;
+      --v-theme-info-overlay-multiplier: 2;
+      --v-theme-success: 76,175,80;
+      --v-theme-success-overlay-multiplier: 2;
+      --v-theme-warning: 251,140,0;
+      --v-theme-warning-overlay-multiplier: 2;
+      --v-theme-on-background: 255,255,255;
+      --v-theme-on-surface: 255,255,255;
+      --v-theme-on-surface-bright: 0,0,0;
+      --v-theme-on-surface-light: 255,255,255;
+      --v-theme-on-primary: 255,255,255;
+      --v-theme-on-primary-darken-1: 255,255,255;
+      --v-theme-on-secondary: 255,255,255;
+      --v-theme-on-secondary-darken-1: 255,255,255;
+      --v-theme-on-error: 255,255,255;
+      --v-theme-on-info: 255,255,255;
+      --v-theme-on-success: 255,255,255;
+      --v-theme-on-warning: 255,255,255;
+      --v-border-color: 255, 255, 255;
+      --v-border-opacity: 0.12;
+      --v-high-emphasis-opacity: 1;
+      --v-medium-emphasis-opacity: 0.7;
+      --v-disabled-opacity: 0.5;
+      --v-idle-opacity: 0.1;
+      --v-hover-opacity: 0.04;
+      --v-focus-opacity: 0.12;
+      --v-selected-opacity: 0.08;
+      --v-activated-opacity: 0.12;
+      --v-pressed-opacity: 0.16;
+      --v-dragged-opacity: 0.08;
+      --v-theme-kbd: 66, 66, 66;
+      --v-theme-on-kbd: 255, 255, 255;
+      --v-theme-code: 52, 52, 52;
+      --v-theme-on-code: 204, 204, 204;
+    }
+    .v-theme--lessonTheme {
+      color-scheme: normal;
+      --v-theme-background: 245,247,251;
+      --v-theme-background-overlay-multiplier: 1;
+      --v-theme-surface: 255,255,255;
+      --v-theme-surface-overlay-multiplier: 1;
+      --v-theme-surface-bright: 255,255,255;
+      --v-theme-surface-bright-overlay-multiplier: 1;
+      --v-theme-surface-light: 238,241,248;
+      --v-theme-surface-light-overlay-multiplier: 1;
+      --v-theme-surface-variant: 66,66,66;
+      --v-theme-surface-variant-overlay-multiplier: 2;
+      --v-theme-on-surface-variant: 238,238,238;
+      --v-theme-primary: 52,81,209;
+      --v-theme-primary-overlay-multiplier: 2;
+      --v-theme-primary-darken-1: 42,66,176;
+      --v-theme-primary-darken-1-overlay-multiplier: 2;
+      --v-theme-secondary: 15,163,163;
+      --v-theme-secondary-overlay-multiplier: 1;
+      --v-theme-secondary-darken-1: 1,135,134;
+      --v-theme-secondary-darken-1-overlay-multiplier: 1;
+      --v-theme-error: 208,54,79;
+      --v-theme-error-overlay-multiplier: 2;
+      --v-theme-info: 37,99,235;
+      --v-theme-info-overlay-multiplier: 2;
+      --v-theme-success: 22,163,74;
+      --v-theme-success-overlay-multiplier: 1;
+      --v-theme-warning: 217,119,6;
+      --v-theme-warning-overlay-multiplier: 1;
+      --v-theme-ink: 23,32,58;
+      --v-theme-ink-overlay-multiplier: 2;
+      --v-theme-footer-bg: 18,26,51;
+      --v-theme-footer-bg-overlay-multiplier: 2;
+      --v-theme-on-background: 0,0,0;
+      --v-theme-on-surface: 0,0,0;
+      --v-theme-on-surface-bright: 0,0,0;
+      --v-theme-on-surface-light: 0,0,0;
+      --v-theme-on-primary: 255,255,255;
+      --v-theme-on-primary-darken-1: 255,255,255;
+      --v-theme-on-secondary: 255,255,255;
+      --v-theme-on-secondary-darken-1: 255,255,255;
+      --v-theme-on-error: 255,255,255;
+      --v-theme-on-info: 255,255,255;
+      --v-theme-on-success: 255,255,255;
+      --v-theme-on-warning: 255,255,255;
+      --v-theme-on-ink: 255,255,255;
+      --v-theme-on-footer-bg: 255,255,255;
+      --v-border-color: 0, 0, 0;
+      --v-border-opacity: 0.12;
+      --v-high-emphasis-opacity: 0.87;
+      --v-medium-emphasis-opacity: 0.6;
+      --v-disabled-opacity: 0.38;
+      --v-idle-opacity: 0.04;
+      --v-hover-opacity: 0.04;
+      --v-focus-opacity: 0.12;
+      --v-selected-opacity: 0.08;
+      --v-activated-opacity: 0.12;
+      --v-pressed-opacity: 0.12;
+      --v-dragged-opacity: 0.08;
+      --v-theme-kbd: 238, 238, 238;
+      --v-theme-on-kbd: 0, 0, 0;
+      --v-theme-code: 245, 245, 245;
+      --v-theme-on-code: 0, 0, 0;
+    }
+    .bg-background {
+      --v-theme-overlay-multiplier: var(--v-theme-background-overlay-multiplier);
+      background-color: rgb(var(--v-theme-background)) !important;
+      color: rgb(var(--v-theme-on-background)) !important;
+    }
+    .bg-surface {
+      --v-theme-overlay-multiplier: var(--v-theme-surface-overlay-multiplier);
+      background-color: rgb(var(--v-theme-surface)) !important;
+      color: rgb(var(--v-theme-on-surface)) !important;
+    }
+    .bg-surface-bright {
+      --v-theme-overlay-multiplier: var(--v-theme-surface-bright-overlay-multiplier);
+      background-color: rgb(var(--v-theme-surface-bright)) !important;
+      color: rgb(var(--v-theme-on-surface-bright)) !important;
+    }
+    .bg-surface-light {
+      --v-theme-overlay-multiplier: var(--v-theme-surface-light-overlay-multiplier);
+      background-color: rgb(var(--v-theme-surface-light)) !important;
+      color: rgb(var(--v-theme-on-surface-light)) !important;
+    }
+    .bg-surface-variant {
+      --v-theme-overlay-multiplier: var(--v-theme-surface-variant-overlay-multiplier);
+      background-color: rgb(var(--v-theme-surface-variant)) !important;
+      color: rgb(var(--v-theme-on-surface-variant)) !important;
+    }
+    .bg-primary {
+      --v-theme-overlay-multiplier: var(--v-theme-primary-overlay-multiplier);
+      background-color: rgb(var(--v-theme-primary)) !important;
+      color: rgb(var(--v-theme-on-primary)) !important;
+    }
+    .bg-primary-darken-1 {
+      --v-theme-overlay-multiplier: var(--v-theme-primary-darken-1-overlay-multiplier);
+      background-color: rgb(var(--v-theme-primary-darken-1)) !important;
+      color: rgb(var(--v-theme-on-primary-darken-1)) !important;
+    }
+    .bg-secondary {
+      --v-theme-overlay-multiplier: var(--v-theme-secondary-overlay-multiplier);
+      background-color: rgb(var(--v-theme-secondary)) !important;
+      color: rgb(var(--v-theme-on-secondary)) !important;
+    }
+    .bg-secondary-darken-1 {
+      --v-theme-overlay-multiplier: var(--v-theme-secondary-darken-1-overlay-multiplier);
+      background-color: rgb(var(--v-theme-secondary-darken-1)) !important;
+      color: rgb(var(--v-theme-on-secondary-darken-1)) !important;
+    }
+    .bg-error {
+      --v-theme-overlay-multiplier: var(--v-theme-error-overlay-multiplier);
+      background-color: rgb(var(--v-theme-error)) !important;
+      color: rgb(var(--v-theme-on-error)) !important;
+    }
+    .bg-info {
+      --v-theme-overlay-multiplier: var(--v-theme-info-overlay-multiplier);
+      background-color: rgb(var(--v-theme-info)) !important;
+      color: rgb(var(--v-theme-on-info)) !important;
+    }
+    .bg-success {
+      --v-theme-overlay-multiplier: var(--v-theme-success-overlay-multiplier);
+      background-color: rgb(var(--v-theme-success)) !important;
+      color: rgb(var(--v-theme-on-success)) !important;
+    }
+    .bg-warning {
+      --v-theme-overlay-multiplier: var(--v-theme-warning-overlay-multiplier);
+      background-color: rgb(var(--v-theme-warning)) !important;
+      color: rgb(var(--v-theme-on-warning)) !important;
+    }
+    .bg-ink {
+      --v-theme-overlay-multiplier: var(--v-theme-ink-overlay-multiplier);
+      background-color: rgb(var(--v-theme-ink)) !important;
+      color: rgb(var(--v-theme-on-ink)) !important;
+    }
+    .bg-footer-bg {
+      --v-theme-overlay-multiplier: var(--v-theme-footer-bg-overlay-multiplier);
+      background-color: rgb(var(--v-theme-footer-bg)) !important;
+      color: rgb(var(--v-theme-on-footer-bg)) !important;
+    }
+    .text-background {
+      color: rgb(var(--v-theme-background)) !important;
+    }
+    .border-background {
+      --v-border-color: var(--v-theme-background);
+    }
+    .text-surface {
+      color: rgb(var(--v-theme-surface)) !important;
+    }
+    .border-surface {
+      --v-border-color: var(--v-theme-surface);
+    }
+    .text-surface-bright {
+      color: rgb(var(--v-theme-surface-bright)) !important;
+    }
+    .border-surface-bright {
+      --v-border-color: var(--v-theme-surface-bright);
+    }
+    .text-surface-light {
+      color: rgb(var(--v-theme-surface-light)) !important;
+    }
+    .border-surface-light {
+      --v-border-color: var(--v-theme-surface-light);
+    }
+    .text-surface-variant {
+      color: rgb(var(--v-theme-surface-variant)) !important;
+    }
+    .border-surface-variant {
+      --v-border-color: var(--v-theme-surface-variant);
+    }
+    .on-surface-variant {
+      color: rgb(var(--v-theme-on-surface-variant)) !important;
+    }
+    .text-primary {
+      color: rgb(var(--v-theme-primary)) !important;
+    }
+    .border-primary {
+      --v-border-color: var(--v-theme-primary);
+    }
+    .text-primary-darken-1 {
+      color: rgb(var(--v-theme-primary-darken-1)) !important;
+    }
+    .border-primary-darken-1 {
+      --v-border-color: var(--v-theme-primary-darken-1);
+    }
+    .text-secondary {
+      color: rgb(var(--v-theme-secondary)) !important;
+    }
+    .border-secondary {
+      --v-border-color: var(--v-theme-secondary);
+    }
+    .text-secondary-darken-1 {
+      color: rgb(var(--v-theme-secondary-darken-1)) !important;
+    }
+    .border-secondary-darken-1 {
+      --v-border-color: var(--v-theme-secondary-darken-1);
+    }
+    .text-error {
+      color: rgb(var(--v-theme-error)) !important;
+    }
+    .border-error {
+      --v-border-color: var(--v-theme-error);
+    }
+    .text-info {
+      color: rgb(var(--v-theme-info)) !important;
+    }
+    .border-info {
+      --v-border-color: var(--v-theme-info);
+    }
+    .text-success {
+      color: rgb(var(--v-theme-success)) !important;
+    }
+    .border-success {
+      --v-border-color: var(--v-theme-success);
+    }
+    .text-warning {
+      color: rgb(var(--v-theme-warning)) !important;
+    }
+    .border-warning {
+      --v-border-color: var(--v-theme-warning);
+    }
+    .on-background {
+      color: rgb(var(--v-theme-on-background)) !important;
+    }
+    .on-surface {
+      color: rgb(var(--v-theme-on-surface)) !important;
+    }
+    .on-surface-bright {
+      color: rgb(var(--v-theme-on-surface-bright)) !important;
+    }
+    .on-surface-light {
+      color: rgb(var(--v-theme-on-surface-light)) !important;
+    }
+    .on-primary {
+      color: rgb(var(--v-theme-on-primary)) !important;
+    }
+    .on-primary-darken-1 {
+      color: rgb(var(--v-theme-on-primary-darken-1)) !important;
+    }
+    .on-secondary {
+      color: rgb(var(--v-theme-on-secondary)) !important;
+    }
+    .on-secondary-darken-1 {
+      color: rgb(var(--v-theme-on-secondary-darken-1)) !important;
+    }
+    .on-error {
+      color: rgb(var(--v-theme-on-error)) !important;
+    }
+    .on-info {
+      color: rgb(var(--v-theme-on-info)) !important;
+    }
+    .on-success {
+      color: rgb(var(--v-theme-on-success)) !important;
+    }
+    .on-warning {
+      color: rgb(var(--v-theme-on-warning)) !important;
+    }
+    .text-ink {
+      color: rgb(var(--v-theme-ink)) !important;
+    }
+    .border-ink {
+      --v-border-color: var(--v-theme-ink);
+    }
+    .text-footer-bg {
+      color: rgb(var(--v-theme-footer-bg)) !important;
+    }
+    .border-footer-bg {
+      --v-border-color: var(--v-theme-footer-bg);
+    }
+    .on-ink {
+      color: rgb(var(--v-theme-on-ink)) !important;
+    }
+    .on-footer-bg {
+      color: rgb(var(--v-theme-on-footer-bg)) !important;
+    }
+</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Open+Sans:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="/_nuxt/entry.f0D0bLXn.css" crossorigin>
+<link rel="stylesheet" href="/_nuxt/default.SjyjKpXr.css" crossorigin>
+<link rel="stylesheet" href="/_nuxt/_lesson_.CSx7wQ0h.css" crossorigin>
+<link rel="stylesheet" href="/_nuxt/progress.C6uHAf2f.css" crossorigin>
+<link rel="preload" as="fetch" crossorigin="anonymous" href="/n8n/pervyj-workflow/_payload.json?26206076-2590-4c5c-9258-c5aa663463ca">
+<link rel="modulepreload" as="script" crossorigin href="/_nuxt/zDUinKHV.js">
+<link rel="modulepreload" as="script" crossorigin href="/_nuxt/N-0CS4N7.js">
+<link rel="modulepreload" as="script" crossorigin href="/_nuxt/CFwaBvxJ.js">
+<link rel="modulepreload" as="script" crossorigin href="/_nuxt/ByF0gdMt.js">
+<link rel="modulepreload" as="script" crossorigin href="/_nuxt/hlCeUU7o.js">
+<link rel="modulepreload" as="script" crossorigin href="/_nuxt/BWgjq42o.js">
+<link rel="modulepreload" as="script" crossorigin href="/_nuxt/BWXt_j16.js">
+<link rel="preload" as="fetch" fetchpriority="low" crossorigin="anonymous" href="/_nuxt/builds/meta/26206076-2590-4c5c-9258-c5aa663463ca.json">
+<script type="module" src="/_nuxt/zDUinKHV.js" crossorigin></script>
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/DSW_zuzx.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/DT9HhtpA.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/DsIVt1uA.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/Csp-tBFP.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/DVk6OOaH.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/CHzdfqXZ.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/DIqqaU9V.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/Caps8ti_.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/BzyUlbQC.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/BXZQtsXx.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/B36L_6Jz.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/CAhcvPSB.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/CzXpWGy4.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/Cdzv1Uax.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/CPV6V7rI.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/AgCg21Kl.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/CyKqWttO.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/D8zjtyMu.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/B_XUTqE2.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/Ba686JSa.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/D4aieIjQ.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/Dm8p2LOi.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/DMHLwBTJ.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/C8s7KUif.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/CfRiDiXh.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/B7QZ0aMn.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/jI-YWrlY.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/BbeGPlLB.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/DJOctqjL.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/9d2q4aVm.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/2Z7xxhpV.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/C3VDPMZ_.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/DYQ6arQ6.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/DZ8eStSX.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/BG_oW8at.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/DaidvmOk.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/B8ckyOmr.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/DeLeQ-UT.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/BHIv0wqC.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/D5D5oVOx.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/Bt6cz3lt.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/BxqhNVPf.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/CUhTwuEm.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/BDSwl5j0.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/D_XKe9Rg.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/BMPJi-It.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/_AavDVpJ.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/CaeU0bmy.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/BIZ7UryA.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/C47-WrP9.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/BzJmQasJ.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/CYvKkU_m.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/DbY9v4qN.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/CuRm5eC-.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/UBaPJKhu.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/VnvyJdvZ.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/DqMWCQpY.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/ByyKMgJd.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/DNQPp8pS.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/D_NlkyYQ.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/CfegptjQ.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/D0a5uKan.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/6t_Bp3aB.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/NvCEZsFg.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/B47Fhr10.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/CP579MFK.js">
+<meta name="theme-color" content="#3451d1">
+<meta name="format-detection" content="telephone=no">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="description" content="Какие бывают триггеры, как идёт выполнение по цепочке и что показывает n8n после запуска. Бесплатный урок курса «n8n для новичков» с практикой в браузере и ответами преподавателя-нейросети.">
+<meta name="keywords" content="n8n курс, n8n для начинающих, n8n обучение, автоматизация без программирования, n8n workflow, n8n вебхук, n8n telegram">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Урок 3. Первый workflow: триггер и шаги — курс «n8n для новичков»">
+<meta property="og:description" content="Какие бывают триггеры, как идёт выполнение по цепочке и что показывает n8n после запуска. Бесплатный урок курса «n8n для новичков» с практикой в браузере и ответами преподавателя-нейросети.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:site_name" content="Обучение работе с ИИ — gpt-chat.by">
+<meta property="og:url" content="https://lesson.gpt-chat.by/n8n/pervyj-workflow/">
+<meta name="twitter:card" content="summary">
+<link rel="canonical" href="https://lesson.gpt-chat.by/n8n/pervyj-workflow/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"LearningResource","name":"Урок 3. Первый workflow: триггер и шаги","description":"Какие бывают триггеры, как идёт выполнение по цепочке и что показывает n8n после запуска.","url":"https://lesson.gpt-chat.by/n8n/pervyj-workflow/","inLanguage":"ru","timeRequired":"PT20M","isAccessibleForFree":true,"dateModified":"2026-11-25","isPartOf":{"@type":"Course","name":"n8n для новичков","url":"https://lesson.gpt-chat.by/n8n/"},"provider":{"@type":"Organization","name":"gpt-chat.by","url":"https://gpt-chat.by/"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Курсы","item":"https://lesson.gpt-chat.by/"},{"@type":"ListItem","position":2,"name":"n8n для новичков","item":"https://lesson.gpt-chat.by/n8n/"},{"@type":"ListItem","position":3,"name":"Урок 3","item":"https://lesson.gpt-chat.by/n8n/pervyj-workflow/"}]}</script></head><body><div id="__nuxt"><div class="v-application v-theme--lessonTheme v-layout v-layout--full-height v-locale--is-ltr" style=""><div class="v-application__wrap"><!--[--><!--[--><header class="v-toolbar v-toolbar--collapse-start v-toolbar--flat v-toolbar--density-default bg-surface v-theme--lessonTheme v-locale--is-ltr v-app-bar site-header" style="top:0;z-index:1004;transform:translateY(0%);position:fixed;transition:none !important;" data-v-1683299e><!----><!--[--><div class="v-toolbar__content" style="height:64px;"><!----><!----><!--[--><div class="d-flex align-center w-100 px-3 px-md-6 ga-2 page-wrap" data-v-1683299e><a href="/" class="d-flex align-center ga-2 text-decoration-none" aria-label="Обучение — к списку курсов" data-v-1683299e><span class="brand-mark" aria-hidden="true" data-v-1683299e><i class="v-icon notranslate v-theme--lessonTheme" style="font-size:22px;height:22px;width:22px;" aria-hidden="true" data-v-1683299e><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M12 3L1 9L5 11.18V17.18L12 21L19 17.18V11.18L21 10.09V17H23V9L12 3M18.82 9L12 12.72L5.18 9L12 5.28L18.82 9M17 16L12 18.72L7 16V12.27L12 15L17 12.27V16Z"></path></svg></i></span><span class="d-flex flex-column" style="line-height:1.05;" data-v-1683299e><span class="font-display font-weight-bold text-ink" style="font-size:1.1rem;" data-v-1683299e>Обучение</span><span class="text-caption text-medium-emphasis" data-v-1683299e>от gpt-chat.by</span></span></a><nav class="d-none d-md-flex align-center ga-1 ms-6" aria-label="Курсы" data-v-1683299e><a href="/" class="v-btn v-theme--lessonTheme v-btn--density-default rounded-lg v-btn--size-default v-btn--variant-text nav-link" style="" data-v-1683299e><!--[--><span class="v-btn__overlay"></span><span class="v-btn__underlay"></span><!--]--><!----><span class="v-btn__content" data-no-activator><!--[--><!--[--> Все курсы <!--]--><!--]--></span><!----><!----></a><!--[--><!--[--><!--[--><button type="button" class="v-btn v-theme--lessonTheme v-btn--density-default rounded-lg v-btn--size-default v-btn--variant-text nav-link" style="" aria-haspopup="menu" aria-expanded="false" aria-controls="v-menu-v-0-2" aria-owns="v-menu-v-0-2" data-v-1683299e><!--[--><span class="v-btn__overlay"></span><span class="v-btn__underlay"></span><!--]--><!----><span class="v-btn__content" data-no-activator><!--[--><!--[-->Для программистов<!--]--><!--]--></span><span class="v-btn__append"><i class="v-icon notranslate v-theme--lessonTheme v-icon--size-default" style="" aria-hidden="true"><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"></path></svg></i></span><!----></button><!--]--><!----><!--]--><!--[--><!--[--><button type="button" class="v-btn v-theme--lessonTheme v-btn--density-default rounded-lg v-btn--size-default v-btn--variant-text nav-link" style="" aria-haspopup="menu" aria-expanded="false" aria-controls="v-menu-v-0-4" aria-owns="v-menu-v-0-4" data-v-1683299e><!--[--><span class="v-btn__overlay"></span><span class="v-btn__underlay"></span><!--]--><!----><span class="v-btn__content" data-no-activator><!--[--><!--[-->Автоматизация<!--]--><!--]--></span><span class="v-btn__append"><i class="v-icon notranslate v-theme--lessonTheme v-icon--size-default" style="" aria-hidden="true"><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"></path></svg></i></span><!----></button><!--]--><!----><!--]--><!--[--><!--[--><button type="button" class="v-btn v-theme--lessonTheme v-btn--density-default rounded-lg v-btn--size-default v-btn--variant-text nav-link" style="" aria-haspopup="menu" aria-expanded="false" aria-controls="v-menu-v-0-6" aria-owns="v-menu-v-0-6" data-v-1683299e><!--[--><span class="v-btn__overlay"></span><span class="v-btn__underlay"></span><!--]--><!----><span class="v-btn__content" data-no-activator><!--[--><!--[-->LLM-приложения<!--]--><!--]--></span><span class="v-btn__append"><i class="v-icon notranslate v-theme--lessonTheme v-icon--size-default" style="" aria-hidden="true"><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"></path></svg></i></span><!----></button><!--]--><!----><!--]--><!--]--></nav><div class="v-spacer" style="" data-v-1683299e></div><button type="button" class="v-btn v-theme--lessonTheme bg-primary v-btn--density-default rounded-lg v-btn--size-default v-btn--variant-flat" style="" data-v-1683299e><!--[--><span class="v-btn__overlay"></span><span class="v-btn__underlay"></span><!--]--><span class="v-btn__prepend"><i class="v-icon notranslate v-theme--lessonTheme v-icon--size-default" style="" aria-hidden="true"><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M11 7L9.6 8.4L12.2 11H2V13H12.2L9.6 15.6L11 17L16 12L11 7M20 19H12V21H20C21.1 21 22 20.1 22 19V5C22 3.9 21.1 3 20 3H12V5H20V19Z"></path></svg></i></span><span class="v-btn__content" data-no-activator><!--[--><!--[--> Войти <!--]--><!--]--></span><!----><!----></button><button type="button" class="v-btn v-btn--icon v-theme--lessonTheme v-btn--density-default rounded-lg v-btn--size-default v-btn--variant-text d-md-none v-app-bar-nav-icon" style="" aria-label="Меню" data-v-1683299e><!--[--><span class="v-btn__overlay"></span><span class="v-btn__underlay"></span><!--]--><!----><span class="v-btn__content" data-no-activator><i class="v-icon notranslate v-theme--lessonTheme v-icon--size-default" style="" aria-hidden="true"><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z"></path></svg></i></span><!----><!----></button></div><!--]--><!----></div><!--]--><!--[--><!----><!--]--></header><!--[--><nav class="v-navigation-drawer v-navigation-drawer--right v-navigation-drawer--temporary v-theme--lessonTheme v-navigation-drawer--mobile" style="right:0;z-index:1004;transform:translateX(300px);position:fixed;transition:none !important;" inert data-v-1683299e><!----><!----><div class="v-navigation-drawer__content"><!--[--><div class="v-list v-list--nav v-theme--lessonTheme bg-transparent v-list--density-comfortable v-list--one-line" style="" tabindex="0" role="list" data-v-1683299e><!--[--><a href="/" tabindex="-2" class="v-list-item v-list-item--link v-list-item--nav v-theme--lessonTheme v-list-item--density-comfortable v-list-item--one-line v-list-item--rounded v-list-item--variant-text" style="" role="link" data-v-1683299e><!--[--><span class="v-list-item__overlay"></span><span class="v-list-item__underlay"></span><!--]--><div class="v-list-item__prepend"><!--[--><!----><i class="v-icon notranslate v-theme--lessonTheme v-icon--size-default" style="" aria-hidden="true" density="comfortable"><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M3 11H11V3H3M5 5H9V9H5M13 21H21V13H13M15 15H19V19H15M3 21H11V13H3M5 15H9V19H5M13 3V11H21V3M19 9H15V5H19Z"></path></svg></i><!--]--><div class="v-list-item__spacer"></div></div><div class="v-list-item__content" data-no-activator><div class="v-list-item-title" style="">Все курсы</div><!----><!----></div><!----></a><!--[--><!--[--><div class="v-list-subheader" style="" data-v-1683299e><div class="v-list-subheader__text"><!--[-->ИИ-агент для программиста<!--]--></div></div><!--[--><a href="/klepa-v-terminale/" tabindex="-2" class="v-list-item v-list-item--link v-list-item--nav v-theme--lessonTheme v-list-item--density-comfortable v-list-item--one-line v-list-item--rounded v-list-item--variant-text" style="" role="link" data-v-1683299e><!--[--><span class="v-list-item__overlay"></span><span class="v-list-item__underlay"></span><!--]--><!----><div class="v-list-item__content" data-no-activator><div class="v-list-item-title" style="">Клёпа в терминале</div><!----><!----></div><!----></a><a href="/agent-pod-kontrolem/" tabindex="-2" class="v-list-item v-list-item--link v-list-item--nav v-theme--lessonTheme v-list-item--density-comfortable v-list-item--one-line v-list-item--rounded v-list-item--variant-text" style="" role="link" data-v-1683299e><!--[--><span class="v-list-item__overlay"></span><span class="v-list-item__underlay"></span><!--]--><!----><div class="v-list-item__content" data-no-activator><div class="v-list-item-title" style="">Агент под контролем</div><!----><!----></div><!----></a><!--]--><!--]--><!--[--><div class="v-list-subheader" style="" data-v-1683299e><div class="v-list-subheader__text"><!--[-->Автоматизация без программирования<!--]--></div></div><!--[--><a href="/n8n/" tabindex="-2" class="v-list-item v-list-item--link v-list-item--nav v-theme--lessonTheme v-list-item--density-comfortable v-list-item--one-line v-list-item--rounded v-list-item--variant-text" style="" role="link" data-v-1683299e><!--[--><span class="v-list-item__overlay"></span><span class="v-list-item__underlay"></span><!--]--><!----><div class="v-list-item__content" data-no-activator><div class="v-list-item-title" style="">n8n для новичков</div><!----><!----></div><!----></a><a href="/hermes-agent/" tabindex="-2" class="v-list-item v-list-item--link v-list-item--nav v-theme--lessonTheme v-list-item--density-comfortable v-list-item--one-line v-list-item--rounded v-list-item--variant-text" style="" role="link" data-v-1683299e><!--[--><span class="v-list-item__overlay"></span><span class="v-list-item__underlay"></span><!--]--><!----><div class="v-list-item__content" data-no-activator><div class="v-list-item-title" style="">Hermes Agent для новичков</div><!----><!----></div><!----></a><!--]--><!--]--><!--[--><div class="v-list-subheader" style="" data-v-1683299e><div class="v-list-subheader__text"><!--[-->Своё приложение с нейросетью<!--]--></div></div><!--[--><a href="/llm-workflow/" tabindex="-2" class="v-list-item v-list-item--link v-list-item--nav v-theme--lessonTheme v-list-item--density-comfortable v-list-item--one-line v-list-item--rounded v-list-item--variant-text" style="" role="link" data-v-1683299e><!--[--><span class="v-list-item__overlay"></span><span class="v-list-item__underlay"></span><!--]--><!----><div class="v-list-item__content" data-no-activator><div class="v-list-item-title" style="">Workflow для LLM-приложений</div><!----><!----></div><!----></a><!--]--><!--]--><!--]--><!--]--></div><!--]--></div><!----></nav><!----><!--]--><!--]--><main class="v-main" style="--v-layout-left:0px;--v-layout-right:0px;--v-layout-top:0px;--v-layout-bottom:0px;transition:none !important;"><!--[--><!--[--><div class="page-wrap px-4 px-md-6 py-6 py-md-8" data-v-841e5709><nav aria-label="Хлебные крошки" class="text-body-2" data-v-841e5709 data-v-8907e113><ol class="crumbs" data-v-8907e113><!--[--><li data-v-8907e113><a href="/" class="text-primary text-decoration-none" data-v-8907e113>Курсы</a></li><li data-v-8907e113><a href="/n8n/" class="text-primary text-decoration-none" data-v-8907e113>n8n для новичков</a></li><li data-v-8907e113><span class="text-medium-emphasis" aria-current="page" data-v-8907e113>Урок 3</span></li><!--]--></ol></nav><div class="lesson-layout with-side" data-v-841e5709><aside class="lesson-side d-none d-lg-block" aria-label="Уроки курса" data-v-841e5709><nav data-v-841e5709 data-v-94dac7bf><a href="/n8n/" class="nav-course" data-v-94dac7bf>n8n для новичков</a><ol class="nav-list" data-v-94dac7bf><!--[--><li data-v-94dac7bf><a href="/n8n/chto-takoe-n8n/" class="nav-item" data-v-94dac7bf><span class="nav-num" data-v-94dac7bf>1</span><span class="nav-title" data-v-94dac7bf>Что такое n8n и зачем он нужен</span><!----></a></li><li data-v-94dac7bf><a href="/n8n/interfejs-redaktora/" class="nav-item" data-v-94dac7bf><span class="nav-num" data-v-94dac7bf>2</span><span class="nav-title" data-v-94dac7bf>Интерфейс редактора</span><!----></a></li><li data-v-94dac7bf><a aria-current="page" href="/n8n/pervyj-workflow/" class="router-link-active router-link-exact-active nav-item current" data-v-94dac7bf><span class="nav-num" data-v-94dac7bf>3</span><span class="nav-title" data-v-94dac7bf>Первый workflow: триггер и шаги</span><!----></a></li><li data-v-94dac7bf><a href="/n8n/dannye-i-json/" class="nav-item" data-v-94dac7bf><span class="nav-num" data-v-94dac7bf>4</span><span class="nav-title" data-v-94dac7bf>Данные: элементы и JSON</span><!----></a></li><li data-v-94dac7bf><a href="/n8n/vyrazheniya/" class="nav-item" data-v-94dac7bf><span class="nav-num" data-v-94dac7bf>5</span><span class="nav-title" data-v-94dac7bf>Выражения: берём данные из предыдущих нод</span><i class="v-icon notranslate v-theme--lessonTheme text-medium-emphasis" style="font-size:14px;height:14px;width:14px;" aria-hidden="true" aria-label="после входа" data-v-94dac7bf><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M12,17C10.89,17 10,16.1 10,15C10,13.89 10.89,13 12,13A2,2 0 0,1 14,15A2,2 0 0,1 12,17M18,20V10H6V20H18M18,8A2,2 0 0,1 20,10V20A2,2 0 0,1 18,22H6C4.89,22 4,21.1 4,20V10C4,8.89 4.89,8 6,8H7V6A5,5 0 0,1 12,1A5,5 0 0,1 17,6V8H18M12,3A3,3 0 0,0 9,6V8H15V6A3,3 0 0,0 12,3Z"></path></svg></i></a></li><li data-v-94dac7bf><a href="/n8n/vetvlenie-if/" class="nav-item" data-v-94dac7bf><span class="nav-num" data-v-94dac7bf>6</span><span class="nav-title" data-v-94dac7bf>Ветвление: нода If</span><i class="v-icon notranslate v-theme--lessonTheme text-medium-emphasis" style="font-size:14px;height:14px;width:14px;" aria-hidden="true" aria-label="после входа" data-v-94dac7bf><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M12,17C10.89,17 10,16.1 10,15C10,13.89 10.89,13 12,13A2,2 0 0,1 14,15A2,2 0 0,1 12,17M18,20V10H6V20H18M18,8A2,2 0 0,1 20,10V20A2,2 0 0,1 18,22H6C4.89,22 4,21.1 4,20V10C4,8.89 4.89,8 6,8H7V6A5,5 0 0,1 12,1A5,5 0 0,1 17,6V8H18M12,3A3,3 0 0,0 9,6V8H15V6A3,3 0 0,0 12,3Z"></path></svg></i></a></li><li data-v-94dac7bf><a href="/n8n/http-request-i-credentials/" class="nav-item" data-v-94dac7bf><span class="nav-num" data-v-94dac7bf>7</span><span class="nav-title" data-v-94dac7bf>Внешние сервисы: HTTP Request и credentials</span><i class="v-icon notranslate v-theme--lessonTheme text-medium-emphasis" style="font-size:14px;height:14px;width:14px;" aria-hidden="true" aria-label="после входа" data-v-94dac7bf><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M12,17C10.89,17 10,16.1 10,15C10,13.89 10.89,13 12,13A2,2 0 0,1 14,15A2,2 0 0,1 12,17M18,20V10H6V20H18M18,8A2,2 0 0,1 20,10V20A2,2 0 0,1 18,22H6C4.89,22 4,21.1 4,20V10C4,8.89 4.89,8 6,8H7V6A5,5 0 0,1 12,1A5,5 0 0,1 17,6V8H18M12,3A3,3 0 0,0 9,6V8H15V6A3,3 0 0,0 12,3Z"></path></svg></i></a></li><li data-v-94dac7bf><a href="/n8n/avtozapusk/" class="nav-item" data-v-94dac7bf><span class="nav-num" data-v-94dac7bf>8</span><span class="nav-title" data-v-94dac7bf>Автозапуск: расписание, вебхуки, активация</span><i class="v-icon notranslate v-theme--lessonTheme text-medium-emphasis" style="font-size:14px;height:14px;width:14px;" aria-hidden="true" aria-label="после входа" data-v-94dac7bf><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M12,17C10.89,17 10,16.1 10,15C10,13.89 10.89,13 12,13A2,2 0 0,1 14,15A2,2 0 0,1 12,17M18,20V10H6V20H18M18,8A2,2 0 0,1 20,10V20A2,2 0 0,1 18,22H6C4.89,22 4,21.1 4,20V10C4,8.89 4.89,8 6,8H7V6A5,5 0 0,1 12,1A5,5 0 0,1 17,6V8H18M12,3A3,3 0 0,0 9,6V8H15V6A3,3 0 0,0 12,3Z"></path></svg></i></a></li><li data-v-94dac7bf><a href="/n8n/oshibki-i-otladka/" class="nav-item" data-v-94dac7bf><span class="nav-num" data-v-94dac7bf>9</span><span class="nav-title" data-v-94dac7bf>Ошибки и отладка</span><i class="v-icon notranslate v-theme--lessonTheme text-medium-emphasis" style="font-size:14px;height:14px;width:14px;" aria-hidden="true" aria-label="после входа" data-v-94dac7bf><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M12,17C10.89,17 10,16.1 10,15C10,13.89 10.89,13 12,13A2,2 0 0,1 14,15A2,2 0 0,1 12,17M18,20V10H6V20H18M18,8A2,2 0 0,1 20,10V20A2,2 0 0,1 18,22H6C4.89,22 4,21.1 4,20V10C4,8.89 4.89,8 6,8H7V6A5,5 0 0,1 12,1A5,5 0 0,1 17,6V8H18M12,3A3,3 0 0,0 9,6V8H15V6A3,3 0 0,0 12,3Z"></path></svg></i></a></li><li data-v-94dac7bf><a href="/n8n/itogovyj-proekt/" class="nav-item" data-v-94dac7bf><span class="nav-num" data-v-94dac7bf>10</span><span class="nav-title" data-v-94dac7bf>Итоговый проект: заявки с сайта</span><i class="v-icon notranslate v-theme--lessonTheme text-medium-emphasis" style="font-size:14px;height:14px;width:14px;" aria-hidden="true" aria-label="после входа" data-v-94dac7bf><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M12,17C10.89,17 10,16.1 10,15C10,13.89 10.89,13 12,13A2,2 0 0,1 14,15A2,2 0 0,1 12,17M18,20V10H6V20H18M18,8A2,2 0 0,1 20,10V20A2,2 0 0,1 18,22H6C4.89,22 4,21.1 4,20V10C4,8.89 4.89,8 6,8H7V6A5,5 0 0,1 12,1A5,5 0 0,1 17,6V8H18M12,3A3,3 0 0,0 9,6V8H15V6A3,3 0 0,0 12,3Z"></path></svg></i></a></li><!--]--></ol></nav></aside><div class="min-w-0" data-v-841e5709><header class="mb-6" data-v-841e5709><div class="text-overline text-medium-emphasis d-flex flex-wrap ga-2 align-center" style="line-height:1.6;" data-v-841e5709><span data-v-841e5709>Урок 3 из 10</span><span aria-hidden="true" data-v-841e5709>·</span><span data-v-841e5709>~20 мин</span><!----></div><h1 class="page-title mt-1" data-v-841e5709>Первый workflow: триггер и шаги</h1><p class="lead mt-2 mb-0" data-v-841e5709>Какие бывают триггеры, как идёт выполнение по цепочке и что показывает n8n после запуска.</p></header><div class="v-expansion-panels v-theme--lessonTheme v-expansion-panels--variant-accordion mb-6 d-lg-none" style="" data-v-841e5709><!--[--><div class="v-expansion-panel" style="" data-v-841e5709><div class="v-expansion-panel__shadow"></div><!--[--><!----><!----><!--[--><button class="v-expansion-panel-title" style="" type="button" aria-expanded="false" data-v-841e5709><span class="v-expansion-panel-title__overlay"></span><!--[-->Все уроки курса «n8n для новичков»<!--]--><!--[--><span class="v-expansion-panel-title__icon"><i class="v-icon notranslate v-theme--lessonTheme v-icon--size-default" style="" aria-hidden="true"><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"></path></svg></i></span><!--]--></button><div class="v-expansion-panel-text" style="display:none;" data-v-841e5709><!----></div><!--]--><!--]--></div><!--]--></div><div class="crs-n8n crs-card" data-v-841e5709><div class="col crs-body"><div class="idea"><div class="lbl">Основная идея урока</div><p>Workflow всегда начинается с <b>триггера</b> — события, которое его запускает. Дальше ноды выполняются по стрелкам одна за другой, и каждая получает данные от предыдущей. Пока вы учитесь, запускайте workflow вручную кнопкой.</p></div><h3>Виды триггеров</h3><p>Триггер отвечает на вопрос «когда?». Ответов бывает несколько, и под каждый есть своя нода. Для старта хватит пяти.</p><div class="table-wrap"><table class="cmp"><tr><th>Триггер</th><th>Когда срабатывает</th><th>Пример</th></tr><tr><td>Ручной триггер (в панели «Trigger manually»)</td><td>Когда вы нажали кнопку</td><td>Проверка workflow во время сборки</td></tr><tr><td>Schedule Trigger</td><td>По расписанию</td><td>Каждый понедельник в 9:00 собрать отчёт</td></tr><tr><td>Webhook</td><td>Когда на адрес n8n пришёл запрос</td><td>Сайт отправил заявку из формы</td></tr><tr><td>Триггеры сервисов: Gmail Trigger, Telegram Trigger… (в панели группа «On app event»)</td><td>Когда в сервисе что-то случилось</td><td>Новое письмо, новое сообщение боту</td></tr><tr><td>On form submission</td><td>Когда заполнили форму n8n</td><td>Анкета для записи на консультацию</td></tr></table></div><div class="alert idea"><div class="ic">!</div><div><b class="t">Ручной триггер — для учёбы и отладки</b><p>Ручной триггер запускается только вашей кнопкой. В реальной работе его заменяют на Schedule, Webhook или событие в приложении. Но собирать и проверять workflow удобнее всего именно с ним.</p></div></div><h3>Как проходит выполнение</h3><p>Один запуск workflow называется <b>execution</b> («выполнение»). Между нодами при этом ходят <b>элементы</b> (items) — порции данных, например одна заявка или одно письмо. Подробно разберём их в следующем уроке, а пока пройдём по шагам, что происходит после нажатия кнопки.</p><div class="steps"><ol class="st-body"><li><b>Триггер срабатывает</b> Вы нажали Execute workflow. У ручного триггера нет письма или заявки, поэтому он отдаёт один пустой элемент: это просто сигнал «старт» для следующей ноды. Триггер — единственная нода, которой на вход ничего не нужно.</li><li><b>Первый шаг получает данные</b> Нода Edit Fields получает то, что выдал триггер, добавляет свои поля (например, «тема письма» и «текст») и отдаёт результат дальше. Нода не начнёт работать, пока не закончила предыдущая.</li><li><b>Второй шаг делает действие</b> Gmail получает поля от Edit Fields и отправляет письмо. Стрелок справа нет, значит это конец цепочки.</li><li><b>Готово</b> Execution завершён. На холсте у каждой ноды появилась зелёная галочка и подпись «1 item»: нода обработала один элемент. Запись о запуске легла во вкладку Executions.</li></ol></div><div class="sim"><div class="sim-head"><span class="tag">Тренажёр</span><span class="task">Соберите workflow: ручной триггер → Edit Fields (Set) → Gmail. Затем нажмите Execute workflow и посмотрите на галочки.</span></div></div><div class="alert real"><div class="ic">!</div><div><p>Нода Gmail сразу попросит выбрать credential — доступ к вашему почтовому ящику. Без него она не выполнится. Как это устроено, разберём в уроке 7, а в тренажёре этот шаг пропущен.</p></div></div><div class="check"><div class="lbl">Проверьте себя</div><div class="q"><div class="qt">Нода Gmail стоит после Edit Fields. Когда она начнёт работать?</div><ul><li>Одновременно с триггером, сразу после кнопки</li><li>После того как Edit Fields закончила и передала данные</li><li>После того как workflow сохранён кнопкой Save</li><li>После того как в ящик пришло новое письмо</li></ul></div></div><details class="tg predict"><summary><span><b>Прогноз.</b> В цепочке триггер → A → B нода A упала с ошибкой. Что произойдёт с нодой B?</span></summary><div class="body"><p>B не выполнится. Execution остановится на A: у неё красная рамка и восклицательный знак, а всё справа останется серым. Так n8n защищает от действий на испорченных данных: лучше не отправить письмо, чем отправить пустое. Как разрешить цепочке идти дальше несмотря на ошибку, разберём в уроке 9. Если вы ответили «B выполнится с пустыми данными», запомните: по умолчанию n8n так не делает.</p></div></details><h3>Что показывает n8n после запуска</h3><ul><li><b>Зелёная галочка</b> на ноде: выполнилась без ошибок.</li><li><b>Число items</b> под нодой: сколько элементов данных она обработала. Один запуск ручного триггера даёт один элемент.</li><li><b>Красная рамка</b> с восклицательным знаком: нода упала. Выполнение останавливается на ней (урок 9).</li><li><b>Серая нода без галочки:</b> до неё выполнение не дошло.</li></ul><div class="card"><h4>Что вы теперь умеете</h4><ul><li><b>Выбирать</b> триггер под задачу: кнопка для учёбы, расписание, вебхук, событие в сервисе.</li><li><b>Читать</b> холст после запуска: галочка, число элементов, красная рамка, серая нода.</li><li><b>Выключать</b> ноду клавишей D вместо удаления, чтобы проверить цепочку без лишних действий.</li></ul><p>Вернитесь к своей рутине из урока 1. Что её запускает: время, письмо, заполненная форма или событие в сервисе? Это и есть ваш триггер. Запомните ответ: в уроке 8 вы его настроите.</p></div><details class="tg"><summary><span>Как выключить ноду, не удаляя её</span></summary><div class="body"><p>Выделите ноду и нажмите <kbd>D</kbd> (или через правую кнопку мыши — Deactivate). Нода станет полупрозрачной, и при выполнении n8n её пропустит, передав данные дальше как есть. Удобно, когда хотите проверить workflow без отправки настоящих писем: выключили Gmail, запустили, посмотрели данные, включили обратно.</p></div></details><details class="tg"><summary><span>Несколько триггеров в одном workflow</span></summary><div class="body"><p>Триггеров может быть несколько: например, Schedule Trigger для ежедневного запуска и ручной триггер для проверки. Оба ведут в одну и ту же первую ноду. В один момент срабатывает только один из них, и execution идёт от него. Пункт «Add another trigger» внизу панели нод добавляет второй триггер.</p></div></details><details class="tg"><summary><span>Заметки на холсте: Sticky Note</span></summary><div class="body"><p>В панели нод есть Sticky Note — жёлтый стикер, который кладётся на холст как подпись. Он ничего не выполняет, нужен для пояснений: «тут проверяем сумму», «не трогать, работает». Через месяц вы скажете себе спасибо.</p></div></details><div class="summary"><h3>Итог урока</h3><p><b>Главная мысль:</b> Workflow начинается с триггера. Для учёбы используйте ручной триггер, для работы — Schedule, Webhook или событие в приложении. Ноды выполняются по стрелкам по очереди, каждая получает данные от предыдущей.</p><ul><li>Один запуск = execution. У каждой ноды после него галочка и число элементов.</li><li>Ручной триггер запускается кнопкой, остальные — сами по событию.</li><li>Нода не начинает работу, пока не закончила предыдущая.</li><li>Клавиша D выключает ноду, не удаляя её.</li></ul></div><div class="quiz"><div class="lbl">Проверка знаний</div><div class="q"><div class="qt">1. Какой триггер выбрать, чтобы workflow запускался каждый день в 9 утра?</div><ul><li>Ручной триггер</li><li>Webhook Trigger</li><li>Schedule Trigger</li><li>Telegram Trigger</li></ul></div><div class="q"><div class="qt">2. Во вкладке Executions за ночь появилось 14 строк со статусом Success. Что это означает?</div><ul><li>Workflow запускался 14 раз, каждый раз до конца</li><li>В workflow 14 нод, и все они отработали</li><li>Через одну ноду за ночь прошло 14 элементов данных</li><li>Workflow сохраняли 14 раз за ночь</li></ul></div><div class="q"><div class="qt">3. Что означает подпись «1 item» под нодой после запуска?</div><ul><li>Нода выполнилась с одной ошибкой внутри</li><li>Нода обработала один элемент данных</li><li>У ноды заполнен только один параметр</li><li>Нода выполнилась первой во всей цепочке</li></ul></div><div class="q"><div class="qt">4. Нужно проверить workflow, не отправляя настоящее письмо через Gmail. Что сделать?</div><ul><li>Удалить ноду Gmail и добавить потом заново</li><li>Выключить ноду Gmail клавишей D и запустить</li><li>Заменить ручной триггер на Webhook Trigger</li><li>Нажать Execute step только у ноды триггера</li></ul></div><div class="q"><div class="qt">5. В цепочке триггер → A → B → C упала нода B. У каких нод будет зелёная галочка?</div><ul><li>Только у триггера и A</li><li>У триггера, A и B</li><li>У всех, кроме C</li><li>Ни у кого: галочки снимаются</li></ul></div><div class="q"><div class="qt">6. Повторение. На холсте Webhook → Edit Fields → Telegram. Какая часть этой картинки называется workflow?</div><ul><li>Только первая нода Webhook</li><li>Все три ноды вместе со стрелками</li><li>Только стрелки между нодами, по ним идут данные</li><li>Только последняя нода Telegram</li></ul></div><div class="q"><div class="qt">7. Повторение. Вы настраиваете ноду Gmail и хотите увидеть, что она выдаст, не запуская всю цепочку заново. Какую кнопку нажать?</div><ul><li>Execute step в окне ноды Gmail</li><li>Execute workflow на холсте внизу</li><li>Save вверху редактора</li><li>Listen for test event</li></ul></div></div></div></div><section class="lesson-after mt-8" data-v-841e5709><div class="ask-invite" data-v-841e5709><i class="v-icon notranslate v-theme--lessonTheme text-primary" style="font-size:28px;height:28px;width:28px;" aria-hidden="true" data-v-841e5709><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M20 2H4C2.9 2 2 2.9 2 4V22L6 18H20C21.1 18 22 17.1 22 16V4C22 2.9 21.1 2 20 2M20 16H5.2L4 17.2V4H20V16M12.2 5.5C11.3 5.5 10.6 5.7 10.1 6C9.5 6.4 9.2 7 9.3 7.7H11.3C11.3 7.4 11.4 7.2 11.6 7.1C11.8 7 12 6.9 12.3 6.9C12.6 6.9 12.9 7 13.1 7.2C13.3 7.4 13.4 7.6 13.4 7.9C13.4 8.2 13.3 8.4 13.2 8.6C13 8.8 12.8 9 12.6 9.1C12.1 9.4 11.7 9.7 11.5 9.9C11.1 10.2 11 10.5 11 11H13C13 10.7 13.1 10.5 13.1 10.3C13.2 10.1 13.4 10 13.6 9.8C14.1 9.6 14.4 9.3 14.7 8.9C15 8.5 15.1 8.1 15.1 7.7C15.1 7 14.8 6.4 14.3 6C13.9 5.7 13.1 5.5 12.2 5.5M11 12V14H13V12H11Z"></path></svg></i><div class="min-w-0 flex-grow-1" data-v-841e5709><div class="font-weight-bold" data-v-841e5709> Что-то осталось непонятным? </div><div class="text-body-2 text-medium-emphasis" data-v-841e5709> Спросите преподавателя-нейросеть: он читает этот урок и отвечает по нему простыми словами. </div></div><button type="button" class="v-btn v-theme--lessonTheme bg-primary v-btn--density-default rounded-lg v-btn--size-default v-btn--variant-flat" style="" data-v-841e5709><!--[--><span class="v-btn__overlay"></span><span class="v-btn__underlay"></span><!--]--><!----><span class="v-btn__content" data-no-activator><!--[--><!--[--> Задать вопрос <!--]--><!--]--></span><!----><!----></button></div><nav class="pager" aria-label="Переход между уроками" data-v-841e5709><a href="/n8n/interfejs-redaktora/" class="v-btn v-theme--lessonTheme v-btn--density-default rounded-lg v-btn--size-large v-btn--variant-outlined btn-wrap pager-btn" style="" data-v-841e5709><!--[--><span class="v-btn__overlay"></span><span class="v-btn__underlay"></span><!--]--><span class="v-btn__prepend"><i class="v-icon notranslate v-theme--lessonTheme v-icon--size-default" style="" aria-hidden="true"><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z"></path></svg></i></span><span class="v-btn__content" data-no-activator><!--[--><!--[--><span class="d-flex flex-column align-start text-left" data-v-841e5709><small class="text-medium-emphasis" data-v-841e5709>Назад</small>Урок 2. Интерфейс редактора</span><!--]--><!--]--></span><!----><!----></a><a href="/n8n/dannye-i-json/" class="v-btn v-theme--lessonTheme bg-primary v-btn--density-default rounded-lg v-btn--size-large v-btn--variant-flat btn-wrap pager-btn" style="" data-v-841e5709><!--[--><span class="v-btn__overlay"></span><span class="v-btn__underlay"></span><!--]--><!----><span class="v-btn__content" data-no-activator><!--[--><!--[--><span class="d-flex flex-column align-start text-left" data-v-841e5709><small style="opacity:0.8;" data-v-841e5709>Дальше</small>Урок 4. Данные: элементы и JSON</span><!--]--><!--]--></span><span class="v-btn__append"><i class="v-icon notranslate v-theme--lessonTheme v-icon--size-default" style="" aria-hidden="true"><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z"></path></svg></i></span><!----></a></nav><aside class="lesson-promo" aria-label="Где применить урок" data-v-841e5709 data-v-d391e6cf><div class="min-w-0" data-v-d391e6cf><div class="text-overline text-medium-emphasis" style="line-height:1.4;" data-v-d391e6cf> Где применить </div><div class="font-display font-weight-bold mb-1" data-v-d391e6cf>Нейросеть в вашем workflow</div><p class="text-body-2 mb-0 text-medium-emphasis" data-v-d391e6cf>В n8n модель подключается нодой OpenAI или HTTP Request. Ключ gpt-chat.by подходит: формат OpenAI, GPT, Claude, Gemini и DeepSeek одним ключом, оплата в BYN.</p></div><div class="d-flex flex-wrap ga-2 promo-actions" data-v-d391e6cf><!--[--><a href="https://gpt-chat.by/doc-api/" class="v-btn v-theme--lessonTheme text-primary v-btn--density-default rounded-lg v-btn--size-small v-btn--variant-tonal" style="" data-v-d391e6cf><!--[--><span class="v-btn__overlay"></span><span class="v-btn__underlay"></span><!--]--><!----><span class="v-btn__content" data-no-activator><!--[--><!--[-->Как подключить API<!--]--><!--]--></span><span class="v-btn__append"><i class="v-icon notranslate v-theme--lessonTheme v-icon--size-default" style="" aria-hidden="true"><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M5,17.59L15.59,7H9V5H19V15H17V8.41L6.41,19L5,17.59Z"></path></svg></i></span><!----></a><a href="https://gpt-chat.by/chat/" class="v-btn v-theme--lessonTheme v-btn--density-default rounded-lg v-btn--size-small v-btn--variant-text" style="" data-v-d391e6cf><!--[--><span class="v-btn__overlay"></span><span class="v-btn__underlay"></span><!--]--><!----><span class="v-btn__content" data-no-activator><!--[--><!--[-->Попробовать модели в чате<!--]--><!--]--></span><span class="v-btn__append"><i class="v-icon notranslate v-theme--lessonTheme v-icon--size-default" style="" aria-hidden="true"><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M5,17.59L15.59,7H9V5H19V15H17V8.41L6.41,19L5,17.59Z"></path></svg></i></span><!----></a><!--]--></div></aside></section></div></div><span data-v-841e5709 data-v-b8cf27a9></span></div><!--]--><!--]--></main><footer class="v-footer v-theme--lessonTheme bg-footer-bg d-block pt-10 pb-8" style="height:auto;" data-v-2893ecfe><div class="px-4 px-md-6 page-wrap" data-v-2893ecfe><div class="v-row" style="" data-v-2893ecfe><div class="v-col-md-4 v-col-12" style="" data-v-2893ecfe><div class="font-display font-weight-bold text-white mb-3" style="font-size:1.1rem;" data-v-2893ecfe> Обучение работе с ИИ </div><p class="text-body-2 mb-0" style="color:rgba(255, 255, 255, 0.72);" data-v-2893ecfe> Бесплатные курсы по нейросетям и ИИ-агентам с тренажёрами прямо в браузере. Первые уроки — без входа, остальные — после бесплатного входа через Google или Telegram. Аккаунт и баланс общие с gpt-chat.by. </p></div><div class="v-col-sm-6 v-col-md-3 v-col-12" style="" data-v-2893ecfe><div class="footer-heading" data-v-2893ecfe> Курсы </div><!--[--><a href="/klepa-v-terminale/" class="footer-link d-block" data-v-2893ecfe>Клёпа в терминале</a><a href="/agent-pod-kontrolem/" class="footer-link d-block" data-v-2893ecfe>Агент под контролем</a><a href="/n8n/" class="footer-link d-block" data-v-2893ecfe>n8n для новичков</a><a href="/hermes-agent/" class="footer-link d-block" data-v-2893ecfe>Hermes Agent для новичков</a><a href="/llm-workflow/" class="footer-link d-block" data-v-2893ecfe>Workflow для LLM-приложений</a><!--]--></div><div class="v-col-md-3 v-col-6" style="" data-v-2893ecfe><div class="footer-heading" data-v-2893ecfe> Наши продукты </div><!--[--><a href="https://gpt-chat.by/" class="footer-link d-block" data-v-2893ecfe>Чат gpt-chat.by <span class="footer-hint" data-v-2893ecfe>— Все нейросети в одном чате</span></a><a href="https://klepa.gpt-chat.by/" class="footer-link d-block" data-v-2893ecfe>Клёпа <span class="footer-hint" data-v-2893ecfe>— ИИ-агент для кода</span></a><a href="https://video-studio.gpt-chat.by/" class="footer-link d-block" data-v-2893ecfe>Видеостудия <span class="footer-hint" data-v-2893ecfe>— Видео нейросетью</span></a><a href="https://music.gpt-chat.by/" class="footer-link d-block" data-v-2893ecfe>Музыка <span class="footer-hint" data-v-2893ecfe>— Песни нейросетью</span></a><a href="https://logo.gpt-chat.by/" class="footer-link d-block" data-v-2893ecfe>Логотипы <span class="footer-hint" data-v-2893ecfe>— Логотип с ИИ</span></a><!--]--></div><div class="v-col-md-2 v-col-6" style="" data-v-2893ecfe><div class="footer-heading" data-v-2893ecfe> Помощь </div><!--[--><a href="https://gpt-chat.by/pricing/" class="footer-link d-block" data-v-2893ecfe>Тарифы и цены</a><a href="https://gpt-chat.by/doc-api/" class="footer-link d-block" data-v-2893ecfe>API для разработчиков</a><a href="https://gpt-chat.by/offer/" class="footer-link d-block" data-v-2893ecfe>Публичная оферта</a><a href="https://gpt-chat.by/privacy-policy/" class="footer-link d-block" data-v-2893ecfe>Политика конфиденциальности</a><!--]--></div></div><hr class="v-divider v-theme--lessonTheme text-white my-6" style="border-style:solid;" aria-orientation="horizontal" role="separator" data-v-2893ecfe><p class="text-body-2 mb-0" style="color:rgba(255, 255, 255, 0.6);" data-v-2893ecfe> © 2026 gpt-chat.by · Вопросы преподавателю-нейросети оплачиваются с баланса в BYN, курсы бесплатные. </p></div></footer><!--[--><!----><!----><!--]--><!--]--></div></div></div><div id="teleports"></div><script>window.__NUXT__={};window.__NUXT__.config={public:{siteUrl:"https://lesson.gpt-chat.by",apiBase:"https://api.gpt-chat.by/api"},app:{baseURL:"/",buildId:"26206076-2590-4c5c-9258-c5aa663463ca",buildAssetsDir:"/_nuxt/",cdnURL:""}}</script>
+<script type="application/json" data-nuxt-data="nuxt-app" data-ssr="true" id="__NUXT_DATA__" data-src="/n8n/pervyj-workflow/_payload.json?26206076-2590-4c5c-9258-c5aa663463ca">[{"state":1,"once":6,"_errors":7,"serverRendered":9,"path":10,"prerenderedAt":11},["Reactive",2],{"$slesson-token":3,"$slesson-refresh":3,"$slesson-balance":4,"$slesson-top-up-open":5,"$slesson-top-up-shortfall":4,"$shydrated":5},"",null,false,["Set"],["ShallowReactive",8],{"lesson-outline-n8n-pervyj-workflow":4,"lesson-body-n8n-pervyj-workflow":4},true,"/n8n/pervyj-workflow/",1795601792097]</script></body></html>

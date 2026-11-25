@@ -1,2 +1,7 @@
 User-agent: *
 Allow: /
+Disallow: /auth/
+Disallow: /payment-success/
+Disallow: /payment-cancel/
+
+Sitemap: https://lesson.gpt-chat.by/sitemap.xml

@@ -1,0 +1,497 @@
+<!DOCTYPE html><html  lang="ru"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Клёпа в терминале — бесплатный курс по Klepa CLI: ИИ-агент для кода в терминале</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&family=Inter:wght@400;500;600&display=swap">
+<style id="vuetify-theme-stylesheet">:root {
+      --v-theme-background: 245,247,251;
+      --v-theme-background-overlay-multiplier: 1;
+      --v-theme-surface: 255,255,255;
+      --v-theme-surface-overlay-multiplier: 1;
+      --v-theme-surface-bright: 255,255,255;
+      --v-theme-surface-bright-overlay-multiplier: 1;
+      --v-theme-surface-light: 238,241,248;
+      --v-theme-surface-light-overlay-multiplier: 1;
+      --v-theme-surface-variant: 66,66,66;
+      --v-theme-surface-variant-overlay-multiplier: 2;
+      --v-theme-on-surface-variant: 238,238,238;
+      --v-theme-primary: 52,81,209;
+      --v-theme-primary-overlay-multiplier: 2;
+      --v-theme-primary-darken-1: 42,66,176;
+      --v-theme-primary-darken-1-overlay-multiplier: 2;
+      --v-theme-secondary: 15,163,163;
+      --v-theme-secondary-overlay-multiplier: 1;
+      --v-theme-secondary-darken-1: 1,135,134;
+      --v-theme-secondary-darken-1-overlay-multiplier: 1;
+      --v-theme-error: 208,54,79;
+      --v-theme-error-overlay-multiplier: 2;
+      --v-theme-info: 37,99,235;
+      --v-theme-info-overlay-multiplier: 2;
+      --v-theme-success: 22,163,74;
+      --v-theme-success-overlay-multiplier: 1;
+      --v-theme-warning: 217,119,6;
+      --v-theme-warning-overlay-multiplier: 1;
+      --v-theme-ink: 23,32,58;
+      --v-theme-ink-overlay-multiplier: 2;
+      --v-theme-footer-bg: 18,26,51;
+      --v-theme-footer-bg-overlay-multiplier: 2;
+      --v-theme-on-background: 0,0,0;
+      --v-theme-on-surface: 0,0,0;
+      --v-theme-on-surface-bright: 0,0,0;
+      --v-theme-on-surface-light: 0,0,0;
+      --v-theme-on-primary: 255,255,255;
+      --v-theme-on-primary-darken-1: 255,255,255;
+      --v-theme-on-secondary: 255,255,255;
+      --v-theme-on-secondary-darken-1: 255,255,255;
+      --v-theme-on-error: 255,255,255;
+      --v-theme-on-info: 255,255,255;
+      --v-theme-on-success: 255,255,255;
+      --v-theme-on-warning: 255,255,255;
+      --v-theme-on-ink: 255,255,255;
+      --v-theme-on-footer-bg: 255,255,255;
+      --v-border-color: 0, 0, 0;
+      --v-border-opacity: 0.12;
+      --v-high-emphasis-opacity: 0.87;
+      --v-medium-emphasis-opacity: 0.6;
+      --v-disabled-opacity: 0.38;
+      --v-idle-opacity: 0.04;
+      --v-hover-opacity: 0.04;
+      --v-focus-opacity: 0.12;
+      --v-selected-opacity: 0.08;
+      --v-activated-opacity: 0.12;
+      --v-pressed-opacity: 0.12;
+      --v-dragged-opacity: 0.08;
+      --v-theme-kbd: 238, 238, 238;
+      --v-theme-on-kbd: 0, 0, 0;
+      --v-theme-code: 245, 245, 245;
+      --v-theme-on-code: 0, 0, 0;
+    }
+    .v-theme--light {
+      color-scheme: normal;
+      --v-theme-background: 255,255,255;
+      --v-theme-background-overlay-multiplier: 1;
+      --v-theme-surface: 255,255,255;
+      --v-theme-surface-overlay-multiplier: 1;
+      --v-theme-surface-bright: 255,255,255;
+      --v-theme-surface-bright-overlay-multiplier: 1;
+      --v-theme-surface-light: 238,238,238;
+      --v-theme-surface-light-overlay-multiplier: 1;
+      --v-theme-surface-variant: 66,66,66;
+      --v-theme-surface-variant-overlay-multiplier: 2;
+      --v-theme-on-surface-variant: 238,238,238;
+      --v-theme-primary: 24,103,192;
+      --v-theme-primary-overlay-multiplier: 2;
+      --v-theme-primary-darken-1: 31,85,146;
+      --v-theme-primary-darken-1-overlay-multiplier: 2;
+      --v-theme-secondary: 72,169,166;
+      --v-theme-secondary-overlay-multiplier: 1;
+      --v-theme-secondary-darken-1: 1,135,134;
+      --v-theme-secondary-darken-1-overlay-multiplier: 1;
+      --v-theme-error: 176,0,32;
+      --v-theme-error-overlay-multiplier: 2;
+      --v-theme-info: 33,150,243;
+      --v-theme-info-overlay-multiplier: 1;
+      --v-theme-success: 76,175,80;
+      --v-theme-success-overlay-multiplier: 1;
+      --v-theme-warning: 251,140,0;
+      --v-theme-warning-overlay-multiplier: 1;
+      --v-theme-on-background: 0,0,0;
+      --v-theme-on-surface: 0,0,0;
+      --v-theme-on-surface-bright: 0,0,0;
+      --v-theme-on-surface-light: 0,0,0;
+      --v-theme-on-primary: 255,255,255;
+      --v-theme-on-primary-darken-1: 255,255,255;
+      --v-theme-on-secondary: 255,255,255;
+      --v-theme-on-secondary-darken-1: 255,255,255;
+      --v-theme-on-error: 255,255,255;
+      --v-theme-on-info: 255,255,255;
+      --v-theme-on-success: 255,255,255;
+      --v-theme-on-warning: 255,255,255;
+      --v-border-color: 0, 0, 0;
+      --v-border-opacity: 0.12;
+      --v-high-emphasis-opacity: 0.87;
+      --v-medium-emphasis-opacity: 0.6;
+      --v-disabled-opacity: 0.38;
+      --v-idle-opacity: 0.04;
+      --v-hover-opacity: 0.04;
+      --v-focus-opacity: 0.12;
+      --v-selected-opacity: 0.08;
+      --v-activated-opacity: 0.12;
+      --v-pressed-opacity: 0.12;
+      --v-dragged-opacity: 0.08;
+      --v-theme-kbd: 238, 238, 238;
+      --v-theme-on-kbd: 0, 0, 0;
+      --v-theme-code: 245, 245, 245;
+      --v-theme-on-code: 0, 0, 0;
+    }
+    .v-theme--dark {
+      color-scheme: dark;
+      --v-theme-background: 18,18,18;
+      --v-theme-background-overlay-multiplier: 1;
+      --v-theme-surface: 33,33,33;
+      --v-theme-surface-overlay-multiplier: 1;
+      --v-theme-surface-bright: 204,191,214;
+      --v-theme-surface-bright-overlay-multiplier: 2;
+      --v-theme-surface-light: 66,66,66;
+      --v-theme-surface-light-overlay-multiplier: 1;
+      --v-theme-surface-variant: 200,200,200;
+      --v-theme-surface-variant-overlay-multiplier: 2;
+      --v-theme-on-surface-variant: 0,0,0;
+      --v-theme-primary: 33,150,243;
+      --v-theme-primary-overlay-multiplier: 2;
+      --v-theme-primary-darken-1: 39,124,193;
+      --v-theme-primary-darken-1-overlay-multiplier: 2;
+      --v-theme-secondary: 84,182,178;
+      --v-theme-secondary-overlay-multiplier: 2;
+      --v-theme-secondary-darken-1: 72,169,166;
+      --v-theme-secondary-darken-1-overlay-multiplier: 2;
+      --v-theme-error: 207,102,121;
+      --v-theme-error-overlay-multiplier: 2;
+      --v-theme-info: 33,150,243;
+      --v-theme-info-overlay-multiplier: 2;
+      --v-theme-success: 76,175,80;
+      --v-theme-success-overlay-multiplier: 2;
+      --v-theme-warning: 251,140,0;
+      --v-theme-warning-overlay-multiplier: 2;
+      --v-theme-on-background: 255,255,255;
+      --v-theme-on-surface: 255,255,255;
+      --v-theme-on-surface-bright: 0,0,0;
+      --v-theme-on-surface-light: 255,255,255;
+      --v-theme-on-primary: 255,255,255;
+      --v-theme-on-primary-darken-1: 255,255,255;
+      --v-theme-on-secondary: 255,255,255;
+      --v-theme-on-secondary-darken-1: 255,255,255;
+      --v-theme-on-error: 255,255,255;
+      --v-theme-on-info: 255,255,255;
+      --v-theme-on-success: 255,255,255;
+      --v-theme-on-warning: 255,255,255;
+      --v-border-color: 255, 255, 255;
+      --v-border-opacity: 0.12;
+      --v-high-emphasis-opacity: 1;
+      --v-medium-emphasis-opacity: 0.7;
+      --v-disabled-opacity: 0.5;
+      --v-idle-opacity: 0.1;
+      --v-hover-opacity: 0.04;
+      --v-focus-opacity: 0.12;
+      --v-selected-opacity: 0.08;
+      --v-activated-opacity: 0.12;
+      --v-pressed-opacity: 0.16;
+      --v-dragged-opacity: 0.08;
+      --v-theme-kbd: 66, 66, 66;
+      --v-theme-on-kbd: 255, 255, 255;
+      --v-theme-code: 52, 52, 52;
+      --v-theme-on-code: 204, 204, 204;
+    }
+    .v-theme--lessonTheme {
+      color-scheme: normal;
+      --v-theme-background: 245,247,251;
+      --v-theme-background-overlay-multiplier: 1;
+      --v-theme-surface: 255,255,255;
+      --v-theme-surface-overlay-multiplier: 1;
+      --v-theme-surface-bright: 255,255,255;
+      --v-theme-surface-bright-overlay-multiplier: 1;
+      --v-theme-surface-light: 238,241,248;
+      --v-theme-surface-light-overlay-multiplier: 1;
+      --v-theme-surface-variant: 66,66,66;
+      --v-theme-surface-variant-overlay-multiplier: 2;
+      --v-theme-on-surface-variant: 238,238,238;
+      --v-theme-primary: 52,81,209;
+      --v-theme-primary-overlay-multiplier: 2;
+      --v-theme-primary-darken-1: 42,66,176;
+      --v-theme-primary-darken-1-overlay-multiplier: 2;
+      --v-theme-secondary: 15,163,163;
+      --v-theme-secondary-overlay-multiplier: 1;
+      --v-theme-secondary-darken-1: 1,135,134;
+      --v-theme-secondary-darken-1-overlay-multiplier: 1;
+      --v-theme-error: 208,54,79;
+      --v-theme-error-overlay-multiplier: 2;
+      --v-theme-info: 37,99,235;
+      --v-theme-info-overlay-multiplier: 2;
+      --v-theme-success: 22,163,74;
+      --v-theme-success-overlay-multiplier: 1;
+      --v-theme-warning: 217,119,6;
+      --v-theme-warning-overlay-multiplier: 1;
+      --v-theme-ink: 23,32,58;
+      --v-theme-ink-overlay-multiplier: 2;
+      --v-theme-footer-bg: 18,26,51;
+      --v-theme-footer-bg-overlay-multiplier: 2;
+      --v-theme-on-background: 0,0,0;
+      --v-theme-on-surface: 0,0,0;
+      --v-theme-on-surface-bright: 0,0,0;
+      --v-theme-on-surface-light: 0,0,0;
+      --v-theme-on-primary: 255,255,255;
+      --v-theme-on-primary-darken-1: 255,255,255;
+      --v-theme-on-secondary: 255,255,255;
+      --v-theme-on-secondary-darken-1: 255,255,255;
+      --v-theme-on-error: 255,255,255;
+      --v-theme-on-info: 255,255,255;
+      --v-theme-on-success: 255,255,255;
+      --v-theme-on-warning: 255,255,255;
+      --v-theme-on-ink: 255,255,255;
+      --v-theme-on-footer-bg: 255,255,255;
+      --v-border-color: 0, 0, 0;
+      --v-border-opacity: 0.12;
+      --v-high-emphasis-opacity: 0.87;
+      --v-medium-emphasis-opacity: 0.6;
+      --v-disabled-opacity: 0.38;
+      --v-idle-opacity: 0.04;
+      --v-hover-opacity: 0.04;
+      --v-focus-opacity: 0.12;
+      --v-selected-opacity: 0.08;
+      --v-activated-opacity: 0.12;
+      --v-pressed-opacity: 0.12;
+      --v-dragged-opacity: 0.08;
+      --v-theme-kbd: 238, 238, 238;
+      --v-theme-on-kbd: 0, 0, 0;
+      --v-theme-code: 245, 245, 245;
+      --v-theme-on-code: 0, 0, 0;
+    }
+    .bg-background {
+      --v-theme-overlay-multiplier: var(--v-theme-background-overlay-multiplier);
+      background-color: rgb(var(--v-theme-background)) !important;
+      color: rgb(var(--v-theme-on-background)) !important;
+    }
+    .bg-surface {
+      --v-theme-overlay-multiplier: var(--v-theme-surface-overlay-multiplier);
+      background-color: rgb(var(--v-theme-surface)) !important;
+      color: rgb(var(--v-theme-on-surface)) !important;
+    }
+    .bg-surface-bright {
+      --v-theme-overlay-multiplier: var(--v-theme-surface-bright-overlay-multiplier);
+      background-color: rgb(var(--v-theme-surface-bright)) !important;
+      color: rgb(var(--v-theme-on-surface-bright)) !important;
+    }
+    .bg-surface-light {
+      --v-theme-overlay-multiplier: var(--v-theme-surface-light-overlay-multiplier);
+      background-color: rgb(var(--v-theme-surface-light)) !important;
+      color: rgb(var(--v-theme-on-surface-light)) !important;
+    }
+    .bg-surface-variant {
+      --v-theme-overlay-multiplier: var(--v-theme-surface-variant-overlay-multiplier);
+      background-color: rgb(var(--v-theme-surface-variant)) !important;
+      color: rgb(var(--v-theme-on-surface-variant)) !important;
+    }
+    .bg-primary {
+      --v-theme-overlay-multiplier: var(--v-theme-primary-overlay-multiplier);
+      background-color: rgb(var(--v-theme-primary)) !important;
+      color: rgb(var(--v-theme-on-primary)) !important;
+    }
+    .bg-primary-darken-1 {
+      --v-theme-overlay-multiplier: var(--v-theme-primary-darken-1-overlay-multiplier);
+      background-color: rgb(var(--v-theme-primary-darken-1)) !important;
+      color: rgb(var(--v-theme-on-primary-darken-1)) !important;
+    }
+    .bg-secondary {
+      --v-theme-overlay-multiplier: var(--v-theme-secondary-overlay-multiplier);
+      background-color: rgb(var(--v-theme-secondary)) !important;
+      color: rgb(var(--v-theme-on-secondary)) !important;
+    }
+    .bg-secondary-darken-1 {
+      --v-theme-overlay-multiplier: var(--v-theme-secondary-darken-1-overlay-multiplier);
+      background-color: rgb(var(--v-theme-secondary-darken-1)) !important;
+      color: rgb(var(--v-theme-on-secondary-darken-1)) !important;
+    }
+    .bg-error {
+      --v-theme-overlay-multiplier: var(--v-theme-error-overlay-multiplier);
+      background-color: rgb(var(--v-theme-error)) !important;
+      color: rgb(var(--v-theme-on-error)) !important;
+    }
+    .bg-info {
+      --v-theme-overlay-multiplier: var(--v-theme-info-overlay-multiplier);
+      background-color: rgb(var(--v-theme-info)) !important;
+      color: rgb(var(--v-theme-on-info)) !important;
+    }
+    .bg-success {
+      --v-theme-overlay-multiplier: var(--v-theme-success-overlay-multiplier);
+      background-color: rgb(var(--v-theme-success)) !important;
+      color: rgb(var(--v-theme-on-success)) !important;
+    }
+    .bg-warning {
+      --v-theme-overlay-multiplier: var(--v-theme-warning-overlay-multiplier);
+      background-color: rgb(var(--v-theme-warning)) !important;
+      color: rgb(var(--v-theme-on-warning)) !important;
+    }
+    .bg-ink {
+      --v-theme-overlay-multiplier: var(--v-theme-ink-overlay-multiplier);
+      background-color: rgb(var(--v-theme-ink)) !important;
+      color: rgb(var(--v-theme-on-ink)) !important;
+    }
+    .bg-footer-bg {
+      --v-theme-overlay-multiplier: var(--v-theme-footer-bg-overlay-multiplier);
+      background-color: rgb(var(--v-theme-footer-bg)) !important;
+      color: rgb(var(--v-theme-on-footer-bg)) !important;
+    }
+    .text-background {
+      color: rgb(var(--v-theme-background)) !important;
+    }
+    .border-background {
+      --v-border-color: var(--v-theme-background);
+    }
+    .text-surface {
+      color: rgb(var(--v-theme-surface)) !important;
+    }
+    .border-surface {
+      --v-border-color: var(--v-theme-surface);
+    }
+    .text-surface-bright {
+      color: rgb(var(--v-theme-surface-bright)) !important;
+    }
+    .border-surface-bright {
+      --v-border-color: var(--v-theme-surface-bright);
+    }
+    .text-surface-light {
+      color: rgb(var(--v-theme-surface-light)) !important;
+    }
+    .border-surface-light {
+      --v-border-color: var(--v-theme-surface-light);
+    }
+    .text-surface-variant {
+      color: rgb(var(--v-theme-surface-variant)) !important;
+    }
+    .border-surface-variant {
+      --v-border-color: var(--v-theme-surface-variant);
+    }
+    .on-surface-variant {
+      color: rgb(var(--v-theme-on-surface-variant)) !important;
+    }
+    .text-primary {
+      color: rgb(var(--v-theme-primary)) !important;
+    }
+    .border-primary {
+      --v-border-color: var(--v-theme-primary);
+    }
+    .text-primary-darken-1 {
+      color: rgb(var(--v-theme-primary-darken-1)) !important;
+    }
+    .border-primary-darken-1 {
+      --v-border-color: var(--v-theme-primary-darken-1);
+    }
+    .text-secondary {
+      color: rgb(var(--v-theme-secondary)) !important;
+    }
+    .border-secondary {
+      --v-border-color: var(--v-theme-secondary);
+    }
+    .text-secondary-darken-1 {
+      color: rgb(var(--v-theme-secondary-darken-1)) !important;
+    }
+    .border-secondary-darken-1 {
+      --v-border-color: var(--v-theme-secondary-darken-1);
+    }
+    .text-error {
+      color: rgb(var(--v-theme-error)) !important;
+    }
+    .border-error {
+      --v-border-color: var(--v-theme-error);
+    }
+    .text-info {
+      color: rgb(var(--v-theme-info)) !important;
+    }
+    .border-info {
+      --v-border-color: var(--v-theme-info);
+    }
+    .text-success {
+      color: rgb(var(--v-theme-success)) !important;
+    }
+    .border-success {
+      --v-border-color: var(--v-theme-success);
+    }
+    .text-warning {
+      color: rgb(var(--v-theme-warning)) !important;
+    }
+    .border-warning {
+      --v-border-color: var(--v-theme-warning);
+    }
+    .on-background {
+      color: rgb(var(--v-theme-on-background)) !important;
+    }
+    .on-surface {
+      color: rgb(var(--v-theme-on-surface)) !important;
+    }
+    .on-surface-bright {
+      color: rgb(var(--v-theme-on-surface-bright)) !important;
+    }
+    .on-surface-light {
+      color: rgb(var(--v-theme-on-surface-light)) !important;
+    }
+    .on-primary {
+      color: rgb(var(--v-theme-on-primary)) !important;
+    }
+    .on-primary-darken-1 {
+      color: rgb(var(--v-theme-on-primary-darken-1)) !important;
+    }
+    .on-secondary {
+      color: rgb(var(--v-theme-on-secondary)) !important;
+    }
+    .on-secondary-darken-1 {
+      color: rgb(var(--v-theme-on-secondary-darken-1)) !important;
+    }
+    .on-error {
+      color: rgb(var(--v-theme-on-error)) !important;
+    }
+    .on-info {
+      color: rgb(var(--v-theme-on-info)) !important;
+    }
+    .on-success {
+      color: rgb(var(--v-theme-on-success)) !important;
+    }
+    .on-warning {
+      color: rgb(var(--v-theme-on-warning)) !important;
+    }
+    .text-ink {
+      color: rgb(var(--v-theme-ink)) !important;
+    }
+    .border-ink {
+      --v-border-color: var(--v-theme-ink);
+    }
+    .text-footer-bg {
+      color: rgb(var(--v-theme-footer-bg)) !important;
+    }
+    .border-footer-bg {
+      --v-border-color: var(--v-theme-footer-bg);
+    }
+    .on-ink {
+      color: rgb(var(--v-theme-on-ink)) !important;
+    }
+    .on-footer-bg {
+      color: rgb(var(--v-theme-on-footer-bg)) !important;
+    }
+</style>
+<link rel="stylesheet" href="/_nuxt/entry.f0D0bLXn.css" crossorigin>
+<link rel="stylesheet" href="/_nuxt/default.SjyjKpXr.css" crossorigin>
+<link rel="stylesheet" href="/_nuxt/_course_.CEScRWzI.css" crossorigin>
+<link rel="stylesheet" href="/_nuxt/progress.C6uHAf2f.css" crossorigin>
+<link rel="stylesheet" href="/_nuxt/CourseCard.d-UE4ssO.css" crossorigin>
+<link rel="preload" as="fetch" crossorigin="anonymous" href="/klepa-v-terminale/_payload.json?26206076-2590-4c5c-9258-c5aa663463ca">
+<link rel="modulepreload" as="script" crossorigin href="/_nuxt/zDUinKHV.js">
+<link rel="modulepreload" as="script" crossorigin href="/_nuxt/N-0CS4N7.js">
+<link rel="modulepreload" as="script" crossorigin href="/_nuxt/CFwaBvxJ.js">
+<link rel="modulepreload" as="script" crossorigin href="/_nuxt/ByF0gdMt.js">
+<link rel="modulepreload" as="script" crossorigin href="/_nuxt/B4Mp1_4P.js">
+<link rel="modulepreload" as="script" crossorigin href="/_nuxt/BWgjq42o.js">
+<link rel="modulepreload" as="script" crossorigin href="/_nuxt/Br5ADzVl.js">
+<link rel="modulepreload" as="script" crossorigin href="/_nuxt/BWXt_j16.js">
+<link rel="preload" as="fetch" fetchpriority="low" crossorigin="anonymous" href="/_nuxt/builds/meta/26206076-2590-4c5c-9258-c5aa663463ca.json">
+<script type="module" src="/_nuxt/zDUinKHV.js" crossorigin></script>
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/B47Fhr10.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/NvCEZsFg.js">
+<meta name="theme-color" content="#3451d1">
+<meta name="format-detection" content="telephone=no">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="description" content="Бесплатный курс по Klepa CLI — ИИ-агенту для кода в терминале. Девять коротких уроков: запуск, режимы, разрешения, откат правок, диалоги, AGENTS.md, выбор модели и klepa run.">
+<meta name="keywords" content="курс klepa cli, как пользоваться klepa cli, ии агент в терминале курс, нейросеть в терминале, AGENTS.md, klepa run">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Клёпа в терминале — бесплатный курс по Klepa CLI: ИИ-агент для кода в терминале">
+<meta property="og:description" content="Бесплатный курс по Klepa CLI — ИИ-агенту для кода в терминале. Девять коротких уроков: запуск, режимы, разрешения, откат правок, диалоги, AGENTS.md, выбор модели и klepa run.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:site_name" content="Обучение работе с ИИ — gpt-chat.by">
+<meta property="og:url" content="https://lesson.gpt-chat.by/klepa-v-terminale/">
+<meta name="twitter:card" content="summary">
+<link rel="canonical" href="https://lesson.gpt-chat.by/klepa-v-terminale/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Course","name":"Клёпа в терминале","description":"Бесплатный курс по Klepa CLI — ИИ-агенту для кода в терминале. Девять коротких уроков: запуск, режимы, разрешения, откат правок, диалоги, AGENTS.md, выбор модели и klepa run.","url":"https://lesson.gpt-chat.by/klepa-v-terminale/","inLanguage":"ru","isAccessibleForFree":true,"educationalLevel":"Beginner","provider":{"@type":"Organization","name":"gpt-chat.by","url":"https://gpt-chat.by/"},"offers":{"@type":"Offer","price":0,"priceCurrency":"BYN","category":"Free"},"hasCourseInstance":{"@type":"CourseInstance","courseMode":"online","courseWorkload":"PT2H"},"hasPart":[{"@type":"LearningResource","name":"Урок 1. Первый запуск","url":"https://lesson.gpt-chat.by/klepa-v-terminale/zapusk/"},{"@type":"LearningResource","name":"Урок 2. Режимы","url":"https://lesson.gpt-chat.by/klepa-v-terminale/rezhimy/"},{"@type":"LearningResource","name":"Урок 3. Разрешения","url":"https://lesson.gpt-chat.by/klepa-v-terminale/razresheniya/"},{"@type":"LearningResource","name":"Урок 4. Файл и команда в сообщении","url":"https://lesson.gpt-chat.by/klepa-v-terminale/kontekst/"},{"@type":"LearningResource","name":"Урок 5. Откат правок","url":"https://lesson.gpt-chat.by/klepa-v-terminale/otkat/"},{"@type":"LearningResource","name":"Урок 6. Диалоги","url":"https://lesson.gpt-chat.by/klepa-v-terminale/dialogi/"},{"@type":"LearningResource","name":"Урок 7. Правила проекта","url":"https://lesson.gpt-chat.by/klepa-v-terminale/pravila-proekta/"},{"@type":"LearningResource","name":"Урок 8. Модели и расход","url":"https://lesson.gpt-chat.by/klepa-v-terminale/modeli-i-rashod/"},{"@type":"LearningResource","name":"Урок 9. Задача без окна","url":"https://lesson.gpt-chat.by/klepa-v-terminale/klepa-run/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Курсы","item":"https://lesson.gpt-chat.by/"},{"@type":"ListItem","position":2,"name":"Клёпа в терминале","item":"https://lesson.gpt-chat.by/klepa-v-terminale/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Для кого этот курс?","acceptedAnswer":{"@type":"Answer","text":"Для тех, кто пишет код и умеет открыть терминал, но ещё не работал с ИИ-агентом в командной строке или пробовал без системы. Знать устройство нейросетей не нужно."}},{"@type":"Question","name":"Нужно ли пополнять баланс для практики?","acceptedAnswer":{"@type":"Answer","text":"Не обязательно. У бесплатной модели «Klepa Free» есть дневной лимит запросов: его хватает на первую ступень практики каждого урока. Чтобы пройти урок целиком за один раз, удобнее недорогая модель: учебные задачи стоят считаные копейки."}},{"@type":"Question","name":"Чем этот курс отличается от курса «Агент под контролем»?","acceptedAnswer":{"@type":"Answer","text":"Этот курс про кнопки и команды: как пользоваться Клёпой в терминале каждый день. «Агент под контролем» объясняет, как агент устроен внутри и как готовить для него проект."}},{"@type":"Question","name":"Сколько стоит курс?","acceptedAnswer":{"@type":"Answer","text":"Курс бесплатный. Первые 3 урока открыты всем, остальные — после бесплатного входа через Google или Telegram. Платно только по желанию: ответы преподавателя-нейросети списываются с баланса gpt-chat.by по факту, цена каждого ответа видна под ним."}},{"@type":"Question","name":"Где хранится прогресс?","acceptedAnswer":{"@type":"Answer","text":"Отметки, ответы тестов и заметки хранятся в вашем браузере. На другом устройстве прогресс начнётся заново."}}]}</script></head><body><div id="__nuxt"><div class="v-application v-theme--lessonTheme v-layout v-layout--full-height v-locale--is-ltr" style=""><div class="v-application__wrap"><!--[--><!--[--><header class="v-toolbar v-toolbar--collapse-start v-toolbar--flat v-toolbar--density-default bg-surface v-theme--lessonTheme v-locale--is-ltr v-app-bar site-header" style="top:0;z-index:1004;transform:translateY(0%);position:fixed;transition:none !important;" data-v-1683299e><!----><!--[--><div class="v-toolbar__content" style="height:64px;"><!----><!----><!--[--><div class="d-flex align-center w-100 px-3 px-md-6 ga-2 page-wrap" data-v-1683299e><a href="/" class="d-flex align-center ga-2 text-decoration-none" aria-label="Обучение — к списку курсов" data-v-1683299e><span class="brand-mark" aria-hidden="true" data-v-1683299e><i class="v-icon notranslate v-theme--lessonTheme" style="font-size:22px;height:22px;width:22px;" aria-hidden="true" data-v-1683299e><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M12 3L1 9L5 11.18V17.18L12 21L19 17.18V11.18L21 10.09V17H23V9L12 3M18.82 9L12 12.72L5.18 9L12 5.28L18.82 9M17 16L12 18.72L7 16V12.27L12 15L17 12.27V16Z"></path></svg></i></span><span class="d-flex flex-column" style="line-height:1.05;" data-v-1683299e><span class="font-display font-weight-bold text-ink" style="font-size:1.1rem;" data-v-1683299e>Обучение</span><span class="text-caption text-medium-emphasis" data-v-1683299e>от gpt-chat.by</span></span></a><nav class="d-none d-md-flex align-center ga-1 ms-6" aria-label="Курсы" data-v-1683299e><a href="/" class="v-btn v-theme--lessonTheme v-btn--density-default rounded-lg v-btn--size-default v-btn--variant-text nav-link" style="" data-v-1683299e><!--[--><span class="v-btn__overlay"></span><span class="v-btn__underlay"></span><!--]--><!----><span class="v-btn__content" data-no-activator><!--[--><!--[--> Все курсы <!--]--><!--]--></span><!----><!----></a><!--[--><!--[--><!--[--><button type="button" class="v-btn v-theme--lessonTheme v-btn--density-default rounded-lg v-btn--size-default v-btn--variant-text nav-link" style="" aria-haspopup="menu" aria-expanded="false" aria-controls="v-menu-v-0-2" aria-owns="v-menu-v-0-2" data-v-1683299e><!--[--><span class="v-btn__overlay"></span><span class="v-btn__underlay"></span><!--]--><!----><span class="v-btn__content" data-no-activator><!--[--><!--[-->Для программистов<!--]--><!--]--></span><span class="v-btn__append"><i class="v-icon notranslate v-theme--lessonTheme v-icon--size-default" style="" aria-hidden="true"><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"></path></svg></i></span><!----></button><!--]--><!----><!--]--><!--[--><!--[--><button type="button" class="v-btn v-theme--lessonTheme v-btn--density-default rounded-lg v-btn--size-default v-btn--variant-text nav-link" style="" aria-haspopup="menu" aria-expanded="false" aria-controls="v-menu-v-0-4" aria-owns="v-menu-v-0-4" data-v-1683299e><!--[--><span class="v-btn__overlay"></span><span class="v-btn__underlay"></span><!--]--><!----><span class="v-btn__content" data-no-activator><!--[--><!--[-->Автоматизация<!--]--><!--]--></span><span class="v-btn__append"><i class="v-icon notranslate v-theme--lessonTheme v-icon--size-default" style="" aria-hidden="true"><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"></path></svg></i></span><!----></button><!--]--><!----><!--]--><!--[--><!--[--><button type="button" class="v-btn v-theme--lessonTheme v-btn--density-default rounded-lg v-btn--size-default v-btn--variant-text nav-link" style="" aria-haspopup="menu" aria-expanded="false" aria-controls="v-menu-v-0-6" aria-owns="v-menu-v-0-6" data-v-1683299e><!--[--><span class="v-btn__overlay"></span><span class="v-btn__underlay"></span><!--]--><!----><span class="v-btn__content" data-no-activator><!--[--><!--[-->LLM-приложения<!--]--><!--]--></span><span class="v-btn__append"><i class="v-icon notranslate v-theme--lessonTheme v-icon--size-default" style="" aria-hidden="true"><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"></path></svg></i></span><!----></button><!--]--><!----><!--]--><!--]--></nav><div class="v-spacer" style="" data-v-1683299e></div><button type="button" class="v-btn v-theme--lessonTheme bg-primary v-btn--density-default rounded-lg v-btn--size-default v-btn--variant-flat" style="" data-v-1683299e><!--[--><span class="v-btn__overlay"></span><span class="v-btn__underlay"></span><!--]--><span class="v-btn__prepend"><i class="v-icon notranslate v-theme--lessonTheme v-icon--size-default" style="" aria-hidden="true"><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M11 7L9.6 8.4L12.2 11H2V13H12.2L9.6 15.6L11 17L16 12L11 7M20 19H12V21H20C21.1 21 22 20.1 22 19V5C22 3.9 21.1 3 20 3H12V5H20V19Z"></path></svg></i></span><span class="v-btn__content" data-no-activator><!--[--><!--[--> Войти <!--]--><!--]--></span><!----><!----></button><button type="button" class="v-btn v-btn--icon v-theme--lessonTheme v-btn--density-default rounded-lg v-btn--size-default v-btn--variant-text d-md-none v-app-bar-nav-icon" style="" aria-label="Меню" data-v-1683299e><!--[--><span class="v-btn__overlay"></span><span class="v-btn__underlay"></span><!--]--><!----><span class="v-btn__content" data-no-activator><i class="v-icon notranslate v-theme--lessonTheme v-icon--size-default" style="" aria-hidden="true"><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z"></path></svg></i></span><!----><!----></button></div><!--]--><!----></div><!--]--><!--[--><!----><!--]--></header><!--[--><nav class="v-navigation-drawer v-navigation-drawer--right v-navigation-drawer--temporary v-theme--lessonTheme v-navigation-drawer--mobile" style="right:0;z-index:1004;transform:translateX(300px);position:fixed;transition:none !important;" inert data-v-1683299e><!----><!----><div class="v-navigation-drawer__content"><!--[--><div class="v-list v-list--nav v-theme--lessonTheme bg-transparent v-list--density-comfortable v-list--one-line" style="" tabindex="0" role="list" data-v-1683299e><!--[--><a href="/" tabindex="-2" class="v-list-item v-list-item--link v-list-item--nav v-theme--lessonTheme v-list-item--density-comfortable v-list-item--one-line v-list-item--rounded v-list-item--variant-text" style="" role="link" data-v-1683299e><!--[--><span class="v-list-item__overlay"></span><span class="v-list-item__underlay"></span><!--]--><div class="v-list-item__prepend"><!--[--><!----><i class="v-icon notranslate v-theme--lessonTheme v-icon--size-default" style="" aria-hidden="true" density="comfortable"><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M3 11H11V3H3M5 5H9V9H5M13 21H21V13H13M15 15H19V19H15M3 21H11V13H3M5 15H9V19H5M13 3V11H21V3M19 9H15V5H19Z"></path></svg></i><!--]--><div class="v-list-item__spacer"></div></div><div class="v-list-item__content" data-no-activator><div class="v-list-item-title" style="">Все курсы</div><!----><!----></div><!----></a><!--[--><!--[--><div class="v-list-subheader" style="" data-v-1683299e><div class="v-list-subheader__text"><!--[-->ИИ-агент для программиста<!--]--></div></div><!--[--><a href="/klepa-v-terminale/" aria-current="page" tabindex="-2" class="v-list-item v-list-item--active v-list-item--link v-list-item--nav v-theme--lessonTheme v-list-item--density-comfortable v-list-item--one-line v-list-item--rounded v-list-item--variant-text" style="" role="link" data-v-1683299e><!--[--><span class="v-list-item__overlay"></span><span class="v-list-item__underlay"></span><!--]--><!----><div class="v-list-item__content" data-no-activator><div class="v-list-item-title" style="">Клёпа в терминале</div><!----><!----></div><!----></a><a href="/agent-pod-kontrolem/" tabindex="-2" class="v-list-item v-list-item--link v-list-item--nav v-theme--lessonTheme v-list-item--density-comfortable v-list-item--one-line v-list-item--rounded v-list-item--variant-text" style="" role="link" data-v-1683299e><!--[--><span class="v-list-item__overlay"></span><span class="v-list-item__underlay"></span><!--]--><!----><div class="v-list-item__content" data-no-activator><div class="v-list-item-title" style="">Агент под контролем</div><!----><!----></div><!----></a><!--]--><!--]--><!--[--><div class="v-list-subheader" style="" data-v-1683299e><div class="v-list-subheader__text"><!--[-->Автоматизация без программирования<!--]--></div></div><!--[--><a href="/n8n/" tabindex="-2" class="v-list-item v-list-item--link v-list-item--nav v-theme--lessonTheme v-list-item--density-comfortable v-list-item--one-line v-list-item--rounded v-list-item--variant-text" style="" role="link" data-v-1683299e><!--[--><span class="v-list-item__overlay"></span><span class="v-list-item__underlay"></span><!--]--><!----><div class="v-list-item__content" data-no-activator><div class="v-list-item-title" style="">n8n для новичков</div><!----><!----></div><!----></a><a href="/hermes-agent/" tabindex="-2" class="v-list-item v-list-item--link v-list-item--nav v-theme--lessonTheme v-list-item--density-comfortable v-list-item--one-line v-list-item--rounded v-list-item--variant-text" style="" role="link" data-v-1683299e><!--[--><span class="v-list-item__overlay"></span><span class="v-list-item__underlay"></span><!--]--><!----><div class="v-list-item__content" data-no-activator><div class="v-list-item-title" style="">Hermes Agent для новичков</div><!----><!----></div><!----></a><!--]--><!--]--><!--[--><div class="v-list-subheader" style="" data-v-1683299e><div class="v-list-subheader__text"><!--[-->Своё приложение с нейросетью<!--]--></div></div><!--[--><a href="/llm-workflow/" tabindex="-2" class="v-list-item v-list-item--link v-list-item--nav v-theme--lessonTheme v-list-item--density-comfortable v-list-item--one-line v-list-item--rounded v-list-item--variant-text" style="" role="link" data-v-1683299e><!--[--><span class="v-list-item__overlay"></span><span class="v-list-item__underlay"></span><!--]--><!----><div class="v-list-item__content" data-no-activator><div class="v-list-item-title" style="">Workflow для LLM-приложений</div><!----><!----></div><!----></a><!--]--><!--]--><!--]--><!--]--></div><!--]--></div><!----></nav><!----><!--]--><!--]--><main class="v-main" style="--v-layout-left:0px;--v-layout-right:0px;--v-layout-top:0px;--v-layout-bottom:0px;transition:none !important;"><!--[--><!--[--><div data-v-18965f25><section class="course-hero" data-v-18965f25><div class="page-wrap px-4 px-md-6 py-8 py-md-12" data-v-18965f25><nav aria-label="Хлебные крошки" class="text-body-2" data-v-18965f25 data-v-8907e113><ol class="crumbs" data-v-8907e113><!--[--><li data-v-8907e113><a href="/" class="text-primary text-decoration-none" data-v-8907e113>Курсы</a></li><li data-v-8907e113><span class="text-medium-emphasis" aria-current="page" data-v-8907e113>Клёпа в терминале</span></li><!--]--></ol></nav><div class="d-flex flex-wrap ga-2 mt-4 mb-3" data-v-18965f25><span class="v-chip v-theme--lessonTheme bg-primary v-chip--density-default rounded-lg v-chip--size-small v-chip--variant-flat" style="" draggable="false" data-v-18965f25><!--[--><!----><span class="v-chip__underlay"></span><!--]--><!----><!----><div class="v-chip__content" data-no-activator><!--[--> Бесплатно <!--]--></div><!----><!----></span><span class="v-chip v-theme--lessonTheme v-chip--density-default rounded-lg v-chip--size-small v-chip--variant-tonal" style="" draggable="false" data-v-18965f25><!--[--><!----><span class="v-chip__underlay"></span><!--]--><!----><!----><div class="v-chip__content" data-no-activator><!--[-->С нуля<!--]--></div><!----><!----></span><span class="v-chip v-theme--lessonTheme v-chip--density-default rounded-lg v-chip--size-small v-chip--variant-tonal" style="" draggable="false" data-v-18965f25><!--[--><!----><span class="v-chip__underlay"></span><!--]--><!----><div class="v-chip__prepend"><!--[--><i class="v-icon notranslate v-theme--lessonTheme v-icon--size-default v-icon--start" style="" aria-hidden="true"><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M19 1L14 6V17L19 12.5V1M21 5V18.5C19.9 18.15 18.7 18 17.5 18C15.8 18 13.35 18.65 12 19.5V6C10.55 4.9 8.45 4.5 6.5 4.5C4.55 4.5 2.45 4.9 1 6V20.65C1 20.9 1.25 21.15 1.5 21.15C1.6 21.15 1.65 21.1 1.75 21.1C3.1 20.45 5.05 20 6.5 20C8.45 20 10.55 20.4 12 21.5C13.35 20.65 15.8 20 17.5 20C19.15 20 20.85 20.3 22.25 21.05C22.35 21.1 22.4 21.1 22.5 21.1C22.75 21.1 23 20.85 23 20.6V6C22.4 5.55 21.75 5.25 21 5M10 18.41C8.75 18.09 7.5 18 6.5 18C5.44 18 4.18 18.19 3 18.5V7.13C3.91 6.73 5.14 6.5 6.5 6.5C7.86 6.5 9.09 6.73 10 7.13V18.41Z"></path></svg></i><!----><!--]--></div><div class="v-chip__content" data-no-activator><!--[-->9 уроков<!--]--></div><!----><!----></span><span class="v-chip v-theme--lessonTheme v-chip--density-default rounded-lg v-chip--size-small v-chip--variant-tonal" style="" draggable="false" data-v-18965f25><!--[--><!----><span class="v-chip__underlay"></span><!--]--><!----><div class="v-chip__prepend"><!--[--><i class="v-icon notranslate v-theme--lessonTheme v-icon--size-default v-icon--start" style="" aria-hidden="true"><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22C6.47,22 2,17.5 2,12A10,10 0 0,1 12,2M12.5,7V12.25L17,14.92L16.25,16.15L11,13V7H12.5Z"></path></svg></i><!----><!--]--></div><div class="v-chip__content" data-no-activator><!--[-->1 ч 52 мин<!--]--></div><!----><!----></span></div><h1 class="page-title" data-v-18965f25>Клёпа в терминале: курс по Klepa CLI с нуля</h1><p class="lead mt-4" style="max-width:760px;" data-v-18965f25>Клёпа — ИИ-агент для кода в командной строке. Курс учит работать с ней уверенно: дать задачу, проверить результат, откатить лишнее и не потратить больше, чем нужно. Один урок — одна вещь и 10–15 минут вместе с практикой в своём терминале.</p><div class="d-flex flex-wrap ga-3 mt-6" data-v-18965f25><a href="/klepa-v-terminale/zapusk/" class="v-btn v-theme--lessonTheme bg-primary v-btn--density-default rounded-lg v-btn--size-large v-btn--variant-flat" style="" data-v-18965f25><!--[--><span class="v-btn__overlay"></span><span class="v-btn__underlay"></span><!--]--><!----><span class="v-btn__content" data-no-activator><!--[--><!--[-->Начать с урока 1<!--]--><!--]--></span><span class="v-btn__append"><i class="v-icon notranslate v-theme--lessonTheme v-icon--size-default" style="" aria-hidden="true"><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z"></path></svg></i></span><!----></a><a href="#programma" class="v-btn v-theme--lessonTheme v-btn--density-default rounded-lg v-btn--size-large v-btn--variant-outlined" style="" data-v-18965f25><!--[--><span class="v-btn__overlay"></span><span class="v-btn__underlay"></span><!--]--><!----><span class="v-btn__content" data-no-activator><!--[--><!--[--> Программа курса <!--]--><!--]--></span><!----><!----></a></div><p class="text-body-2 text-medium-emphasis mt-4 mb-0" data-v-18965f25>Тем, кто пишет код и умеет открыть терминал. Первые 3 урока — без входа, остальные — после бесплатного входа через Google или Telegram. </p></div></section><div class="page-wrap px-4 px-md-6 py-10 d-grid ga-12 sections" data-v-18965f25><section aria-labelledby="how-title" data-v-18965f25><h2 id="how-title" class="section-title mb-5" data-v-18965f25> Как устроен урок </h2><ol class="how" data-v-18965f25><!--[--><li data-v-18965f25><span class="how-num" data-v-18965f25>1</span><b data-v-18965f25>Проблема</b><span class="text-medium-emphasis" data-v-18965f25>Ситуация, где без этой вещи больно</span></li><li data-v-18965f25><span class="how-num" data-v-18965f25>2</span><b data-v-18965f25>Что это</b><span class="text-medium-emphasis" data-v-18965f25>Что делает, чего не делает и образ из жизни</span></li><li data-v-18965f25><span class="how-num" data-v-18965f25>3</span><b data-v-18965f25>Как работает</b><span class="text-medium-emphasis" data-v-18965f25>Сначала ваш прогноз, потом факт и ловушка</span></li><li data-v-18965f25><span class="how-num" data-v-18965f25>4</span><b data-v-18965f25>Проверка</b><span class="text-medium-emphasis" data-v-18965f25>Вопросы с разбором каждого ответа</span></li><li data-v-18965f25><span class="how-num" data-v-18965f25>5</span><b data-v-18965f25>Практика</b><span class="text-medium-emphasis" data-v-18965f25>Три ступени в своём терминале и «сломайте»</span></li><li data-v-18965f25><span class="how-num" data-v-18965f25>6</span><b data-v-18965f25>Итог</b><span class="text-medium-emphasis" data-v-18965f25>Главное правило и перенос на свою задачу</span></li><!--]--></ol><div class="ask-note mt-5" data-v-18965f25><i class="v-icon notranslate v-theme--lessonTheme v-icon--size-default text-primary" style="" aria-hidden="true" data-v-18965f25><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M20 2H4C2.9 2 2 2.9 2 4V22L6 18H20C21.1 18 22 17.1 22 16V4C22 2.9 21.1 2 20 2M20 16H5.2L4 17.2V4H20V16M12.2 5.5C11.3 5.5 10.6 5.7 10.1 6C9.5 6.4 9.2 7 9.3 7.7H11.3C11.3 7.4 11.4 7.2 11.6 7.1C11.8 7 12 6.9 12.3 6.9C12.6 6.9 12.9 7 13.1 7.2C13.3 7.4 13.4 7.6 13.4 7.9C13.4 8.2 13.3 8.4 13.2 8.6C13 8.8 12.8 9 12.6 9.1C12.1 9.4 11.7 9.7 11.5 9.9C11.1 10.2 11 10.5 11 11H13C13 10.7 13.1 10.5 13.1 10.3C13.2 10.1 13.4 10 13.6 9.8C14.1 9.6 14.4 9.3 14.7 8.9C15 8.5 15.1 8.1 15.1 7.7C15.1 7 14.8 6.4 14.3 6C13.9 5.7 13.1 5.5 12.2 5.5M11 12V14H13V12H11Z"></path></svg></i><span data-v-18965f25>В каждом уроке есть <b data-v-18965f25>преподаватель-нейросеть</b>: он читает урок вместе с вами и отвечает на вопросы по нему.</span></div></section><section aria-labelledby="need-title" data-v-18965f25><h2 id="need-title" class="section-title mb-5" data-v-18965f25> Что понадобится </h2><ul class="needs" data-v-18965f25><!--[--><li data-v-18965f25>Компьютер с Linux, macOS или Windows 10 и новее. Клёпу ставим в первом уроке, права администратора не нужны.</li><li data-v-18965f25>Node.js 20 или новее — только чтобы запускать тест учебного примера. Сам пример — два файла по пять строк.</li><li data-v-18965f25>Аккаунт Клёпы: вход через Telegram или Google. Есть бесплатная модель с дневным лимитом запросов.</li><li data-v-18965f25>Своя задача. В первом уроке вы назовёте одну задачу из своего проекта и будете примерять к ней каждый урок.</li><!--]--></ul></section><section id="programma" aria-labelledby="map-title" data-v-18965f25><div class="d-flex flex-wrap align-end justify-space-between ga-3 mb-5" data-v-18965f25><h2 id="map-title" class="section-title" data-v-18965f25> Программа курса </h2><span data-v-18965f25></span></div><!--[--><div class="mb-8" data-v-18965f25><div class="mb-3" data-v-18965f25><div class="text-overline text-medium-emphasis" style="line-height:1.4;" data-v-18965f25> Часть 1</div><h3 class="text-h6 font-display font-weight-bold" data-v-18965f25>Начало</h3><p class="text-body-2 text-medium-emphasis mb-0" data-v-18965f25>Запустить Клёпу в проекте и выбрать, что ей можно.</p></div><div class="lesson-cards" data-v-18965f25><!--[--><a href="/klepa-v-terminale/zapusk/" class="lesson-card" data-v-18965f25><span class="lesson-num" data-v-18965f25>01</span><span class="min-w-0" data-v-18965f25><span class="lesson-title" data-v-18965f25>Первый запуск</span><span class="lesson-sub" data-v-18965f25>команда klepa в папке проекта</span><span class="lesson-meta" data-v-18965f25><span data-v-18965f25>~15 мин</span><span class="text-success" data-v-18965f25>открыт всем</span></span></span><span data-v-18965f25></span></a><a href="/klepa-v-terminale/rezhimy/" class="lesson-card" data-v-18965f25><span class="lesson-num" data-v-18965f25>02</span><span class="min-w-0" data-v-18965f25><span class="lesson-title" data-v-18965f25>Режимы</span><span class="lesson-sub" data-v-18965f25>Код, План, Вопросы и Отладка</span><span class="lesson-meta" data-v-18965f25><span data-v-18965f25>~12 мин</span><span class="text-success" data-v-18965f25>открыт всем</span></span></span><span data-v-18965f25></span></a><!--]--></div></div><div class="mb-8" data-v-18965f25><div class="mb-3" data-v-18965f25><div class="text-overline text-medium-emphasis" style="line-height:1.4;" data-v-18965f25> Часть 2</div><h3 class="text-h6 font-display font-weight-bold" data-v-18965f25>Контроль</h3><p class="text-body-2 text-medium-emphasis mb-0" data-v-18965f25>Разрешения, точные указания и откат правок.</p></div><div class="lesson-cards" data-v-18965f25><!--[--><a href="/klepa-v-terminale/razresheniya/" class="lesson-card" data-v-18965f25><span class="lesson-num" data-v-18965f25>03</span><span class="min-w-0" data-v-18965f25><span class="lesson-title" data-v-18965f25>Разрешения</span><span class="lesson-sub" data-v-18965f25>что Клёпа делает сама, а о чём спрашивает</span><span class="lesson-meta" data-v-18965f25><span data-v-18965f25>~12 мин</span><span class="text-success" data-v-18965f25>открыт всем</span></span></span><span data-v-18965f25></span></a><a href="/klepa-v-terminale/kontekst/" class="lesson-card" data-v-18965f25><span class="lesson-num" data-v-18965f25>04</span><span class="min-w-0" data-v-18965f25><span class="lesson-title" data-v-18965f25>Файл и команда в сообщении</span><span class="lesson-sub" data-v-18965f25>знаки @ и !</span><span class="lesson-meta" data-v-18965f25><span data-v-18965f25>~10 мин</span><span class="d-inline-flex align-center ga-1" data-v-18965f25><i class="v-icon notranslate v-theme--lessonTheme" style="font-size:13px;height:13px;width:13px;" aria-hidden="true" data-v-18965f25><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M12,17C10.89,17 10,16.1 10,15C10,13.89 10.89,13 12,13A2,2 0 0,1 14,15A2,2 0 0,1 12,17M18,20V10H6V20H18M18,8A2,2 0 0,1 20,10V20A2,2 0 0,1 18,22H6C4.89,22 4,21.1 4,20V10C4,8.89 4.89,8 6,8H7V6A5,5 0 0,1 12,1A5,5 0 0,1 17,6V8H18M12,3A3,3 0 0,0 9,6V8H15V6A3,3 0 0,0 12,3Z"></path></svg></i>после входа</span></span></span><span data-v-18965f25></span></a><a href="/klepa-v-terminale/otkat/" class="lesson-card" data-v-18965f25><span class="lesson-num" data-v-18965f25>05</span><span class="min-w-0" data-v-18965f25><span class="lesson-title" data-v-18965f25>Откат правок</span><span class="lesson-sub" data-v-18965f25>команды /undo, /redo и /diff</span><span class="lesson-meta" data-v-18965f25><span data-v-18965f25>~12 мин</span><span class="d-inline-flex align-center ga-1" data-v-18965f25><i class="v-icon notranslate v-theme--lessonTheme" style="font-size:13px;height:13px;width:13px;" aria-hidden="true" data-v-18965f25><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M12,17C10.89,17 10,16.1 10,15C10,13.89 10.89,13 12,13A2,2 0 0,1 14,15A2,2 0 0,1 12,17M18,20V10H6V20H18M18,8A2,2 0 0,1 20,10V20A2,2 0 0,1 18,22H6C4.89,22 4,21.1 4,20V10C4,8.89 4.89,8 6,8H7V6A5,5 0 0,1 12,1A5,5 0 0,1 17,6V8H18M12,3A3,3 0 0,0 9,6V8H15V6A3,3 0 0,0 12,3Z"></path></svg></i>после входа</span></span></span><span data-v-18965f25></span></a><!--]--></div></div><div class="mb-8" data-v-18965f25><div class="mb-3" data-v-18965f25><div class="text-overline text-medium-emphasis" style="line-height:1.4;" data-v-18965f25> Часть 3</div><h3 class="text-h6 font-display font-weight-bold" data-v-18965f25>Память</h3><p class="text-body-2 text-medium-emphasis mb-0" data-v-18965f25>Что Клёпа помнит в диалоге и что знает о проекте заранее.</p></div><div class="lesson-cards" data-v-18965f25><!--[--><a href="/klepa-v-terminale/dialogi/" class="lesson-card" data-v-18965f25><span class="lesson-num" data-v-18965f25>06</span><span class="min-w-0" data-v-18965f25><span class="lesson-title" data-v-18965f25>Диалоги</span><span class="lesson-sub" data-v-18965f25>команды /new, /sessions, /compact и klepa -c</span><span class="lesson-meta" data-v-18965f25><span data-v-18965f25>~12 мин</span><span class="d-inline-flex align-center ga-1" data-v-18965f25><i class="v-icon notranslate v-theme--lessonTheme" style="font-size:13px;height:13px;width:13px;" aria-hidden="true" data-v-18965f25><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M12,17C10.89,17 10,16.1 10,15C10,13.89 10.89,13 12,13A2,2 0 0,1 14,15A2,2 0 0,1 12,17M18,20V10H6V20H18M18,8A2,2 0 0,1 20,10V20A2,2 0 0,1 18,22H6C4.89,22 4,21.1 4,20V10C4,8.89 4.89,8 6,8H7V6A5,5 0 0,1 12,1A5,5 0 0,1 17,6V8H18M12,3A3,3 0 0,0 9,6V8H15V6A3,3 0 0,0 12,3Z"></path></svg></i>после входа</span></span></span><span data-v-18965f25></span></a><a href="/klepa-v-terminale/pravila-proekta/" class="lesson-card" data-v-18965f25><span class="lesson-num" data-v-18965f25>07</span><span class="min-w-0" data-v-18965f25><span class="lesson-title" data-v-18965f25>Правила проекта</span><span class="lesson-sub" data-v-18965f25>файл AGENTS.md и команда /init</span><span class="lesson-meta" data-v-18965f25><span data-v-18965f25>~12 мин</span><span class="d-inline-flex align-center ga-1" data-v-18965f25><i class="v-icon notranslate v-theme--lessonTheme" style="font-size:13px;height:13px;width:13px;" aria-hidden="true" data-v-18965f25><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M12,17C10.89,17 10,16.1 10,15C10,13.89 10.89,13 12,13A2,2 0 0,1 14,15A2,2 0 0,1 12,17M18,20V10H6V20H18M18,8A2,2 0 0,1 20,10V20A2,2 0 0,1 18,22H6C4.89,22 4,21.1 4,20V10C4,8.89 4.89,8 6,8H7V6A5,5 0 0,1 12,1A5,5 0 0,1 17,6V8H18M12,3A3,3 0 0,0 9,6V8H15V6A3,3 0 0,0 12,3Z"></path></svg></i>после входа</span></span></span><span data-v-18965f25></span></a><!--]--></div></div><div class="mb-8" data-v-18965f25><div class="mb-3" data-v-18965f25><div class="text-overline text-medium-emphasis" style="line-height:1.4;" data-v-18965f25> Часть 4</div><h3 class="text-h6 font-display font-weight-bold" data-v-18965f25>Деньги и автоматика</h3><p class="text-body-2 text-medium-emphasis mb-0" data-v-18965f25>Выбор модели, расход и задачи из скриптов.</p></div><div class="lesson-cards" data-v-18965f25><!--[--><a href="/klepa-v-terminale/modeli-i-rashod/" class="lesson-card" data-v-18965f25><span class="lesson-num" data-v-18965f25>08</span><span class="min-w-0" data-v-18965f25><span class="lesson-title" data-v-18965f25>Модели и расход</span><span class="lesson-sub" data-v-18965f25>команды /models, klepa models и klepa stats</span><span class="lesson-meta" data-v-18965f25><span data-v-18965f25>~12 мин</span><span class="d-inline-flex align-center ga-1" data-v-18965f25><i class="v-icon notranslate v-theme--lessonTheme" style="font-size:13px;height:13px;width:13px;" aria-hidden="true" data-v-18965f25><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M12,17C10.89,17 10,16.1 10,15C10,13.89 10.89,13 12,13A2,2 0 0,1 14,15A2,2 0 0,1 12,17M18,20V10H6V20H18M18,8A2,2 0 0,1 20,10V20A2,2 0 0,1 18,22H6C4.89,22 4,21.1 4,20V10C4,8.89 4.89,8 6,8H7V6A5,5 0 0,1 12,1A5,5 0 0,1 17,6V8H18M12,3A3,3 0 0,0 9,6V8H15V6A3,3 0 0,0 12,3Z"></path></svg></i>после входа</span></span></span><span data-v-18965f25></span></a><a href="/klepa-v-terminale/klepa-run/" class="lesson-card" data-v-18965f25><span class="lesson-num" data-v-18965f25>09</span><span class="min-w-0" data-v-18965f25><span class="lesson-title" data-v-18965f25>Задача без окна</span><span class="lesson-sub" data-v-18965f25>команда klepa run в скриптах</span><span class="lesson-meta" data-v-18965f25><span data-v-18965f25>~15 мин</span><span class="d-inline-flex align-center ga-1" data-v-18965f25><i class="v-icon notranslate v-theme--lessonTheme" style="font-size:13px;height:13px;width:13px;" aria-hidden="true" data-v-18965f25><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M12,17C10.89,17 10,16.1 10,15C10,13.89 10.89,13 12,13A2,2 0 0,1 14,15A2,2 0 0,1 12,17M18,20V10H6V20H18M18,8A2,2 0 0,1 20,10V20A2,2 0 0,1 18,22H6C4.89,22 4,21.1 4,20V10C4,8.89 4.89,8 6,8H7V6A5,5 0 0,1 12,1A5,5 0 0,1 17,6V8H18M12,3A3,3 0 0,0 9,6V8H15V6A3,3 0 0,0 12,3Z"></path></svg></i>после входа</span></span></span><span data-v-18965f25></span></a><!--]--></div></div><!--]--></section><section id="itog" aria-labelledby="itog-title" data-v-18965f25><div data-v-18965f25 data-v-fa522510><h2 id="itog-title" class="section-title mb-2" data-v-fa522510> Ваша схема работы с Клёпой </h2><p class="mb-5 text-medium-emphasis" style="max-width:760px;" data-v-fa522510> В конце каждого урока вы записываете, где примените его в своей задаче. Здесь ответы собираются в одну схему. Она хранится только в этом браузере. </p><div class="v-card v-theme--lessonTheme v-card--density-default rounded-xl v-card--variant-flat scheme pa-5" style="" data-v-fa522510><!----><div class="v-card__loader"><div class="v-progress-linear v-theme--lessonTheme v-locale--is-ltr" style="top:0;height:0;--v-progress-linear-height:2px;" role="progressbar" aria-hidden="true" aria-valuemin="0" aria-valuemax="100"><!----><div class="v-progress-linear__background" style="opacity:NaN;"></div><div class="v-progress-linear__buffer" style="opacity:NaN;width:0%;"></div><div class="v-progress-linear__indeterminate"><!--[--><div class="v-progress-linear__indeterminate long" style=""></div><div class="v-progress-linear__indeterminate short" style=""></div><!--]--></div><!----></div></div><!----><!----><!--[--><div class="scheme-task mb-4" data-v-fa522510><b data-v-fa522510>Моя задача</b><span class="text-medium-emphasis" data-v-fa522510>Пока пусто. Задачу вы назовёте в <a href="/klepa-v-terminale/zapusk/" class="" data-v-fa522510>уроке 1</a>.</span></div><ol class="scheme-list" data-v-fa522510><!--[--><li data-v-fa522510><a href="/klepa-v-terminale/zapusk/" class="" data-v-fa522510> Урок 1. Первый запуск</a><span class="text-medium-emphasis" data-v-fa522510>ответ появится после урока</span></li><li data-v-fa522510><a href="/klepa-v-terminale/rezhimy/" class="" data-v-fa522510> Урок 2. Режимы</a><span class="text-medium-emphasis" data-v-fa522510>ответ появится после урока</span></li><li data-v-fa522510><a href="/klepa-v-terminale/razresheniya/" class="" data-v-fa522510> Урок 3. Разрешения</a><span class="text-medium-emphasis" data-v-fa522510>ответ появится после урока</span></li><li data-v-fa522510><a href="/klepa-v-terminale/kontekst/" class="" data-v-fa522510> Урок 4. Файл и команда в сообщении</a><span class="text-medium-emphasis" data-v-fa522510>ответ появится после урока</span></li><li data-v-fa522510><a href="/klepa-v-terminale/otkat/" class="" data-v-fa522510> Урок 5. Откат правок</a><span class="text-medium-emphasis" data-v-fa522510>ответ появится после урока</span></li><li data-v-fa522510><a href="/klepa-v-terminale/dialogi/" class="" data-v-fa522510> Урок 6. Диалоги</a><span class="text-medium-emphasis" data-v-fa522510>ответ появится после урока</span></li><li data-v-fa522510><a href="/klepa-v-terminale/pravila-proekta/" class="" data-v-fa522510> Урок 7. Правила проекта</a><span class="text-medium-emphasis" data-v-fa522510>ответ появится после урока</span></li><li data-v-fa522510><a href="/klepa-v-terminale/modeli-i-rashod/" class="" data-v-fa522510> Урок 8. Модели и расход</a><span class="text-medium-emphasis" data-v-fa522510>ответ появится после урока</span></li><li data-v-fa522510><a href="/klepa-v-terminale/klepa-run/" class="" data-v-fa522510> Урок 9. Задача без окна</a><span class="text-medium-emphasis" data-v-fa522510>ответ появится после урока</span></li><!--]--></ol><!--]--><!----><!--[--><!----><span class="v-card__underlay"></span><!--]--></div></div></section><section aria-labelledby="faq-title" data-v-18965f25><h2 id="faq-title" class="section-title mb-5" data-v-18965f25> Частые вопросы </h2><div class="v-expansion-panels v-theme--lessonTheme v-expansion-panels--variant-accordion" style="" data-v-18965f25><!--[--><!--[--><div class="v-expansion-panel" style="" data-v-18965f25><div class="v-expansion-panel__shadow"></div><!--[--><button class="v-expansion-panel-title" style="" type="button" aria-expanded="false"><span class="v-expansion-panel-title__overlay"></span><!--[-->Для кого этот курс?<!--]--><!--[--><span class="v-expansion-panel-title__icon"><i class="v-icon notranslate v-theme--lessonTheme v-icon--size-default" style="" aria-hidden="true"><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"></path></svg></i></span><!--]--></button><div class="v-expansion-panel-text" style="display:none;"><!----></div><!----><!--]--></div><div class="v-expansion-panel" style="" data-v-18965f25><div class="v-expansion-panel__shadow"></div><!--[--><button class="v-expansion-panel-title" style="" type="button" aria-expanded="false"><span class="v-expansion-panel-title__overlay"></span><!--[-->Нужно ли пополнять баланс для практики?<!--]--><!--[--><span class="v-expansion-panel-title__icon"><i class="v-icon notranslate v-theme--lessonTheme v-icon--size-default" style="" aria-hidden="true"><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"></path></svg></i></span><!--]--></button><div class="v-expansion-panel-text" style="display:none;"><!----></div><!----><!--]--></div><div class="v-expansion-panel" style="" data-v-18965f25><div class="v-expansion-panel__shadow"></div><!--[--><button class="v-expansion-panel-title" style="" type="button" aria-expanded="false"><span class="v-expansion-panel-title__overlay"></span><!--[-->Чем этот курс отличается от курса «Агент под контролем»?<!--]--><!--[--><span class="v-expansion-panel-title__icon"><i class="v-icon notranslate v-theme--lessonTheme v-icon--size-default" style="" aria-hidden="true"><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"></path></svg></i></span><!--]--></button><div class="v-expansion-panel-text" style="display:none;"><!----></div><!----><!--]--></div><div class="v-expansion-panel" style="" data-v-18965f25><div class="v-expansion-panel__shadow"></div><!--[--><button class="v-expansion-panel-title" style="" type="button" aria-expanded="false"><span class="v-expansion-panel-title__overlay"></span><!--[-->Сколько стоит курс?<!--]--><!--[--><span class="v-expansion-panel-title__icon"><i class="v-icon notranslate v-theme--lessonTheme v-icon--size-default" style="" aria-hidden="true"><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"></path></svg></i></span><!--]--></button><div class="v-expansion-panel-text" style="display:none;"><!----></div><!----><!--]--></div><div class="v-expansion-panel" style="" data-v-18965f25><div class="v-expansion-panel__shadow"></div><!--[--><button class="v-expansion-panel-title" style="" type="button" aria-expanded="false"><span class="v-expansion-panel-title__overlay"></span><!--[-->Где хранится прогресс?<!--]--><!--[--><span class="v-expansion-panel-title__icon"><i class="v-icon notranslate v-theme--lessonTheme v-icon--size-default" style="" aria-hidden="true"><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"></path></svg></i></span><!--]--></button><div class="v-expansion-panel-text" style="display:none;"><!----></div><!----><!--]--></div><!--]--><!--]--></div></section><section aria-labelledby="more-title" data-v-18965f25><h2 id="more-title" class="section-title mb-5" data-v-18965f25> Ещё курсы </h2><div class="v-row" style="" data-v-18965f25><!--[--><div class="v-col-md-6 v-col-12" style="" data-v-18965f25><a href="/agent-pod-kontrolem/" class="course-card" data-v-18965f25 data-v-744f8c67><div class="d-flex flex-wrap ga-2 mb-3" data-v-744f8c67><span class="v-chip v-theme--lessonTheme text-primary v-chip--density-default rounded-lg v-chip--size-x-small v-chip--variant-tonal" style="" draggable="false" data-v-744f8c67><!--[--><!----><span class="v-chip__underlay"></span><!--]--><!----><!----><div class="v-chip__content" data-no-activator><!--[-->С опытом<!--]--></div><!----><!----></span><span class="v-chip v-theme--lessonTheme v-chip--density-default rounded-lg v-chip--size-x-small v-chip--variant-tonal" style="" draggable="false" data-v-744f8c67><!--[--><!----><span class="v-chip__underlay"></span><!--]--><!----><!----><div class="v-chip__content" data-no-activator><!--[-->10 уроков · 8 ч 5 мин<!--]--></div><!----><!----></span></div><h3 class="course-title" data-v-744f8c67>Агент под контролем</h3><p class="course-short" data-v-744f8c67>Как устроена языковая модель и какая среда вокруг неё делает код агента надёжным.</p><div class="course-foot" data-v-744f8c67><span data-v-744f8c67>Бэкенд-разработчикам от junior и выше</span><i class="v-icon notranslate v-theme--lessonTheme v-icon--size-default text-primary" style="" aria-hidden="true" data-v-744f8c67><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z"></path></svg></i></div></a></div><div class="v-col-md-6 v-col-12" style="" data-v-18965f25><a href="/n8n/" class="course-card" data-v-18965f25 data-v-744f8c67><div class="d-flex flex-wrap ga-2 mb-3" data-v-744f8c67><span class="v-chip v-theme--lessonTheme text-primary v-chip--density-default rounded-lg v-chip--size-x-small v-chip--variant-tonal" style="" draggable="false" data-v-744f8c67><!--[--><!----><span class="v-chip__underlay"></span><!--]--><!----><!----><div class="v-chip__content" data-no-activator><!--[-->С нуля<!--]--></div><!----><!----></span><span class="v-chip v-theme--lessonTheme v-chip--density-default rounded-lg v-chip--size-x-small v-chip--variant-tonal" style="" draggable="false" data-v-744f8c67><!--[--><!----><span class="v-chip__underlay"></span><!--]--><!----><!----><div class="v-chip__content" data-no-activator><!--[-->10 уроков · 3 ч 55 мин<!--]--></div><!----><!----></span></div><h3 class="course-title" data-v-744f8c67>n8n для новичков</h3><p class="course-short" data-v-744f8c67>Конструктор автоматизаций: триггеры, данные, ветвления, внешние сервисы и автозапуск. Тренажёры повторяют редактор n8n.</p><div class="course-foot" data-v-744f8c67><span data-v-744f8c67>Тем, кто хочет автоматизировать рутину без программирования</span><i class="v-icon notranslate v-theme--lessonTheme v-icon--size-default text-primary" style="" aria-hidden="true" data-v-744f8c67><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z"></path></svg></i></div></a></div><!--]--></div></section></div></div><!--]--><!--]--></main><footer class="v-footer v-theme--lessonTheme bg-footer-bg d-block pt-10 pb-8" style="height:auto;" data-v-2893ecfe><div class="px-4 px-md-6 page-wrap" data-v-2893ecfe><div class="v-row" style="" data-v-2893ecfe><div class="v-col-md-4 v-col-12" style="" data-v-2893ecfe><div class="font-display font-weight-bold text-white mb-3" style="font-size:1.1rem;" data-v-2893ecfe> Обучение работе с ИИ </div><p class="text-body-2 mb-0" style="color:rgba(255, 255, 255, 0.72);" data-v-2893ecfe> Бесплатные курсы по нейросетям и ИИ-агентам с тренажёрами прямо в браузере. Первые уроки — без входа, остальные — после бесплатного входа через Google или Telegram. Аккаунт и баланс общие с gpt-chat.by. </p></div><div class="v-col-sm-6 v-col-md-3 v-col-12" style="" data-v-2893ecfe><div class="footer-heading" data-v-2893ecfe> Курсы </div><!--[--><a aria-current="page" href="/klepa-v-terminale/" class="router-link-active router-link-exact-active footer-link d-block" data-v-2893ecfe>Клёпа в терминале</a><a href="/agent-pod-kontrolem/" class="footer-link d-block" data-v-2893ecfe>Агент под контролем</a><a href="/n8n/" class="footer-link d-block" data-v-2893ecfe>n8n для новичков</a><a href="/hermes-agent/" class="footer-link d-block" data-v-2893ecfe>Hermes Agent для новичков</a><a href="/llm-workflow/" class="footer-link d-block" data-v-2893ecfe>Workflow для LLM-приложений</a><!--]--></div><div class="v-col-md-3 v-col-6" style="" data-v-2893ecfe><div class="footer-heading" data-v-2893ecfe> Наши продукты </div><!--[--><a href="https://gpt-chat.by/" class="footer-link d-block" data-v-2893ecfe>Чат gpt-chat.by <span class="footer-hint" data-v-2893ecfe>— Все нейросети в одном чате</span></a><a href="https://klepa.gpt-chat.by/" class="footer-link d-block" data-v-2893ecfe>Клёпа <span class="footer-hint" data-v-2893ecfe>— ИИ-агент для кода</span></a><a href="https://video-studio.gpt-chat.by/" class="footer-link d-block" data-v-2893ecfe>Видеостудия <span class="footer-hint" data-v-2893ecfe>— Видео нейросетью</span></a><a href="https://music.gpt-chat.by/" class="footer-link d-block" data-v-2893ecfe>Музыка <span class="footer-hint" data-v-2893ecfe>— Песни нейросетью</span></a><a href="https://logo.gpt-chat.by/" class="footer-link d-block" data-v-2893ecfe>Логотипы <span class="footer-hint" data-v-2893ecfe>— Логотип с ИИ</span></a><!--]--></div><div class="v-col-md-2 v-col-6" style="" data-v-2893ecfe><div class="footer-heading" data-v-2893ecfe> Помощь </div><!--[--><a href="https://gpt-chat.by/pricing/" class="footer-link d-block" data-v-2893ecfe>Тарифы и цены</a><a href="https://gpt-chat.by/doc-api/" class="footer-link d-block" data-v-2893ecfe>API для разработчиков</a><a href="https://gpt-chat.by/offer/" class="footer-link d-block" data-v-2893ecfe>Публичная оферта</a><a href="https://gpt-chat.by/privacy-policy/" class="footer-link d-block" data-v-2893ecfe>Политика конфиденциальности</a><!--]--></div></div><hr class="v-divider v-theme--lessonTheme text-white my-6" style="border-style:solid;" aria-orientation="horizontal" role="separator" data-v-2893ecfe><p class="text-body-2 mb-0" style="color:rgba(255, 255, 255, 0.6);" data-v-2893ecfe> © 2026 gpt-chat.by · Вопросы преподавателю-нейросети оплачиваются с баланса в BYN, курсы бесплатные. </p></div></footer><!--[--><!----><!----><!--]--><!--]--></div></div></div><div id="teleports"></div><script>window.__NUXT__={};window.__NUXT__.config={public:{siteUrl:"https://lesson.gpt-chat.by",apiBase:"https://api.gpt-chat.by/api"},app:{baseURL:"/",buildId:"26206076-2590-4c5c-9258-c5aa663463ca",buildAssetsDir:"/_nuxt/",cdnURL:""}}</script>
+<script type="application/json" data-nuxt-data="nuxt-app" data-ssr="true" id="__NUXT_DATA__" data-src="/klepa-v-terminale/_payload.json?26206076-2590-4c5c-9258-c5aa663463ca">[{"state":1,"once":6,"_errors":7,"serverRendered":9,"path":10,"prerenderedAt":11},["Reactive",2],{"$slesson-token":3,"$slesson-refresh":3,"$slesson-balance":4,"$slesson-top-up-open":5,"$slesson-top-up-shortfall":4,"$shydrated":5},"",null,false,["Set"],["ShallowReactive",8],{},true,"/klepa-v-terminale/",1795601792095]</script></body></html>

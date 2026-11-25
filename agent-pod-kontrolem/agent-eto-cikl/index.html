@@ -1,0 +1,1456 @@
+<!DOCTYPE html><html  lang="ru"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Урок 2. Агент — это цикл — курс «Агент под контролем»</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&family=Inter:wght@400;500;600&display=swap">
+<style id="vuetify-theme-stylesheet">:root {
+      --v-theme-background: 245,247,251;
+      --v-theme-background-overlay-multiplier: 1;
+      --v-theme-surface: 255,255,255;
+      --v-theme-surface-overlay-multiplier: 1;
+      --v-theme-surface-bright: 255,255,255;
+      --v-theme-surface-bright-overlay-multiplier: 1;
+      --v-theme-surface-light: 238,241,248;
+      --v-theme-surface-light-overlay-multiplier: 1;
+      --v-theme-surface-variant: 66,66,66;
+      --v-theme-surface-variant-overlay-multiplier: 2;
+      --v-theme-on-surface-variant: 238,238,238;
+      --v-theme-primary: 52,81,209;
+      --v-theme-primary-overlay-multiplier: 2;
+      --v-theme-primary-darken-1: 42,66,176;
+      --v-theme-primary-darken-1-overlay-multiplier: 2;
+      --v-theme-secondary: 15,163,163;
+      --v-theme-secondary-overlay-multiplier: 1;
+      --v-theme-secondary-darken-1: 1,135,134;
+      --v-theme-secondary-darken-1-overlay-multiplier: 1;
+      --v-theme-error: 208,54,79;
+      --v-theme-error-overlay-multiplier: 2;
+      --v-theme-info: 37,99,235;
+      --v-theme-info-overlay-multiplier: 2;
+      --v-theme-success: 22,163,74;
+      --v-theme-success-overlay-multiplier: 1;
+      --v-theme-warning: 217,119,6;
+      --v-theme-warning-overlay-multiplier: 1;
+      --v-theme-ink: 23,32,58;
+      --v-theme-ink-overlay-multiplier: 2;
+      --v-theme-footer-bg: 18,26,51;
+      --v-theme-footer-bg-overlay-multiplier: 2;
+      --v-theme-on-background: 0,0,0;
+      --v-theme-on-surface: 0,0,0;
+      --v-theme-on-surface-bright: 0,0,0;
+      --v-theme-on-surface-light: 0,0,0;
+      --v-theme-on-primary: 255,255,255;
+      --v-theme-on-primary-darken-1: 255,255,255;
+      --v-theme-on-secondary: 255,255,255;
+      --v-theme-on-secondary-darken-1: 255,255,255;
+      --v-theme-on-error: 255,255,255;
+      --v-theme-on-info: 255,255,255;
+      --v-theme-on-success: 255,255,255;
+      --v-theme-on-warning: 255,255,255;
+      --v-theme-on-ink: 255,255,255;
+      --v-theme-on-footer-bg: 255,255,255;
+      --v-border-color: 0, 0, 0;
+      --v-border-opacity: 0.12;
+      --v-high-emphasis-opacity: 0.87;
+      --v-medium-emphasis-opacity: 0.6;
+      --v-disabled-opacity: 0.38;
+      --v-idle-opacity: 0.04;
+      --v-hover-opacity: 0.04;
+      --v-focus-opacity: 0.12;
+      --v-selected-opacity: 0.08;
+      --v-activated-opacity: 0.12;
+      --v-pressed-opacity: 0.12;
+      --v-dragged-opacity: 0.08;
+      --v-theme-kbd: 238, 238, 238;
+      --v-theme-on-kbd: 0, 0, 0;
+      --v-theme-code: 245, 245, 245;
+      --v-theme-on-code: 0, 0, 0;
+    }
+    .v-theme--light {
+      color-scheme: normal;
+      --v-theme-background: 255,255,255;
+      --v-theme-background-overlay-multiplier: 1;
+      --v-theme-surface: 255,255,255;
+      --v-theme-surface-overlay-multiplier: 1;
+      --v-theme-surface-bright: 255,255,255;
+      --v-theme-surface-bright-overlay-multiplier: 1;
+      --v-theme-surface-light: 238,238,238;
+      --v-theme-surface-light-overlay-multiplier: 1;
+      --v-theme-surface-variant: 66,66,66;
+      --v-theme-surface-variant-overlay-multiplier: 2;
+      --v-theme-on-surface-variant: 238,238,238;
+      --v-theme-primary: 24,103,192;
+      --v-theme-primary-overlay-multiplier: 2;
+      --v-theme-primary-darken-1: 31,85,146;
+      --v-theme-primary-darken-1-overlay-multiplier: 2;
+      --v-theme-secondary: 72,169,166;
+      --v-theme-secondary-overlay-multiplier: 1;
+      --v-theme-secondary-darken-1: 1,135,134;
+      --v-theme-secondary-darken-1-overlay-multiplier: 1;
+      --v-theme-error: 176,0,32;
+      --v-theme-error-overlay-multiplier: 2;
+      --v-theme-info: 33,150,243;
+      --v-theme-info-overlay-multiplier: 1;
+      --v-theme-success: 76,175,80;
+      --v-theme-success-overlay-multiplier: 1;
+      --v-theme-warning: 251,140,0;
+      --v-theme-warning-overlay-multiplier: 1;
+      --v-theme-on-background: 0,0,0;
+      --v-theme-on-surface: 0,0,0;
+      --v-theme-on-surface-bright: 0,0,0;
+      --v-theme-on-surface-light: 0,0,0;
+      --v-theme-on-primary: 255,255,255;
+      --v-theme-on-primary-darken-1: 255,255,255;
+      --v-theme-on-secondary: 255,255,255;
+      --v-theme-on-secondary-darken-1: 255,255,255;
+      --v-theme-on-error: 255,255,255;
+      --v-theme-on-info: 255,255,255;
+      --v-theme-on-success: 255,255,255;
+      --v-theme-on-warning: 255,255,255;
+      --v-border-color: 0, 0, 0;
+      --v-border-opacity: 0.12;
+      --v-high-emphasis-opacity: 0.87;
+      --v-medium-emphasis-opacity: 0.6;
+      --v-disabled-opacity: 0.38;
+      --v-idle-opacity: 0.04;
+      --v-hover-opacity: 0.04;
+      --v-focus-opacity: 0.12;
+      --v-selected-opacity: 0.08;
+      --v-activated-opacity: 0.12;
+      --v-pressed-opacity: 0.12;
+      --v-dragged-opacity: 0.08;
+      --v-theme-kbd: 238, 238, 238;
+      --v-theme-on-kbd: 0, 0, 0;
+      --v-theme-code: 245, 245, 245;
+      --v-theme-on-code: 0, 0, 0;
+    }
+    .v-theme--dark {
+      color-scheme: dark;
+      --v-theme-background: 18,18,18;
+      --v-theme-background-overlay-multiplier: 1;
+      --v-theme-surface: 33,33,33;
+      --v-theme-surface-overlay-multiplier: 1;
+      --v-theme-surface-bright: 204,191,214;
+      --v-theme-surface-bright-overlay-multiplier: 2;
+      --v-theme-surface-light: 66,66,66;
+      --v-theme-surface-light-overlay-multiplier: 1;
+      --v-theme-surface-variant: 200,200,200;
+      --v-theme-surface-variant-overlay-multiplier: 2;
+      --v-theme-on-surface-variant: 0,0,0;
+      --v-theme-primary: 33,150,243;
+      --v-theme-primary-overlay-multiplier: 2;
+      --v-theme-primary-darken-1: 39,124,193;
+      --v-theme-primary-darken-1-overlay-multiplier: 2;
+      --v-theme-secondary: 84,182,178;
+      --v-theme-secondary-overlay-multiplier: 2;
+      --v-theme-secondary-darken-1: 72,169,166;
+      --v-theme-secondary-darken-1-overlay-multiplier: 2;
+      --v-theme-error: 207,102,121;
+      --v-theme-error-overlay-multiplier: 2;
+      --v-theme-info: 33,150,243;
+      --v-theme-info-overlay-multiplier: 2;
+      --v-theme-success: 76,175,80;
+      --v-theme-success-overlay-multiplier: 2;
+      --v-theme-warning: 251,140,0;
+      --v-theme-warning-overlay-multiplier: 2;
+      --v-theme-on-background: 255,255,255;
+      --v-theme-on-surface: 255,255,255;
+      --v-theme-on-surface-bright: 0,0,0;
+      --v-theme-on-surface-light: 255,255,255;
+      --v-theme-on-primary: 255,255,255;
+      --v-theme-on-primary-darken-1: 255,255,255;
+      --v-theme-on-secondary: 255,255,255;
+      --v-theme-on-secondary-darken-1: 255,255,255;
+      --v-theme-on-error: 255,255,255;
+      --v-theme-on-info: 255,255,255;
+      --v-theme-on-success: 255,255,255;
+      --v-theme-on-warning: 255,255,255;
+      --v-border-color: 255, 255, 255;
+      --v-border-opacity: 0.12;
+      --v-high-emphasis-opacity: 1;
+      --v-medium-emphasis-opacity: 0.7;
+      --v-disabled-opacity: 0.5;
+      --v-idle-opacity: 0.1;
+      --v-hover-opacity: 0.04;
+      --v-focus-opacity: 0.12;
+      --v-selected-opacity: 0.08;
+      --v-activated-opacity: 0.12;
+      --v-pressed-opacity: 0.16;
+      --v-dragged-opacity: 0.08;
+      --v-theme-kbd: 66, 66, 66;
+      --v-theme-on-kbd: 255, 255, 255;
+      --v-theme-code: 52, 52, 52;
+      --v-theme-on-code: 204, 204, 204;
+    }
+    .v-theme--lessonTheme {
+      color-scheme: normal;
+      --v-theme-background: 245,247,251;
+      --v-theme-background-overlay-multiplier: 1;
+      --v-theme-surface: 255,255,255;
+      --v-theme-surface-overlay-multiplier: 1;
+      --v-theme-surface-bright: 255,255,255;
+      --v-theme-surface-bright-overlay-multiplier: 1;
+      --v-theme-surface-light: 238,241,248;
+      --v-theme-surface-light-overlay-multiplier: 1;
+      --v-theme-surface-variant: 66,66,66;
+      --v-theme-surface-variant-overlay-multiplier: 2;
+      --v-theme-on-surface-variant: 238,238,238;
+      --v-theme-primary: 52,81,209;
+      --v-theme-primary-overlay-multiplier: 2;
+      --v-theme-primary-darken-1: 42,66,176;
+      --v-theme-primary-darken-1-overlay-multiplier: 2;
+      --v-theme-secondary: 15,163,163;
+      --v-theme-secondary-overlay-multiplier: 1;
+      --v-theme-secondary-darken-1: 1,135,134;
+      --v-theme-secondary-darken-1-overlay-multiplier: 1;
+      --v-theme-error: 208,54,79;
+      --v-theme-error-overlay-multiplier: 2;
+      --v-theme-info: 37,99,235;
+      --v-theme-info-overlay-multiplier: 2;
+      --v-theme-success: 22,163,74;
+      --v-theme-success-overlay-multiplier: 1;
+      --v-theme-warning: 217,119,6;
+      --v-theme-warning-overlay-multiplier: 1;
+      --v-theme-ink: 23,32,58;
+      --v-theme-ink-overlay-multiplier: 2;
+      --v-theme-footer-bg: 18,26,51;
+      --v-theme-footer-bg-overlay-multiplier: 2;
+      --v-theme-on-background: 0,0,0;
+      --v-theme-on-surface: 0,0,0;
+      --v-theme-on-surface-bright: 0,0,0;
+      --v-theme-on-surface-light: 0,0,0;
+      --v-theme-on-primary: 255,255,255;
+      --v-theme-on-primary-darken-1: 255,255,255;
+      --v-theme-on-secondary: 255,255,255;
+      --v-theme-on-secondary-darken-1: 255,255,255;
+      --v-theme-on-error: 255,255,255;
+      --v-theme-on-info: 255,255,255;
+      --v-theme-on-success: 255,255,255;
+      --v-theme-on-warning: 255,255,255;
+      --v-theme-on-ink: 255,255,255;
+      --v-theme-on-footer-bg: 255,255,255;
+      --v-border-color: 0, 0, 0;
+      --v-border-opacity: 0.12;
+      --v-high-emphasis-opacity: 0.87;
+      --v-medium-emphasis-opacity: 0.6;
+      --v-disabled-opacity: 0.38;
+      --v-idle-opacity: 0.04;
+      --v-hover-opacity: 0.04;
+      --v-focus-opacity: 0.12;
+      --v-selected-opacity: 0.08;
+      --v-activated-opacity: 0.12;
+      --v-pressed-opacity: 0.12;
+      --v-dragged-opacity: 0.08;
+      --v-theme-kbd: 238, 238, 238;
+      --v-theme-on-kbd: 0, 0, 0;
+      --v-theme-code: 245, 245, 245;
+      --v-theme-on-code: 0, 0, 0;
+    }
+    .bg-background {
+      --v-theme-overlay-multiplier: var(--v-theme-background-overlay-multiplier);
+      background-color: rgb(var(--v-theme-background)) !important;
+      color: rgb(var(--v-theme-on-background)) !important;
+    }
+    .bg-surface {
+      --v-theme-overlay-multiplier: var(--v-theme-surface-overlay-multiplier);
+      background-color: rgb(var(--v-theme-surface)) !important;
+      color: rgb(var(--v-theme-on-surface)) !important;
+    }
+    .bg-surface-bright {
+      --v-theme-overlay-multiplier: var(--v-theme-surface-bright-overlay-multiplier);
+      background-color: rgb(var(--v-theme-surface-bright)) !important;
+      color: rgb(var(--v-theme-on-surface-bright)) !important;
+    }
+    .bg-surface-light {
+      --v-theme-overlay-multiplier: var(--v-theme-surface-light-overlay-multiplier);
+      background-color: rgb(var(--v-theme-surface-light)) !important;
+      color: rgb(var(--v-theme-on-surface-light)) !important;
+    }
+    .bg-surface-variant {
+      --v-theme-overlay-multiplier: var(--v-theme-surface-variant-overlay-multiplier);
+      background-color: rgb(var(--v-theme-surface-variant)) !important;
+      color: rgb(var(--v-theme-on-surface-variant)) !important;
+    }
+    .bg-primary {
+      --v-theme-overlay-multiplier: var(--v-theme-primary-overlay-multiplier);
+      background-color: rgb(var(--v-theme-primary)) !important;
+      color: rgb(var(--v-theme-on-primary)) !important;
+    }
+    .bg-primary-darken-1 {
+      --v-theme-overlay-multiplier: var(--v-theme-primary-darken-1-overlay-multiplier);
+      background-color: rgb(var(--v-theme-primary-darken-1)) !important;
+      color: rgb(var(--v-theme-on-primary-darken-1)) !important;
+    }
+    .bg-secondary {
+      --v-theme-overlay-multiplier: var(--v-theme-secondary-overlay-multiplier);
+      background-color: rgb(var(--v-theme-secondary)) !important;
+      color: rgb(var(--v-theme-on-secondary)) !important;
+    }
+    .bg-secondary-darken-1 {
+      --v-theme-overlay-multiplier: var(--v-theme-secondary-darken-1-overlay-multiplier);
+      background-color: rgb(var(--v-theme-secondary-darken-1)) !important;
+      color: rgb(var(--v-theme-on-secondary-darken-1)) !important;
+    }
+    .bg-error {
+      --v-theme-overlay-multiplier: var(--v-theme-error-overlay-multiplier);
+      background-color: rgb(var(--v-theme-error)) !important;
+      color: rgb(var(--v-theme-on-error)) !important;
+    }
+    .bg-info {
+      --v-theme-overlay-multiplier: var(--v-theme-info-overlay-multiplier);
+      background-color: rgb(var(--v-theme-info)) !important;
+      color: rgb(var(--v-theme-on-info)) !important;
+    }
+    .bg-success {
+      --v-theme-overlay-multiplier: var(--v-theme-success-overlay-multiplier);
+      background-color: rgb(var(--v-theme-success)) !important;
+      color: rgb(var(--v-theme-on-success)) !important;
+    }
+    .bg-warning {
+      --v-theme-overlay-multiplier: var(--v-theme-warning-overlay-multiplier);
+      background-color: rgb(var(--v-theme-warning)) !important;
+      color: rgb(var(--v-theme-on-warning)) !important;
+    }
+    .bg-ink {
+      --v-theme-overlay-multiplier: var(--v-theme-ink-overlay-multiplier);
+      background-color: rgb(var(--v-theme-ink)) !important;
+      color: rgb(var(--v-theme-on-ink)) !important;
+    }
+    .bg-footer-bg {
+      --v-theme-overlay-multiplier: var(--v-theme-footer-bg-overlay-multiplier);
+      background-color: rgb(var(--v-theme-footer-bg)) !important;
+      color: rgb(var(--v-theme-on-footer-bg)) !important;
+    }
+    .text-background {
+      color: rgb(var(--v-theme-background)) !important;
+    }
+    .border-background {
+      --v-border-color: var(--v-theme-background);
+    }
+    .text-surface {
+      color: rgb(var(--v-theme-surface)) !important;
+    }
+    .border-surface {
+      --v-border-color: var(--v-theme-surface);
+    }
+    .text-surface-bright {
+      color: rgb(var(--v-theme-surface-bright)) !important;
+    }
+    .border-surface-bright {
+      --v-border-color: var(--v-theme-surface-bright);
+    }
+    .text-surface-light {
+      color: rgb(var(--v-theme-surface-light)) !important;
+    }
+    .border-surface-light {
+      --v-border-color: var(--v-theme-surface-light);
+    }
+    .text-surface-variant {
+      color: rgb(var(--v-theme-surface-variant)) !important;
+    }
+    .border-surface-variant {
+      --v-border-color: var(--v-theme-surface-variant);
+    }
+    .on-surface-variant {
+      color: rgb(var(--v-theme-on-surface-variant)) !important;
+    }
+    .text-primary {
+      color: rgb(var(--v-theme-primary)) !important;
+    }
+    .border-primary {
+      --v-border-color: var(--v-theme-primary);
+    }
+    .text-primary-darken-1 {
+      color: rgb(var(--v-theme-primary-darken-1)) !important;
+    }
+    .border-primary-darken-1 {
+      --v-border-color: var(--v-theme-primary-darken-1);
+    }
+    .text-secondary {
+      color: rgb(var(--v-theme-secondary)) !important;
+    }
+    .border-secondary {
+      --v-border-color: var(--v-theme-secondary);
+    }
+    .text-secondary-darken-1 {
+      color: rgb(var(--v-theme-secondary-darken-1)) !important;
+    }
+    .border-secondary-darken-1 {
+      --v-border-color: var(--v-theme-secondary-darken-1);
+    }
+    .text-error {
+      color: rgb(var(--v-theme-error)) !important;
+    }
+    .border-error {
+      --v-border-color: var(--v-theme-error);
+    }
+    .text-info {
+      color: rgb(var(--v-theme-info)) !important;
+    }
+    .border-info {
+      --v-border-color: var(--v-theme-info);
+    }
+    .text-success {
+      color: rgb(var(--v-theme-success)) !important;
+    }
+    .border-success {
+      --v-border-color: var(--v-theme-success);
+    }
+    .text-warning {
+      color: rgb(var(--v-theme-warning)) !important;
+    }
+    .border-warning {
+      --v-border-color: var(--v-theme-warning);
+    }
+    .on-background {
+      color: rgb(var(--v-theme-on-background)) !important;
+    }
+    .on-surface {
+      color: rgb(var(--v-theme-on-surface)) !important;
+    }
+    .on-surface-bright {
+      color: rgb(var(--v-theme-on-surface-bright)) !important;
+    }
+    .on-surface-light {
+      color: rgb(var(--v-theme-on-surface-light)) !important;
+    }
+    .on-primary {
+      color: rgb(var(--v-theme-on-primary)) !important;
+    }
+    .on-primary-darken-1 {
+      color: rgb(var(--v-theme-on-primary-darken-1)) !important;
+    }
+    .on-secondary {
+      color: rgb(var(--v-theme-on-secondary)) !important;
+    }
+    .on-secondary-darken-1 {
+      color: rgb(var(--v-theme-on-secondary-darken-1)) !important;
+    }
+    .on-error {
+      color: rgb(var(--v-theme-on-error)) !important;
+    }
+    .on-info {
+      color: rgb(var(--v-theme-on-info)) !important;
+    }
+    .on-success {
+      color: rgb(var(--v-theme-on-success)) !important;
+    }
+    .on-warning {
+      color: rgb(var(--v-theme-on-warning)) !important;
+    }
+    .text-ink {
+      color: rgb(var(--v-theme-ink)) !important;
+    }
+    .border-ink {
+      --v-border-color: var(--v-theme-ink);
+    }
+    .text-footer-bg {
+      color: rgb(var(--v-theme-footer-bg)) !important;
+    }
+    .border-footer-bg {
+      --v-border-color: var(--v-theme-footer-bg);
+    }
+    .on-ink {
+      color: rgb(var(--v-theme-on-ink)) !important;
+    }
+    .on-footer-bg {
+      color: rgb(var(--v-theme-on-footer-bg)) !important;
+    }
+</style>
+<link rel="stylesheet" href="/_nuxt/entry.f0D0bLXn.css" crossorigin>
+<link rel="stylesheet" href="/_nuxt/default.SjyjKpXr.css" crossorigin>
+<link rel="stylesheet" href="/_nuxt/_lesson_.CSx7wQ0h.css" crossorigin>
+<link rel="stylesheet" href="/_nuxt/progress.C6uHAf2f.css" crossorigin>
+<link rel="preload" as="fetch" crossorigin="anonymous" href="/agent-pod-kontrolem/agent-eto-cikl/_payload.json?26206076-2590-4c5c-9258-c5aa663463ca">
+<link rel="modulepreload" as="script" crossorigin href="/_nuxt/zDUinKHV.js">
+<link rel="modulepreload" as="script" crossorigin href="/_nuxt/N-0CS4N7.js">
+<link rel="modulepreload" as="script" crossorigin href="/_nuxt/CFwaBvxJ.js">
+<link rel="modulepreload" as="script" crossorigin href="/_nuxt/ByF0gdMt.js">
+<link rel="modulepreload" as="script" crossorigin href="/_nuxt/hlCeUU7o.js">
+<link rel="modulepreload" as="script" crossorigin href="/_nuxt/BWgjq42o.js">
+<link rel="modulepreload" as="script" crossorigin href="/_nuxt/BWXt_j16.js">
+<link rel="preload" as="fetch" fetchpriority="low" crossorigin="anonymous" href="/_nuxt/builds/meta/26206076-2590-4c5c-9258-c5aa663463ca.json">
+<script type="module" src="/_nuxt/zDUinKHV.js" crossorigin></script>
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/DSW_zuzx.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/DT9HhtpA.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/DsIVt1uA.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/Csp-tBFP.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/DVk6OOaH.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/CHzdfqXZ.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/DIqqaU9V.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/Caps8ti_.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/BzyUlbQC.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/BXZQtsXx.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/B36L_6Jz.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/CAhcvPSB.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/CzXpWGy4.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/Cdzv1Uax.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/CPV6V7rI.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/AgCg21Kl.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/CyKqWttO.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/D8zjtyMu.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/B_XUTqE2.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/Ba686JSa.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/D4aieIjQ.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/Dm8p2LOi.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/DMHLwBTJ.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/C8s7KUif.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/CfRiDiXh.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/B7QZ0aMn.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/jI-YWrlY.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/BbeGPlLB.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/DJOctqjL.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/9d2q4aVm.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/2Z7xxhpV.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/C3VDPMZ_.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/DYQ6arQ6.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/DZ8eStSX.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/BG_oW8at.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/DaidvmOk.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/B8ckyOmr.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/DeLeQ-UT.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/BHIv0wqC.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/D5D5oVOx.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/Bt6cz3lt.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/BxqhNVPf.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/CUhTwuEm.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/BDSwl5j0.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/D_XKe9Rg.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/BMPJi-It.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/_AavDVpJ.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/CaeU0bmy.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/BIZ7UryA.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/C47-WrP9.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/BzJmQasJ.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/CYvKkU_m.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/DbY9v4qN.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/CuRm5eC-.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/UBaPJKhu.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/VnvyJdvZ.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/DqMWCQpY.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/ByyKMgJd.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/DNQPp8pS.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/D_NlkyYQ.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/CfegptjQ.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/D0a5uKan.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/6t_Bp3aB.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/NvCEZsFg.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/B47Fhr10.js">
+<link rel="prefetch" as="script" crossorigin href="/_nuxt/CP579MFK.js">
+<meta name="theme-color" content="#3451d1">
+<meta name="format-detection" content="telephone=no">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="description" content="Как модель становится агентом: цикл с инструментами, файлы правил, разрешения, скилы по требованию и субагенты. Бесплатный урок курса «Агент под контролем» с практикой в браузере и ответами преподавателя-нейросети.">
+<meta name="keywords" content="курс ИИ-агенты, курс нейросети для программистов, как работать с ИИ-агентом, MCP, хуки Claude Code, CLAUDE.md, AGENTS.md, spec-driven development, evals">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Урок 2. Агент — это цикл — курс «Агент под контролем»">
+<meta property="og:description" content="Как модель становится агентом: цикл с инструментами, файлы правил, разрешения, скилы по требованию и субагенты. Бесплатный урок курса «Агент под контролем» с практикой в браузере и ответами преподавателя-нейросети.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:site_name" content="Обучение работе с ИИ — gpt-chat.by">
+<meta property="og:url" content="https://lesson.gpt-chat.by/agent-pod-kontrolem/agent-eto-cikl/">
+<meta name="twitter:card" content="summary">
+<link rel="canonical" href="https://lesson.gpt-chat.by/agent-pod-kontrolem/agent-eto-cikl/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"LearningResource","name":"Урок 2. Агент — это цикл","description":"инструменты, правила, скилы и субагенты","url":"https://lesson.gpt-chat.by/agent-pod-kontrolem/agent-eto-cikl/","inLanguage":"ru","timeRequired":"PT50M","isAccessibleForFree":true,"dateModified":"2026-11-25","isPartOf":{"@type":"Course","name":"Агент под контролем","url":"https://lesson.gpt-chat.by/agent-pod-kontrolem/"},"provider":{"@type":"Organization","name":"gpt-chat.by","url":"https://gpt-chat.by/"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Курсы","item":"https://lesson.gpt-chat.by/"},{"@type":"ListItem","position":2,"name":"Агент под контролем","item":"https://lesson.gpt-chat.by/agent-pod-kontrolem/"},{"@type":"ListItem","position":3,"name":"Урок 2","item":"https://lesson.gpt-chat.by/agent-pod-kontrolem/agent-eto-cikl/"}]}</script></head><body><div id="__nuxt"><div class="v-application v-theme--lessonTheme v-layout v-layout--full-height v-locale--is-ltr" style=""><div class="v-application__wrap"><!--[--><!--[--><header class="v-toolbar v-toolbar--collapse-start v-toolbar--flat v-toolbar--density-default bg-surface v-theme--lessonTheme v-locale--is-ltr v-app-bar site-header" style="top:0;z-index:1004;transform:translateY(0%);position:fixed;transition:none !important;" data-v-1683299e><!----><!--[--><div class="v-toolbar__content" style="height:64px;"><!----><!----><!--[--><div class="d-flex align-center w-100 px-3 px-md-6 ga-2 page-wrap" data-v-1683299e><a href="/" class="d-flex align-center ga-2 text-decoration-none" aria-label="Обучение — к списку курсов" data-v-1683299e><span class="brand-mark" aria-hidden="true" data-v-1683299e><i class="v-icon notranslate v-theme--lessonTheme" style="font-size:22px;height:22px;width:22px;" aria-hidden="true" data-v-1683299e><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M12 3L1 9L5 11.18V17.18L12 21L19 17.18V11.18L21 10.09V17H23V9L12 3M18.82 9L12 12.72L5.18 9L12 5.28L18.82 9M17 16L12 18.72L7 16V12.27L12 15L17 12.27V16Z"></path></svg></i></span><span class="d-flex flex-column" style="line-height:1.05;" data-v-1683299e><span class="font-display font-weight-bold text-ink" style="font-size:1.1rem;" data-v-1683299e>Обучение</span><span class="text-caption text-medium-emphasis" data-v-1683299e>от gpt-chat.by</span></span></a><nav class="d-none d-md-flex align-center ga-1 ms-6" aria-label="Курсы" data-v-1683299e><a href="/" class="v-btn v-theme--lessonTheme v-btn--density-default rounded-lg v-btn--size-default v-btn--variant-text nav-link" style="" data-v-1683299e><!--[--><span class="v-btn__overlay"></span><span class="v-btn__underlay"></span><!--]--><!----><span class="v-btn__content" data-no-activator><!--[--><!--[--> Все курсы <!--]--><!--]--></span><!----><!----></a><!--[--><!--[--><!--[--><button type="button" class="v-btn v-theme--lessonTheme v-btn--density-default rounded-lg v-btn--size-default v-btn--variant-text nav-link" style="" aria-haspopup="menu" aria-expanded="false" aria-controls="v-menu-v-0-2" aria-owns="v-menu-v-0-2" data-v-1683299e><!--[--><span class="v-btn__overlay"></span><span class="v-btn__underlay"></span><!--]--><!----><span class="v-btn__content" data-no-activator><!--[--><!--[-->Для программистов<!--]--><!--]--></span><span class="v-btn__append"><i class="v-icon notranslate v-theme--lessonTheme v-icon--size-default" style="" aria-hidden="true"><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"></path></svg></i></span><!----></button><!--]--><!----><!--]--><!--[--><!--[--><button type="button" class="v-btn v-theme--lessonTheme v-btn--density-default rounded-lg v-btn--size-default v-btn--variant-text nav-link" style="" aria-haspopup="menu" aria-expanded="false" aria-controls="v-menu-v-0-4" aria-owns="v-menu-v-0-4" data-v-1683299e><!--[--><span class="v-btn__overlay"></span><span class="v-btn__underlay"></span><!--]--><!----><span class="v-btn__content" data-no-activator><!--[--><!--[-->Автоматизация<!--]--><!--]--></span><span class="v-btn__append"><i class="v-icon notranslate v-theme--lessonTheme v-icon--size-default" style="" aria-hidden="true"><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"></path></svg></i></span><!----></button><!--]--><!----><!--]--><!--[--><!--[--><button type="button" class="v-btn v-theme--lessonTheme v-btn--density-default rounded-lg v-btn--size-default v-btn--variant-text nav-link" style="" aria-haspopup="menu" aria-expanded="false" aria-controls="v-menu-v-0-6" aria-owns="v-menu-v-0-6" data-v-1683299e><!--[--><span class="v-btn__overlay"></span><span class="v-btn__underlay"></span><!--]--><!----><span class="v-btn__content" data-no-activator><!--[--><!--[-->LLM-приложения<!--]--><!--]--></span><span class="v-btn__append"><i class="v-icon notranslate v-theme--lessonTheme v-icon--size-default" style="" aria-hidden="true"><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"></path></svg></i></span><!----></button><!--]--><!----><!--]--><!--]--></nav><div class="v-spacer" style="" data-v-1683299e></div><button type="button" class="v-btn v-theme--lessonTheme bg-primary v-btn--density-default rounded-lg v-btn--size-default v-btn--variant-flat" style="" data-v-1683299e><!--[--><span class="v-btn__overlay"></span><span class="v-btn__underlay"></span><!--]--><span class="v-btn__prepend"><i class="v-icon notranslate v-theme--lessonTheme v-icon--size-default" style="" aria-hidden="true"><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M11 7L9.6 8.4L12.2 11H2V13H12.2L9.6 15.6L11 17L16 12L11 7M20 19H12V21H20C21.1 21 22 20.1 22 19V5C22 3.9 21.1 3 20 3H12V5H20V19Z"></path></svg></i></span><span class="v-btn__content" data-no-activator><!--[--><!--[--> Войти <!--]--><!--]--></span><!----><!----></button><button type="button" class="v-btn v-btn--icon v-theme--lessonTheme v-btn--density-default rounded-lg v-btn--size-default v-btn--variant-text d-md-none v-app-bar-nav-icon" style="" aria-label="Меню" data-v-1683299e><!--[--><span class="v-btn__overlay"></span><span class="v-btn__underlay"></span><!--]--><!----><span class="v-btn__content" data-no-activator><i class="v-icon notranslate v-theme--lessonTheme v-icon--size-default" style="" aria-hidden="true"><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z"></path></svg></i></span><!----><!----></button></div><!--]--><!----></div><!--]--><!--[--><!----><!--]--></header><!--[--><nav class="v-navigation-drawer v-navigation-drawer--right v-navigation-drawer--temporary v-theme--lessonTheme v-navigation-drawer--mobile" style="right:0;z-index:1004;transform:translateX(300px);position:fixed;transition:none !important;" inert data-v-1683299e><!----><!----><div class="v-navigation-drawer__content"><!--[--><div class="v-list v-list--nav v-theme--lessonTheme bg-transparent v-list--density-comfortable v-list--one-line" style="" tabindex="0" role="list" data-v-1683299e><!--[--><a href="/" tabindex="-2" class="v-list-item v-list-item--link v-list-item--nav v-theme--lessonTheme v-list-item--density-comfortable v-list-item--one-line v-list-item--rounded v-list-item--variant-text" style="" role="link" data-v-1683299e><!--[--><span class="v-list-item__overlay"></span><span class="v-list-item__underlay"></span><!--]--><div class="v-list-item__prepend"><!--[--><!----><i class="v-icon notranslate v-theme--lessonTheme v-icon--size-default" style="" aria-hidden="true" density="comfortable"><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M3 11H11V3H3M5 5H9V9H5M13 21H21V13H13M15 15H19V19H15M3 21H11V13H3M5 15H9V19H5M13 3V11H21V3M19 9H15V5H19Z"></path></svg></i><!--]--><div class="v-list-item__spacer"></div></div><div class="v-list-item__content" data-no-activator><div class="v-list-item-title" style="">Все курсы</div><!----><!----></div><!----></a><!--[--><!--[--><div class="v-list-subheader" style="" data-v-1683299e><div class="v-list-subheader__text"><!--[-->ИИ-агент для программиста<!--]--></div></div><!--[--><a href="/klepa-v-terminale/" tabindex="-2" class="v-list-item v-list-item--link v-list-item--nav v-theme--lessonTheme v-list-item--density-comfortable v-list-item--one-line v-list-item--rounded v-list-item--variant-text" style="" role="link" data-v-1683299e><!--[--><span class="v-list-item__overlay"></span><span class="v-list-item__underlay"></span><!--]--><!----><div class="v-list-item__content" data-no-activator><div class="v-list-item-title" style="">Клёпа в терминале</div><!----><!----></div><!----></a><a href="/agent-pod-kontrolem/" tabindex="-2" class="v-list-item v-list-item--link v-list-item--nav v-theme--lessonTheme v-list-item--density-comfortable v-list-item--one-line v-list-item--rounded v-list-item--variant-text" style="" role="link" data-v-1683299e><!--[--><span class="v-list-item__overlay"></span><span class="v-list-item__underlay"></span><!--]--><!----><div class="v-list-item__content" data-no-activator><div class="v-list-item-title" style="">Агент под контролем</div><!----><!----></div><!----></a><!--]--><!--]--><!--[--><div class="v-list-subheader" style="" data-v-1683299e><div class="v-list-subheader__text"><!--[-->Автоматизация без программирования<!--]--></div></div><!--[--><a href="/n8n/" tabindex="-2" class="v-list-item v-list-item--link v-list-item--nav v-theme--lessonTheme v-list-item--density-comfortable v-list-item--one-line v-list-item--rounded v-list-item--variant-text" style="" role="link" data-v-1683299e><!--[--><span class="v-list-item__overlay"></span><span class="v-list-item__underlay"></span><!--]--><!----><div class="v-list-item__content" data-no-activator><div class="v-list-item-title" style="">n8n для новичков</div><!----><!----></div><!----></a><a href="/hermes-agent/" tabindex="-2" class="v-list-item v-list-item--link v-list-item--nav v-theme--lessonTheme v-list-item--density-comfortable v-list-item--one-line v-list-item--rounded v-list-item--variant-text" style="" role="link" data-v-1683299e><!--[--><span class="v-list-item__overlay"></span><span class="v-list-item__underlay"></span><!--]--><!----><div class="v-list-item__content" data-no-activator><div class="v-list-item-title" style="">Hermes Agent для новичков</div><!----><!----></div><!----></a><!--]--><!--]--><!--[--><div class="v-list-subheader" style="" data-v-1683299e><div class="v-list-subheader__text"><!--[-->Своё приложение с нейросетью<!--]--></div></div><!--[--><a href="/llm-workflow/" tabindex="-2" class="v-list-item v-list-item--link v-list-item--nav v-theme--lessonTheme v-list-item--density-comfortable v-list-item--one-line v-list-item--rounded v-list-item--variant-text" style="" role="link" data-v-1683299e><!--[--><span class="v-list-item__overlay"></span><span class="v-list-item__underlay"></span><!--]--><!----><div class="v-list-item__content" data-no-activator><div class="v-list-item-title" style="">Workflow для LLM-приложений</div><!----><!----></div><!----></a><!--]--><!--]--><!--]--><!--]--></div><!--]--></div><!----></nav><!----><!--]--><!--]--><main class="v-main" style="--v-layout-left:0px;--v-layout-right:0px;--v-layout-top:0px;--v-layout-bottom:0px;transition:none !important;"><!--[--><!--[--><div class="page-wrap px-4 px-md-6 py-6 py-md-8" data-v-841e5709><nav aria-label="Хлебные крошки" class="text-body-2" data-v-841e5709 data-v-8907e113><ol class="crumbs" data-v-8907e113><!--[--><li data-v-8907e113><a href="/" class="text-primary text-decoration-none" data-v-8907e113>Курсы</a></li><li data-v-8907e113><a href="/agent-pod-kontrolem/" class="text-primary text-decoration-none" data-v-8907e113>Агент под контролем</a></li><li data-v-8907e113><span class="text-medium-emphasis" aria-current="page" data-v-8907e113>Урок 2</span></li><!--]--></ol></nav><div class="lesson-layout" data-v-841e5709><!----><div class="min-w-0" data-v-841e5709><!----><div class="v-expansion-panels v-theme--lessonTheme v-expansion-panels--variant-accordion mb-6" style="" data-v-841e5709><!--[--><div class="v-expansion-panel" style="" data-v-841e5709><div class="v-expansion-panel__shadow"></div><!--[--><!----><!----><!--[--><button class="v-expansion-panel-title" style="" type="button" aria-expanded="false" data-v-841e5709><span class="v-expansion-panel-title__overlay"></span><!--[-->Все уроки курса «Агент под контролем»<!--]--><!--[--><span class="v-expansion-panel-title__icon"><i class="v-icon notranslate v-theme--lessonTheme v-icon--size-default" style="" aria-hidden="true"><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"></path></svg></i></span><!--]--></button><div class="v-expansion-panel-text" style="display:none;" data-v-841e5709><!----></div><!--]--><!--]--></div><!--]--></div><div class="hc kurs-card" data-v-841e5709><div class="hc-lesson"><div class="hc-page">
+  <nav class="rail" aria-label="Шаги урока">
+    <ol>
+      <li><a href="#analogy">Аналогия</a></li>
+      <li><a href="#explain">Объяснение</a></li>
+      <li><a href="#interactive">Интерактив</a></li>
+      <li><a href="#practice">Тесты</a></li>
+      <li><a href="#checklist">Чек-лист</a></li>
+      <li><a href="#links">Ссылки</a></li>
+    </ol>
+    <div class="rail-progress"><span data-meter-label>Пройдено: 0%</span><div class="meter"><i data-meter></i></div></div>
+  </nav>
+
+  <div class="content">
+    <header class="lesson-hero">
+      <span class="eyebrow">Часть 2 · Агент в вашем проекте · Урок 2</span>
+      <h1>Агент — это цикл: инструменты, правила, скилы и субагенты</h1>
+      <p class="lead">Модель умеет только писать текст. Агентом её делает цикл вокруг: программа отправляет модели историю и список инструментов, выполняет то, что модель попросила, и возвращает результат. Разберём этот цикл по строчкам кода, а потом всё, что его настраивает: правила, разрешения, скилы и субагенты.</p>
+      <div class="facts">
+        <span class="fact">~50 минут</span>
+        <span class="fact">3D-фильм с кодом</span>
+        <span class="fact">3 интерактива</span>
+        <span class="fact">14 вопросов</span>
+        <span class="fact">Примеры: JS · TS · PHP · Python</span>
+      </div>
+      <div class="outcomes">
+        <h2>После урока вы сможете</h2>
+        <ul>
+          <li>разобрать цикл агента по строкам кода: кто думает, кто выполняет и когда цикл заканчивается;</li>
+          <li>написать свой цикл, который не падает на ошибке инструмента и не крутится вечно;</li>
+          <li>написать короткий и полезный файл правил проекта (CLAUDE.md или AGENTS.md);</li>
+          <li>отличить мягкое правило от жёсткого запрета и настроить разрешения;</li>
+          <li>понять, когда нужен скил, а когда субагент, и как они экономят контекст.</li>
+        </ul>
+      </div>
+    </header>
+
+    <!-- ============ 1. АНАЛОГИЯ ============ -->
+    <section class="step" id="analogy">
+      <div class="step-head">
+        <span class="step-tag"><b>1</b> Аналогия</span>
+        <h2>Сильный новичок в команде</h2>
+      </div>
+      <div class="analogy">
+        <span class="label">Представьте</span>
+        <p>К вам пришёл очень умный новичок. Он знает все языки, но не знает ваш проект. Чтобы он приносил пользу, ему дают онбординг, доступы, рабочие инструменты, инструкции и помощников.</p>
+      </div>
+      <div class="stand" id="onb">
+        <div class="stand-head"><h3>Что нужно новичку, чтобы работать</h3><span class="badge">анимация</span></div>
+        <div class="flow" id="onb-flow">
+          <div class="node"><b>Умный новичок</b><small>модель</small></div>
+          <span class="arrow">+</span>
+          <div class="node"><b>Онбординг-док</b><small>CLAUDE.md, AGENTS.md</small></div>
+          <span class="arrow">+</span>
+          <div class="node"><b>Доступы</b><small>permissions</small></div>
+          <span class="arrow">+</span>
+          <div class="node"><b>Инструменты</b><small>tools</small></div>
+          <span class="arrow">+</span>
+          <div class="node"><b>Инструкции</b><small>skills</small></div>
+          <span class="arrow">+</span>
+          <div class="node"><b>Помощники</b><small>subagents</small></div>
+        </div>
+        <p class="task" id="onb-text" aria-live="polite">Нажмите «Дальше», чтобы собрать рабочее место по шагам.</p>
+        <div class="row">
+          <button class="btn quiet small" type="button" id="onb-prev">← Назад</button>
+          <button class="btn small" type="button" id="onb-next">Дальше →</button>
+          <button class="btn secondary small" type="button" id="onb-play">▶ Авто</button>
+          <button class="btn quiet small" type="button" id="onb-reset">Сначала</button>
+          <span class="pill" id="onb-label">Шаг 0 из 6</span>
+        </div>
+      </div>
+      <div class="map-pairs" aria-label="Соответствия аналогии">
+        <div><b>Онбординг-документ</b><span>= файл правил проекта: команды, структура, запреты</span></div>
+        <div><b>Доступы и пропуск</b><span>= разрешения: что можно без спроса, что нельзя никогда</span></div>
+        <div><b>Рабочие инструменты</b><span>= tools: читать файл, запустить тесты, поиск</span></div>
+        <div><b>Инструкция «как делаем релиз»</b><span>= skill: подробности, которые читают только когда нужно</span></div>
+        <div><b>Помощник-стажёр</b><span>= subagent: делает часть работы и приносит короткий отчёт</span></div>
+      </div>
+      <p>Всё это вместе — <strong>harness</strong> («упряжь»). Одна и та же модель в хорошем и плохом harness работает как два разных инженера.</p>
+    </section>
+
+    <!-- ============ 2. ОБЪЯСНЕНИЕ ============ -->
+    <section class="step" id="explain">
+      <div class="step-head">
+        <span class="step-tag"><b>2</b> Объяснение</span>
+        <h2>От простого к сложному</h2>
+      </div>
+
+      <div class="level" data-level="1">
+        <span class="level-tag">Уровень 1 · Суть</span>
+        <h3>Агент — это модель в цикле с инструментами</h3>
+        <p>Модель ничего не запускает сама. Она только пишет запрос: «вызови инструмент <code>run_tests</code>». Такой запрос называют <span class="term" data-tip="Блок в ответе модели: имя инструмента и аргументы в JSON. Модель просит, а выполняет программа вокруг неё.">tool_use</span>. Программа вокруг модели (harness) выполняет его, дописывает результат в историю и снова зовёт модель.</p>
+        <p>Один круг цикла:</p>
+        <ol>
+          <li>Программа отправляет модели всю историю и описания инструментов.</li>
+          <li>Модель отвечает текстом или просьбой вызвать инструмент.</li>
+          <li>Программа проверяет права и выполняет инструмент.</li>
+          <li>Результат (<span class="term" data-tip="Блок с выводом инструмента. Уходит модели в сообщении с ролью user, а поле tool_use_id связывает его с просьбой.">tool_result</span>) дописывается в историю, и круг начинается снова.</li>
+        </ol>
+        <p>Круги идут, пока модель не ответит со <span class="term" data-tip="Поле ответа: почему модель остановилась. end_turn — закончила, tool_use — ждёт инструмент, max_tokens — упёрлась в лимит ответа.">stop_reason</span> <code>end_turn</code>: «я закончила». Цикл и инструменты — ваши, рассуждение — за моделью.</p>
+        <div class="code-tabs">
+<pre data-lang="js">messages = [задача]
+while (true) {
+  ответ = model(messages, tools)          // модель думает
+  if (ответ.stop_reason === "end_turn") break
+  результат = выполнить(ответ.tool_use)   // harness делает
+  messages.push(ответ, результат)         // история растёт
+}</pre>
+<pre data-lang="php">&lt;?php
+$messages = [$task];
+while (true) {
+    $answer = model($messages, $tools);               // модель думает
+    if ($answer['stop_reason'] === 'end_turn') break;
+    $result = execute($answer['tool_use']);           // harness делает
+    array_push($messages, $answer, $result);          // история растёт
+}</pre>
+<pre data-lang="py">messages = [task]
+while True:
+    answer = model(messages, tools)            # модель думает
+    if answer["stop_reason"] == "end_turn":
+        break
+    result = execute(answer["tool_use"])       # harness делает
+    messages += [answer, result]               # история растёт</pre>
+        </div>
+        <div class="tip"><b>Главное</b>Модель решает, что сделать. Harness решает, можно ли это делать, и делает. Вся безопасность и качество живут во втором.</div>
+        <p>Ниже тот же цикл в действии: фильм на минуту и рядом код, который в эту секунду работает. Задача — «почини падающий тест». Перематывайте, вращайте сцену мышью, кликайте по деталям. Язык кода переключается вкладками, как во всём уроке.</p>
+      </div>
+
+      <div class="wide lp-wrap">
+        <figure class="stage3d" data-stage="cikl-agenta">
+          <div class="stage3d-view"></div>
+          <figcaption class="stage3d-alt">3D-фильм «Цикл агента». Слева ваша машина: человек, harness с кольцом цикла, стопка истории, кольцо проверки прав и три инструмента — run_tests, read_file, edit_file. Справа модель. Задача «почини падающий тест» ложится первым слоем истории. Harness отправляет модели всю историю и описания инструментов. Модель отвечает просьбой tool_use: запустить тесты. Harness проверяет права, запускает run_tests и дописывает вывод как tool_result. Ещё три круга: прочитать файл (самый толстый слой, 1 800 токенов), поправить строку, снова тесты. Модель отвечает end_turn, ответ уходит человеку. Столбики показывают вход пяти вызовов: 40, 320, 2 170, 2 280 и 2 370 токенов — каждый вызов везёт всю историю. В конце модель просит несуществующий deploy_to_prod: harness не падает, а возвращает ошибку с is_error, и модель выбирает другой путь.</figcaption>
+        </figure>
+
+        <div class="stand lp" id="lp">
+          <div class="stand-head"><h3 id="lp-title">Что в этот момент делает код</h3><span class="badge" id="lp-badge">глава 1 из 8</span></div>
+          <p class="task" id="lp-text" aria-live="polite">Первая строка цикла кладёт задачу в историю. Список tools — только описания: имя, текст и JSON-схема аргументов. Сами функции живут у вас и модели не видны.</p>
+          <div class="lp-code" id="lp-code">
+            <div class="code-tabs">
+<pre data-lang="js">const tools = [/* run_tests, read_file, edit_file: имя, описание, JSON-схема */];
+
+async function runAgent(task) {
+  const messages = [{ role: "user", content: task }];          // история — всё, что знает агент
+
+  for (let step = 0; step &lt; 20; step++) {                      // лимит шагов
+    const res = await callModel({ model: "claude-opus-5-5", max_tokens: 4096, tools, messages });
+    messages.push({ role: "assistant", content: res.content });  // ответ целиком
+
+    if (res.stop_reason === "end_turn") {                      // модель закончила
+      return res.content.filter(b =&gt; b.type === "text").map(b =&gt; b.text).join("\n");
+    }
+    if (res.stop_reason !== "tool_use") {                      // max_tokens, refusal…
+      throw new Error(`Цикл остановлен: ${res.stop_reason}`);
+    }
+
+    const results = [];
+    for (const block of res.content.filter(b =&gt; b.type === "tool_use")) {
+      try {
+        if (!allowed(block)) throw new Error("Запрещено правилами проекта");  // проверка прав
+        const run = handlers[block.name];
+        if (!run) throw new Error(`Нет инструмента ${block.name}`);
+        results.push({ type: "tool_result", tool_use_id: block.id, content: await run(block.input) });
+      } catch (e) {
+        results.push({ type: "tool_result", tool_use_id: block.id, content: e.message, is_error: true });
+      }
+    }
+    messages.push({ role: "user", content: results });         // все результаты — одним сообщением
+  }
+  throw new Error("Лимит шагов: агент зациклился");
+}</pre>
+<pre data-lang="php">&lt;?php
+// $tools — run_tests, read_file, edit_file: имя, описание, JSON-схема
+function runAgent(string $task, array $tools, array $handlers): string
+{
+    $messages = [['role' =&gt; 'user', 'content' =&gt; $task]];        // история — всё, что знает агент
+
+    for ($step = 0; $step &lt; 20; $step++) {                        // лимит шагов
+        $res = callModel(['model' =&gt; 'claude-opus-5-5', 'max_tokens' =&gt; 4096, 'tools' =&gt; $tools, 'messages' =&gt; $messages]);
+        $messages[] = ['role' =&gt; 'assistant', 'content' =&gt; $res['content']];  // ответ целиком
+
+        if ($res['stop_reason'] === 'end_turn') {                  // модель закончила
+            return implode("\n", array_column(array_filter($res['content'], fn ($b) =&gt; $b['type'] === 'text'), 'text'));
+        }
+        if ($res['stop_reason'] !== 'tool_use') {                  // max_tokens, refusal…
+            throw new RuntimeException("Цикл остановлен: {$res['stop_reason']}");
+        }
+
+        $results = [];
+        foreach ($res['content'] as $block) {
+            if ($block['type'] !== 'tool_use') continue;
+            try {
+                if (!allowed($block)) throw new RuntimeException('Запрещено правилами проекта');  // проверка прав
+                $run = $handlers[$block['name']] ?? throw new RuntimeException("Нет инструмента {$block['name']}");
+                $results[] = ['type' =&gt; 'tool_result', 'tool_use_id' =&gt; $block['id'], 'content' =&gt; $run($block['input'])];
+            } catch (Throwable $e) {
+                $results[] = ['type' =&gt; 'tool_result', 'tool_use_id' =&gt; $block['id'], 'content' =&gt; $e-&gt;getMessage(), 'is_error' =&gt; true];
+            }
+        }
+        $messages[] = ['role' =&gt; 'user', 'content' =&gt; $results];   // все результаты — одним сообщением
+    }
+    throw new RuntimeException('Лимит шагов: агент зациклился');
+}</pre>
+<pre data-lang="py">TOOLS = [...]  # run_tests, read_file, edit_file: имя, описание, JSON-схема
+
+def run_agent(task: str) -&gt; str:
+    messages = [{"role": "user", "content": task}]            # история — всё, что знает агент
+
+    for step in range(20):                                    # лимит шагов
+        res = call_model({"model": "claude-opus-5-5", "max_tokens": 4096, "tools": TOOLS, "messages": messages})
+        messages.append({"role": "assistant", "content": res["content"]})  # ответ целиком
+
+        if res["stop_reason"] == "end_turn":                  # модель закончила
+            return "\n".join(b["text"] for b in res["content"] if b["type"] == "text")
+        if res["stop_reason"] != "tool_use":                  # max_tokens, refusal…
+            raise RuntimeError(f"Цикл остановлен: {res['stop_reason']}")
+
+        results = []
+        for block in res["content"]:
+            if block["type"] != "tool_use":
+                continue
+            try:
+                if not allowed(block):                        # проверка прав
+                    raise PermissionError("Запрещено правилами проекта")
+                run = HANDLERS.get(block["name"])
+                if run is None:
+                    raise LookupError(f"Нет инструмента {block['name']}")
+                results.append({"type": "tool_result", "tool_use_id": block["id"], "content": run(**block["input"])})
+            except Exception as e:
+                results.append({"type": "tool_result", "tool_use_id": block["id"], "content": str(e), "is_error": True})
+        messages.append({"role": "user", "content": results})  # все результаты — одним сообщением
+
+    raise RuntimeError("Лимит шагов: агент зациклился")</pre>
+            </div>
+          </div>
+          <div class="lp-side">
+            <h4 id="lp-json-title">По сети</h4>
+            <pre data-lang="json" class="lp-json"><span class="lp-json-body"></span></pre>
+            <h4>История</h4>
+            <div class="ctxline">
+              <small id="lp-ctx">История: 0 токенов · вызовов модели: 0</small>
+              <div class="track"><i id="lp-bar"></i></div>
+            </div>
+            <ul class="msgs" id="lp-msgs" aria-live="polite"></ul>
+          </div>
+          <div class="row">
+            <button class="btn quiet small" type="button" id="lp-prev">← Глава</button>
+            <button class="btn small" type="button" id="lp-next">Глава →</button>
+            <span class="pill" id="lp-label">1. Задача и инструменты</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="level" data-level="2">
+        <span class="level-tag">Уровень 2 · Детали</span>
+        <h3>Из чего состоит harness</h3>
+        <p>Возьмём Claude Code (агент Anthropic для терминала). У Codex, Cursor и других агентов те же части, только файлы называются иначе.</p>
+        <ul>
+          <li><strong>Системный промпт</strong> — базовые инструкции агента. Его пишет разработчик инструмента, вы его обычно не трогаете.</li>
+          <li><strong>Файл правил проекта</strong> — <code>CLAUDE.md</code> или <code>AGENTS.md</code> в корне репозитория. Агент читает его в начале каждой сессии. Там команды сборки и тестов, структура, договорённости, запреты.</li>
+          <li><strong>Инструменты</strong> (tools) — чтение и правка файлов, поиск, запуск команд. Каждый описан именем, описанием и схемой аргументов.</li>
+          <li><strong>Разрешения</strong> (permissions) — в <code>.claude/settings.json</code>. Список <code>allow</code>: можно без вопросов. Список <code>deny</code>: нельзя никогда. Остальное агент спрашивает у вас.</li>
+          <li><strong>Скилы</strong> (skills) — папка <code>.claude/skills/&lt;имя&gt;/</code> с файлом <code>SKILL.md</code>. Это инструкция под типовую задачу: «как выпустить релиз», «как писать миграцию».</li>
+          <li><strong>Субагенты</strong> (subagents) — файлы <code>.claude/agents/&lt;имя&gt;.md</code>. Отдельный агент со своим окном контекста и своим набором инструментов.</li>
+          <li><strong>Управление контекстом</strong> — сжатие старой истории, кэш, вынос тяжёлой работы в субагентов.</li>
+        </ul>
+        <div class="note"><b>Мягкое и жёсткое правило</b>Строка в CLAUDE.md «не читай .env» — это просьба к модели. Обычно её выполняют, но гарантии нет. Правило <code>deny</code> в settings.json или хук (урок 4) — это код. Его выполняет harness, и модель не может его обойти. Важное — делайте жёстким.</div>
+        <details class="more">
+          <summary>Пример CLAUDE.md, settings.json, скила и субагента <span class="hint">— файлы целиком</span></summary>
+          <div class="more-body">
+            <p><strong>CLAUDE.md</strong> — коротко и по делу. Модель читает его каждый раз, лишние строки стоят токенов и размывают внимание.</p>
+<pre data-lang="md"># Проект: сервис заказов (Symfony 7, PHP 8.3, Postgres)
+
+## Команды
+- Тесты: `make test` (один файл: `make test F=tests/Unit/PriceTest.php`)
+- Статанализ: `make phpstan`
+- Не запускай `composer update` без просьбы.
+
+## Структура
+- src/Domain — бизнес-логика без Symfony
+- src/Infrastructure — Doctrine, HTTP-клиенты
+- tests/Unit, tests/Functional
+
+## Правила
+- Деньги — только через Money, никаких float.
+- Миграции не редактируем, только новые.
+- После правки кода запускай тесты и phpstan.</pre>
+            <p><strong>.claude/settings.json</strong> — жёсткие разрешения. Шаблон <code>:*</code> означает «команда, начинающаяся с этого».</p>
+<pre data-lang="json">{
+  "permissions": {
+    "allow": [
+      "Bash(make test:*)",
+      "Bash(make phpstan)",
+      "Bash(git status)",
+      "Bash(git diff:*)"
+    ],
+    "deny": [
+      "Read(./.env)",
+      "Read(./.env.*)",
+      "Bash(git push:*)",
+      "Bash(rm -rf:*)"
+    ]
+  }
+}</pre>
+            <p><strong>.claude/skills/new-migration/SKILL.md</strong> — в контекст сразу попадают только <code>name</code> и <code>description</code>. Тело агент читает, когда задача подходит под описание.</p>
+<pre data-lang="md">---
+name: new-migration
+description: Как создать миграцию базы данных Doctrine в этом проекте. Используй, когда задача требует новой таблицы, колонки или индекса.
+---
+
+1. Сгенерируй файл: `make migration`.
+2. Проверь SQL в up() и down(): down() обязан откатывать up().
+3. Индексы на больших таблицах — только CONCURRENTLY.
+4. Прогони: `make migrate && make test`.</pre>
+            <p><strong>.claude/agents/reviewer.md</strong> — субагент-ревьюер. У него свой контекст и только инструменты чтения.</p>
+<pre data-lang="md">---
+name: reviewer
+description: Проверяет изменения в ветке на ошибки и нарушения правил проекта. Ничего не правит.
+tools: Read, Grep, Glob
+---
+
+Ты ревьюер. Прочитай diff ветки и правила из CLAUDE.md.
+Верни список находок: файл, строка, проблема, почему это важно.
+Не больше 10 пунктов. Если проблем нет — так и скажи.</pre>
+          </div>
+        </details>
+      </div>
+
+      <div class="level" data-level="3">
+        <span class="level-tag">Уровень 3 · Усложнение</span>
+        <h3>Контекст — главный бюджет harness</h3>
+        <p>Всё, что вы добавляете в harness, конкурирует за одно окно контекста (урок 1). Поэтому хороший harness устроен по принципу <span class="term" data-tip="Progressive disclosure — сначала показываем короткое описание, подробности подгружаем только по необходимости.">прогрессивного раскрытия</span>: в окне лежит минимум, подробности подгружаются по требованию.</p>
+        <ul>
+          <li><strong>Скил</strong> стоит в контексте ~30–100 токенов (имя и описание), пока не нужен. Если бы все инструкции лежали в CLAUDE.md, каждая сессия платила бы за все сразу.</li>
+          <li><strong>Субагент</strong> читает 30 файлов в своём окне, а в основное возвращает отчёт на полстраницы. Основной агент остаётся «свежим».</li>
+          <li><strong>Описание</strong> скила или субагента — это то, по чему агент решает, звать ли его. Плохое описание — скил никогда не сработает.</li>
+        </ul>
+        <p><strong>Правила честного цикла.</strong> Их легко нарушить, когда пишешь цикл сам. Все пять видно в коде под фильмом.</p>
+        <ul>
+          <li><strong>Ответ модели — в историю целиком.</strong> Не только текст, а весь <code>content</code>: с <code>tool_use</code> и блоками рассуждения. Потеряете <code>tool_use</code> — следующий запрос получит ошибку 400: результату не к чему привязаться.</li>
+          <li><strong>На каждый tool_use — свой tool_result</strong> с тем же <code>tool_use_id</code>. Модель может попросить несколько инструментов в одном ответе. Все их результаты отправляют одним сообщением <code>user</code>: иначе модель со временем перестаёт просить параллельно.</li>
+          <li><strong>Ошибка инструмента — тоже результат.</strong> Ловите исключение и возвращайте текст ошибки с <code>is_error: true</code>. Модель прочитает его и попробует иначе, а программа не упадёт.</li>
+          <li><strong>stop_reason разбирают целиком.</strong> <code>end_turn</code> — конец, <code>tool_use</code> — работаем дальше. <code>max_tokens</code> или <code>refusal</code> — остановиться: повтор того же запроса даст тот же ответ и съест деньги.</li>
+          <li><strong>Лимит шагов.</strong> Модель может просить одно и то же бесконечно. Счётчик в цикле остановит её на 20-м круге.</li>
+        </ul>
+        <p><strong>Типичные ошибки конфигурации:</strong></p>
+        <ul>
+          <li>CLAUDE.md на 1000 строк: важное тонет, токены горят на каждой сессии.</li>
+          <li>Правила противоречат друг другу: «всегда пиши тесты» и «не трогай папку tests».</li>
+          <li>Слишком широкие права: <code>Bash(*)</code> в allow — агент может удалить что угодно без вопроса.</li>
+          <li>Важные запреты только словами в CLAUDE.md вместо deny-правил и хуков.</li>
+          <li>Субагенту дали право писать файлы, хотя ему нужно только читать.</li>
+        </ul>
+        <details class="more">
+          <summary>Цикл tool use в коде <span class="hint">— JS, TS, PHP, Python, сырой HTTP</span></summary>
+          <div class="more-body">
+            <p>Один инструмент <code>run_tests</code> и цикл. Все результаты инструментов одного шага возвращаем одним сообщением <code>user</code>. Команду запускаем без shell (<code>execFile</code>, массив аргументов): модель не должна уметь дописать <code>; rm -rf</code>.</p>
+            <div class="code-tabs">
+<pre data-lang="js">import { execFileSync } from "node:child_process";
+
+const tools = [{
+  name: "run_tests",
+  description: "Запускает PHPUnit и возвращает вывод. Вызывай после каждой правки кода.",
+  input_schema: {
+    type: "object",
+    properties: { path: { type: "string", description: "Файл или папка с тестами, по умолчанию tests" } },
+  },
+}];
+
+const handlers = {
+  run_tests: ({ path = "tests" }) => {
+    if (!/^tests[\w\/.-]*$/.test(path)) throw new Error("path должен быть внутри tests/");
+    try { return execFileSync("vendor/bin/phpunit", [path], { encoding: "utf8" }); }
+    catch (e) { return e.stdout + e.stderr; } // упавшие тесты — тоже полезный результат
+  },
+};
+
+async function callModel(messages) {
+  const res = await fetch("https://api.anthropic.com/v1/messages", {
+    method: "POST",
+    headers: { "content-type": "application/json", "x-api-key": process.env.ANTHROPIC_API_KEY, "anthropic-version": "2023-06-01" },
+    body: JSON.stringify({ model: "claude-opus-5-5", max_tokens: 4096, tools, messages }),
+  });
+  return res.json();
+}
+
+const messages = [{ role: "user", content: "Тест PriceTest падает. Найди причину и почини." }];
+for (let step = 0; step < 20; step++) {             // лимит шагов — защита от петли
+  const res = await callModel(messages);
+  messages.push({ role: "assistant", content: res.content });
+  if (res.stop_reason !== "tool_use") {
+    console.log(res.content.filter(b => b.type === "text").map(b => b.text).join("\n"));
+    break;
+  }
+  const results = [];
+  for (const block of res.content.filter(b => b.type === "tool_use")) {
+    try {
+      results.push({ type: "tool_result", tool_use_id: block.id, content: await handlers[block.name](block.input) });
+    } catch (e) {
+      results.push({ type: "tool_result", tool_use_id: block.id, content: String(e.message), is_error: true });
+    }
+  }
+  messages.push({ role: "user", content: results });  // все результаты шага — одним сообщением
+}</pre>
+<pre data-lang="ts">import { execFileSync } from "node:child_process";
+
+type Block =
+  | { type: "text"; text: string }
+  | { type: "tool_use"; id: string; name: string; input: Record&lt;string, unknown&gt; };
+interface ModelResponse { stop_reason: "end_turn" | "tool_use" | "max_tokens"; content: Block[] }
+type Handler = (input: Record&lt;string, unknown&gt;) =&gt; string;
+
+const handlers: Record&lt;string, Handler&gt; = {
+  run_tests: (input) =&gt; {
+    const path = typeof input.path === "string" ? input.path : "tests";
+    if (!path.startsWith("tests")) throw new Error("path должен быть внутри tests/");
+    return execFileSync("vendor/bin/phpunit", [path], { encoding: "utf8" });
+  },
+};
+
+async function runAgent(task: string, call: (m: unknown[]) =&gt; Promise&lt;ModelResponse&gt;): Promise&lt;string&gt; {
+  const messages: unknown[] = [{ role: "user", content: task }];
+  for (let step = 0; step &lt; 20; step++) {
+    const res = await call(messages);
+    messages.push({ role: "assistant", content: res.content });
+    if (res.stop_reason !== "tool_use") {
+      return res.content.flatMap(b =&gt; (b.type === "text" ? [b.text] : [])).join("\n");
+    }
+    const results = res.content.flatMap(b =&gt; {
+      if (b.type !== "tool_use") return [];
+      const handler = handlers[b.name];
+      try {
+        if (!handler) throw new Error(`Неизвестный инструмент ${b.name}`);
+        return [{ type: "tool_result", tool_use_id: b.id, content: handler(b.input) }];
+      } catch (e) {
+        return [{ type: "tool_result", tool_use_id: b.id, content: String(e), is_error: true }];
+      }
+    });
+    messages.push({ role: "user", content: results });
+  }
+  return "Остановлено: лимит шагов";
+}</pre>
+<pre data-lang="php">&lt;?php
+$tools = [[
+    'name' => 'run_tests',
+    'description' => 'Запускает PHPUnit и возвращает вывод. Вызывай после каждой правки кода.',
+    'input_schema' => [
+        'type' => 'object',
+        'properties' => ['path' => ['type' => 'string', 'description' => 'Файл или папка с тестами']],
+    ],
+]];
+
+$handlers = [
+    'run_tests' => function (array $input): string {
+        $path = $input['path'] ?? 'tests';
+        if (!preg_match('~^tests[\w/.-]*$~', $path)) {
+            throw new InvalidArgumentException('path должен быть внутри tests/');
+        }
+        // escapeshellarg: модель не допишет в команду ничего своего
+        return (string) shell_exec('vendor/bin/phpunit ' . escapeshellarg($path) . ' 2>&1');
+    },
+];
+
+function callModel(array $messages, array $tools): array {
+    $ch = curl_init('https://api.anthropic.com/v1/messages');
+    curl_setopt_array($ch, [
+        CURLOPT_POST => true,
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_HTTPHEADER => ['content-type: application/json', 'x-api-key: ' . getenv('ANTHROPIC_API_KEY'), 'anthropic-version: 2023-06-01'],
+        CURLOPT_POSTFIELDS => json_encode(['model' => 'claude-opus-5-5', 'max_tokens' => 4096, 'tools' => $tools, 'messages' => $messages]),
+    ]);
+    return json_decode(curl_exec($ch), true, flags: JSON_THROW_ON_ERROR);
+}
+
+$messages = [['role' => 'user', 'content' => 'Тест PriceTest падает. Найди причину и почини.']];
+for ($step = 0; $step < 20; $step++) {
+    $res = callModel($messages, $tools);
+    $messages[] = ['role' => 'assistant', 'content' => $res['content']];
+    if ($res['stop_reason'] !== 'tool_use') {
+        break;
+    }
+    $results = [];
+    foreach ($res['content'] as $block) {
+        if ($block['type'] !== 'tool_use') continue;
+        try {
+            $out = ($handlers[$block['name']] ?? throw new RuntimeException('Неизвестный инструмент'))($block['input']);
+            $results[] = ['type' => 'tool_result', 'tool_use_id' => $block['id'], 'content' => $out];
+        } catch (Throwable $e) {
+            $results[] = ['type' => 'tool_result', 'tool_use_id' => $block['id'], 'content' => $e->getMessage(), 'is_error' => true];
+        }
+    }
+    $messages[] = ['role' => 'user', 'content' => $results];
+}</pre>
+<pre data-lang="py">import os
+import re
+import subprocess
+import requests
+
+TOOLS = [{
+    "name": "run_tests",
+    "description": "Запускает pytest и возвращает вывод. Вызывай после каждой правки кода.",
+    "input_schema": {
+        "type": "object",
+        "properties": {"path": {"type": "string", "description": "Файл или папка с тестами"}},
+    },
+}]
+
+def run_tests(path: str = "tests") -> str:
+    if not re.fullmatch(r"tests[\w/.-]*", path):
+        raise ValueError("path должен быть внутри tests/")
+    # список аргументов, без shell=True
+    proc = subprocess.run(["pytest", path, "-q"], capture_output=True, text=True)
+    return proc.stdout + proc.stderr
+
+HANDLERS = {"run_tests": run_tests}
+
+def call_model(messages):
+    res = requests.post(
+        "https://api.anthropic.com/v1/messages",
+        headers={"content-type": "application/json", "x-api-key": os.environ["ANTHROPIC_API_KEY"], "anthropic-version": "2023-06-01"},
+        json={"model": "claude-opus-5-5", "max_tokens": 4096, "tools": TOOLS, "messages": messages},
+        timeout=120,
+    )
+    res.raise_for_status()
+    return res.json()
+
+messages = [{"role": "user", "content": "Тест test_price падает. Найди причину и почини."}]
+for step in range(20):
+    res = call_model(messages)
+    messages.append({"role": "assistant", "content": res["content"]})
+    if res["stop_reason"] != "tool_use":
+        break
+    results = []
+    for block in res["content"]:
+        if block["type"] != "tool_use":
+            continue
+        try:
+            out = HANDLERS[block["name"]](**block["input"])
+            results.append({"type": "tool_result", "tool_use_id": block["id"], "content": out})
+        except Exception as e:
+            results.append({"type": "tool_result", "tool_use_id": block["id"], "content": str(e), "is_error": True})
+    messages.append({"role": "user", "content": results})</pre>
+            </div>
+            <p class="footer-note">В рабочих проектах цикл часто берут готовым: в официальных SDK есть помощники, которые крутят его сами. Писать вручную полезно один раз, чтобы понять механику.</p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- ============ 3. ИНТЕРАКТИВ ============ -->
+    <section class="step" id="interactive">
+      <div class="step-head">
+        <span class="step-tag"><b>3</b> Интерактив</span>
+        <h2>Посмотрите на harness изнутри</h2>
+        <p>Цикл вы уже видели в фильме. Здесь — то, что его настраивает: права, скилы и субагенты. Сценарии учебные, но устроены как в настоящих агентах.</p>
+      </div>
+
+      <!-- 3.1 Конструктор конфигурации -->
+      <div class="stand" id="cfg">
+        <div class="stand-head"><h3>Конструктор конфигурации</h3><span class="badge">интерактив 1 из 3</span></div>
+        <p class="task">Включайте правила и смотрите, что агент сделает с пятью просьбами. Обратите внимание, где спасает строчка в CLAUDE.md, а где только жёсткий запрет.</p>
+        <div class="cfg">
+          <fieldset>
+            <legend>CLAUDE.md (просьбы)</legend>
+            <label><input type="checkbox" id="cfg-md-tests" checked> «Тесты — через <code>make test</code>»</label>
+            <label><input type="checkbox" id="cfg-md-env"> «Не читай .env»</label>
+            <label><input type="checkbox" id="cfg-md-mig"> «Старые миграции не редактируем»</label>
+          </fieldset>
+          <fieldset>
+            <legend>allow (без вопросов)</legend>
+            <label><input type="checkbox" id="cfg-allow-test" checked> <code>Bash(make test:*)</code></label>
+            <label><input type="checkbox" id="cfg-allow-all"> <code>Bash(*)</code> — всё подряд</label>
+            <legend style="margin-top:0.5rem">deny (никогда)</legend>
+            <label><input type="checkbox" id="cfg-deny-rm"> <code>Bash(rm -rf:*)</code></label>
+            <label><input type="checkbox" id="cfg-deny-push"> <code>Bash(git push:*)</code></label>
+            <label><input type="checkbox" id="cfg-deny-env"> <code>Read(./.env)</code></label>
+          </fieldset>
+          <fieldset>
+            <legend>Режим для остального</legend>
+            <label><input type="radio" name="cfg-mode" id="cfg-mode-ask" checked> Спрашивать меня</label>
+            <label><input type="radio" name="cfg-mode" id="cfg-mode-auto"> Выполнять без вопросов</label>
+            <p class="task">Режим без вопросов удобен, но всё, что не запрещено явно, агент сделает сам.</p>
+          </fieldset>
+        </div>
+        <div class="verdicts" id="cfg-out" aria-live="polite"></div>
+        <p class="result-line" id="cfg-score"></p>
+      </div>
+
+      <!-- 3.2 Какой скил загрузится -->
+      <div class="stand" id="sk">
+        <div class="stand-head"><h3>Какой скил загрузится</h3><span class="badge">интерактив 2 из 3</span></div>
+        <p class="task">Агент видит только описания скилов. Напишите задачу, и посмотрите, чьё описание совпало. Это упрощённый поиск по словам, настоящая модель понимает смысл, но принцип тот же: плохое описание — скил не найдут.</p>
+        <div class="row" role="group" aria-label="Примеры задач">
+          <button class="chip-btn" type="button" data-task="Добавь колонку discount в таблицу заказов">Колонка в таблицу</button>
+          <button class="chip-btn" type="button" data-task="Подготовь релиз версии 2.4 и обнови changelog">Релиз</button>
+          <button class="chip-btn" type="button" data-task="Почини медленный запрос списка заказов">Медленный запрос</button>
+          <button class="chip-btn" type="button" data-task="Покрасить кнопку в синий цвет">Кнопка</button>
+        </div>
+        <div class="field">
+          <label for="sk-task">Задача для агента</label>
+          <input type="text" id="sk-task" value="Добавь колонку discount в таблицу заказов">
+        </div>
+        <div class="skills" id="sk-list"></div>
+        <div class="budget-rows" id="sk-budget"></div>
+      </div>
+
+      <!-- 3.3 Субагент -->
+      <div class="stand" id="sub">
+        <div class="stand-head"><h3>Бюджет контекста: с субагентом и без</h3><span class="badge">интерактив 3 из 3</span></div>
+        <p class="task">Задача: «найди, где в проекте отправляются письма». Нужно прочитать 14 файлов по ~3 000 токенов. Красная линия — порог, после которого модель начинает хуже держать детали.</p>
+        <div class="row">
+          <label class="row" style="gap:0.4rem; font-weight:500"><input type="checkbox" id="sub-on"> Отдать поиск субагенту</label>
+          <button class="btn" type="button" id="sub-run">▶ Запустить</button>
+        </div>
+        <div class="sub-wrap">
+          <div class="win" id="sub-main">
+            <h4>Основной агент</h4>
+            <div class="fill"><i id="sub-main-fill"></i><div class="limit" style="bottom:66%"><span>порог</span></div></div>
+            <small id="sub-main-num">0 токенов</small>
+          </div>
+          <div class="win off" id="sub-sub">
+            <h4>Субагент (своё окно)</h4>
+            <div class="fill"><i id="sub-sub-fill"></i><div class="limit" style="bottom:66%"><span>порог</span></div></div>
+            <small id="sub-sub-num">не используется</small>
+          </div>
+        </div>
+        <p class="task" id="sub-text" aria-live="polite"></p>
+      </div>
+    </section>
+
+    <!-- ============ 4. ПРАКТИКА ============ -->
+    <section class="step" id="practice">
+      <div class="step-head">
+        <span class="step-tag"><b>4</b> Тесты</span>
+        <h2>Проверьте себя</h2>
+        <p>Код писать не нужно. Где верный ответ один, он засчитывается по клику. Где написано «Отметьте все верные ответы», выберите все подходящие и нажмите «Проверить»: зачёт только при точном совпадении. Ответы сохраняются в браузере.</p>
+      </div>
+
+      <div class="quiz">
+        <h3>Вопросы по уроку</h3>
+        <div class="q" data-q="l2-who">
+          <p>Агент «запустил тесты». Кто на самом деле выполнил команду?</p>
+          <div class="options">
+            <button>Модель на серверах провайдера</button>
+            <button data-right>Harness на вашей машине: модель только попросила вызвать инструмент</button>
+            <button>Тесты запустились сами, когда модель написала команду в ответе</button>
+          </div>
+          <p class="why">Модель выдаёт tool_use — запрос с именем инструмента и аргументами. Выполняет его программа вокруг модели. Поэтому именно там проверяют права и пишут логи.</p>
+        </div>
+        <div class="q" data-q="l2-where">
+          <p>Куда записать «тесты запускаем через <code>make test</code>, а не через phpunit напрямую»?</p>
+          <div class="options">
+            <button data-right>В файл правил проекта: CLAUDE.md или AGENTS.md</button>
+            <button>В каждое сообщение агенту</button>
+            <button>В deny-список settings.json</button>
+          </div>
+          <p class="why">Это знание о проекте, оно нужно в каждой сессии. Файл правил читается в начале каждой сессии автоматически.</p>
+        </div>
+        <div class="q" data-q="l2-env">
+          <p>Как надёжно запретить агенту читать <code>.env</code> с секретами?</p>
+          <div class="options">
+            <button>Написать в CLAUDE.md крупными буквами «НИКОГДА не читай .env»</button>
+            <button data-right>Добавить deny-правило в settings.json или хук, который блокирует чтение</button>
+            <button>Попросить в чате в начале каждой сессии</button>
+          </div>
+          <p class="why">Текстовое правило — просьба к модели, её можно нарушить. Deny-правило и хук выполняет harness, модель не может их обойти.</p>
+        </div>
+        <div class="q" data-q="l2-sub">
+          <p>Зачем отдавать поиск по 30 файлам субагенту?</p>
+          <div class="options">
+            <button>Субагент работает на более умной модели</button>
+            <button>Токены субагента бесплатные</button>
+            <button data-right>Файлы читаются в отдельном окне контекста, а основному агенту приходит короткий вывод</button>
+          </div>
+          <p class="why">Токены субагента тоже стоят денег. Выигрыш в другом: основной контекст не забивается сырыми файлами, и модель лучше держит главную задачу.</p>
+        </div>
+        <div class="q" data-q="l2-tool-use" data-multi>
+          <p>Модель вернула ответ tool_use. Что в нём есть?</p>
+          <div class="options">
+            <button data-right>Имя инструмента, например <code>run_tests</code></button>
+            <button data-right>Аргументы вызова, например путь к файлу</button>
+            <button>Готовый вывод тестов</button>
+          </div>
+          <p class="why">tool_use — это просьба, а не результат. Модель пишет, что вызвать и с какими аргументами. Вывод тестов появится, только когда harness выполнит вызов и допишет ответ в историю.</p>
+        </div>
+        <div class="q" data-q="l2-stop-reason" data-multi>
+          <p>Модель ответила, и вы смотрите на <code>stop_reason</code>. Что верно?</p>
+          <div class="options">
+            <button data-right><code>end_turn</code>: модель закончила, цикл можно завершать</button>
+            <button data-right><code>tool_use</code>: модель ждёт результат инструмента, цикл идёт дальше</button>
+            <button><code>max_tokens</code>: надо отправить тот же запрос ещё раз, пока не получится</button>
+            <button data-right><code>refusal</code>: модель отказалась, цикл останавливают и разбираются</button>
+          </div>
+          <p class="why">Цикл ветвится по <code>stop_reason</code>. <code>max_tokens</code> значит, что ответ упёрся в лимит: повтор того же запроса даст тот же обрезанный ответ и съест деньги. Поднимают лимит или останавливаются. Неизвестный <code>stop_reason</code> тоже лучше остановить, чем крутить вслепую.</p>
+        </div>
+        <div class="q" data-q="l2-history-save">
+          <p>Модель вернула блок рассуждения и <code>tool_use</code>. Что дописать в историю перед результатом инструмента?</p>
+          <div class="options">
+            <button>Только текст ответа: остальное модели не нужно</button>
+            <button data-right>Весь <code>content</code> ответа целиком, с ролью <code>assistant</code></button>
+            <button>Ничего: модель помнит свой ответ сама</button>
+          </div>
+          <p class="why">Модель не помнит прошлых запросов, она видит только то, что вы прислали. <code>tool_result</code> ссылается на <code>tool_use</code> по id: если вызова нет в истории, запрос вернёт ошибку 400. Блоки рассуждения тоже возвращают как есть.</p>
+        </div>
+        <div class="q" data-q="l2-loop-parts" data-multi>
+          <p>Вы пишете свой цикл агента. Что в нём нужно, чтобы он не сломался на ровном месте?</p>
+          <div class="options">
+            <button data-right>Лимит шагов: если модель зациклилась, harness остановит цикл</button>
+            <button data-right>Неизвестный инструмент не роняет программу: модель получает текст ошибки</button>
+            <button data-right>Результат каждого инструмента дописывается в историю</button>
+            <button>Модель сама запускает команды, чтобы не ждать harness</button>
+          </div>
+          <p class="why">Модель может просить одно и то же бесконечно — без лимита цикл не кончится. Может позвать инструмент, которого нет, например <code>deploy_to_prod</code>, — тогда ей надо вернуть ошибку текстом, и она выберет другое. Без записи в историю модель не узнает, что произошло. А запускать команды модель не умеет вовсе.</p>
+        </div>
+        <div class="q" data-q="l2-perm-order" data-multi>
+          <p>В settings.json: allow — <code>Bash(git:*)</code>, deny — <code>Bash(git push:*)</code>. Что верно?</p>
+          <div class="options">
+            <button data-right><code>git log -5</code> выполнится без вопроса</button>
+            <button data-right><code>git push origin main</code> будет запрещён</button>
+            <button><code>git push</code> пройдёт: allow записан раньше deny</button>
+            <button data-right>Для <code>composer update</code> агент спросит вас: правила к нему не подходят</button>
+          </div>
+          <p class="why">deny сильнее allow, порядок записи не важен. Широкое allow пропускает остальные команды git. Команда, к которой не подошло ни одно правило, не запрещена и не разрешена — агент спрашивает человека.</p>
+        </div>
+        <div class="q" data-q="l2-exact-rule">
+          <p>Правило <code>Bash(npm test)</code> записано без <code>:*</code>. Что будет с командой <code>npm test -- --watch</code>?</p>
+          <div class="options">
+            <button>Выполнится без вопроса: начало совпадает</button>
+            <button data-right>Агент спросит вас: точное правило не пропускает команду с хвостом</button>
+            <button>Будет запрещена навсегда</button>
+          </div>
+          <p class="why">Без <code>:*</code> правило требует точного совпадения. Чтобы разрешить команду с любыми аргументами, пишут <code>Bash(npm test:*)</code>. Запрета тоже нет — он бывает только в deny.</p>
+        </div>
+        <div class="q" data-q="l2-skill-cost">
+          <p>Почему скил почти ничего не стоит, пока он не нужен?</p>
+          <div class="options">
+            <button data-right>В контексте лежат только его имя и описание, а тело агент читает, когда задача подходит</button>
+            <button>Скилы хранятся у провайдера и не считаются в токенах</button>
+            <button>Скил выполняется без модели, как обычный скрипт</button>
+          </div>
+          <p class="why">Это прогрессивное раскрытие: 30–100 токенов на описание вместо всей инструкции в каждой сессии. Когда скил загрузился, его текст тоже стоит токенов, как и всё в окне.</p>
+        </div>
+        <div class="q" data-q="l2-skill-desc" data-multi>
+          <p>Агент не находит ваш скил «новая миграция». Что стоит проверить?</p>
+          <div class="options">
+            <button data-right>В описании нет слов, которыми вы ставите задачу: «миграция», «таблица», «колонка»</button>
+            <button data-right>Описание слишком общее, например «полезные советы по проекту»</button>
+            <button>Скил короткий: агент берёт только инструкции длиннее 200 строк</button>
+            <button data-right>Скил лежит не в <code>.claude/skills/&lt;имя&gt;/SKILL.md</code></button>
+          </div>
+          <p class="why">Агент выбирает скил по описанию, сравнивая его с задачей. Нет нужных слов или описание обо всём сразу — скил не сработает. Не там лежит — агент о нём не знает. Длина тела на выбор не влияет: короткий точный скил лучше длинного.</p>
+        </div>
+        <div class="q" data-q="l2-bad-config" data-multi>
+          <p>Что из этого — ошибки в настройке агента?</p>
+          <div class="options">
+            <button data-right>CLAUDE.md на 1000 строк</button>
+            <button data-right><code>Bash(*)</code> в списке allow</button>
+            <button data-right>Субагенту-ревьюеру дали право писать файлы</button>
+            <button>Команды сборки и тестов записаны в AGENTS.md</button>
+          </div>
+          <p class="why">Длинный файл правил прячет важное и стоит токенов в каждой сессии. <code>Bash(*)</code> разрешает любую команду без вопроса, даже удаление. Ревьюеру нужно только читать. А команды сборки и тестов — как раз то, что должно лежать в файле правил.</p>
+        </div>
+        <div class="q" data-q="l2-reviewer-tools">
+          <p>Какие инструменты дать субагенту-ревьюеру?</p>
+          <div class="options">
+            <button>Все, что есть у основного агента, — так надёжнее</button>
+            <button data-right>Только чтение и поиск: он смотрит код, а не меняет его</button>
+            <button>Только запуск команд в терминале</button>
+          </div>
+          <p class="why">Минимум прав — меньше риск. Ревьюер, который может писать, однажды «поправит» код сам, и это никто не проверит. Если ему нужны тесты, дайте одну точную команду, а не весь терминал.</p>
+        </div>
+      </div>
+
+      <details class="more">
+        <summary>Задание на своём проекте <span class="hint">— 30 минут</span></summary>
+        <div class="more-body">
+          <ol>
+            <li>Создайте в рабочем репозитории CLAUDE.md или AGENTS.md на 20–40 строк: команды сборки и тестов, структура папок, 3–5 правил. Без воды.</li>
+            <li>Добавьте в <code>.claude/settings.json</code> deny-правила для <code>.env</code>, <code>git push</code> и <code>rm -rf</code>. Попросите агента прочитать .env и убедитесь, что его остановили.</li>
+            <li>Найдите задачу, которую вы делаете чаще раза в неделю (новая миграция, новый эндпоинт). Опишите её как скил. Проверьте, что агент находит скил по своей формулировке задачи.</li>
+            <li>Опишите субагента-ревьюера только с инструментами чтения. Попросите его проверить вашу последнюю ветку.</li>
+          </ol>
+        </div>
+      </details>
+    </section>
+
+    <!-- ============ 5. ЧЕК-ЛИСТ ============ -->
+    <section class="step" id="checklist">
+      <div class="step-head">
+        <span class="step-tag"><b>5</b> Чек-лист</span>
+        <h2>Отметьте, что усвоили</h2>
+      </div>
+      <ul class="checklist" data-id="main">
+        <li>Могу нарисовать цикл агента: модель просит, harness проверяет права и выполняет, результат возвращается в историю.</li>
+        <li>Знаю, что дописывать в историю: ответ модели целиком и все результаты инструментов одним сообщением, ошибки — с <code>is_error</code>.</li>
+        <li>Понимаю, как цикл ветвится по <code>stop_reason</code> и зачем ему лимит шагов.</li>
+        <li>Знаю, что лежит в CLAUDE.md или AGENTS.md и почему он должен быть коротким.</li>
+        <li>Отличаю мягкое правило (текст для модели) от жёсткого (deny, хук).</li>
+        <li>Понимаю, как работают allow, deny и «спросить человека».</li>
+        <li>Понимаю прогрессивное раскрытие: у скила в контексте только описание.</li>
+        <li>Знаю, когда звать субагента и какие права ему давать.</li>
+        <li>Ответил на вопросы урока: цикл агента, разрешения, скилы и субагенты.</li>
+      </ul>
+      <div class="tip done-banner"><b>Урок пройден</b>Теперь у агента есть рабочее место. Дальше дадим ему память о проекте: что знать заранее и как это хранить.</div>
+    </section>
+
+    <!-- ============ 6. ССЫЛКИ ============ -->
+    <section class="step" id="links">
+      <div class="step-head">
+        <span class="step-tag"><b>6</b> Ссылки</span>
+        <h2>Что почитать и где попробовать</h2>
+      </div>
+      <p class="task">Материалы на русском отмечены зелёной меткой. Ссылки проверены 18 октября 2026 года, урок Anthropic Academy — 26 октября.</p>
+      <div class="links">
+        <div><h3>Почитать</h3><ul><li><a href="https://code.claude.com/docs/ru/features-overview" target="_blank" rel="noopener">Расширение Claude Code</a><span>официальный обзор: CLAUDE.md, skills, subagents, hooks, MCP — что когда грузится в контекст и сколько стоит. <span class="pill ok">рус., офиц.</span></span></li><li><a href="https://platform.claude.com/docs/ru/agents-and-tools/tool-use/overview" target="_blank" rel="noopener">Использование инструментов с Claude</a><span>как устроен tool use (вызов функций): описание инструмента, JSON-схема, цикл «запрос → вызов → результат». <span class="pill ok">рус., офиц.</span></span></li><li><a href="https://academy.claude.com/courses/claude-platform-101/the-agent-loop-explained" target="_blank" rel="noopener">The agent loop explained</a><span>короткий урок Anthropic Academy: агент — это Claude в цикле, разбор stop_reason на примере с одним инструментом. <span class="pill">англ., офиц.</span></span></li><li><a href="https://habr.com/ru/articles/1070296/" target="_blank" rel="noopener">Что такое Harness и с какими моделями его едят?</a><span>что такое обвязка (harness) вокруг модели и почему она важна не меньше самой модели. <span class="pill ok">рус.</span></span></li><li><a href="https://habr.com/ru/articles/972308/" target="_blank" rel="noopener">Как написать хороший CLAUDE.md, чтобы не было мучительно больно</a><span>почему агент игнорирует правила и как писать короткий рабочий CLAUDE.md. <span class="pill ok">рус.</span></span></li><li><a href="https://habr.com/ru/articles/946748/" target="_blank" rel="noopener">Claude Code: субагенты</a><span>вводный разбор субагентов: зачем отдельный контекст и как их настраивать. <span class="pill ok">рус.</span></span></li></ul></div>
+        <div><h3>Песочницы по теме</h3><ul><li><a href="https://www.jsonschemavalidator.net/" target="_blank" rel="noopener">JSON Schema Validator</a><span>описать параметры инструмента JSON-схемой и проверить, пройдут ли аргументы, которые «придумала» модель.</span></li><li><a href="https://tiktokenizer.vercel.app/" target="_blank" rel="noopener">Tiktokenizer</a><span>вставить свой CLAUDE.md и посмотреть, сколько токенов он съедает в каждой сессии.</span></li></ul></div>
+        <div><h3>Запустить код из урока</h3><ul><li><a href="https://www.typescriptlang.org/play" target="_blank" rel="noopener">TypeScript Playground</a><span>JS и TS из примеров урока: вставить и запустить кнопкой Run.</span></li><li><a href="https://3v4l.org/" target="_blank" rel="noopener">3v4l.org</a><span>PHP-примеры урока на любой версии PHP.</span></li><li><a href="https://jupyter.org/try-jupyter/lab/" target="_blank" rel="noopener">JupyterLite</a><span>Python-примеры урока прямо в браузере, без установки.</span></li></ul></div>
+      </div>
+    </section>
+  </div>
+</div>
+<style>
+.hc .lp-wrap { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 1rem; align-items: start; }
+@media (max-width: 1100px) {
+.hc .lp-wrap { grid-template-columns: minmax(0, 1fr); }
+}
+.hc .lp-wrap > .stage3d { position: sticky; top: calc(var(--topbar) + 1rem); }
+@media (max-width: 1100px) {
+.hc .lp-wrap > .stage3d { position: static; }
+}
+.hc .lp { display: grid; gap: 0.7rem; min-width: 0; }
+.hc .lp h4 { font: 600 var(--hc-fs-xs) var(--hc-f-mono); text-transform: uppercase; letter-spacing: 0.06em; color: var(--hc-muted); }
+.hc .lp-side { display: grid; gap: 0.45rem; min-width: 0; }
+.hc .lp-code pre { position: relative; max-height: 21rem; overflow: auto; }
+.hc .lp-code pre .ln { display: inline-block; min-width: 100%; padding-right: 0.5rem; border-radius: 3px; transition: background 0.25s, opacity 0.25s; }
+.hc .lp-code pre.has-on .ln { opacity: 0.45; }
+.hc .lp-code pre.has-on .ln.is-on { opacity: 1; background: var(--hc-accent-soft); box-shadow: inset 3px 0 0 var(--hc-accent); }
+.hc .lp-json { max-height: 15rem; overflow: auto; white-space: pre; }
+.hc .lp .msgs { max-height: 15rem; }
+.hc .lp .msgs li.is-old { animation: none; }
+.hc .lp .msgs .tok { color: var(--hc-muted); font: 500 var(--hc-fs-xs) var(--hc-f-mono); margin-left: 0.4rem; white-space: nowrap; }
+.hc .msgs { list-style: none; padding: 0; display: grid; gap: 0.4rem; max-height: 22rem; overflow: auto; }
+.hc .msgs li { margin: 0; display: grid; grid-template-columns: 7.5rem minmax(0, 1fr); gap: 0.6rem; align-items: start; background: var(--hc-bg); border-radius: var(--hc-r-sm); padding: 0.45rem 0.6rem; font-size: var(--hc-fs-sm); animation: hc-pop 0.25s ease-out; }
+.hc .msgs .who { font: 600 var(--hc-fs-xs) var(--hc-f-mono); text-transform: uppercase; letter-spacing: 0.04em; padding-top: 0.1rem; }
+.hc .msgs .who.user { color: var(--hc-accent); }
+.hc .msgs .who.assistant { color: var(--hc-warm); }
+.hc .msgs .who.tool { color: var(--hc-ok); }
+.hc .msgs code { font-size: 0.8rem; }
+.hc .msgs .body { min-width: 0; overflow-wrap: anywhere; }
+.hc .ctxline { display: grid; gap: 0.3rem; }
+.hc .ctxline .track { height: 0.9rem; background: var(--hc-surface-2); border-radius: 99px; overflow: hidden; }
+.hc .ctxline .track i { display: block; height: 100%; width: 0; background: var(--hc-accent); transition: width 0.4s; }
+.hc .ctxline .track i.hot { background: var(--hc-warm); }
+.hc .ctxline small { color: var(--hc-muted); font: 500 var(--hc-fs-xs) var(--hc-f-mono); font-variant-numeric: tabular-nums; }
+.hc .cfg { display: grid; gap: 0.9rem; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+@media (max-width: 860px) {
+.hc .cfg { grid-template-columns: minmax(0, 1fr); }
+}
+.hc .cfg fieldset { border: 1px solid var(--hc-line); border-radius: var(--hc-r-sm); padding: 0.6rem 0.75rem; margin: 0; display: grid; gap: 0.35rem; min-width: 0; }
+.hc .cfg legend { font: 600 var(--hc-fs-xs) var(--hc-f-mono); text-transform: uppercase; letter-spacing: 0.05em; color: var(--hc-muted); padding: 0 0.3rem; }
+.hc .cfg label { font-weight: 400; display: flex; gap: 0.5rem; align-items: flex-start; }
+.hc .cfg label input { margin-top: 0.2rem; flex: none; }
+.hc .cfg code { font-size: 0.78rem; }
+.hc .verdicts { display: grid; gap: 0.4rem; }
+.hc .verdict-row { display: grid; grid-template-columns: minmax(0, 15rem) 9.5rem minmax(0, 1fr); gap: 0.6rem; align-items: start; font-size: var(--hc-fs-sm); padding: 0.45rem 0.6rem; border-radius: var(--hc-r-sm); background: var(--hc-bg); }
+@media (max-width: 700px) {
+.hc .verdict-row { grid-template-columns: minmax(0, 1fr); }
+}
+.hc .verdict-row code { overflow-wrap: anywhere; }
+.hc .skills { display: grid; gap: 0.4rem; }
+.hc .skill { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 0.5rem; padding: 0.5rem 0.7rem; border: 1.5px solid var(--hc-line); border-radius: var(--hc-r-sm); background: var(--hc-bg); font-size: var(--hc-fs-sm); transition: border-color 0.25s, background 0.25s; }
+.hc .skill b { font-family: var(--hc-f-mono); font-size: 0.82rem; }
+.hc .skill p { color: var(--hc-muted); }
+.hc .skill.hit { border-color: var(--hc-ok); background: var(--hc-ok-soft); }
+.hc .skill mark { background: color-mix(in srgb, var(--hc-warm) 30%, transparent); color: inherit; border-radius: 2px; }
+.hc .budget-rows { display: grid; gap: 0.5rem; }
+.hc .budget-row { display: grid; grid-template-columns: 11rem minmax(0, 1fr) 6rem; gap: 0.6rem; align-items: center; font-size: var(--hc-fs-sm); }
+@media (max-width: 600px) {
+.hc .budget-row { grid-template-columns: minmax(0, 1fr) 5rem; }
+.hc .budget-row .track { grid-column: 1 / -1; }
+}
+.hc .budget-row .track { height: 1rem; background: var(--hc-surface-2); border-radius: 4px; overflow: hidden; }
+.hc .budget-row .track i { display: block; height: 100%; background: var(--hc-accent); transition: width 0.6s; }
+.hc .budget-row .track i.warm { background: var(--hc-warm); }
+.hc .budget-row .num { text-align: right; font: 500 var(--hc-fs-xs) var(--hc-f-mono); font-variant-numeric: tabular-nums; }
+.hc .sub-wrap { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+@media (max-width: 700px) {
+.hc .sub-wrap { grid-template-columns: minmax(0, 1fr); }
+}
+.hc .win { border: 1.5px solid var(--hc-line); border-radius: var(--hc-r-sm); padding: 0.7rem; display: grid; gap: 0.5rem; background: var(--hc-bg); }
+.hc .win.off { opacity: 0.45; }
+.hc .win h4 { font-size: var(--hc-fs-sm); }
+.hc .win .fill { height: 8rem; border-radius: 6px; background: var(--hc-surface-2); position: relative; overflow: hidden; }
+.hc .win .fill i { position: absolute; left: 0; right: 0; bottom: 0; height: 0; background: var(--hc-accent); transition: height 0.25s; }
+.hc .win .fill i.over { background: var(--hc-bad); }
+.hc .win .fill .limit { position: absolute; left: 0; right: 0; border-top: 2px dashed var(--hc-bad); }
+.hc .win .fill .limit span { position: absolute; right: 4px; top: -1.2rem; font: 600 var(--hc-fs-xs) var(--hc-f-mono); color: var(--hc-bad); }
+.hc .win small { font: 500 var(--hc-fs-xs) var(--hc-f-mono); color: var(--hc-muted); }
+</style>
+</div></div><section class="lesson-after mt-8" data-v-841e5709><div class="ask-invite" data-v-841e5709><i class="v-icon notranslate v-theme--lessonTheme text-primary" style="font-size:28px;height:28px;width:28px;" aria-hidden="true" data-v-841e5709><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M20 2H4C2.9 2 2 2.9 2 4V22L6 18H20C21.1 18 22 17.1 22 16V4C22 2.9 21.1 2 20 2M20 16H5.2L4 17.2V4H20V16M12.2 5.5C11.3 5.5 10.6 5.7 10.1 6C9.5 6.4 9.2 7 9.3 7.7H11.3C11.3 7.4 11.4 7.2 11.6 7.1C11.8 7 12 6.9 12.3 6.9C12.6 6.9 12.9 7 13.1 7.2C13.3 7.4 13.4 7.6 13.4 7.9C13.4 8.2 13.3 8.4 13.2 8.6C13 8.8 12.8 9 12.6 9.1C12.1 9.4 11.7 9.7 11.5 9.9C11.1 10.2 11 10.5 11 11H13C13 10.7 13.1 10.5 13.1 10.3C13.2 10.1 13.4 10 13.6 9.8C14.1 9.6 14.4 9.3 14.7 8.9C15 8.5 15.1 8.1 15.1 7.7C15.1 7 14.8 6.4 14.3 6C13.9 5.7 13.1 5.5 12.2 5.5M11 12V14H13V12H11Z"></path></svg></i><div class="min-w-0 flex-grow-1" data-v-841e5709><div class="font-weight-bold" data-v-841e5709> Что-то осталось непонятным? </div><div class="text-body-2 text-medium-emphasis" data-v-841e5709> Спросите преподавателя-нейросеть: он читает этот урок и отвечает по нему простыми словами. </div></div><button type="button" class="v-btn v-theme--lessonTheme bg-primary v-btn--density-default rounded-lg v-btn--size-default v-btn--variant-flat" style="" data-v-841e5709><!--[--><span class="v-btn__overlay"></span><span class="v-btn__underlay"></span><!--]--><!----><span class="v-btn__content" data-no-activator><!--[--><!--[--> Задать вопрос <!--]--><!--]--></span><!----><!----></button></div><nav class="pager" aria-label="Переход между уроками" data-v-841e5709><a href="/agent-pod-kontrolem/kak-model-pishet-kod/" class="v-btn v-theme--lessonTheme v-btn--density-default rounded-lg v-btn--size-large v-btn--variant-outlined btn-wrap pager-btn" style="" data-v-841e5709><!--[--><span class="v-btn__overlay"></span><span class="v-btn__underlay"></span><!--]--><span class="v-btn__prepend"><i class="v-icon notranslate v-theme--lessonTheme v-icon--size-default" style="" aria-hidden="true"><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z"></path></svg></i></span><span class="v-btn__content" data-no-activator><!--[--><!--[--><span class="d-flex flex-column align-start text-left" data-v-841e5709><small class="text-medium-emphasis" data-v-841e5709>Назад</small>Урок 1. Как модель пишет код</span><!--]--><!--]--></span><!----><!----></a><a href="/agent-pod-kontrolem/pamyat-proekta/" class="v-btn v-theme--lessonTheme bg-primary v-btn--density-default rounded-lg v-btn--size-large v-btn--variant-flat btn-wrap pager-btn" style="" data-v-841e5709><!--[--><span class="v-btn__overlay"></span><span class="v-btn__underlay"></span><!--]--><!----><span class="v-btn__content" data-no-activator><!--[--><!--[--><span class="d-flex flex-column align-start text-left" data-v-841e5709><small style="opacity:0.8;" data-v-841e5709>Дальше</small>Урок 3. Память проекта</span><!--]--><!--]--></span><span class="v-btn__append"><i class="v-icon notranslate v-theme--lessonTheme v-icon--size-default" style="" aria-hidden="true"><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z"></path></svg></i></span><!----></a></nav><aside class="lesson-promo" aria-label="Где применить урок" data-v-841e5709 data-v-d391e6cf><div class="min-w-0" data-v-d391e6cf><div class="text-overline text-medium-emphasis" style="line-height:1.4;" data-v-d391e6cf> Где применить </div><div class="font-display font-weight-bold mb-1" data-v-d391e6cf>Попробуйте на своём проекте</div><p class="text-body-2 mb-0 text-medium-emphasis" data-v-d391e6cf>Задания урока удобно делать в Klepa AI: агент работает прямо в VS Code, без VPN, оплата в BYN, есть бесплатные модели.</p></div><div class="d-flex flex-wrap ga-2 promo-actions" data-v-d391e6cf><!--[--><a href="https://marketplace.visualstudio.com/items?itemName=copy-code.copy-coder" class="v-btn v-theme--lessonTheme text-primary v-btn--density-default rounded-lg v-btn--size-small v-btn--variant-tonal" style="" data-v-d391e6cf><!--[--><span class="v-btn__overlay"></span><span class="v-btn__underlay"></span><!--]--><!----><span class="v-btn__content" data-no-activator><!--[--><!--[-->Установить Klepa<!--]--><!--]--></span><span class="v-btn__append"><i class="v-icon notranslate v-theme--lessonTheme v-icon--size-default" style="" aria-hidden="true"><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M5,17.59L15.59,7H9V5H19V15H17V8.41L6.41,19L5,17.59Z"></path></svg></i></span><!----></a><a href="https://klepa.gpt-chat.by/quickstart/" class="v-btn v-theme--lessonTheme v-btn--density-default rounded-lg v-btn--size-small v-btn--variant-text" style="" data-v-d391e6cf><!--[--><span class="v-btn__overlay"></span><span class="v-btn__underlay"></span><!--]--><!----><span class="v-btn__content" data-no-activator><!--[--><!--[-->Быстрый старт<!--]--><!--]--></span><span class="v-btn__append"><i class="v-icon notranslate v-theme--lessonTheme v-icon--size-default" style="" aria-hidden="true"><svg class="v-icon__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M5,17.59L15.59,7H9V5H19V15H17V8.41L6.41,19L5,17.59Z"></path></svg></i></span><!----></a><!--]--></div></aside></section></div></div><span data-v-841e5709 data-v-b8cf27a9></span></div><!--]--><!--]--></main><footer class="v-footer v-theme--lessonTheme bg-footer-bg d-block pt-10 pb-8" style="height:auto;" data-v-2893ecfe><div class="px-4 px-md-6 page-wrap" data-v-2893ecfe><div class="v-row" style="" data-v-2893ecfe><div class="v-col-md-4 v-col-12" style="" data-v-2893ecfe><div class="font-display font-weight-bold text-white mb-3" style="font-size:1.1rem;" data-v-2893ecfe> Обучение работе с ИИ </div><p class="text-body-2 mb-0" style="color:rgba(255, 255, 255, 0.72);" data-v-2893ecfe> Бесплатные курсы по нейросетям и ИИ-агентам с тренажёрами прямо в браузере. Первые уроки — без входа, остальные — после бесплатного входа через Google или Telegram. Аккаунт и баланс общие с gpt-chat.by. </p></div><div class="v-col-sm-6 v-col-md-3 v-col-12" style="" data-v-2893ecfe><div class="footer-heading" data-v-2893ecfe> Курсы </div><!--[--><a href="/klepa-v-terminale/" class="footer-link d-block" data-v-2893ecfe>Клёпа в терминале</a><a href="/agent-pod-kontrolem/" class="footer-link d-block" data-v-2893ecfe>Агент под контролем</a><a href="/n8n/" class="footer-link d-block" data-v-2893ecfe>n8n для новичков</a><a href="/hermes-agent/" class="footer-link d-block" data-v-2893ecfe>Hermes Agent для новичков</a><a href="/llm-workflow/" class="footer-link d-block" data-v-2893ecfe>Workflow для LLM-приложений</a><!--]--></div><div class="v-col-md-3 v-col-6" style="" data-v-2893ecfe><div class="footer-heading" data-v-2893ecfe> Наши продукты </div><!--[--><a href="https://gpt-chat.by/" class="footer-link d-block" data-v-2893ecfe>Чат gpt-chat.by <span class="footer-hint" data-v-2893ecfe>— Все нейросети в одном чате</span></a><a href="https://klepa.gpt-chat.by/" class="footer-link d-block" data-v-2893ecfe>Клёпа <span class="footer-hint" data-v-2893ecfe>— ИИ-агент для кода</span></a><a href="https://video-studio.gpt-chat.by/" class="footer-link d-block" data-v-2893ecfe>Видеостудия <span class="footer-hint" data-v-2893ecfe>— Видео нейросетью</span></a><a href="https://music.gpt-chat.by/" class="footer-link d-block" data-v-2893ecfe>Музыка <span class="footer-hint" data-v-2893ecfe>— Песни нейросетью</span></a><a href="https://logo.gpt-chat.by/" class="footer-link d-block" data-v-2893ecfe>Логотипы <span class="footer-hint" data-v-2893ecfe>— Логотип с ИИ</span></a><!--]--></div><div class="v-col-md-2 v-col-6" style="" data-v-2893ecfe><div class="footer-heading" data-v-2893ecfe> Помощь </div><!--[--><a href="https://gpt-chat.by/pricing/" class="footer-link d-block" data-v-2893ecfe>Тарифы и цены</a><a href="https://gpt-chat.by/doc-api/" class="footer-link d-block" data-v-2893ecfe>API для разработчиков</a><a href="https://gpt-chat.by/offer/" class="footer-link d-block" data-v-2893ecfe>Публичная оферта</a><a href="https://gpt-chat.by/privacy-policy/" class="footer-link d-block" data-v-2893ecfe>Политика конфиденциальности</a><!--]--></div></div><hr class="v-divider v-theme--lessonTheme text-white my-6" style="border-style:solid;" aria-orientation="horizontal" role="separator" data-v-2893ecfe><p class="text-body-2 mb-0" style="color:rgba(255, 255, 255, 0.6);" data-v-2893ecfe> © 2026 gpt-chat.by · Вопросы преподавателю-нейросети оплачиваются с баланса в BYN, курсы бесплатные. </p></div></footer><!--[--><!----><!----><!--]--><!--]--></div></div></div><div id="teleports"></div><script>window.__NUXT__={};window.__NUXT__.config={public:{siteUrl:"https://lesson.gpt-chat.by",apiBase:"https://api.gpt-chat.by/api"},app:{baseURL:"/",buildId:"26206076-2590-4c5c-9258-c5aa663463ca",buildAssetsDir:"/_nuxt/",cdnURL:""}}</script>
+<script type="application/json" data-nuxt-data="nuxt-app" data-ssr="true" id="__NUXT_DATA__" data-src="/agent-pod-kontrolem/agent-eto-cikl/_payload.json?26206076-2590-4c5c-9258-c5aa663463ca">[{"state":1,"once":6,"_errors":7,"serverRendered":9,"path":10,"prerenderedAt":11},["Reactive",2],{"$slesson-token":3,"$slesson-refresh":3,"$slesson-balance":4,"$slesson-top-up-open":5,"$slesson-top-up-shortfall":4,"$shydrated":5},"",null,false,["Set"],["ShallowReactive",8],{"lesson-outline-agent-pod-kontrolem-agent-eto-cikl":4,"lesson-body-agent-pod-kontrolem-agent-eto-cikl":4},true,"/agent-pod-kontrolem/agent-eto-cikl/",1795601792096]</script></body></html>

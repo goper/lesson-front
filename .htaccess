@@ -1,3 +1,3 @@
-# Заглушка lesson.gpt-chat.by до запуска сайта уроков. Любой адрес — главная страница.
+# Статика lesson.gpt-chat.by. Несуществующий адрес — страница 404 сайта, а не ответ Apache.
 DirectoryIndex index.html
-ErrorDocument 404 /index.html
+ErrorDocument 404 /404.html
