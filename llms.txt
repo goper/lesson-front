@@ -1,6 +1,6 @@
 # Обучение работе с ИИ — gpt-chat.by
 
-> Бесплатное обучение работе с нейросетями на русском: ИИ-агенты для программистов, автоматизация в n8n, личный агент Hermes, LLM-приложения. Все уроки открыты, тренажёры в браузере, преподаватель-нейросеть. Работает в Беларуси без VPN.
+> Бесплатные курсы на русском: Python с нуля, ИИ-агенты для программистов, автоматизация в n8n, личный агент Hermes, LLM-приложения. Все уроки открыты, тренажёры в браузере, преподаватель-нейросеть. Работает в Беларуси без VPN.
 
 - Все уроки бесплатные и открыты без входа. Тренажёры (терминал, редактор n8n, схемы, тесты) работают прямо в браузере.
 - В каждом уроке есть преподаватель-нейросеть: отвечает на вопросы по тексту урока. Для вопросов нужен бесплатный вход через Google или Telegram, ответы оплачиваются с баланса gpt-chat.by в BYN по факту.
@@ -74,3 +74,15 @@
 - [Оценочный набор (eval) для LLM: как проверять шаг с моделью — урок 6 курса «Workflow для LLM-приложений»](https://lesson.gpt-chat.by/llm-workflow/ocenochnyj-nabor/)
 - [Workflow для LLM-приложений: конспект и 24 вопроса для самопроверки — урок 7 курса «Workflow для LLM-приложений»](https://lesson.gpt-chat.by/llm-workflow/konspekt/)
 - [Практика в Yandex AI Studio: цепочка с моделью в Yandex Workflows — урок 8 курса «Workflow для LLM-приложений»](https://lesson.gpt-chat.by/llm-workflow/praktika-yandex-ai-studio/)
+
+## Python с нуля
+
+- [Python с нуля — бесплатный курс для начинающих с практикой в браузере](https://lesson.gpt-chat.by/python-s-nulya/): Восемь бесплатных уроков Python для тех, кто никогда не программировал. Пишите и запускайте код в браузере: переменные, ввод, условия, списки, циклы и функции. В конце соберите собственный дневник чтения.
+- [Как написать и запустить первую программу на Python? — урок 1 курса «Python с нуля»](https://lesson.gpt-chat.by/python-s-nulya/pervaya-stroka/)
+- [Как сохранить число в переменной и посчитать остаток на Python? — урок 2 курса «Python с нуля»](https://lesson.gpt-chat.by/python-s-nulya/peremennye/)
+- [Как ввести число с клавиатуры через input и int в Python? — урок 3 курса «Python с нуля»](https://lesson.gpt-chat.by/python-s-nulya/vvod/)
+- [Как задать условие с if и else в Python и проверить границу? — урок 4 курса «Python с нуля»](https://lesson.gpt-chat.by/python-s-nulya/usloviya/)
+- [Как создать список в Python и найти элемент по его номеру? — урок 5 курса «Python с нуля»](https://lesson.gpt-chat.by/python-s-nulya/spiski/)
+- [Как пройти список циклом for и накопить сумму в Python? — урок 6 курса «Python с нуля»](https://lesson.gpt-chat.by/python-s-nulya/cikl-for/)
+- [Как написать функцию в Python и вернуть значение через return? — урок 7 курса «Python с нуля»](https://lesson.gpt-chat.by/python-s-nulya/funkcii/)
+- [Как собрать первую программу на Python — дневник чтения? — урок 8 курса «Python с нуля»](https://lesson.gpt-chat.by/python-s-nulya/dnevnik-chteniya/)
