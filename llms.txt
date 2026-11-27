@@ -50,6 +50,18 @@
 - [Ошибки в n8n: где искать причину и как отладить workflow — урок 9 курса «n8n для новичков»](https://lesson.gpt-chat.by/n8n/oshibki-i-otladka/)
 - [Заявки с сайта в Telegram и таблицу через n8n: проект по шагам — урок 10 курса «n8n для новичков»](https://lesson.gpt-chat.by/n8n/itogovyj-proekt/)
 
+## Dify с нуля
+
+- [Dify с нуля — бесплатный курс с тренажёрами Workflow для начинающих](https://lesson.gpt-chat.by/dify/): Научитесь собирать приложения в Dify без кода. Восемь бесплатных уроков с редактором в браузере: ввод, шаблоны, языковая модель, условия, отладка и публикация.
+- [Как создать первый Workflow в новой Dify Studio? — урок 1 курса «Dify с нуля»](https://lesson.gpt-chat.by/dify/pervyi-workflow/)
+- [Как настроить обязательное поле формы в Dify User Input? — урок 2 курса «Dify с нуля»](https://lesson.gpt-chat.by/dify/forma/)
+- [Как подставить текст из формы в шаблон Dify? — урок 3 курса «Dify с нуля»](https://lesson.gpt-chat.by/dify/shablon/)
+- [Как передать инструкцию и обращение в узел LLM в Dify? — урок 4 курса «Dify с нуля»](https://lesson.gpt-chat.by/dify/model/)
+- [Как развести обращения по двум веткам IF/ELSE в Dify? — урок 5 курса «Dify с нуля»](https://lesson.gpt-chat.by/dify/razvilka/)
+- [Как вернуть результат нужного узла через Output в Dify? — урок 6 курса «Dify с нуля»](https://lesson.gpt-chat.by/dify/rezultat/)
+- [Как найти неверную переменную в истории запуска Dify? — урок 7 курса «Dify с нуля»](https://lesson.gpt-chat.by/dify/otladka/)
+- [Как проверить и опубликовать собранный Workflow в Dify? — урок 8 курса «Dify с нуля»](https://lesson.gpt-chat.by/dify/pomoshchnik/)
+
 ## Hermes Agent для новичков
 
 - [Hermes Agent для новичков — бесплатный курс: установка, память, навыки, Telegram](https://lesson.gpt-chat.by/hermes-agent/): Бесплатный курс по Hermes Agent с нуля: установка и первый запуск, команды терминала, инструменты и безопасность, настройки, память, навыки, Telegram и задачи по расписанию.
